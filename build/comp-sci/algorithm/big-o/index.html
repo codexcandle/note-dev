@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>comp-sci.algorithm.big-o</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">comp-sci.algorithm.big-o</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#n-notation">n-notation</a></li>
+<li><a href="#asymptotic-notations">asymptotic notations</a>
+<ol type="1">
+<li><a href="#constant">constant</a></li>
+<li><a href="#linear">linear</a></li>
+<li><a href="#logarithmic">logarithmic</a></li>
+<li><a href="#linearithmic">linearithmic</a></li>
+<li><a href="#quadratic">quadratic</a></li>
+<li><a href="#cubic">cubic</a></li>
+<li><a href="#fourth">to the 4th?</a></li>
+<li><a href="#exponential">exponential</a></li>
+<li><a href="#factorial">factorial</a></li>
+<li><a href="#infinity">infinity</a></li>
+</ol></li>
+<li><a href="#greek-letter-notation">greek-letter notation</a></li>
+<li><a href="#more-arithmetic-examples">more arithmetic examples</a></li>
+<li><a href="#rules-review">rules review</a></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<blockquote>
+<p>The asymptotic upper limit of a function, or upper bound, of the complexity in the WORST case, helping to quantify performance as the input size becomes ARBITRARILY LARGE.</p>
+</blockquote>
+<ul>
+<li>aka <code>Big O Asymptotic Analysis</code> / Computational Complexity Analysis.</li>
+<li>used for algorithm performance comparison - an equation that describes how the run time scales with respect to some input variables.</li>
+<li>specifically describes the <code>worst-case scenario</code> - or the efficiency of SETTING + GETTING data from a DATA STORE (e.g. In-memory, database, sql, nosql). Used to describe the execution time, or the space used (e.g. memory or on disk), of an algorithm.</li>
+<li><a href="https://en.wikipedia.org/wiki/Big_O_notation">more @ wikipedia</a></li>
+</ul>
+<h2 id="n-notation">N-Notation <a name="n-notation"></a></h2>
+<hr />
+<blockquote>
+<p>An analysis going to infinity…</p>
+</blockquote>
+<ul>
+<li>describes the time complexity of an algorithm.</li>
+<li>allows you to compare different algorithms; denoting run times.</li>
+<li>is represented as a function of <code>n</code> - where n this is usually the # of input / output values.</li>
+<li><p>the reason why <code>n</code> is used is because it will show you how the program will react to increasing amounts of data. (You can’t predict how many pieces of data your program will require, so you compare it along the graph.)</p>
+<figure>
+<img src="_asset/img/9.png" alt="N-Notation" /><figcaption>N-Notation</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/10.png" alt="N-Notation" /><figcaption>N-Notation</figcaption>
+</figure></li>
+</ul>
+<h2 id="asymptotic-notations">Asymptotic Notations <a name="asymptotic-notations"></a></h2>
+<hr />
+<ul>
+<li><p>possible time values:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="bn">    /*</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="bn">    n = the size of the input complxities...</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="bn">    ordered in from smallest to largest</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="bn">    */</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="bn">    Constant:       0(1)</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="bn">    Logarithmic:    0(log(n))</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="bn">    Linear:         0(n)</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="bn">    Linearithmic:   0(nlog(n))</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="bn">    Quadric:        0(n^2)</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="bn">    Cubic:          0(n^3)</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="bn">    Polynomial:     n^(0(1))</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="bn">    Exponential:    2^(0(n)) [or 0(b^n), b &gt; 1]</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="bn">    Factorial:      0(n!)</span></a></code></pre></div>
+<figure>
+<img src="_asset/img/20.png" alt="Asymptotic Notations" /><figcaption>Asymptotic Notations</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/1.png" alt="Asymptotic Notations" /><figcaption>Asymptotic Notations</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/2.png" alt="Asymptotic Notations" /><figcaption>Asymptotic Notations</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/3.png" alt="Asymptotic Notations" /><figcaption>Asymptotic Notations</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/5.png" alt="Asymptotic Notations" /><figcaption>Asymptotic Notations</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/18.png" alt="Asymptotic Notations" /><figcaption>Asymptotic Notations</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/19.png" alt="Asymptotic Notations" /><figcaption>Asymptotic Notations</figcaption>
+</figure></li>
+</ul>
+<h3 id="constant">constant <a name="constant"></a></h3>
+<blockquote>
+<p>A carrier pigeon transporting usb sticks vs a slow internet; add more data, and bird still gets there in same time.</p>
+</blockquote>
+<ul>
+<li>aka:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="bn">    * O(1)</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="bn">    * “Oh of 1”</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="bn">    * &quot;constant time w/ respect to input size&quot;</span></a></code></pre></div>
+<ul>
+<li>will always execute in same time (or space) regardless of input data set size</li>
+<li><p>some examples:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1">    a = b + <span class="dv">1</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">    <span class="co">// or...</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">    y = x + <span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1">    <span class="dt">bool</span> <span class="fu">IsFirstElementNull</span>(IList&lt;<span class="dt">string</span>&gt; elements)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">    {</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">        <span class="kw">return</span> elements[<span class="dv">0</span>] == <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">    }</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1">    <span class="co">// tricky one(s) here! - b/c DO NOT EVEN contain a ref to “n”!</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">    a = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">    b = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">    c = a + <span class="dv">5</span>*b</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb6-1" data-line-number="1">    i=<span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">    <span class="kw">while</span> i&lt;<span class="dv">11</span> Do</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">        i = i + <span class="dv">1</span>;</a></code></pre></div></li>
+</ul>
+<h3 id="linear">linear <a name="linear"></a></h3>
+<hr />
+<blockquote>
+<p>…in “pigeon example”, the “internet” scales “linearly”; add more data, &amp; it takes slightly longer.</p>
+</blockquote>
+<ul>
+<li>aka:</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="bn">    * O(n)</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="bn">    * “Oh of N” (where N is the size of the array)</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="bn">    * &quot;scales linearly w/ respect to amount of input&quot;</span></a></code></pre></div>
+<ul>
+<li><p>some examples:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="bn">    SCENARIO:</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="bn">    Looking through a rack of shirts (un-ordered) to find a specific shirt.</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="bn">    RESULT:</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="bn">    At worst case, you&#39;ll have to search the whole set; thus linear to the size of the input set.</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb9-1" data-line-number="1">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">    the bigO for mowing a lawn! since O(a) where a=area of yard.  Note, this is equivalent to O(s^2) where s=side of yard, since a=side x side.  And O(a) = O(s^2), I think? (per some rule...)</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">    */</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb10-1" data-line-number="1">    <span class="co">// loop</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">    <span class="kw">for</span>(c=<span class="dv">0</span>;c&lt;n;c++)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">    {</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">        a+=<span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">    }</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb11-1" data-line-number="1">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">    note, below example demonstrates how BigO favours \</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">    worst-case performance scenario since a matching \</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">    string could be found in any iteration of the for \</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">    loop, and the function would return early, but BigO \</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">    will always assume the upper limit where the algorithm \</span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">    will perform the max # of iterations</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">    */</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">    boolean <span class="fu">contains</span>(array.<span class="fu">x</span>)</a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">    {</a>
+<a class="sourceLine" id="cb11-11" data-line-number="11">        <span class="kw">foreach</span> element <span class="kw">in</span> array</a>
+<a class="sourceLine" id="cb11-12" data-line-number="12">        {</a>
+<a class="sourceLine" id="cb11-13" data-line-number="13">            <span class="kw">if</span> element == x</a>
+<a class="sourceLine" id="cb11-14" data-line-number="14">            {</a>
+<a class="sourceLine" id="cb11-15" data-line-number="15">                <span class="kw">return</span> <span class="kw">true</span>;</a>
+<a class="sourceLine" id="cb11-16" data-line-number="16">            }</a>
+<a class="sourceLine" id="cb11-17" data-line-number="17">        }</a>
+<a class="sourceLine" id="cb11-18" data-line-number="18">    }</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="bn">    Q:</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="bn">    What if you had an unordered list, and you had to search for a given term (e.g. 7).  What would be the BigO if you wrote an algorithm to traverse this list to check?</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="bn">    A:</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="bn">    O(n) or LINEAR, b/c you&#39;d assume &quot;worst case scenario&quot;, so this grows as the list length growth since we&#39;d always assume the &quot;worst case&quot; was finding it in the last iteration, or last element in the list.</span></a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb13-1" data-line-number="1">    i = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">    <span class="kw">while</span> i&lt;n Do</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">        i = i + <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">    <span class="co">// f(n) = n</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">    <span class="co">// so,</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">    <span class="co">// O(f(n)) = O(n)</span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">    <span class="co">// or...</span></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb13-10" data-line-number="10">    i = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb13-11" data-line-number="11">    <span class="kw">while</span> i&lt;n Do</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">        i = i + <span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb13-13" data-line-number="13">    <span class="co">// f(n) = n / 3</span></a>
+<a class="sourceLine" id="cb13-14" data-line-number="14">    <span class="co">// so still,</span></a>
+<a class="sourceLine" id="cb13-15" data-line-number="15">    <span class="co">// O(f(n)) = O(n)</span></a></code></pre></div></li>
+</ul>
+<h3 id="logarithmic">logarithmic <a name="logarithmic"></a></h3>
+<hr />
+<blockquote>
+<p>divide &amp; conquer …is the theoretical limit for searching a data set. is log base 2, as well.</p>
+</blockquote>
+<ul>
+<li>aka:</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="bn">    * O(log(n))</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="bn">    * “Oh of Log of N” (where N is the size of the array)</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="bn">    * &quot;scales logarithmically w/ respect to amount of input&quot;</span></a></code></pre></div>
+<ul>
+<li>things should be stored in <code>SORTED</code> order.</li>
+<li><p>some examples:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb15-1" data-line-number="1">    <span class="co">// “divide &amp; conquer”, divide in half </span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">    <span class="kw">while</span>(n&gt;<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">    {</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">        n=n/<span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">    }</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="bn">    SCENARIO:</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="bn">    Suppose you have a SORTED array, &amp; you want to find the</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="bn">    index of a particular value in the array, if it exists.</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="bn">    Q:</span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="bn">    What is the time complexity of the following algorithm?</span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="bn">    A:</span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="bn">    Since a binary search, is Logarithmic!</span></a></code></pre></div></li>
+</ul>
+<h3 id="linearithmic">linearithmic <a name="linearithmic"></a></h3>
+<hr />
+<ul>
+<li>aka:</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="bn">    * O(n * log(n))</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="bn">    * “Oh of N times Log of N” (where N is the size of the array)</span></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="bn">    * &quot;scales linearithmically(?) w/ respect to amount of input&quot;</span></a></code></pre></div>
+<ul>
+<li>some examples:</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="bn">    // effective sorting algorithms</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="bn">    // .. Mergesort, Quicksort, SelectionSort (?)</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="bn">    // ... Merge search, like “deck of cards”</span></a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="bn">    // 3 shirts, and finding out where they belong (placed back) in a store</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="bn">    // 3 times (each shirt) * log(n) since the store is SORTED!, &amp; you go to each section, then sub-section.</span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="bn">    // e.g. Go to shirts section, then go to Men&#39;s section, etc - then you&#39;ll be getting closer to actual placement with each iterative step.</span></a></code></pre></div>
+<h3 id="quadratic">quadratic <a name="quadratic"></a></h3>
+<ul>
+<li>aka:</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="bn">    * O(n^2)</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="bn">    * “Oh of N squared” (where N is the size of the array)</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="bn">    * &quot;scales quadratically w/ respect to amount of input&quot;</span></a></code></pre></div>
+<ul>
+<li><p>some examples:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb21-1" data-line-number="1">    <span class="co">// DOUBLE loop</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">    <span class="co">// common w/ nested iterations, see cubic, etc...  </span></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3">    <span class="kw">for</span>(c=<span class="dv">0</span>; c&lt;n; c++)</a>
+<a class="sourceLine" id="cb21-4" data-line-number="4">    {</a>
+<a class="sourceLine" id="cb21-5" data-line-number="5">        <span class="kw">for</span>(i=<span class="dv">0</span>; i&lt;n;i++)</a>
+<a class="sourceLine" id="cb21-6" data-line-number="6">        {</a>
+<a class="sourceLine" id="cb21-7" data-line-number="7">            a+=<span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb21-8" data-line-number="8">        }</a>
+<a class="sourceLine" id="cb21-9" data-line-number="9">    }</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb22-1" data-line-number="1">    <span class="co">// checking shopping list against grocery cart</span></a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb23-1" data-line-number="1">    <span class="kw">for</span>(i=<span class="dv">0</span>; i&lt;n;i=i+<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">        <span class="kw">for</span>(j=<span class="dv">1</span>;j&lt;n;j=j+<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">    <span class="co">// so the question then becomes what is:</span></a>
+<a class="sourceLine" id="cb23-4" data-line-number="4">    <span class="co">// (n) + (n-1) + (n-2) + (n-3) + ... + 3 + 2 + 1</span></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5">    <span class="co">// remarkably, this turns out to be n(n+1)/2, so:</span></a>
+<a class="sourceLine" id="cb23-6" data-line-number="6">    <span class="co">// = O(n(n+1)/2)</span></a>
+<a class="sourceLine" id="cb23-7" data-line-number="7">    <span class="co">// = O(n^2/2 + n/2)</span></a>
+<a class="sourceLine" id="cb23-8" data-line-number="8">    <span class="co">// = O(n^2)</span></a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb24-1" data-line-number="1">    i = <span class="dv">0</span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">    While i&lt;n Do</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3">        j=<span class="dv">0</span></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4">        While j&lt;<span class="dv">3</span>*n Do</a>
+<a class="sourceLine" id="cb24-5" data-line-number="5">            j=j + <span class="dv">1</span></a>
+<a class="sourceLine" id="cb24-6" data-line-number="6">        j = <span class="dv">0</span></a>
+<a class="sourceLine" id="cb24-7" data-line-number="7">        While j&lt;<span class="dv">2</span>*n Do</a>
+<a class="sourceLine" id="cb24-8" data-line-number="8">            j=j+<span class="dv">1</span></a>
+<a class="sourceLine" id="cb24-9" data-line-number="9">        i=i+<span class="dv">1</span></a>
+<a class="sourceLine" id="cb24-10" data-line-number="10">    <span class="co">// f(n) = n * (3n + 2n) = 5n^2</span></a>
+<a class="sourceLine" id="cb24-11" data-line-number="11">    <span class="co">// O(f(n)) = O(n^2)</span></a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb25-1" data-line-number="1">    <span class="co">// you have 2 unordered sets; 3 shirts then 3 pants; basically 2 unordered sets, with same count</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">    <span class="co">// trying to match a single shirt first, you have to check against all 3 pairs of pants.</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">    <span class="co">// you have to do above step for each shirt, thus:</span></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4">    <span class="co">// 3 + 3 + 3 = 9</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">    <span class="co">// 3 * 3 = 9</span></a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">    <span class="co">// 3^2</span></a>
+<a class="sourceLine" id="cb25-7" data-line-number="7">    <span class="co">// f(n) = O(n^2)</span></a>
+<a class="sourceLine" id="cb25-8" data-line-number="8">    <span class="co">// NOTE: This is similar to O(n*m), which is just with unordered list, so 2 shirts, and 3 pairs of pants....</span></a>
+<a class="sourceLine" id="cb25-9" data-line-number="9">    <span class="co">// so:</span></a>
+<a class="sourceLine" id="cb25-10" data-line-number="10">    <span class="co">// 2 + 2 + 2 = 6</span></a>
+<a class="sourceLine" id="cb25-11" data-line-number="11">    <span class="co">// 3 * 2 = 6</span></a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb26-1" data-line-number="1">    <span class="co">// tricky one here! - &quot;Oh of N Squared&quot;, O(n^2)</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">    <span class="co">// will print (5, 2) &amp; (2, 5) - both orders</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">    <span class="dt">void</span> <span class="fu">printPairs</span>(array)</a>
+<a class="sourceLine" id="cb26-4" data-line-number="4">    {</a>
+<a class="sourceLine" id="cb26-5" data-line-number="5">        foreach x <span class="kw">in</span> array</a>
+<a class="sourceLine" id="cb26-6" data-line-number="6">        {</a>
+<a class="sourceLine" id="cb26-7" data-line-number="7">            foreach y <span class="kw">in</span> array</a>
+<a class="sourceLine" id="cb26-8" data-line-number="8">            {</a>
+<a class="sourceLine" id="cb26-9" data-line-number="9">                print x, y</a>
+<a class="sourceLine" id="cb26-10" data-line-number="10">            }</a>
+<a class="sourceLine" id="cb26-11" data-line-number="11">        }</a>
+<a class="sourceLine" id="cb26-12" data-line-number="12">    }</a>
+<a class="sourceLine" id="cb26-13" data-line-number="13">    <span class="co">// maybe this one should be under “quadratic” section? Keeping here until can confirm O(n) == O(n^2)?</span></a></code></pre></div></li>
+</ul>
+<h3 id="cubic">cubic <a name="cubic"></a></h3>
+<ul>
+<li>aka:</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="bn">    * O(n^3)</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="bn">    * “Oh of N cubed” (where N is the size of the array)</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="bn">    * &quot;scales cubically w/ respect to amount of input&quot;</span></a></code></pre></div>
+<ul>
+<li><p>some examples:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb28-1" data-line-number="1">    <span class="co">// TRIPLE loop</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">    <span class="kw">for</span>(c=<span class="dv">0</span>; c&lt;n; c++)</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">    {</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">        <span class="kw">for</span>(i=<span class="dv">0</span>; i&lt;n;i++)</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">        {</a>
+<a class="sourceLine" id="cb28-6" data-line-number="6">            <span class="kw">for</span>(x=<span class="dv">0</span>;x,n;x++)</a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">            {</a>
+<a class="sourceLine" id="cb28-8" data-line-number="8">                a+=<span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb28-9" data-line-number="9">            }</a>
+<a class="sourceLine" id="cb28-10" data-line-number="10">        }</a>
+<a class="sourceLine" id="cb28-11" data-line-number="11">    }</a></code></pre></div></li>
+</ul>
+<h3 id="to-the-4th">to the 4th? <a name="fourth"></a></h3>
+<ul>
+<li>aka:</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="bn">    * O(n^4)</span></a></code></pre></div>
+<ul>
+<li><p>some examples:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb30-1" data-line-number="1">    <span class="co">// i=0</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">    While i&lt;<span class="dv">3</span>*n Do</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">        j=<span class="dv">10</span></a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">        While j&lt;=<span class="dv">50</span> Do</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">            j=j+<span class="dv">1</span></a>
+<a class="sourceLine" id="cb30-6" data-line-number="6">        j=<span class="dv">0</span></a>
+<a class="sourceLine" id="cb30-7" data-line-number="7">        While j&lt;=n*n*n Do</a>
+<a class="sourceLine" id="cb30-8" data-line-number="8">            j=j+<span class="dv">2</span></a>
+<a class="sourceLine" id="cb30-9" data-line-number="9">        i=i+<span class="dv">1</span></a>
+<a class="sourceLine" id="cb30-10" data-line-number="10">    <span class="co">// f(n) = 3n * (40 + n^3/2) = 3n/40 + 3n^4/2</span></a>
+<a class="sourceLine" id="cb30-11" data-line-number="11">    <span class="co">// = O(f(n)) = O(n^4)</span></a></code></pre></div></li>
+</ul>
+<h3 id="exponential">exponential <a name="exponential"></a></h3>
+<ul>
+<li>aka:</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="bn">    * O(2^N)</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="bn">    * “Oh of 2 to the N” (where N is the size of the array)</span></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="bn">    * &quot;scales exponentially w/ respect to amount of input&quot;</span></a></code></pre></div>
+<ul>
+<li>denotes an algorithm whose growth doubles with each addition to the input data set.</li>
+<li>being an exponential growth curve, you start off very shallow, that rise meteorically.</li>
+<li><p>some examples:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb32-1" data-line-number="1">    <span class="co">// exhaustive search</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">    <span class="co">// ... trying to break a password, generating all possible combinations</span></a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb33-1" data-line-number="1">    <span class="co">// finding ALL subsets of a set</span></a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb34-1" data-line-number="1">    <span class="co">// the recursive calculation of Fibonacci #s</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">    <span class="dt">int</span> <span class="fu">Fibonacci</span>(<span class="dt">int</span> num)</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">    {</a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">        <span class="dt">int</span>(num &lt;= <span class="dv">1</span>) <span class="kw">return</span> num;</a>
+<a class="sourceLine" id="cb34-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb34-6" data-line-number="6">        <span class="kw">return</span> <span class="fu">Fibonacci</span>(number – <span class="dv">2</span>) + <span class="fu">Fibonacci</span>(num – <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb34-7" data-line-number="7">    }</a></code></pre></div></li>
+</ul>
+<h3 id="factorial">factorial <a name="factorial"></a></h3>
+<ul>
+<li><p>aka:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="bn">    * O(n!)</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="bn">    * “Oh of N factorial” (where N is the size of the array)</span></a></code></pre></div></li>
+<li><p>example:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb36-1" data-line-number="1">    <span class="co">// finding all permutations of a string</span></a></code></pre></div></li>
+</ul>
+<h3 id="infinity">infinity <a name="infinity"></a></h3>
+<ul>
+<li><p>aka:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="bn">    * O(infinity)</span></a></code></pre></div></li>
+<li><p>example:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb38-1" data-line-number="1">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="co">    flipping a coin, b/c BigO assumes WORST case scenario,</span></a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="co">    so you could flip forever (theoretically) if you expected </span></a>
+<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="co">    to get a heads / tails.</span></a>
+<a class="sourceLine" id="cb38-5" data-line-number="5"><span class="co">    */</span></a></code></pre></div></li>
+</ul>
+<p>*example: // flipping a coin, b/c BigO assumes WORST case scenario, so you could flip forever (theoretically) if you expected to get a heads / tails.</p>
+<h2 id="greek-letter-notation">“Greek Letter” Notation <a name="greek-letter-notation"></a></h2>
+<hr />
+<blockquote>
+<p>Almost all people are Big O(slowest person alive), while almost no one is Big O(fastest person alive), except for the actual fastest person alive.</p>
+</blockquote>
+<ul>
+<li><p>as below:</p>
+<figure>
+<img src="_asset/img/4.png" alt="Other Notations" /><figcaption>Other Notations</figcaption>
+</figure></li>
+<li><p>you usually don’t use <code>n</code> by itself; typically, you tie it together with a Freek letter to give it some context. Rarely does your program operate at the same timing for every single step. So instead of having exact values, you look at them in <code>boundaries</code>., or cases in which the are greater, less than, or rqual:</p>
+<figure>
+<img src="_asset/img/10.png" alt="Greek Letter Notation" /><figcaption>Greek Letter Notation</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/11.png" alt="Greek Letter Notation" /><figcaption>Greek Letter Notation</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/12.png" alt="Greek Letter Notation" /><figcaption>Greek Letter Notation</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/23.png" alt="Greek Letter Notation" /><figcaption>Greek Letter Notation</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/24.png" alt="Greek Letter Notation" /><figcaption>Greek Letter Notation</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/25.png" alt="Greek Letter Notation" /><figcaption>Greek Letter Notation</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/26.png" alt="Greek Letter Notation" /><figcaption>Greek Letter Notation</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/27.png" alt="Greek Letter Notation" /><figcaption>Greek Letter Notation</figcaption>
+</figure></li>
+</ul>
+<h2 id="more-arithmetic-examples">More Arithmetic Examples <a name="more-arithmetic-examples"></a></h2>
+<hr />
+<ul>
+<li><p><code>n^2 + nlog(n) + n + 1 =&gt; O(n^2)</code></p>
+<figure>
+<img src="_asset/img/6.png" alt="Arithmetic Examples" /><figcaption>Arithmetic Examples</figcaption>
+</figure></li>
+<li><p><code>n^2 + n^2 + n^2 + n^3 =&gt; O(n^3)</code></p>
+<figure>
+<img src="_asset/img/7.png" alt="Arithmetic Examples" /><figcaption>Arithmetic Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/8.png" alt="Arithmetic Examples" /><figcaption>Arithmetic Examples</figcaption>
+</figure></li>
+<li><p>for <code>for</code> loops =&gt; <code>O(n)</code></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb39-1" data-line-number="1">    <span class="co">// =&gt; O(n)</span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">    <span class="kw">for</span> <span class="fu">each</span> (data <span class="kw">in</span> data list)</a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">    {</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4">        <span class="co">// Print data to Screen</span></a>
+<a class="sourceLine" id="cb39-5" data-line-number="5">    }</a></code></pre></div>
+<figure>
+<img src="_asset/img/13.png" alt="Arithmetic Examples" /><figcaption>Arithmetic Examples</figcaption>
+</figure></li>
+<li><p>for <code>double for</code> loops =&gt; <code>O(n^2)</code></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb40-1" data-line-number="1">    <span class="co">// n * n...</span></a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb40-3" data-line-number="3">    <span class="co">// =&gt; O(n)</span></a>
+<a class="sourceLine" id="cb40-4" data-line-number="4">    <span class="kw">for</span> each data <span class="st">&quot;N&quot;</span> <span class="kw">in</span> data list</a>
+<a class="sourceLine" id="cb40-5" data-line-number="5">    {</a>
+<a class="sourceLine" id="cb40-6" data-line-number="6">        <span class="co">// =&gt; O(n)</span></a>
+<a class="sourceLine" id="cb40-7" data-line-number="7">        <span class="co">// check if data is in list</span></a>
+<a class="sourceLine" id="cb40-8" data-line-number="8">        <span class="kw">for</span> each data <span class="st">&quot;W&quot;</span> <span class="kw">in</span> data list</a>
+<a class="sourceLine" id="cb40-9" data-line-number="9">        {</a>
+<a class="sourceLine" id="cb40-10" data-line-number="10">            <span class="kw">if</span> N == W prin True;</a>
+<a class="sourceLine" id="cb40-11" data-line-number="11">        }</a>
+<a class="sourceLine" id="cb40-12" data-line-number="12">    }</a></code></pre></div>
+<figure>
+<img src="_asset/img/14.png" alt="Arithmetic Examples" /><figcaption>Arithmetic Examples</figcaption>
+</figure></li>
+<li><p>next…</p>
+<figure>
+<img src="_asset/img/15.png" alt="Arithmetic Examples" /><figcaption>Arithmetic Examples</figcaption>
+</figure></li>
+<li><p>next…</p>
+<figure>
+<img src="_asset/img/16.png" alt="Arithmetic Examples" /><figcaption>Arithmetic Examples</figcaption>
+</figure></li>
+<li><p>next…</p>
+<figure>
+<img src="_asset/img/17.png" alt="Arithmetic Examples" /><figcaption>Arithmetic Examples</figcaption>
+</figure></li>
+<li><p>next…</p>
+<figure>
+<img src="_asset/img/21.png" alt="Arithmetic Examples" /><figcaption>Arithmetic Examples</figcaption>
+</figure></li>
+<li><p><code>2n</code> versus <code>n</code>:</p>
+<figure>
+<img src="./impg/22.png" alt="Arithmetic Examples" /><figcaption>Arithmetic Examples</figcaption>
+</figure></li>
+</ul>
+<h2 id="rules-review">Rules Review <a name="rules-review"></a></h2>
+<hr />
+<ol type="1">
+<li><p><code>different steps get added</code></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb41-1" data-line-number="1">    <span class="co">// here, bigO = O(a + b)</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">    function <span class="fu">something</span>()</a>
+<a class="sourceLine" id="cb41-3" data-line-number="3">    {</a>
+<a class="sourceLine" id="cb41-4" data-line-number="4">        <span class="fu">doStep1</span>();  <span class="co">// O(a);</span></a>
+<a class="sourceLine" id="cb41-5" data-line-number="5">        <span class="fu">doStep2</span>();  <span class="co">// O(b);</span></a>
+<a class="sourceLine" id="cb41-6" data-line-number="6">    }</a></code></pre></div></li>
+<li><p><code>drop the constants</code></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb42-1" data-line-number="1">    <span class="co">// definition:      O(n + c) = O(n)</span></a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="co">    SCENARIO:</span></a>
+<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="co">    Say you have a function that has an input array.  </span></a>
+<a class="sourceLine" id="cb42-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb42-6" data-line-number="6"><span class="co">    Inside the method, there is a foreach loop that</span></a>
+<a class="sourceLine" id="cb42-7" data-line-number="7"><span class="co">    iterates over the array.  This would naturally</span></a>
+<a class="sourceLine" id="cb42-8" data-line-number="8"><span class="co">    give you &quot;OH of N; Linear; (O(n))&quot; for the Big O value.</span></a>
+<a class="sourceLine" id="cb42-9" data-line-number="9"><span class="co">    Assume you have another foreach loop right after,</span></a>
+<a class="sourceLine" id="cb42-10" data-line-number="10"><span class="co">    doing the same thing, but some other simple data</span></a>
+<a class="sourceLine" id="cb42-11" data-line-number="11"><span class="co">    operation.  You would assume you would add these</span></a>
+<a class="sourceLine" id="cb42-12" data-line-number="12"><span class="co">    2 separate “linear” segments, but actually we</span></a>
+<a class="sourceLine" id="cb42-13" data-line-number="13"><span class="co">    ignore constants, since we just care to describe</span></a>
+<a class="sourceLine" id="cb42-14" data-line-number="14"><span class="co">    the &quot;trend&quot; of the output time curve, and not</span></a>
+<a class="sourceLine" id="cb42-15" data-line-number="15"><span class="co">    about specific values.</span></a>
+<a class="sourceLine" id="cb42-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb42-17" data-line-number="17"><span class="co">    EX #1:</span></a>
+<a class="sourceLine" id="cb42-18" data-line-number="18"><span class="co">    // O(2n)? </span></a>
+<a class="sourceLine" id="cb42-19" data-line-number="19"><span class="co">    // Nope! - O(n)!</span></a>
+<a class="sourceLine" id="cb42-20" data-line-number="20"><span class="co">    O(n) + O(n)</span></a>
+<a class="sourceLine" id="cb42-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb42-22" data-line-number="22"><span class="co">    EX #2:</span></a>
+<a class="sourceLine" id="cb42-23" data-line-number="23"><span class="co">    f(n) = 7log(n^3) + 15n^2 + 2n^3 + 8</span></a>
+<a class="sourceLine" id="cb42-24" data-line-number="24"><span class="co">    O(f(n)) = O(n^3)</span></a></code></pre></div></li>
+<li><p><code>different inputs, different variables</code></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb43-1" data-line-number="1">    <span class="co">// (O(n^2))? (OH of N Squared)</span></a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">    <span class="co">// Nope! - O(a * b)! // &quot;OH of A times B&quot;</span></a>
+<a class="sourceLine" id="cb43-3" data-line-number="3">    <span class="co">// what is &quot;N&quot;?  this makes no sense!</span></a>
+<a class="sourceLine" id="cb43-4" data-line-number="4">    <span class="dt">int</span> <span class="fu">intersectionSize</span>(arrayA, arrayB)</a>
+<a class="sourceLine" id="cb43-5" data-line-number="5">    {</a>
+<a class="sourceLine" id="cb43-6" data-line-number="6">        <span class="dt">int</span> count = <span class="dv">0</span></a>
+<a class="sourceLine" id="cb43-7" data-line-number="7">        <span class="kw">for</span> a <span class="kw">in</span> arrayA</a>
+<a class="sourceLine" id="cb43-8" data-line-number="8">        {</a>
+<a class="sourceLine" id="cb43-9" data-line-number="9">            <span class="kw">for</span> b <span class="kw">in</span> arrayB</a>
+<a class="sourceLine" id="cb43-10" data-line-number="10">            {</a>
+<a class="sourceLine" id="cb43-11" data-line-number="11">                <span class="kw">if</span> a == b</a>
+<a class="sourceLine" id="cb43-12" data-line-number="12">                {</a>
+<a class="sourceLine" id="cb43-13" data-line-number="13">                    count = count + <span class="dv">1</span></a>
+<a class="sourceLine" id="cb43-14" data-line-number="14">                }</a>
+<a class="sourceLine" id="cb43-15" data-line-number="15">            }</a>
+<a class="sourceLine" id="cb43-16" data-line-number="16">        }</a>
+<a class="sourceLine" id="cb43-17" data-line-number="17">        <span class="kw">return</span> count;</a>
+<a class="sourceLine" id="cb43-18" data-line-number="18">    }</a></code></pre></div></li>
+<li><p><code>drop non-dominant terms</code></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb44-1" data-line-number="1">    <span class="co">// O(n^2) &lt;= O(n + n^2) &lt;= O(n^2 + n^2)</span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2">    <span class="co">// if LEFT and RIGHT are equivalent (see above; see RULE #2), then CENTER is too</span></a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">    <span class="co">// O(n + n^2) = O(n^2)</span></a>
+<a class="sourceLine" id="cb44-4" data-line-number="4">    function <span class="fu">something</span>(array)</a>
+<a class="sourceLine" id="cb44-5" data-line-number="5">    {</a>
+<a class="sourceLine" id="cb44-6" data-line-number="6">        max = NULL</a>
+<a class="sourceLine" id="cb44-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb44-8" data-line-number="8">        <span class="co">// THIS CHUNK BIG O = [O(n)] (&quot;OH of N&quot;)    </span></a>
+<a class="sourceLine" id="cb44-9" data-line-number="9">        <span class="kw">for</span> each a <span class="kw">in</span> array</a>
+<a class="sourceLine" id="cb44-10" data-line-number="10">        {</a>
+<a class="sourceLine" id="cb44-11" data-line-number="11">            max = <span class="fu">MAX</span>(a, max)</a>
+<a class="sourceLine" id="cb44-12" data-line-number="12">        }</a>
+<a class="sourceLine" id="cb44-13" data-line-number="13">        print max</a>
+<a class="sourceLine" id="cb44-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb44-15" data-line-number="15">        <span class="co">// THIS CHUNK BIG O = [O(n^2)] (&quot;OH of N squared&quot;)  </span></a>
+<a class="sourceLine" id="cb44-16" data-line-number="16">        <span class="kw">for</span> each a <span class="kw">in</span> array</a>
+<a class="sourceLine" id="cb44-17" data-line-number="17">        {</a>
+<a class="sourceLine" id="cb44-18" data-line-number="18">            <span class="kw">for</span> each b <span class="kw">in</span> array</a>
+<a class="sourceLine" id="cb44-19" data-line-number="19">            {</a>
+<a class="sourceLine" id="cb44-20" data-line-number="20">                print a, b</a>
+<a class="sourceLine" id="cb44-21" data-line-number="21">            }</a>
+<a class="sourceLine" id="cb44-22" data-line-number="22">        }</a>
+<a class="sourceLine" id="cb44-23" data-line-number="23">    }</a></code></pre></div></li>
+</ol>
+</body>
+</html>

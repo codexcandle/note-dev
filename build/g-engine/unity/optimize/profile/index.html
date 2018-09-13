@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>g-engine.unity.optimize.profile</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">g-engine.unity.optimize.profile</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#controls">controls</a>
+<ul>
+<li><a href="#timeline">timeline</a></li>
+</ul></li>
+<li><a href="#webgl">webgl</a></li>
+<li><a href="#remote">remote</a>
+<ul>
+<li><a href="#ios">ios</a></li>
+<li><a href="#android">android</a></li>
+</ul></li>
+<li><a href="#profilers">profilers</a>
+<ul>
+<li><a href="#cpu">cpu usage</a></li>
+<li><a href="#rendering">rendering</a></li>
+<li><a href="#memory">memory</a></li>
+<li><a href="#audio">audio</a></li>
+<li><a href="#physics">physics</a></li>
+<li><a href="#gpu">gpu</a></li>
+<li><a href="#global-illumination">global illumination</a></li>
+<li><a href="#ui">ui</a></li>
+</ul></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li>when discussing performance, is vital to remember that ALL optimization attempts must start with a discovery process. Profiling an app - to discover its hotspots! - is the necessary first step, followed by an analysis of profiling results against the project’s technical &amp; Asset architecture.</li>
+<li>you can analyze the performance of the GPU, CPU, memory, rendering, &amp; audio.</li>
+<li>to see the profiling data, you play your game in the Editor with Profiling on, and it records performance data. The Profiler window then displays the data in a timeline, so you can see the frames or areas that spike (take more time) than others.</li>
+<li>by clicking anywhere in the timeline, the bottom section of the Profiler window will display detailed information for the selected frame.</li>
+<li>note that profiling has to instrument your code (that is; add some instructions to facilitate the check). While this has a small impact on the performance of your game, the overhead is small enough to not affect the game framerate.</li>
+<li>when using the profiling tool, focus on those parts of the game that consume the most time.</li>
+<li>compare profiling results before &amp; after code changes &amp; determine the improvements you measure. Sometimes changes you make to improve performance might have a negative effect on frame rate; there may be unexpected consequences of your code optimization.</li>
+<li><p><code>Profiler window</code> - window &gt; profiler.</p>
+<figure>
+<img src="_asset/img/1.png" alt="Profiler Window" /><figcaption>Profiler Window</figcaption>
+</figure></li>
+</ul>
+<h2 id="controls">Controls <a name="controls"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/2.png" alt="Controls" /><figcaption>Controls</figcaption>
+</figure>
+<ul>
+<li>the profiler controls are in the toolbar at the top of the window.</li>
+<li>use these to turn profiling on/off, &amp; navigate through profiled frames.</li>
+<li>the transport controls are at the far right end of the toolbar.</li>
+<li>clicking on any of these transport controls pauses the game - when the game is running &amp; the profiler is collecting data.</li>
+<li><code>frame</code> allows you to:
+<ul>
+<li>go to the 1st recorded frame</li>
+<li>step one frame back</li>
+<li>step one frame forward</li>
+<li>go to the last frame</li>
+</ul></li>
+<li>the profiler does not keep all recorded frames - so the notion of the first frame should really be thought of as the oldest frame that is still kept in memory.</li>
+<li><code>current</code> - transport button causes the profile statistics window to display data collected in real-time.</li>
+<li><code>active</code> profiler popup menu - allows you to select whether profiling should be done in the editor or a separate player (e.g. a game running on an attached iOS device).</li>
+<li><code>save</code> - button lets you write the recorded frames to a file.</li>
+<li><code>load</code> - button reads data saved earlier. You can also load a binary profile data written out by the player (when generating log, set Profiler.enableBinaryLog to enable binary format). If “Load” is clicked while the shift button is pressed, file contents is appended to the current profile frames in memory.</li>
+<li><code>deep profile</code> - when enabled, all your script code is profiled (i.e. all function calls are recorded.) This is useful to know where exactly time is spent in your game code. However, this incurs a very large overhead &amp; uses a lot of memory, &amp; as a result your game will run significantly slower while profiling. If you are using complex script code, Deep Profiling might not be possible at all. Deep profiling should work fast enough for small games with simple scripting. If you find that Deep Profiling for your entire game causes the frame rate to drop so much that the game barely runs, you should consider not using this approach, &amp; instead use the approach described below. You may find deep profiling more helpful as you are designing your game and deciding how to best implement key features. Note that for large games deep profiling may cause Unity to run out of memory &amp; so for this reason deep profiling may not be possible. Manually profiling blocks of your script code will have a smaller overhead than using Deep Profiling. Use <code>Profiler.BeginSample</code> &amp; <code>Profiler.EndSample</code> scripting functions to enable/disable profiling around sections of code.</li>
+<li><code>View SyncTime</code>- when running at a fixed framerate or running in sync with the vertical blank, Unity records the waiting time in “Wait For Target FPS”. By default this amount of time is not shown in the profiler. To view how much time is spent waiting, you can toggle “View SyncTime”. This is also a measure of how much headroom you have before losing frames.</li>
+</ul>
+<h3 id="timeline">timeline <a name="timeline"></a></h3>
+<ul>
+<li>the upper part of the Profiler window displays performance data over time. When you run a game, data is recorded each frame, and the history of the last several hundred frames is displayed. Clicking on a particular frame will display its details in the lower part of the window. Different details are displayed depending on which timeline area is currently selected.</li>
+<li><code>to get more detail</code> - the vertical scale of the timeline is managed automatically and will attempt to fill the vertical space of the window. Note that to get more detail in say the CPU Usage area you can remove the Memory &amp; Rendering areas. Also, the splitter between the timeline &amp; the statistics area can be selected and dragged downward to increase the screen area used for the timeline chart.</li>
+<li>consists of several areas: CPU Usage, Rendering &amp; Memory. These areas can be removed by clicking the close button in the panel, &amp; re-added again using the Add Area drop down in the Profile Controls bar.</li>
+<li>the coloured squares in the label area can control whether the associated timeline is displayed or not. To remove a sample from the display, click on the colour key. The key will dim &amp; the data will be removed from the graph. This can be useful to identify the cause of spikes in the CPU graph, for example.</li>
+</ul>
+<h2 id="webgl">WebGL <a name="webgl"></a></h2>
+<hr />
+<ul>
+<li>can use the Unity profiler on WebGL, just like on any other platform.</li>
+<li>can’t attach to running players in WebGL - however (as WebGL uses WebSockets for communication, which will not allow incoming connections on the browser side.) Instead, use the <code>Autoconnect profiler</code> checkbox in the build settings. Note also that draw calls can’t currently be profiled for WebGL.</li>
+</ul>
+<h2 id="remote-profiling">Remote Profiling <a name="remote"></a></h2>
+<hr />
+<ul>
+<li>To profile your game running on another device or a Unity player running on another computer, you can connect the Unity Editor to that other device or computer. The dropdown Active Profiler shows all Unity players running on the local network. These players are identified by player type and the host name running the player “iPhonePlayer (Toms iPhone)”.</li>
+<li>To be able to connect to a Unity player, you must launch that Unity player as a Development build (menu: File &gt; Build Settings…).</li>
+<li>Check the Development Build option in the dialog box. From here you can also check Autoconnect Profiler to make the Editor and Player Autoconnect at startup.</li>
+</ul>
+<h3 id="ios">ios <a name="ios"></a></h3>
+<ul>
+<li><p>enable remote profiling on iOS devices by following these steps:</p>
+<ol type="1">
+<li>connect your iOS device to your WiFi network. (The Profiler uses a local WiFi network to send profiling data from your device to the Unity Editor.)</li>
+<li>in the Unity Editor’s Build Settings dialog box (menu: File &gt; Build Settings…), check the Autoconnect Profiler checkbox.</li>
+<li>attach your device to your Mac via cable. In the Unity Editor’s Build Settings dialog box (menu: File__&gt;__Build Settings…), check the Autoconnect Profiler checkboxcheck and select Build &amp; Run. When the app launches on the device, open the Profiler window in the Unity Editor (Window &gt; Profiler).</li>
+</ol>
+<p>If you are using a firewall, you need to make sure that ports 54998 to 55511 are open in the firewall’s outbound rules - these are the ports used by Unity for remote profiling.</p>
+<p>Note: Sometimes the Unity Editor might not autoconnect to the device. In such cases you can initiate the Profiler connection from Profiler window Active Profiler drop down menu by select appropriate device.</p></li>
+</ul>
+<h3 id="android">android <a name="android"></a></h3>
+<ul>
+<li>there are two methods to enable remote profiling on Android devices: WiFi or ADB.</li>
+<li><p>for wifi profiling, follow these steps:</p>
+<ol type="1">
+<li>Make sure to disable Mobile Data on your Android device.</li>
+<li>Connect your Android device to your WiFi network.(The Profiler uses a local WiFi network to send profiling data from your device to the Unity Editor.)</li>
+<li>Attach your device to your Mac or PC via cable. Check the Development Build and Autoconnect Profiler checkboxes in Unity’s Build Settings dialog box, and click on Build &amp; Run in the Unity Editor.</li>
+<li>When the app launches on the device, open the Profiler window in the Unity Editor (Menu: Window &gt; Profiler).</li>
+<li>If the Unity Editor fails to autoconnect to the device, select the appropriate device from the Profiler window Active Profiler drop down menu.</li>
+</ol>
+<p>Note: The Android device and host computer (running the Unity Editor) must both be on the same subnet for the device detection to work.</p>
+<p>For ADB profiling, follow these steps:</p>
+<ol type="1">
+<li>Attach your device to your Mac or PC via cable and make sure ADB recognizes the device (i.e. it shows in adb devices list).</li>
+<li>In the Unity Editor’s Build Settings dialog box (menu: File__&gt;__Build Settings…), check the Development Build__checkboxcheck and select Build &amp; Run__.</li>
+<li>When the app launches on the device, open the Profiler window in the Unity Editor (Menu: Window &gt; Profiler).</li>
+<li>Select the AndroidProfiler(ADB@127.0.0.1:34999) from the Profiler Window Active Profiler drop down menu. Note: The Unity Editor automatically creates an adb tunnel for your application when you click on Build &amp; Run. If you want to profile another application or you restart the adb server you have to setup this tunnel manually. To do this, open a Terminal window / CMD prompt and enter:</li>
+</ol>
+<p><code>adb forward tcp:34999 localabstract:Unity-{insert bundle identifier here}</code></p>
+<p>Note: The entry in the drop down menu is only visible when the selected target is Android.</p>
+<p>If you are using a firewall, you need to make sure that ports 54998 to 55511 are open in the firewall’s outbound rules - these are the ports used by Unity for remote profiling.</p></li>
+</ul>
+<h2 id="profilers">Profilers <a name="profilers"></a></h2>
+<hr />
+<h3 id="cpu">cpu <a name="cpu"></a></h3>
+<figure>
+<img src="_asset/img/1.png" alt="CPU Profiler" /><figcaption>CPU Profiler</figcaption>
+</figure>
+<ul>
+<li>the CPU Usage Profiler displays where time is spent in your game. When it is selected, the lower pane displays hierarchical time data for the selected frame.</li>
+<li><code>Hierarchy mode</code> - displays hierarchical time data.</li>
+<li><code>Group Hierarchy mode</code> - groups time data into logical groups (such as Rendering, Physics, Scripts). Because children of any group can also be in different groups (for example, some scripts might also call rendering functions), the percentages of group times often add up to more than 100%.</li>
+<li>drag chart labels up and down to reorder the way the CPU chart is stacked.</li>
+<li><p><code>when selecting an individual item</code> - in the lower pane, its contribution to the CPU chart is highlighted (&amp; the rest are dimmed). Clicking on an item again de-selects it.</p>
+<figure>
+<img src="_asset/img/4.png" alt="Selecting individual item" /><figcaption>Selecting individual item</figcaption>
+</figure>
+<p>In the hierarchical time data, the Self column refers to the amount of time spent in a particular function, not including the time spent calling sub-functions. In the screenshot above, 41.1% of time is spent in the Camera.Render function. This function does a lot of work, and calls the various drawing and culling functions. Excluding all of these functions, only 2.1% of time is spent in the Camera.Render function itself.</p>
+<p>The Time ms and Self ms columns show the same information but in milliseconds. Camera.Render takes 0.01ms but, including all the functions it calls, 0.21ms are consumed. The GC Alloc column shows how much memory has been allocated in the current frame, which is later collected by the garbage collector. Keep this value at zero to prevent the garbage collector from causing hiccups in your framerate.</p>
+The Others section of the CPU profiler records the total of all areas that do not fall into Rendering, Scripts, Physics, Garbage Collection or VSync. This includes Animation, AI, Audio, Particles, Networking, Loading, and PlayerLoop.</li>
+<li><p><code>physics markers</code> - below provides a brief overview of the various high-level Physics Profiler markers:</p>
+<ul>
+<li><code>Physics.Simulate</code> - called from FixedUpdate. This updates the present state of the physics by instructing the physics engine (PhysX) to run its simulation.</li>
+<li><code>Physics.Processing</code> - called from FixedUpdate. This is where all the non-cloth physics jobs are processed. Expanding this marker shows low-level detail of the work being done internally in the physics engine.</li>
+<li><code>Physics.ProcessingCloth</code> - called from FixedUpdate. This is where all the cloth physics jobs are processed. Expanding this marker will show low level detail of the work being done internally in the physics engine.</li>
+<li><code>Physics.FetchResults</code> - called from FixedUpdate. This is where the results of the physics simulation are collected from the physics engine.</li>
+<li><code>Physics.UpdateBodies</code> - called from FixedUpdate. This is where all the physics bodies have their positions and rotations updated as well as where messages that communicate these updates are sent.</li>
+<li><code>Physics.ProcessReports</code> - called from FixedUpdate. This stage is run once the physics FixedUpdate has concluded, and is where all the various stages of responding to the results of the simulation are processed. Contacts, joint breaks and triggers are updated and messaged here. There are four distinct sub stages:
+<ul>
+<li><code>Physics.TriggerEnterExits</code> - called from FixedUpdate. This is where OnTriggerEnter and OnTriggerExit events are processed.</li>
+<li><code>Physics.TriggerStays</code> - called from FixedUpdate. This is where OnTriggerStay events are processed.</li>
+<li><code>Physics.Contacts</code> - called from FixedUpdate. This is where OnCollisionEnter, OnCollisionExit and OnCollisionStay events are processed.</li>
+<li><code>Physics.JointBreaks</code> - called from FixedUpdate. This is where updates and messages relating to joints being broken is processed.</li>
+</ul></li>
+<li><code>Physics.UpdateCloth</code> - called from Update. This is where updates relating to cloth and their skinned meshes are made.</li>
+<li><code>Physics.Interpolation</code> - called from Update. This stage deals with the interpolation of positions and rotations for all the physics objects.</li>
+</ul></li>
+<li><p><code>performance warnings</code> - There are some common performance issues the CPU Profiler is able to detect &amp; warn you about. These appear in the Warning column of the lower pane when viewing the CPU Usage.</p>
+<p>The specific issues the Profiler can detect are:</p>
+<ul>
+<li><code>Static Collider.Modify</code> (Expensive delayed cost)</li>
+<li><code>Static Collider.Move</code> (Expensive delayed cost)</li>
+<li><code>Static Collider.Create</code> (Expensive delayed cost)</li>
+<li><code>Animation.DestroyAnimationClip</code> [Triggers RebuildInternalState]</li>
+<li><code>Animation.AddClip</code> [Triggers RebuildInternalState]</li>
+<li><code>Animation.RemoveClip</code> [Triggers RebuildInternalState]</li>
+<li><code>Animation.Clone</code> [Triggers RebuildInternalState]</li>
+<li><code>Animation.Deactivate</code> [Triggers RebuildInternalState]</li>
+</ul>
+<figure>
+<img src="_asset/img/5.png" alt="Performance Warnings" /><figcaption>Performance Warnings</figcaption>
+</figure>
+<p>In the screenshot above, the Profiler is showing the Static Collider.Move warning. The Warning column shows that this warning has been triggered 12 times in the current frame. The term “delayed cost” means that, although the entry in the Profiler may show a low cost (in this case 0.00ms), the action may trigger more system-demanding operations later on.</p></li>
+<li><p><code>CPU Profiler Timeline</code> - Mem Record: Native memory performance profiling</p>
+<p>Native memory performance profiling allows you to profile activity inside Unity’s native memory management system and assess how it is affecting runtime performance. This can be useful when searching for unwanted or resource-intensive allocation patterns in Unity’s memory management.</p>
+<p>To profile Unity’s native memory management, you need to record it. To access native memory recording mode (called Mem Record in Unity), go to Window &gt; Profiler to open the Profiler window. Select the CPU Usage Profiler (if it is not visible, click Add Profiler &gt; CPU) then the drop-down menu underneath the Profiler. Next, click Timeline and then select Mem Record.</p></li>
+</ul>
+<figure>
+<img src="_asset/img/6.png" alt="CPU Profiler Timeline" /><figcaption>CPU Profiler Timeline</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/7.png" alt="CPU Profiler Timeline" /><figcaption>CPU Profiler Timeline</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/8.png" alt="CPU Profiler Timeline" /><figcaption>CPU Profiler Timeline</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/9.png" alt="CPU Profiler Timeline" /><figcaption>CPU Profiler Timeline</figcaption>
+</figure>
+<h3 id="rendering">rendering <a name="rendering"></a></h3>
+<figure>
+<img src="_asset/img/10.png" alt="Rendering Profiler" /><figcaption>Rendering Profiler</figcaption>
+</figure>
+<ul>
+<li>displays rendering statistics.</li>
+<li>the timeline displays count for:
+<ul>
+<li>batches</li>
+<li>SetPass Calls</li>
+<li>triangles (&amp; vertices) rendered.</li>
+</ul></li>
+<li>the lower pane displays more rendering statistics, which closely match the ones shown in the GameView Rendering Statistics window.</li>
+</ul>
+<h3 id="memory">memory <a name="memory"></a></h3>
+<h3 id="audio">audio <a name="audio"></a></h3>
+<h3 id="physics">physics <a name="physics"></a></h3>
+<h3 id="gpu">gpu <a name="gpu"></a></h3>
+<h3 id="global-illumination">global illumination <a name="global-illumination"></a></h3>
+<h3 id="ui">ui <a name="ui"></a></h3>
+</body>
+</html>

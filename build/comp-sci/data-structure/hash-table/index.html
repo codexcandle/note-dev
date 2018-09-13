@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>comp-sci.data-structure.hash-table</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">comp-sci.data-structure.hash-table</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#hashing">hashing</a></li>
+<li><a href="#load-factor">load factor</a></li>
+<li><a href="#pros">pros</a></li>
+<li><a href="#cons">cons</a></li>
+<li><a href="#examples">example</a></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<ul>
+<li>aka <code>HASH MAP</code></li>
+<li>implements - an associative array abstract data type, a structure that can map keys to values.</li>
+<li><p><a href="https://en.wikipedia.org/wiki/List_of_data_structures">more @ wikipedia</a></p></li>
+<li><hr />
+-| used to index large amounts of data -| address of each key calculated using the key itself -| collisions resolved with OPEN or CLOSED ADDRESSING -| key-value lookup -| for any problem, have hash tables at the top of your mind! -| string &gt; hashcode &gt; index -| O(1) for “good” hashtable (generally what we assume for interviews?); Insertion, deletion, &amp; retrieval occur in constant time -| (O(n) for a bad hashtable – i.e. lots of collisions -| rather than storing just simple values, hash-tables often contain LISTS of key-value pairs -| these are great because you can have immediate lookup to a value (assuming table has unique node for each value; otherwise linked-list for keys that share the same index. Why would you have keys share the same index? To save space, and if you have a set list length, and want to “pack” the data in as you go “assigning” values. Then once you found the correct index for an item in the list, you traverse that “linked list” to lookup if node value equals your desired value -| hashing is widely used in database indexing, compilers, caching, password authentication, &amp; more</li>
+<li><hr /></li>
+</ul>
+<h2 id="hashing">Hashing <a name="hashing"></a><br />
+</h2>
+<hr />
+<ul>
+<li><p>The idea of hashing is to distribute the entries (key/value pairs) across an array of buckets. Given a key, the algorithm computes an index that suggests where the entry can be found:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" data-line-number="1">index = f(key, array_size)</a></code></pre></div>
+<p>Often this is done in two steps:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" data-line-number="1">hash = hashfunc(key)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">index = hash % array_size</a></code></pre></div>
+<p>In this method, the hash is independent of the array size, and it is then reduced to an index (a number between 0 and array_size − 1) using the modulo operator (%).</p></li>
+<li><p>In the case that the array size is a power of two, the remainder operation is reduced to masking, which improves speed, but can increase problems with a poor hash function.</p></li>
+<li><p>A good hash function and implementation algorithm are essential for good hash table performance, but may be difficult to achieve.[citation needed]</p></li>
+<li><p>A basic requirement is that the function should provide a uniform distribution of hash values. A non-uniform distribution increases the number of collisions and the cost of resolving them.</p></li>
+<li><p>perfect hash function - if all keys are known ahead of time, a perfect hash function can be used to create a perfect hash table that has no collisions. If minimal perfect hashing is used, every location in the hash table can be used as well. Perfect hashing allows for constant time lookups in all cases. This is in contrast to most chaining and open addressing methods, where the time for lookup is low on average, but may be very large, O(n), for instance when all the keys hash to a few values.</p></li>
+<li><p>Hash collisions are practically unavoidable when hashing a random subset of a large set of possible keys.</p></li>
+<li><hr />
+<p><em>hash-functions: -| each hash-table has a hash function, a calculation applied to a key to transform it into an address. It’s used to assign keys to specific indices, then to be able to do subsequent look-ups via this same hash function logic. -| objectives of hash-function: </em>minimize collisions <em>uniform distribution of hash values // you sometimes can get “clumping” of values in areas of your index otherwise </em>easy to calculate *resolve any collisions</p></li>
+</ul>
+<p>-| for numeric keys, divide the key by the # of available addresses, n, &amp; take the remainder // address = Key Mod N // for alphanumeric keys, divide the sum of ASCII codes in a key by # of available address // the “folding method”, divides the key into equal parts, then adds them together: // e.g. telephone # // 014528345654 = 01 +45 + 28 + 34 + 56 + 54 = 218 // depending on size of the table, may then divide by some constant and take remainder</p>
+<p>*handling collisions / collision resolution: -| when assigning values to an index in your array, per your hash-table, you could run into a case where the node already has a value assigned to it. There are 2 ways(?) to handle this, Open Addressing vs. Closed Addressing. With OA, you see that the target is filled, so you move down the list, to the next node, and if it’s empty, assign here instead. If it’s filled, as well, then repeat, and move to next node down the list. This is called doing a “Linear Search”. This, of course, will grow with size of input list. -| to allow room for the array to “assign” new values as needed, the array is often made LARGER than needed. This intended “extra array space” allows calculation of the hash-tables “Load Factor”. // load factor = // # of items stored / size of array // so 50 items, in an array of 100 nodes // 50 / 100 // ½ = 50% -| as long as Load Factor is relatively low, OPEN ADDRESSING with linear searching” may actually be more efficient -| Closed Addressing has the node instead have a pointer to the first item in a linked-list -| Open Addressing techniques include: Linear Probing Plus 3 rehash // adding 3 to every hash function result Quadratic Probing (failed attempts)^2 // if index taken, take hash &amp; then square root Double Hashing</p>
+<p>-| e.g. Alex and Christy could have different hash-codes(?), but same index -| ways to fix: “chaining”</p>
+<ul>
+<li><hr /></li>
+<li><hr /></li>
+<li><hr /></li>
+<li><p>HASH FUNCTION - used to compute an index into an array of buckets or slots, from which the desired value can be found.</p></li>
+<li><p>ideally - the hash function will assign each key to a unique bucket. In a well-dimensioned hash table, the average cost (# of instructions) for each lookup is independent of the # of elements stored in the table. Many hash table designs also allow arbitrary insertions and deletions of key-value pairs, at (amortized) constant average cost per operation. Importantly, if the set of key-value pairs is fixed and known ahead of time (so insertions and deletions are not allowed), one may reduce the average lookup cost by a careful choice of the hash function, bucket table size, and internal data structures. Thusly, one can devise a hash function that’s collision-free, or even perfect. (In this case the keys need not be stored in the table.)</p></li>
+<li><p>in reality - however, most hash table designs employ an imperfect hash function, which might cause hash collisions where the hash function generates the same index for more than one key. Such collisions must be accommodated in some way.</p></li>
+<li><p>used in - many kinds of computer software, particularly for associative arrays, database-indexing, caches, &amp; sets.</p></li>
+</ul>
+<h2 id="load-factor">Load Factor <a name="load-factor"></a><br />
+</h2>
+<hr />
+<ul>
+<li><p>A critical statistic for a hash table is the load factor, defined as</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb3-1" data-line-number="1">load factor = n k , {\displaystyle {\text{load factor}}={\frac {n}{k}},}</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">where</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">n is the number of entries occupied in the hash table.</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">k is the number of buckets.</a></code></pre></div>
+<p>As the load factor grows larger, the hash table becomes slower, and it may even fail to work (depending on the method used). The expected constant time property of a hash table assumes that the load factor is kept below some bound. For a fixed number of buckets, the time for a lookup grows with the number of entries and therefore the desired constant time is not achieved.</p></li>
+<li><p>Second to that, one can examine the variance of number of entries per bucket. For example, two tables both have 1,000 entries and 1,000 buckets; one has exactly one entry in each bucket, the other has all entries in the same bucket. Clearly the hashing is not working in the second one.</p></li>
+<li><p>a low load factor is not especially beneficial. As the load factor approaches 0, the proportion of unused areas in the hash table increases, but there is not necessarily any reduction in search cost. This results in wasted memory.</p></li>
+</ul>
+<h2 id="pros">PROS <a name="pros"></a><br />
+</h2>
+<hr />
+<ul>
+<li>main advantage - (hash tables vs other table data structures) is speed. This is more apparent when the # of entries is large. Again, hash tables are particularly efficient when the max # of entries can be predicted in advance, so that the bucket array can be allocated once with the optimum size and never resized.</li>
+</ul>
+<h2 id="cons">CONS <a name="cons"></a><br />
+</h2>
+<hr />
+<ul>
+<li><p>although operations on a hash table take constant time on average, the cost of a good hash function can be significantly higher than the inner loop of the lookup algorithm for a sequential list or search tree. Thus hash tables are not effective when the number of entries is very small. (However, in some cases the high cost of computing the hash function can be mitigated by saving the hash value together with the key.)</p></li>
+<li><p>for certain string processing applications, such as spell-checking, hash tables may be less efficient than tries, finite automata, or Judy arrays. Also, if there are not too many possible keys to store—that is, if each key can be represented by a small enough number of bits—then, instead of a hash table, one may use the key directly as the index into an array of values. Note that there are no collisions in this case.</p></li>
+<li><p>the entries stored in a hash table can be enumerated efficiently (at constant cost per entry), but only in some pseudo-random order. Therefore, there is no efficient way to locate an entry whose key is nearest to a given key. Listing all n entries in some specific order generally requires a separate sorting step, whose cost is proportional to log(n) per entry. In comparison, ordered search trees have lookup and insertion cost proportional to log(n), but allow finding the nearest key at about the same cost, and ordered enumeration of all entries at constant cost per entry.</p></li>
+<li><p>if the keys are not stored (because the hash function is collision-free), there may be no easy way to enumerate the keys that are present in the table at any given moment.</p></li>
+<li><p>although the average cost per operation is constant and fairly small, the cost of a single operation may be quite high. In particular, if the hash table uses dynamic resizing, an insertion or deletion operation may occasionally take time proportional to the number of entries. This may be a serious drawback in real-time or interactive applications.</p></li>
+<li><p>hash tables in general exhibit poor locality of reference—that is, the data to be accessed is distributed seemingly at random in memory. Because hash tables cause access patterns that jump around, this can trigger microprocessor cache misses that cause long delays. Compact data structures such as arrays searched with linear search may be faster, if the table is relatively small and keys are compact. The optimal performance point varies from system to system.</p></li>
+<li><p>hash tables become quite inefficient when there are many collisions. While extremely uneven hash distributions are extremely unlikely to arise by chance, a malicious adversary with knowledge of the hash function may be able to supply information to a hash that creates worst-case behavior by causing excessive collisions, resulting in very poor performance, e.g., a denial of service attack. In critical applications, a data structure with better worst-case guarantees can be used; however, universal hashing—a randomized algorithm that prevents the attacker from predicting which inputs cause worst-case behavior—may be preferable. The hash function used by the hash table in the Linux routing table cache was changed with Linux version 2.4.2 as a countermeasure against such attacksss.</p></li>
+<li><hr /></li>
+<li>for certain string processing applications, such as spell-checking, hash tables may be less efficient than tries, finite automata, or Judy arrays.</li>
+<li>? - also, if there are not too many possible keys to store.</li>
+<li><hr /></li>
+</ul>
+<h2 id="ex">EX <a name="examples"></a><br />
+</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="bn">    // set / get</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="bn">    // hashtable.put(“Mary”, new Person())</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="bn">    // hashtable.get(“Mary”)</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1">    <span class="co">// hash function</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">    <span class="dt">int</span> <span class="fu">hashCode</span>(String s)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">    {</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">      <span class="co">// some computation</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">    }</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb6-1" data-line-number="1">    <span class="kw">class</span> Hashtable</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">    {</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">      LinkedList[] data           <span class="co">// list of person objects</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">      <span class="dt">bool</span> <span class="fu">put</span>(String key, Person value)</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">      {</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">        <span class="dt">int</span> hashcode = <span class="fu">getHashCode</span>(key)</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">        <span class="dt">int</span> index = <span class="fu">convertToIndex</span>(hashCode)</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">        LinkedList list = data[index]</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">        list.<span class="fu">insert</span>(key.<span class="fu">value</span>);    <span class="co">// check for dupes</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">      }</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">    }</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="bn">    Q: You have 100 students names. You have an array with 11 slots.</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="bn">    How could you use a hash function to pack the data?</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="bn">    A:  Use a formula like:</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="bn">    index # = sum ASCII codes % (mod) (size of array)</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="bn">    so using student name, Ada:</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="bn">    // Ada = (65 + 100 + 97) = 262</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="bn">    // Ada = 262 % 11</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="bn">    // Ada = 9, so Ada would be assigned to index position 9</span></a></code></pre></div>
+<figure>
+<img src="./_asset/img/1.png" alt="Hash Table" /><figcaption>Hash Table</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/2.png" alt="Hash Table" /><figcaption>Hash Table</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/3.png" alt="Hash Table" /><figcaption>Hash Table</figcaption>
+</figure>
+</body>
+</html>

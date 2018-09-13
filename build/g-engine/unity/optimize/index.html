@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>g-engine.unity.optimize</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">g-engine.unity.optimize</h1>
+</header>
+<ul>
+<li><a href="./profile">profile</a></li>
+<li>graphics
+<ul>
+<li><a href="./dc-batch">draw call batching</a></li>
+<li><a href="#gpu-instancing">gpu-instancing</a></li>
+<li><a href="#triangles-vertices-drawcalls">triangles, vertices, &amp; drawcalls</a></li>
+<li><a href="#shaders">shaders</a></li>
+</ul></li>
+<li>code
+<ul>
+<li><a href="./dll">dll-lib</a></li>
+<li><a href="./pool">object pool</a></li>
+<li><a href="#foreach">foreach</a></li>
+<li><a href="#tag-comparison">tag-comparison</a></li>
+<li><a href="#string-concatenation">string-concatenation</a></li>
+<li><a href="#get-component">get-component</a></li>
+<li><a href="#instantiate-destroy">instantiate-destroy</a> / <a href="./pool">object-pool</a></li>
+</ul></li>
+</ul>
+<h2 id="graphics">Graphics</h2>
+<hr />
+<h3 id="gpu-instancing">gpu-instancing <a name="gpu-instancing"></a><br />
+</h3>
+<figure>
+<img src="_asset/img/1.png" alt="GPU-Instancing" /><figcaption>GPU-Instancing</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/2.png" alt="GPU-Instancing" /><figcaption>GPU-Instancing</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/3.png" alt="GPU-Instancing" /><figcaption>GPU-Instancing</figcaption>
+</figure>
+<ul>
+<li><a href="https://docs.unity3d.com/Manual/GPUInstancing.html">more info</a></li>
+</ul>
+<h3 id="triangles-vertices-drawcalls">triangles, vertices, &amp; drawcalls <a name="triangles-vertices-drawcalls"></a><br />
+</h3>
+<ul>
+<li>the most important thing for mobile games is to keep your triangles, vertices, &amp; drawcalls as low as possible.</li>
+</ul>
+<h3 id="shaders">shaders <a name="shaders"></a></h3>
+<ul>
+<li>for mobile, watch out for complicated shaders as they gain be a big hit on performance.</li>
+<li><code>post-processing shaders</code> are really expensive in resources.</li>
+</ul>
+<h2 id="code">Code</h2>
+<hr />
+<h3 id="foreach">foreach <a name="foreach"></a></h3>
+<ul>
+<li>avoid <code>foreach</code> loops as they generate 24 bytes of trash data per loop!</li>
+<li>use <code>for</code> loops instead.</li>
+</ul>
+<h3 id="tag-comparison">tag comparison <a name="tag-comparison"></a></h3>
+<ul>
+<li>avoid <code>object.tag == &quot;string&quot;</code></li>
+<li>use <code>object.CompareTag(&quot;string&quot;)</code> instead - is more efficient.</li>
+</ul>
+<h3 id="string-concatenation">string-concatenation <a name="string-concatenation"></a></h3>
+<ul>
+<li>when you concatenate strings <code>(&quot;Hello&quot; + &quot;World&quot;)</code>, you are creating a new string object. If you do this each frame, you are adding a good amount of unnecessary GC work.</li>
+<li>instead, you could be caching or cancatenating without <code>+</code>.</li>
+</ul>
+<h3 id="get-component">get-component <a name="get-component"></a></h3>
+<ul>
+<li>when using <code>GetComponent</code> try to store this reference once, instead of looking up multiple times (as this call is expensive).</li>
+</ul>
+<h3 id="instantiate-destroy">instantiate-destroy <a name="instantiate-destroy"></a></h3>
+<ul>
+<li>these calls can take quite a bit of CPU time!</li>
+<li>address this with <a href="./pool">object pooling</a>.</li>
+</ul>
+</body>
+</html>

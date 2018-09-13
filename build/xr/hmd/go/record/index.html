@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>xr.hmd.oculus-go.record</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">xr.hmd.oculus-go.record</h1>
+</header>
+<blockquote>
+<p>Tell me what you’re seeing so that I can help you!</p>
+</blockquote>
+<h3 id="todo-framerate-for-the-o-go-should-be-set-at-60-not-at-7075-confirm-code-below.">TODO: Framerate for the O-Go should be set at 60 (not at 70/75!) Confirm code below.</h3>
+<ul>
+<li><a href="#record">record</a>
+<ul>
+<li><a href="#native">native</a></li>
+<li><a href="#adb-record">adb</a></li>
+<li><a href="#facebook">facebook</a></li>
+<li><a href="#vysor">vysor</a></li>
+<li><a href="#droid">droid@screen</a></li>
+</ul></li>
+<li><a href="#stream">stream</a>
+<ul>
+<li><a href="#vlc">vlc</a></li>
+<li><a href="#mplayer">m-player</a></li>
+<li><a href="#wifi">wifi</a></li>
+</ul></li>
+<li><a href="#known-issues">known-issues</a></li>
+</ul>
+<h2 id="record">Record <a name="record"></a></h2>
+<hr />
+<h3 id="native">native <a name="native"></a></h3>
+<ul>
+<li>is the easiest (&amp; most basic) option.</li>
+<li>to record - on o-go device, go to <code>home - sharing - record video</code>.</li>
+<li>to view video - on o-go device, go to <code>home - explore - gallery - internal storage</code>.</li>
+<li>to view file - plug in o-go device to pc, &amp; nav to <code>&lt;VR_HEADSET&gt;/oculus/VideoShots</code>.</li>
+</ul>
+<h3 id="adb">adb <a name="adb"></a></h3>
+<ul>
+<li><figure>
+<img src="_asset/img/5.png" alt="ADB" /><figcaption>ADB</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/6.png" alt="ADB" /><figcaption>ADB</figcaption>
+</figure></li>
+<li><p>record single video</p>
+<figure>
+<img src="_asset/img/7.png" alt="ADB" /><figcaption>ADB</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/10.png" alt="ADB" /><figcaption>ADB</figcaption>
+</figure>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1">    <span class="co">// creates vids of &quot;good&quot; quality, &amp; not too big</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">    <span class="co">// full hd video</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">    adb shell screenrecord --size 1920x1080 --bit-rate <span class="dv">12000000</span> /sdcard/video.<span class="fu">mp4</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">    adb pull /sdcard/video.<span class="fu">mp4</span> c:\Users\OculusGoVideo.<span class="fu">mp4</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">    adb shell rm /sdcard/video.<span class="fu">mp4</span></a></code></pre></div>
+<p>The first command will record a full HD video of the Go contents until you press the CTRL+C key combination, for a maximum of 3 minutes length. The second command copies the video from the device to your PC and gives it the name that you choose (in my case c:.mp4) &amp; the third one deletes the temp file on your device.</p></li>
+<li><p>again, to stop recording - <code>CNTRL+C</code>.</p></li>
+<li><p>to get screenshot:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1">    adb shell screencap /sdcard/screen.<span class="fu">png</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">    adb pull /sdcard/screen.<span class="fu">png</span> c:\Users\anton\Pictures\ViveFocusPicture.<span class="fu">png</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    adb shell rm /sdcard/screen.<span class="fu">png</span></a></code></pre></div></li>
+</ul>
+<h3 id="facebook">facebook <a name="facebook"></a></h3>
+<figure>
+<img src="_asset/img/1.png" alt="Facebook Live" /><figcaption>Facebook Live</figcaption>
+</figure>
+<h3 id="vysor">vysor <a name="vysor"></a></h3>
+<figure>
+<img src="_asset/img/3.png" alt="Vysor" /><figcaption>Vysor</figcaption>
+</figure>
+<h3 id="droidscreen">droid@Screen <a name="droid"></a></h3>
+<figure>
+<img src="_asset/img/2.png" alt="Droid@Screen" /><figcaption>Droid@Screen</figcaption>
+</figure>
+<h2 id="stream">Stream <a name="stream"></a></h2>
+<hr />
+<h3 id="vlc">vlc <a name="vlc"></a></h3>
+<ul>
+<li><p>in terminal type:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1">    <span class="co">// basic</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">    adb exec-<span class="kw">out</span> screenrecord --bit-rate=16m --output-format=h264 - | <span class="st">&quot;C:\Program Files (x86)\VideoLAN\VLC</span><span class="sc">\v</span><span class="st">lc.exe&quot;</span> --demux h264 --h264-fps=<span class="dv">70</span> --clock-jitter=<span class="dv">0</span> -</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1">    <span class="co">// continuous?</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">    adb exec-<span class="kw">out</span> <span class="st">&quot;while true; do screenrecord --bit-rate=16m --output-format=h264 --time-limit 180 -; done&quot;</span> | <span class="st">&quot;C:\Program Files (x86)\VideoLAN\VLC</span><span class="sc">\v</span><span class="st">lc.exe&quot;</span> --demux h264 --h264-fps=<span class="dv">60</span> --clock-jitter=<span class="dv">0</span> -</a></code></pre></div></li>
+</ul>
+<h3 id="m-player">m-player <a name="mplayer"></a></h3>
+<figure>
+<img src="_asset/img/4.png" alt="M-Player" /><figcaption>M-Player</figcaption>
+</figure>
+<ul>
+<li><p>in terminal type:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1">    <span class="co">// basic?</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">    adb exec-<span class="kw">out</span> screenrecord --bit-rate=16m --output-format=h264 - | &lt;PATH_TO_MPLAYER&gt; -demuxer h264es -fps <span class="dv">75</span> -fs -</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb6-1" data-line-number="1">    <span class="co">// continuous?</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">    adb exec-<span class="kw">out</span> <span class="st">&quot;while true; do screenrecord --bit-rate=16m --output-format=h264 --time-limit 180 -; done&quot;</span> | <span class="st">&quot;C:\Program Files\Mplayer\mplayer.exe&quot;</span> -demuxer h264es -fps <span class="dv">60</span> -fs -</a></code></pre></div></li>
+</ul>
+<h3 id="wifi-adb">wifi (adb) <a name="wifi"></a></h3>
+<ul>
+<li>all the above commands can work via usb - &amp; via wifi!</li>
+<li><p>to connect adb over wifi, connect your hmd &amp; type:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb7-1" data-line-number="1">    <span class="co">// tell adb to connect over tcp/ip vs. usb</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">    adb tcpip <span class="dv">5555</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">    adb connect &lt;OCULUS_GO_IP&gt;:<span class="dv">5555</span></a></code></pre></div>
+<p>NOTE: To get your ip, type <code>adb shell ip addr show wlan0</code>.</p>
+<figure>
+<img src="_asset/img/11.png" alt="Wifi" /><figcaption>Wifi</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/8.png" alt="Wifi" /><figcaption>Wifi</figcaption>
+</figure></li>
+<li><p>then, you could use:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb8-1" data-line-number="1">    <span class="co">// note &quot;2m&quot; is slightly lower than above, to help framerate</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">    adb exec-<span class="kw">out</span> screenrecord --bit-rate=2m --output-format=h264 - | &lt;PATH_TO_MPLAYER&gt; -demuxer h264es -fps <span class="dv">75</span> -</a></code></pre></div></li>
+<li><p>final perfect command! - to address the 3 mins limit, instruct adb to start a new streaming after the first one finishes using a command line loop.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb9-1" data-line-number="1">    <span class="co">// final perfect command line statement for USB streaming (for Wi-fi just diminish the bit-rate)</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">    adb exec-<span class="kw">out</span> <span class="st">&quot;while true; do screenrecord --bit-rate=16m --output-format=h264 --time-limit 180 -; done&quot;</span> | &lt;PATH_TO_MPLAYER&gt; -demuxer h264es -fps <span class="dv">75</span> -fs -</a></code></pre></div></li>
+</ul>
+<h2 id="known-issues-adb">Known issues (adb) <a name="known-issues"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/9.png" alt="Known Issues" /><figcaption>Known Issues</figcaption>
+</figure>
+</body>
+</html>

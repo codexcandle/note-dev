@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>g-engine.unity.optimize.dc-batch</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">g-engine.unity.optimize.dc-batch</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li>type
+<ul>
+<li><a href="#dynamic">dynamic</a></li>
+<li><a href="#static">static</a></li>
+</ul></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li><p><code>minimize draw calls!</code> - to draw a gameObject on screen, the engine has to issue a draw call to the graphics API (e.g. OpenGL, Direct3D). <u>Draw Calls are often resource-intesive.</u> - with the graphics API doing sigficant work for every draw call, causing performanced overhead on the CPU side. This is <u>mostly caused by state changes done between the draw calls</u> (e.g. switching to a different material), which causes resouce-intensive validtaion &amp; translation steps in the graphics driver.</p>
+<p>Unity uses 2 techniques to address this:</p>
+<ul>
+<li><p>Dynamic batching - for small enough Meshes, transforms their vertices on the CPU, groups many simiilar vertices together, &amp; drwas them all in one go.</p></li>
+<li><p>Static batching - combines static (not moving) Gameobjects into big meshes, &amp; renders them in a faster way.</p></li>
+</ul></li>
+<li><p><code>material set-up</code> (for batching):</p>
+<figure>
+<img src="_asset/img/2.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+<li>you problably have a ton of static geometry in your scene (e.g. walls, chairs, lights, &amp; meshes) that never move - mark them as <code>static</code> in the editor! So, intead of incurring a draw call for each individual object, objects marked as static can be batchd into one combined mesh.</li>
+<li>be sure to mark them as <code>lightmap static</code> in order to get baked lightmap textures.</li>
+<li><p>again, as noted above, <code>ALL THE OBJECTS MUST USE THE SAME MATERIAL!</code>. (If you have static walls with a wood material &amp; static chairs with a steel material, the walls will be batched into one draw call with one combined mesh. The chairs will be rendered in a separate draw call, with their own separate mesh.)</p></li>
+</ul>
+<figure>
+<img src="_asset/img/11.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure>
+<h3 id="dynamic">dynamic</h3>
+<hr />
+<ul>
+<li><code>done automatically!</code> - Unity can automatically batch moving GameObjects into the same draw call if they share the same Material (&amp; fulfill other criteria.)</li>
+</ul>
+<figure>
+<img src="_asset/img/6.png" alt="Dynamic" /><figcaption>Dynamic</figcaption>
+</figure>
+<ul>
+<li>good / bad:
+<ul>
+<li>CON = incurs some CPU overhead.</li>
+<li>CON = not compatible with graphics jobs (see PlayerSettings)</li>
+</ul></li>
+</ul>
+<figure>
+<img src="_asset/img/7.png" alt="Dynamic" /><figcaption>Dynamic</figcaption>
+</figure>
+<h3 id="static">static</h3>
+<hr />
+<ul>
+<li>allows the engine to reduce draw calls for geometry of any size provided it:
+<ol type="1">
+<li>shares the same material</li>
+<li>does NOT move</li>
+</ol></li>
+<li><p>to enable:</p>
+<figure>
+<img src="_asset/img/8.png" alt="Static" /><figcaption>Static</figcaption>
+</figure></li>
+<li>vs <code>dynamic batching</code>:
+<ul>
+<li>PRO = more efficient (doesn’t transofrm vertices on the CPU)</li>
+<li>CON = uses more memory</li>
+</ul></li>
+</ul>
+<figure>
+<img src="_asset/img/9.png" alt="Static" /><figcaption>Static</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/10.png" alt="Static" /><figcaption>Static</figcaption>
+</figure>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>math.algebra.logarithm</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">math.algebra.logarithm</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#types">types</a>
+<ul>
+<li><a href="./../euler">euler’s number</a></li>
+</ul></li>
+<li><a href="#rules">rules</a></li>
+<li><a href="#examples">examples</a></li>
+</ul>
+<h2 id="overvieww">Overvieww <a name="overview"></a></h2>
+<hr />
+<ul>
+<li><p>a quantity representing the power to which a fixed # (the base) must be raised to produce a given #.</p>
+<figure>
+<img src="_asset/img/26.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/12.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/2.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/7.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/8.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/9.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/10.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/17.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/18.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/19.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/38.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/62.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
+<li><p><code>exponential vs logarithmic</code>:</p>
+<figure>
+<img src="_asset/img/3.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/48.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/50.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
+<li><p><code>isomorphic</code>:</p>
+<figure>
+<img src="_asset/img/63.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/64.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
+<li><p><code>anti</code>-algorithm?</p>
+<figure>
+<img src="_asset/img/29.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
+<li><p><code>log table</code>:</p>
+<figure>
+<img src="_asset/img/41.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Logarithm">more @ wikipedia</a></p></li>
+</ul>
+<h2 id="types">Types <a name="types"></a></h2>
+<hr />
+<ul>
+<li>2 types of logarithms:
+<ul>
+<li><p><code>common</code>(base 10)</p>
+<figure>
+<img src="_asset/img/25.png" alt="Types" /><figcaption>Types</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/35.png" alt="Types" /><figcaption>Types</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/42.png" alt="Types" /><figcaption>Types</figcaption>
+</figure></li>
+<li><p><code>natural</code> (base e; 2.71…)</p>
+<figure>
+<img src="_asset/img/23.png" alt="Types" /><figcaption>Types</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/28.png" alt="Types" /><figcaption>Types</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/34.png" alt="Types" /><figcaption>Types</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/47.png" alt="Types" /><figcaption>Types</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/55.png" alt="Types" /><figcaption>Types</figcaption>
+</figure>
+<p><code>ln e = 1</code>:</p>
+<figure>
+<img src="_asset/img/53.png" alt="Types" /><figcaption>Types</figcaption>
+</figure></li>
+</ul></li>
+<li><p><code>negative</code>? logarithms:</p>
+<figure>
+<img src="_asset/img/21.png" alt="Types" /><figcaption>Types</figcaption>
+</figure></li>
+<li><p><code>base 0</code>? logarithms:</p>
+<figure>
+<img src="_asset/img/33.png" alt="Types" /><figcaption>Types</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/36.png" alt="Types" /><figcaption>Types</figcaption>
+</figure></li>
+</ul>
+<figure>
+<img src="_asset/img/20.png" alt="Types" /><figcaption>Types</figcaption>
+</figure>
+<h2 id="rules">Rules <a name="rules"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/49.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/51.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/52.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/11.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/27.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/31.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/54.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/56.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/57.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<ul>
+<li><p>albegra rules <img src="_asset/img/68.png" alt="Rules" /></p>
+<figure>
+<img src="_asset/img/69.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<ol type="1">
+<li><code>subtraction</code></li>
+</ol>
+<figure>
+<img src="_asset/img/70.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/71.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<ol start="2" type="1">
+<li><code>division</code></li>
+</ol>
+<figure>
+<img src="_asset/img/72.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<ol start="3" type="1">
+<li><code>root</code></li>
+</ol>
+<figure>
+<img src="_asset/img/73.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/74.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/76.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<ol start="4" type="1">
+<li><code>tetration</code></li>
+</ol>
+<figure>
+<img src="_asset/img/75.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure></li>
+</ul>
+<figure>
+<img src="_asset/img/45.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/77.png" alt="Rules" /><figcaption>Rules</figcaption>
+</figure>
+<h2 id="ex">EX <a name="examples"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/4.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/6.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/1.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/5.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/13.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/14.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/15.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/16.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/22.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/24.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/30.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/32.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/37.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/39.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/40.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/43.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/44.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/46.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/58.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/59.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/60.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/61.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+<p><img src="_asset/img/65.png" alt="Examples" /> <img src="_asset/img/66.png" alt="Examples" /> <img src="_asset/img/67.png" alt="Examples" /></p>
+<figure>
+<img src="_asset/img/78.png" alt="Examples" /><figcaption>Examples</figcaption>
+</figure>
+</body>
+</html>

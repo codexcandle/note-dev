@@ -1,0 +1,223 @@
+{
+// COMMON WORKPLACE SETTINGS
+// ==============================================
+"editor.fontSize":          16,
+"editor.tabSize":           2,
+"editor.insertSpaces":      false,
+"editor.wrappingColumn":    0,
+"editor.quickSuggestions":  false,
+// "editor.wordWrap":       "on",
+
+
+// PANDOC SETTINGS
+// ==============================================
+// INDEX
+// ----------------------------------------------
+// TODO - make OptString params dynamic!
+"pandoc.htmlOptString": "-s -o ../build/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
+
+
+// AUDIO
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../build/audio/index.html -t html5 --css=../_asset/css/style.css --metadata title='audio'"   
+// ... spatial
+// "pandoc.htmlOptString": "-s -o ../../build/audio/spatial/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.spatial'"    
+// ... psycho-accoustic
+// "pandoc.htmlOptString": "-s -o ../../build/audio/psycho/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.psycho-accoustic'"
+// ... unity
+// "pandoc.htmlOptString": "-s -o ../../build/audio/unity/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.unity'"
+// ... wwise
+// "pandoc.htmlOptString": "-s -o ../../build/audio/wwise/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.wwise'"
+// ... procedural
+// "pandoc.htmlOptString": "-s -o ../../build/audio/procedural/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.procedural'"
+
+
+// XR
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../build/xr/index.html -t html5 --css=../_asset/css/style.css --metadata title='xr'"
+// ----------------------------------------------
+// ------------------------------------------ HMD
+// ----------------------------------------------
+// ... gear-vr
+// "pandoc.htmlOptString": "-s -o ../../../build/xr/hmd/gear/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='xr.hmd.gear-vr'" 
+// ... go
+// "pandoc.htmlOptString": "-s -o ../../../../build/xr/hmd/go/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='xr.hmd.oculus-go'"   
+// ... go > recording
+// "pandoc.htmlOptString": "-s -o ../../../../build/xr/hmd/go/record/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='xr.hmd.oculus-go.record'"    
+// ----------------------------------------------
+// -------------------------------- INTERACTIVITY
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../build/xr/interactivity/index.html -t html5 --css=../../_asset/css/style.css --metadata title='xr.interactivity'" 
+// ----------------------------------------------
+// ------------------------------------------- UI
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../build/xr/ui/index.html -t html5 --css=../../_asset/css/style.css --metadata title='xr.ui'"
+
+
+// G-ENGINE
+// ----------------------------------------------
+// ---------------------------------------- UNITY
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../../build/g-engine/unity/index.html -t html5 --css=../../_asset/css/style.css --metadata title='g-engine.unity'"
+// ... editor
+// "pandoc.htmlOptString": "-s -o ../../../build/g-engine/unity/editor/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.editor'"
+// ---------------------------------------- PHYSX
+// "pandoc.htmlOptString": "-s -o ../../../build/g-engine/unity/physx/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.physics'"
+// ------------------------------------- OPTIMIZE
+// "pandoc.htmlOptString": "-s -o ../../../../build/g-engine/unity/optimize/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.optimize'"
+// ... profile
+// "pandoc.htmlOptString": "-s -o ../../../../build/g-engine/unity/optimize/profile/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.optimize.profile'" 
+// ... dc-batch
+// "pandoc.htmlOptString": "-s -o ../../../../build/g-engine/unity/optimize/dc-batch/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.optimize.dc-batch'" 
+// ... dll
+// "pandoc.htmlOptString": "-s -o ../../../../build/g-engine/unity/optimize/dll/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.optimize.dll'"   
+// ... pool
+// "pandoc.htmlOptString": "-s -o ../../../../build/g-engine/unity/optimize/pool/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.optimize.pool'"    
+// --------------------------------------- SHADER
+// "pandoc.htmlOptString": "-s -o ../../../../build/g-engine/unity/shader/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.shader'"
+
+
+// BROWSER
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../build/browser/index.html -t html5 --css=../_asset/css/style.css --metadata title='browser'"
+// ------------------------------------ FRAMEWORK
+// ----------------------------------------------
+// ... aframe
+// "pandoc.htmlOptString": "-s -o ../../../../build/browser/framework/aframe/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.aframe'"
+// ----------------------------------------- COMP
+// "pandoc.htmlOptString": "-s -o ../../../../build/browser/framework/aframe/component/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.comp'"
+// -------------------------------------- RUNTIME
+// ----------------------------------------------
+// ... node
+// "pandoc.htmlOptString": "-s -o ../../../../build/browser/runtime/node/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.runtime.node'"    
+// ------------------------------------ DREAMHOST
+// "pandoc.htmlOptString": "-s -o ../../../../build/browser/runtime/node/dreamhost/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.runtime.node.dreamhost'"
+
+
+// COMP-SCI
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../build/comp-sci/index.html -t html5 --css=../_asset/css/style.css --metadata title='comp-sci'"
+// ------------------------------------ ALGORITHM
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/algorithm/index.html -t html5 --css=../../_asset/css/style.css --metadata title='comp-sci.algorithm'"    
+// ... big-O
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/algorithm/big-o/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.big-o'"
+// ... search
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/algorithm/search/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.search'"
+// ... sort 
+// "pandoc.htmlOptString": "-s -o ../../../../build/comp-sci/algorithm/sort/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.sort'"
+// --------------------------------------- BUBBLE
+// "pandoc.htmlOptString": "-s -o ../../../../build/comp-sci/algorithm/sort/bubble/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.algorithm.sort.bubble'"
+// ... selection
+// "pandoc.htmlOptString": "-s -o ../../../../build/comp-sci/algorithm/sort/selection/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.algorithm.sort.selection'"
+// ... insertion
+// "pandoc.htmlOptString": "-s -o ../../../../build/comp-sci/algorithm/sort/insertion/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.algorithm.sort.insertion'"
+// ... quick
+// "pandoc.htmlOptString": "-s -o ../../../../build/comp-sci/algorithm/sort/quick/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.algorithm.sort.quick'"
+// ... merge
+// "pandoc.htmlOptString": "-s -o ../../../../build/comp-sci/algorithm/sort/merge/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.algorithm.sort.merge'"
+// -------------------------------- DATA-STRCTURE
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/data-structure/index.html -t html5 --css=../../_asset/css/style.css --metadata title='comp-sci.data-structure'"
+// ... array
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/data-structure/array/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.array'" 
+// ... hash-table
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/data-structure/hash-table/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.hash-table'"    
+// ... linked-list
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/data-structure/linked-list/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.linked-list'"    
+// ... stack
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/data-structure/stack/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.stack'"
+// ... queue
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/data-structure/queue/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.queue'"
+// ... tree
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/data-structure/tree/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.tree'"
+// ... heap
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/data-structure/heap/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.heap'"
+// ... trie
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/data-structure/trie/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.trie'"
+// ------------------------------- DESIGN-PATTERN
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/design-pattern/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.design-pattern'"
+// ... singleton
+// "pandoc.htmlOptString": "-s -o ../../../build/comp-sci/design-pattern/singleton/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.design-pattern.singleton'"
+
+
+// MATH
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../build/math/index.html -t html5 --css=../_asset/css/style.css --metadata title='math'"
+// -------------------------------------- ALGEBRA
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../../build/math/algebra/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.algebra'"
+// ... logarithm
+// "pandoc.htmlOptString": "-s -o ../../../build/math/algebra/logarithm/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.algebra.logarithm'"
+// ... eular
+// "pandoc.htmlOptString": "-s -o ../../../build/math/algebra/euler/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.algebra.euler'"
+// ... vector
+// "pandoc.htmlOptString": "-s -o ../../../build/math/algebra/vector/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.algebra.vector'"
+// ... factorial
+// "pandoc.htmlOptString": "-s -o ../../../build/math/algebra/factorial/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.algebra.factorial'"
+// ... binary
+// "pandoc.htmlOptString": "-s -o ../../../build/math/algebra/binary/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.algebra.binary'"
+// ----------------------------------- NUMEROLOGY
+// ----------------------------------------------
+// ... 9
+// "pandoc.htmlOptString": "-s -o ../../../build/math/numerology/9/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.numerology.9'"
+
+
+// VCS
+// ----------------------------------------------
+// ... git
+// "pandoc.htmlOptString": "-s -o ../../../build/vcs/git/index.html -t html5 --css=../../_asset/css/style.css --metadata title='version-control.git'"    
+
+
+// LANG
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../build/lang/index.html -t html5 --css=../_asset/css/style.css --metadata title='lang'"
+// ------------------------------------------- C#
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../../build/lang/csharp/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.c#'"
+// ... generic
+// "pandoc.htmlOptString": "-s -o ../../../build/lang/csharp/generic/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.generic'"    
+// ... lambda-expression
+// "pandoc.htmlOptString": "-s -o ../../../build/lang/csharp/lambda-expression/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.lambda-expression'"    
+// ... linq
+// "pandoc.htmlOptString": "-s -o ../../../build/lang/csharp/linq/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.linq'" 
+// ... parameter-modifier
+// "pandoc.htmlOptString": "-s -o ../../../build/lang/csharp/parameter-modifier/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.parameter-modifier'" 
+// ------------------------------------------- JS
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../../build/lang/js/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.java-script'"
+// ---------------------------------------- SHELL
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../../build/lang/shell/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.shell'"
+// ... bash
+// "pandoc.htmlOptString": "-s -o ../../../build/lang/shell/bash/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.shell.bash'"
+// ... ssh-dreamhost
+// "pandoc.htmlOptString": "-s -o ../../../build/lang/shell/ssh-dreamhost/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.shell.ssh-dreamhost'" 
+// ------------------------------------ MARK-DOWN
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../build/lang/mark-down/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.mark-down'"
+ 
+
+
+
+
+
+
+
+
+
+// **************************************************************************************
+// **************************************************************************************    
+// QUIZ *********************************************************************************
+// ... bracket balance
+// "pandoc.htmlOptString": "-s -o ../../build/_quiz/question/bracket-balance/index.html -t html5 --css=../../_asset/css/style.css --metadata title='bracket-balance'"
+// ... draw call batching
+// "pandoc.htmlOptString": "-s -o ../../build/_quiz/question/drawcall-batching/index.html -t html5 --css=../../_asset/css/style.css --metadata title='draw-call-batching'"
+// ... is-kinematic
+// "pandoc.htmlOptString": "-s -o ../../build/_quiz/question/is-kinematic/index.html -t html5 --css=../../_asset/css/style.css --metadata title='is-kinematic'"
+// ... out keyword
+// "pandoc.htmlOptString": "-s -o ../../build/_quiz/question/out-keyword/index.html -t html5 --css=../../_asset/css/style.css --metadata title='out-keyword'"
+// ... shuffle
+// "pandoc.htmlOptString": "-s -o ../../build/_quiz/question/shuffle/index.html -t html5 --css=../../_asset/css/style.css --metadata title='shuffle'"
+}

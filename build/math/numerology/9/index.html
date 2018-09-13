@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>math.numerology.9</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">math.numerology.9</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#whole-num">halving-doubling phenomena</a>
+<ul>
+<li><a href="#9">number 9</a></li>
+<li><a href="#36">numbers 3,6</a></li>
+<li><a href="#124578">numbers 1,2,4,5,7,8</a></li>
+</ul></li>
+<li><a href="#num-circle">num-circle</a>
+<ul>
+<li><a href="#369">369</a></li>
+<li><a href="#124875">124875</a></li>
+</ul></li>
+<li><a href="#shape-circle">shape-circle</a>
+<ul>
+<li><a href="#shape-circle-bisect">bisect</a></li>
+<li><a href="#shape-circle-multiply">multiply</a></li>
+<li><a href="#shape-circle-deduction">deduction</a></li>
+</ul></li>
+<li><a href="#music">music</a>
+<ul>
+<li><a href="#440">440 problem</a></li>
+<li><a href="#432">432 solution</a></li>
+</ul></li>
+<li><a href="#time">time</a>
+<ul>
+<li><a href="#60-12">60 &amp; 12</a></li>
+<li><a href="#432-again">432 again</a></li>
+</ul></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li>9 seems to be a special number.</li>
+<li><p>9 models “every” thing and “no” thing simultaneously:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" data-line-number="1">  // excluding 9, the sum of all digits is 36</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 36 -&gt; 9</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" data-line-number="1">  // paradoxically, 9 plus any digit returns the same digit!</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">  9 + 5 = 14 -&gt; 5</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb3-1" data-line-number="1">  // ... 9 equals all the digits (36) - and nothing (0)!</a></code></pre></div></li>
+<li>note how 9 is same shape as the spiral of a galaxy (i.e. golden ratio!)</li>
+<li>note how 0 is a circle, “containing” the “9 circle” (see below)</li>
+<li><a href="../../../_asset-large/mp4/432Hz-unlocking%20-the-magnificence-of-the-369.mp4">432Hz-unlocking the magnificence of 369</a> [VIDEO]</li>
+<li><a href="../../../_asset-large/mp4/secret-behind-numbers-369.mp4">secret behind numbers 369</a> [VIDEO]</li>
+<li><p><a href="../../../_asset-large/mp4/vortex-math.mp4">vortex math</a> [VIDEO]</p></li>
+</ul>
+<h2 id="halving-doubling-phenomena">halving-doubling phenomena <a name="whole-num"></a></h2>
+<hr />
+<ul>
+<li><p>considering the integers 1-9, patterns arise when you continuously “double” an input value.</p></li>
+<li><p>try doubling or halving - the numbers individually. Reduce the sum down to a single-digit value for our answer by adding adjacent nums (ex: 53 &gt; 5 + 3 = 8):</p></li>
+</ul>
+<ol type="1">
+<li><h3 id="number-9">number 9 <a name="9"></a></h3></li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="bn">      // 9 doubled</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="bn">      9 + 9 = 18 -&gt; 9</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="bn">      18 + 18 = 36 -&gt; 9</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="bn">      36 + 36 = 72 -&gt; 9</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="bn">      72 + 72 = 144 -&gt; 9</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="bn">      144 + 144 = 288 -&gt; 18 -&gt; 9</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="bn">      // 9 halved</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="bn">      9 / 2 = 4.5 -&gt; 9</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="bn">      4.5 / 2 = 2.25 -&gt; 9</span></a></code></pre></div>
+<pre><code>Thus, when doubled (or halved), you only get 9!</code></pre>
+<ol start="2" type="1">
+<li><h3 id="numbers-36">numbers 3,6 <a name="36"></a></h3></li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="bn">      // doubled</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="bn">      3 + 3 = 6</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="bn">      6 + 6 = 12 &gt; 3</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="bn">      12 + 12 = 24 &gt; 6</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="bn">      24 + 24 = 48 &gt; 12 &gt; 3</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="bn">      48 + 48 = 96 &gt; 15 &gt; 6</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="bn">      // halved</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="bn">      6 / 2 = 3</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="bn">      3 / 2 = 1.5 -&gt; 6</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="bn">      1.5 / 2 = 0.75 -&gt; 12 -&gt; 3</span></a></code></pre></div>
+<pre><code>Thus, when doubled (or halved), you get repeating sequence 3-6!</code></pre>
+<ol start="3" type="1">
+<li><h3 id="remaining-nums-124578">remaining nums (1,2,4,5,7,8) <a name="124578"></a></h3></li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="bn">      // try doubling others (1, 2, 4, 5, 7, 8</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="bn">      // 1 doubled</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="bn">      * 1 + 1 = 2</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="bn">      * 2 + 2 = 4</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="bn">      * 4 + 4 = 16 &gt; 7</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="bn">      * 16 + 16 = 32 &gt; 5</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="bn">      * 32 + 32 = 64 &gt; 10 &gt; 1</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="bn">      * 64 + 64 = 128 &gt; 11 &gt; 2</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="bn">      * 128 + 128 = 256 &gt; 13 &gt; 4</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="bn">      * 256 + 256 = 512 &gt; 8</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="bn">      * 512 + 512 = 1024 &gt; 7</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="bn">      // 7 doubled</span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="bn">      * 7 + 7 = 14 -&gt; 5</span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="bn">      * 14 + 14 = 28 -&gt; 10 -&gt; 1</span></a>
+<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="bn">      * 28 + 28 = 56 -&gt; 11 -&gt; 2</span></a>
+<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="bn">      * 56 + 56 = 112 -&gt; 4</span></a>
+<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="bn">      * 112 + 112 = 224 -&gt; 8</span></a>
+<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="bn">      * 224 + 224 = 448 -&gt; 16 -&gt; 7</span></a></code></pre></div>
+<pre><code>Thus, when doubled (or halved), you get repeating sequence 124875!</code></pre>
+<h2 id="num-circle">num circle <a name="num-circle"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/1.png" alt="num-circle" /><figcaption>num-circle</figcaption>
+</figure>
+<ul>
+<li><p>use this to help visualize relationships between the integers 1-9.</p></li>
+<li><p>as a common process in nature is the “doubling” of cells, this same “doubling” (linear?) level of growth can be studied in our num circle.</p>
+<figure>
+<img src="_asset/img/1b.png" alt="vortex math" /><figcaption>vortex math</figcaption>
+</figure></li>
+<li>if you look at these patterns, one could deduce that:
+<ul>
+<li>there’s an infinitely repeating pattern (or flow) between 3 and 6.</li>
+<li>9 infinitely stays (eminates?) at 9.</li>
+<li><p>other nums (124578) follow in a W pattern.</p>
+<figure>
+<img src="_asset/img/2.png" alt="doubling - non 3,6,9" /><figcaption>doubling - non 3,6,9</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/3.png" alt="doubling - non 3,6,9" /><figcaption>doubling - non 3,6,9</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/4.png" alt="doubling - 9" /><figcaption>doubling - 9</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/5.png" alt="doubling - 3,6" /><figcaption>doubling - 3,6</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/6.png" alt="flow" /><figcaption>flow</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/7.png" alt="flow" /><figcaption>flow</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/8.png" alt="flow" /><figcaption>flow</figcaption>
+</figure></li>
+</ul></li>
+</ul>
+<h3 id="section">369 <a name="369"></a></h3>
+<ul>
+<li>note that 3, 6, 9 seem to form a triangle.</li>
+<li>perhaps 3,6 represet energy (flow), and 9 (eminates) on its own represents spirit?</li>
+<li><p>remember, energy can’t be created nor destroyed; much like these patterns!</p>
+<figure>
+<img src="_asset/img/8a.png" alt="tesla" /><figcaption>tesla</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/8b.png" alt="tesla" /><figcaption>tesla</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/8c.png" alt="tesla" /><figcaption>tesla</figcaption>
+</figure></li>
+</ul>
+<h3 id="section-1">124875 <a name="124875"></a></h3>
+<ul>
+<li>postulated these nums may represent the physical world (not like 3, 6, 9!)</li>
+<li><p>given the repeating “w” pattern, aka “124875” (vs. in-order values of 124578)</p>
+<figure>
+<img src="_asset/img/10.png" alt="124875 flow" /><figcaption>124875 flow</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/11.png" alt="124875 flow" /><figcaption>124875 flow</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/56.png" alt="124875 flow" /><figcaption>124875 flow</figcaption>
+</figure></li>
+</ul>
+<h2 id="shape-circle">shape circle <a name="shape-circle"></a></h2>
+<hr />
+<h3 id="bisect">bisect <a name="shape-circle-bisect"></a></h3>
+<ul>
+<li><p>when bisecting a circle, all resulting angles reduce down to 9.</p>
+<figure>
+<img src="_asset/img/12.png" alt="bisecting circle" /><figcaption>bisecting circle</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/13.png" alt="bisecting circle" /><figcaption>bisecting circle</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/14.png" alt="bisecting circle" /><figcaption>bisecting circle</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/15.png" alt="bisecting circle" /><figcaption>bisecting circle</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/16.png" alt="bisecting circle" /><figcaption>bisecting circle</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/17.png" alt="bisecting circle" /><figcaption>bisecting circle</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/18.png" alt="bisecting circle" /><figcaption>bisecting circle</figcaption>
+</figure></li>
+</ul>
+<h3 id="multiply">multiply <a name="shape-circle-multiply"></a></h3>
+<ul>
+<li><p>for regular polygons (shape), the sum of all resulting angles reduces down to 9.</p>
+<figure>
+<img src="_asset/img/19.png" alt="polygon circle" /><figcaption>polygon circle</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/20.png" alt="polygon circle" /><figcaption>polygon circle</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/21.png" alt="polygon circle" /><figcaption>polygon circle</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/22.png" alt="polygon circle" /><figcaption>polygon circle</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/23.png" alt="polygon circle" /><figcaption>polygon circle</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/24.png" alt="polygon circle" /><figcaption>polygon circle</figcaption>
+</figure></li>
+</ul>
+<h3 id="deduction">deduction <a name="shape-circle-deduction"></a></h3>
+<ul>
+<li><p>thus:</p>
+<figure>
+<img src="_asset/img/25.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/26.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/27.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/28.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/29.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/30.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/31.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/32.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/33.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/34.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/35.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/36.png" alt="circle duality" /><figcaption>circle duality</figcaption>
+</figure></li>
+</ul>
+<h2 id="music">music <a name="music"></a><br />
+</h2>
+<hr />
+<figure>
+<img src="_asset/img/37.png" alt="music" /><figcaption>music</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/38.png" alt="music" /><figcaption>music</figcaption>
+</figure>
+<h3 id="problem">440 problem <a name="440"></a></h3>
+<figure>
+<img src="_asset/img/50.png" alt="440" /><figcaption>440</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/52.png" alt="440" /><figcaption>440</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/53.png" alt="440" /><figcaption>440</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/39.png" alt="440" /><figcaption>440</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/40.png" alt="440" /><figcaption>440</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/42.png" alt="440" /><figcaption>440</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/51.png" alt="440" /><figcaption>440</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/54.png" alt="440" /><figcaption>440</figcaption>
+</figure>
+<h3 id="solution">432 solution <a name="432"></a></h3>
+<figure>
+<img src="_asset/img/55.png" alt="432" /><figcaption>432</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/46.png" alt="432" /><figcaption>432</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/47.png" alt="432" /><figcaption>432</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/48.png" alt="432" /><figcaption>432</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/43.png" alt="432" /><figcaption>432</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/44.png" alt="432" /><figcaption>432</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/45.png" alt="432" /><figcaption>432</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/57.png" alt="432" /><figcaption>432</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/58.png" alt="432" /><figcaption>432</figcaption>
+</figure>
+<h2 id="time">time <a name="time"></a><br />
+</h2>
+<hr />
+<h3 id="section-2">60 &amp; 12 <a name="60-12"></a></h3>
+<ul>
+<li><p>our current time system - the division of the hour into 60 minutes (&amp; of the minute into 60 seconds) comes from the Babylonians who used a sexagesimal (counting in 60s system for mathematics &amp; astronomy. They derived their number system from the Sumerians who were using it as early as 3500 BC.</p></li>
+<li><p>the use of 12 subdivisions for day &amp; night, with 60 for hours and minutes, turns out to be much more useful than (say) 10 and 100 if you want to avoid having to use complicated notations for parts of a day. 12 is divisible by two, three, four, six and 12 itself - whereas 10 has only three divisers - whole numbers that divide it a whole number of times. 60 has 12 divisers, and because 60 = 5 x 12 it combines the advantages of both 10 and 12. (In fact both 12 and 60 share the property that they have more divisers than any number smaller than themselves.)</p></li>
+<li><p>even still, this doesn’t explain how this system spread throughout the world. Perhaps a gift from knowing gods - with message embedded in our math scale? (hexadec: 60 * 60 = 360).</p></li>
+</ul>
+<h3 id="again">432 again <a name="432-again"></a></h3>
+<figure>
+<img src="_asset/img/60.png" alt="432 again" /><figcaption>432 again</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/61.png" alt="432 again" /><figcaption>432 again</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/63.png" alt="432 again" /><figcaption>432 again</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/64.png" alt="432 again" /><figcaption>432 again</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/65.png" alt="432 again" /><figcaption>432 again</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/66.png" alt="432 again" /><figcaption>432 again</figcaption>
+</figure>
+<p><br />
+</p>
+</body>
+</html>

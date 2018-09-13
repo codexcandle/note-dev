@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>math.algebra.vector</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">math.algebra.vector</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#operations">operations</a>
+<ul>
+<li><a href="#normalize">normalize (unit-vector)</a></li>
+<li><a href="#add-subtract">add / subtract</a></li>
+<li><a href="#multiply">multiply</a></li>
+</ul></li>
+<li>equations
+<ul>
+<li><a href="#magnitude">magnitude</a></li>
+<li><a href="#dot-product">dot-product</a></li>
+<li><a href="#cross-product">cross-product</a></li>
+</ul></li>
+<li><a href="#unity-api">unity-api</a></li>
+</ul>
+<h1 id="overview">Overview <a name="overview"></a></h1>
+<hr />
+<ul>
+<li><p>aka <code>linear algebra</code> - the study of vectors &amp; their uses.</p></li>
+<li><p>btw <code>perpindicular</code> - 90 degrees adjacent from the plane containing the other (n) points (e.g. light normal!)</p>
+<figure>
+<img src="_asset/img/38.png" alt="Vector" /><figcaption>Vector</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/39.png" alt="Vector" /><figcaption>Vector</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/40.png" alt="Vector" /><figcaption>Vector</figcaption>
+</figure></li>
+<li><p>notation:</p>
+<figure>
+<img src="_asset/img/7.png" alt="Vector" /><figcaption>Vector</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/44.png" alt="Vector" /><figcaption>Vector</figcaption>
+</figure></li>
+<li><p><code>represents a direction</code> - &amp; can have a magnitude (length) associated with it. Note that vectors don’t represent a line going from somewhere to somewhere else - as, again, vectors are just about directions. Where you started from is irrelevant.</p>
+<figure>
+<img src="_asset/img/1.png" alt="Vector" /><figcaption>Vector</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/2.png" alt="Vector" /><figcaption>Vector</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/5.png" alt="Vector" /><figcaption>Vector</figcaption>
+</figure></li>
+<li><p><code>polar vs cartesian coordinates</code> - can use either method to refer to a vector, but for convenience - programmers tpyically use coordinate notation.</p>
+<figure>
+<img src="_asset/img/45.png" alt="Vector" /><figcaption>Vector</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/53.png" alt="Vector" /><figcaption>Vector</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/24.png" alt="LHR" /><figcaption>LHR</figcaption>
+</figure></li>
+<li><p><code>n-dimensions</code>:</p>
+<figure>
+<img src="_asset/img/52.png" alt="Vector" /><figcaption>Vector</figcaption>
+</figure></li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Vector_space">more @ wikipedia</a></p>
+<h1 id="operations">Operations <a name="operations"></a></h1>
+<hr />
+<h2 id="normalize-unit-vector">normalize (unit vector) <a name="normalize"></a></h2>
+<ul>
+<li><code>unit vectors</code> (aka <code>direction vectors</code> or <code>normals</code>) - have a magntiude of 1.</li>
+<li>helpful when you need just a direction.</li>
+<li><p><code>normalizing a vector</code> - keeps its direction while magntiude is reduced to 1. Is nice because it separates the direction from the magnitude (e.g. can keep the speed of a character constant, even when they travel in wierd diagonal directions).</p>
+<figure>
+<img src="_asset/img/6.png" alt="Unit Vector" /><figcaption>Unit Vector</figcaption>
+</figure></li>
+<li><p>example:</p>
+<figure>
+<img src="_asset/img/19.png" alt="Unit Vector" /><figcaption>Unit Vector</figcaption>
+</figure></li>
+<li><code>cons</code>:
+<ul>
+<li>do pay a performance cost as this involves taking a square root. Not bad if doing tens of times / frame, but expensive if 1000s of times.</li>
+<li>run the risk of dividing by zero if you ever have a zero vector (e.g. <code>0,0,0</code>).</li>
+</ul></li>
+</ul>
+<h2 id="add-subtract">add / subtract <a name="add-subtract"></a></h2>
+<figure>
+<img src="_asset/img/9.png" alt="Add / Subtract" /><figcaption>Add / Subtract</figcaption>
+</figure>
+<ul>
+<li><p><code>can be added together</code> (in any order) - like numbers:</p>
+<figure>
+<img src="_asset/img/3.png" alt="Add / Subtract" /><figcaption>Add / Subtract</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/11.png" alt="Add / Subtract" /><figcaption>Add / Subtract</figcaption>
+</figure></li>
+<li><p>examples:</p>
+<p><code>add</code> (force / velocity):</p>
+<figure>
+<img src="_asset/img/10.png" alt="Add" /><figcaption>Add</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/12.png" alt="Add" /><figcaption>Add</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/41.png" alt="Add" /><figcaption>Add</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/42.png" alt="Add" /><figcaption>Add</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/46.png" alt="Add" /><figcaption>Add</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/54.png" alt="Add" /><figcaption>Add</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/55.png" alt="Add" /><figcaption>Add</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/56.png" alt="Add" /><figcaption>Add</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/58.png" alt="Add" /><figcaption>Add</figcaption>
+</figure>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">    added to object w/ rigidbody component</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">    (to ensure forces can be applied to this object)</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">    */</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">    var v1:Vector3;</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">    var v2:Vector3;</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">    var v3:Vector3;</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">    <span class="dt">void</span> <span class="fu">Start</span>()</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">    {</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">        v1 = <span class="kw">new</span> <span class="fu">Vector3</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">        v2 = <span class="kw">new</span> <span class="fu">Vector3</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">        v3 = v1 + v2; <span class="co">// (1, 0, 1)</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">    }</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">    <span class="dt">void</span> <span class="fu">FixedUpdate</span>()</a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">    {</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">        rigidbody.<span class="fu">AddForce</span>(v3 * <span class="dv">10</span>);</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">    }</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1">    <span class="co">// &quot;adding velocity&quot; to an object</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">    <span class="co">// (spaceship&#39;s pos vector + velocity vector = new pos)</span></a></code></pre></div>
+<p><code>subtract</code> (pointing towards a target):</p>
+<figure>
+<img src="_asset/img/13.png" alt="Subtract" /><figcaption>Subtract</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/43.png" alt="Subtract" /><figcaption>Subtract</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/47.png" alt="Subtract" /><figcaption>Subtract</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/57.png" alt="Subtract" /><figcaption>Subtract</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/59.png" alt="Subtract" /><figcaption>Subtract</figcaption>
+</figure>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1">    <span class="co">// &quot;pointing towards a target&quot;</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">        To find a vector pointing from A to B, use B - A.</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">        Say you have a tank that wishes to point its turret at a robot.  </span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">        Subtracting the tank&#39;s pos form the robot&#39;s pos gives the</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">        vector pointing from the tank to the robot.</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">    */</span></a></code></pre></div></li>
+</ul>
+<h2 id="multiply">multiply <a name="multiply"></a></h2>
+<ul>
+<li><p><code>scalar</code> - a value representing only magnitude (not direction; unlike a vector).</p>
+<figure>
+<img src="_asset/img/49.png" alt="Scalar" /><figcaption>Scalar</figcaption>
+</figure></li>
+<li><p><code>by scalar</code> - a vector multiplied by a scalar only changes it’s magnitude, not direction.</p></li>
+</ul>
+<figure>
+<img src="_asset/img/14.png" alt="Multiply" /><figcaption>Multiply</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/15.png" alt="Multiply" /><figcaption>Multiply</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/50.png" alt="Multiply" /><figcaption>Multiply</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/51.png" alt="Multiply" /><figcaption>Multiply</figcaption>
+</figure>
+<h1 id="equations">Equations <a name="equations"></a></h1>
+<h2 id="magnitude">magnitude <a name="magnitude"></a></h2>
+<ul>
+<li><p><code>euclidean length</code> (magnitude of a vector):</p>
+<figure>
+<img src="_asset/img/8.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/20.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/21.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/22.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/23.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/25.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/48.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/60.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/61.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/62.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/63.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/64.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/65.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/66.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/67.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/68.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure></li>
+<li><p>example:</p>
+<figure>
+<img src="_asset/img/18.png" alt="Magnitude" /><figcaption>Magnitude</figcaption>
+</figure></li>
+</ul>
+<h2 id="dot-product">dot-product <a name="dot-product"></a></h2>
+<ul>
+<li><p>is a float value requal to the magnitudes of the 2 vectors multiplied together, &amp; then multiplied by the COSINE of the angle b/n them.</p></li>
+<li><p><code>2 vectors are perpindicular</code> - if their dot product == 0. (When using UNIT VECTORS, dot product is always <code>-1 &lt; x &lt; 1</code>).</p></li>
+<li><p>examples:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1">    <span class="kw">using</span> UnityEngine;</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">    <span class="kw">using</span> System.<span class="fu">Collections</span>;</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">    <span class="kw">public</span> <span class="kw">class</span> ExampleClass:MonoBehaviour</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">    {</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">        <span class="kw">public</span> Transform other;</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">        <span class="dt">void</span> <span class="fu">Update</span>()</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">        {</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">            Vector3 forward = transform.<span class="fu">TransformDirection</span>(Vector3.<span class="fu">forward</span>);</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">            Vector3 toOther = other.<span class="fu">position</span> - transform.<span class="fu">position</span>;</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">            <span class="kw">if</span>(Vector3.<span class="fu">Dot</span>(forward, toOther) &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">            {</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">                <span class="fu">print</span>(<span class="st">&quot;The other transform is behind me!&quot;</span>);</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">            }</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">        }</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">    }</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1">    <span class="dt">float</span> c = a.<span class="fu">Dot</span>(b);</a></code></pre></div>
+<p><code>flight simulator</code> - is plane upright?:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb6-1" data-line-number="1">    <span class="co">/*</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">    // world UP vector - from the ground.</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">    // FORWARD vector - from the plane&#39;s travel.</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">    // If the dot product == 0, the plane is flying straight w/ no drag.  </span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">    // If dp &gt; 0, plane is angled upwards.</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">    // If dp &lt; 0, plane is angled towards ground.</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">    */</span></a></code></pre></div>
+<figure>
+<img src="_asset/img/28.png" alt="Dot-product" /><figcaption>Dot-product</figcaption>
+</figure>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb7-1" data-line-number="1">    <span class="co">// Q:</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">    <span class="co">// what&#39;s their dot product?</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">    v1 = (<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">    v2 = (<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">    <span class="co">// A</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">    <span class="co">// method #1 (unity-way)</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">    <span class="dt">var</span> dotProduct = v1.<span class="fu">dot</span>(v2);</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">    <span class="co">// method #2 (by hand)</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">    <span class="co">// x1, y1, z1</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">    <span class="co">// x2, y2, z2</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14">    <span class="co">// = (x1x2) + (y1y2) + (z1z2)</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15">    <span class="co">// = (x1 * x2) + (y1 * y2) + (z1 * z2);</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16">    <span class="co">// = (0 * 2) + (1 * 3) + (2 * 4);</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17">    <span class="co">// = 2 + 3 + 8</span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18">    <span class="co">// = 14 (so NOT perp!)</span></a></code></pre></div>
+<figure>
+<img src="_asset/img/27.png" alt="Dot-product" /><figcaption>Dot-product</figcaption>
+</figure>
+<p><code>Facing</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb8-1" data-line-number="1">    <span class="co">// Q:</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">    <span class="co">// is facing eachother?</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">    <span class="co">// p = player</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">    <span class="co">// z = zombie</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">    <span class="co">// fZ = unit vector representing zombie&#39;s direction</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">    var ZP = (P - Z).<span class="fu">Normalized</span>();</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">    <span class="kw">if</span>(ZP.<span class="fu">Dot</span>(fZ) &gt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">    {</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">        <span class="fu">print</span>(<span class="st">&quot;you&#39;ve been spotted!&quot;</span>);</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11">    }</a></code></pre></div></li>
+</ul>
+<h2 id="cross-product">cross-product <a name="cross-product"></a></h2>
+<ul>
+<li><p>mathematically denoted:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb9-1" data-line-number="1">    A ^ B = C</a></code></pre></div>
+<p>By hand:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb10-1" data-line-number="1">    <span class="dt">var</span> c = <span class="kw">new</span> <span class="fu">Vector3</span>();</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">    c.<span class="fu">x</span> = (a.<span class="fu">y</span> * b.<span class="fu">z</span>) - (a.<span class="fu">z</span> * b.<span class="fu">y</span>);</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">    c.<span class="fu">y</span> = (a.<span class="fu">z</span> * b.<span class="fu">x</span>) - (a.<span class="fu">x</span> * b.<span class="fu">z</span>);</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">    c.<span class="fu">z</span> = (a.<span class="fu">x</span> * b.<span class="fu">y</span>) - (a.<span class="fu">y</span> * b.<span class="fu">x</span>);</a></code></pre></div></li>
+<li>cross product of 2 vectors results in a 3rd vector, which is perpindicular to the 2 others. The result’s magnitude is equal to the magnitudes of the 2 inputs multiplied together, &amp; then multiplied by the SINE of the angle between the 2 inputs.</li>
+<li><code>use LEFT-HAND-RULE</code> - to determine the direction of the result vector (e.g. result equals RING finger - thumb + index finger = known vectors, middle finger = cross product).</li>
+<li><p>examples:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb11-1" data-line-number="1">    <span class="kw">using</span> UnityEngine;</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">    <span class="kw">using</span> System.<span class="fu">Collections</span>;</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">    <span class="kw">public</span> <span class="kw">class</span> ExampleClass:MonoBehaviour</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">    {</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">        Vector3 <span class="fu">GetNormal</span>(Vector3 a, Vector3 b, Vector3 c)</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">        {</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">            Vector3 side1 = b - a;</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">            Vector3 side2 = c - a;</a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">            <span class="kw">return</span> Vector3.<span class="fu">Cross</span>(side1, side2).<span class="fu">normalized</span>;</a>
+<a class="sourceLine" id="cb11-11" data-line-number="11">        }</a>
+<a class="sourceLine" id="cb11-12" data-line-number="12">    }</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb12-1" data-line-number="1">    <span class="co">// Q:</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">    <span class="co">// find the axis upon which to apply torque for a tank turret wishing to fire at a new object.</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">    <span class="co">// A:</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">    <span class="co">// v1 = tank direction</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">    <span class="co">// v2 = direction tank needs to face / turn-to</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">    <span class="co">// cross product would be the VERTICAL AXIS (line of torque) above the tank.</span></a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb13-1" data-line-number="1">    <span class="co">// commonly used in &quot;calculating normals&quot; of a surface plane (the surface normal).</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb14-1" data-line-number="1">    <span class="co">// to find the &quot;area of a parallelogram&quot; (TODO: add note pics here!)</span></a></code></pre></div>
+<figure>
+<img src="_asset/img/30.png" alt="Cross-product" /><figcaption>Cross-product</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/31.png" alt="Cross-product" /><figcaption>Cross-product</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/32.png" alt="Cross-product" /><figcaption>Cross-product</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/33.png" alt="Cross-product" /><figcaption>Cross-product</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/34.png" alt="Cross-product" /><figcaption>Cross-product</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/35.png" alt="Cross-product" /><figcaption>Cross-product</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/37.png" alt="Cross-product" /><figcaption>Cross-product</figcaption>
+</figure></li>
+</ul>
+<h1 id="unity-api">Unity-API <a name="unity-api"></a></h1>
+<ul>
+<li><p><code>vector2</code>:</p>
+<figure>
+<img src="_asset/img/4.png" alt="Unity-API" /><figcaption>Unity-API</figcaption>
+</figure></li>
+<li><p><code>normalized</code> vector:</p>
+<figure>
+<img src="_asset/img/17.png" alt="Unity-API" /><figcaption>Unity-API</figcaption>
+</figure>
+<div class="sourceCode" id="cb15"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb15-1" data-line-number="1">    v1.<span class="fu">Normalized</span></a></code></pre></div></li>
+<li><p><code>distance</code> (finding the distance b/n 2 points in 3d space):</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb16-1" data-line-number="1">    <span class="dt">var</span> dist = Vector3.<span class="fu">Distance</span>(pos1, pos2);</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">    <span class="kw">if</span>(dist &gt; <span class="dv">10</span>) ...</a></code></pre></div></li>
+<li><p><code>magnitude</code>:</p>
+<figure>
+<img src="_asset/img/26.png" alt="Unity-API (magnitude)" /><figcaption>Unity-API (magnitude)</figcaption>
+</figure></li>
+<li><p><code>dot product</code>:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb17-1" data-line-number="1">    Vector3.<span class="fu">Dot</span></a></code></pre></div>
+<figure>
+<img src="_asset/img/16.png" alt="Unity-API (dot-product)" /><figcaption>Unity-API (dot-product)</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/29.png" alt="Unity-API (dot-product)" /><figcaption>Unity-API (dot-product)</figcaption>
+</figure></li>
+<li><p><code>cross-product</code>:</p>
+<figure>
+<img src="_asset/img/36.png" alt="Unity-API (cross-product)" /><figcaption>Unity-API (cross-product)</figcaption>
+</figure>
+<div class="sourceCode" id="cb18"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb18-1" data-line-number="1">    Vector3.<span class="fu">Cross</span>(vA, vB);</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">    <span class="co">// or</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">    <span class="co">// var c = a.Cross(B);</span></a></code></pre></div></li>
+</ul>
+</body>
+</html>

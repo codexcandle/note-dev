@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>xr.hmd.oculus-go</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">xr.hmd.oculus-go</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="./record">record!</a></li>
+<li>building
+<ol type="1">
+<li><a href="#oculus-utilities">oculus utilities</a></li>
+<li><a href="#quality-settings">quality settings</a></li>
+<li><a href="#build-settings">build settings</a></li>
+<li><a href="#player-settings">player settings</a></li>
+<li><a href="#connect">connect</a></li>
+<li><a href="#sideload">sideload</a></li>
+</ol></li>
+<li>debug
+<ol type="1">
+<li><a href="#logcat">logcat</a></li>
+</ol></li>
+<li><a href="#optimize">optimize!</a>
+<ul>
+<li><a href="#gpu-instancing">gpu-instancing</a></li>
+<li><a href="#fixed-foveated-rendering">fixed-foveated rendering</a></li>
+<li><a href="#dynamic-throttling">dynamic-throttling</a></li>
+<li><a href="#72-hertz-mode">72-hertz mode</a></li>
+</ul></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li><code>IMPORTANT!</code> - don’t let lenses:
+<ul>
+<li>get exposed to direct sunlight! (can get burned.)</li>
+<li>get scratched (clean with micro-cloth!)</li>
+</ul></li>
+<li><code>1280 x 1440</code> - per eye (&amp; 3 sub-pixels): <img src="_asset/img/16.png" alt="Overview" /></li>
+<li><code>bluetooth transmitter!</code> - get this to attach to the 3.5mm jack (velcro to top of hmd) to send bluetooth audio to wireless bluetooth headphones; Reportedly near-zero latency! <img src="_asset/img/12.png" alt="Bluetooth Transmitter" /></li>
+<li><code>folder paths</code> - on device: <img src="_asset/img/13.png" alt="Folder paths" /></li>
+<li><p><code>360 vids on youtube</code> - on device, oculus browser? <img src="_asset/img/14.png" alt="360 Vids (youtube)" /></p>
+<p>NOTE: Be sure to maximize <code>QUALITY</code>!</p>
+<figure>
+<img src="_asset/img/15.png" alt="360 Vids (youtube)" /><figcaption>360 Vids (youtube)</figcaption>
+</figure></li>
+<li>3-dof vr headset</li>
+<li>runs apps build with oculus mobile sdk (with unity or unreal integrations)</li>
+<li>comes with orientation-tracked controller</li>
+<li>is binary compatible with gear-vr for most apps. thus, most gear-vr apps will run unmodified on o-go - as is compatible with the same mobile sdk. Note, some very old g-vr apps are still running on pre-1.0 releases of the mobile sdk, &amp; aren’t supported on o-go.</li>
+<li>unlike g-vr, does not - include google-play services, have camera, have hmd touchpad, require osig file for install.</li>
+<li>comes with spatial audio: <img src="_asset/img/3.png" alt="Spatial Audio" /></li>
+<li>has a multi-core cpu.</li>
+<li><p><a href="https://www.oculus.com/go/">more from oculus…</a></p></li>
+</ul>
+<h2 id="building">Building</h2>
+<hr />
+<h3 id="oculus-utilities">1. oculus utilities <a name="oculus-utilities"></a><br />
+</h3>
+<ul>
+<li><p>import oculus utilities package - into unity project:</p>
+<p><a href="https://developer.oculus.com/downloads/package/oculus-utilities-for-unity-5/">Oculus Utilities</a></p></li>
+</ul>
+<h3 id="set-quality-settings">2. set quality settings <a name="quality-settings"></a><br />
+</h3>
+<ul>
+<li><p>edit -&gt; project -&gt; quality:</p>
+<figure>
+<img src="_asset/img/2.png" alt="Quality Settings" /><figcaption>Quality Settings</figcaption>
+</figure></li>
+</ul>
+<h3 id="set-build-settings">3. set build settings <a name="build-settings"></a><br />
+</h3>
+<ul>
+<li>target android - with apk build from unity.</li>
+<li><p>set texture compression - to astc.</p>
+<figure>
+<img src="_asset/img/1.png" alt="Texture Compression" /><figcaption>Texture Compression</figcaption>
+</figure></li>
+</ul>
+<h3 id="set-player-settings">4. set player settings <a name="player-settings"></a><br />
+</h3>
+<ul>
+<li>set <code>android api</code> &gt;= 19 (per oculus requirement)</li>
+<li><p>set <code>Single Pass</code> rendering:</p>
+<figure>
+<img src="_asset/img/4.png" alt="Single-pass Rendering" /><figcaption>Single-pass Rendering</figcaption>
+</figure></li>
+</ul>
+<h3 id="connect-hmd">5. connect hmd <a name="connect"></a><br />
+</h3>
+<ul>
+<li>via usb - connect headset to computer.</li>
+</ul>
+<h3 id="sideload-via-adb">6. sideload (via adb) <a name="sideload"></a><br />
+</h3>
+<ul>
+<li>enable “dev mode” - on hmd to access adb (which in turn requires you create an <code>Organization</code> on oculus developer dashboard).</li>
+</ul>
+<p>is binary compatible with gear-vr for most apps.</p>
+<ul>
+<li><p>open terminal &amp; type:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="bn">    &gt; adb devices</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="bn">    List of devices attached</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="bn">    1KWPH810728146  device</span></a></code></pre></div>
+<p>then to install:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="bn">    adb install -r C:\Users\tyler\_ty\dev\lab\unity\app\codename-spatial\CodenameSpatial\Builds\build.apk</span></a></code></pre></div></li>
+</ul>
+<h2 id="debug">Debug<br />
+</h2>
+<h3 id="logcat-via-adb">logcat (via adb) <a name="logcat"></a><br />
+</h3>
+<ul>
+<li><p>to see a running debug stack trace from your app on the oculus-go:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="bn">    adb logcat -s Unity ActivityManager PackageManager dalvikvm DEBUG</span></a></code></pre></div></li>
+</ul>
+<h2 id="optimize">Optimize! <a name="optimize"></a> </h2>
+<hr />
+<h3 id="gpu-instancing">gpu-instancing<a name="gpu-instancing"></a></h3>
+<ul>
+<li>use <a href="./../../../game-engine/unity/optimize/index.html">gpu-instancing!</a></li>
+</ul>
+<h3 id="fixed-foveated-rendering">fixed-foveated rendering <a name="fixed-foveated-rendering"></a></h3>
+<ul>
+<li>aka FFR.</li>
+<li>a technology that allows the edges of the eye texture to be rendered at a lower resolution than the center. The effect, which is nearly imperceptible, lowers the fidelity of the scene in the viewer’s peripheral vision. Because fewer total pixels need to be shaded, FFR can produce a significant improvement in GPU fill performance.</li>
+<li>using this, many apps can dramatically increase the resolution of the eye texture that they render to on Oculus Go, improving the final image. Complex fragment shaders also benefit from this form of multi-resolution rendering.</li>
+<li><p>not based on eye tracking (unlike some other forms of foveation tech). The high-resolution pixels are “fixed” in the center of the eye texture.</p>
+<figure>
+<img src="_asset/img/5.png" alt="Fixed-Foveated Rendering" /><figcaption>Fixed-Foveated Rendering</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/6.png" alt="Fixed-Foveated Rendering" /><figcaption>Fixed-Foveated Rendering</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/7.png" alt="Fixed-Foveated Rendering" /><figcaption>Fixed-Foveated Rendering</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/8.png" alt="Fixed-Foveated Rendering" /><figcaption>Fixed-Foveated Rendering</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/9.png" alt="Fixed-Foveated Rendering" /><figcaption>Fixed-Foveated Rendering</figcaption>
+</figure></li>
+</ul>
+<h3 id="dynamic-throttling">dynamic-throttling <a name="dynamic-throttling"></a></h3>
+<figure>
+<img src="_asset/img/10.png" alt="Dynamic-throttling" /><figcaption>Dynamic-throttling</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/11.png" alt="Dynamic-throttling" /><figcaption>Dynamic-throttling</figcaption>
+</figure>
+<h3 id="hertz-mode">72-hertz mode <a name="72-hertz-mode"></a></h3>
+<ul>
+<li><p>running at 72 Hz is optional.</p></li>
+<li><p>you can switch modes seamlessly at run time.</p></li>
+<li><p>another new feature introduced by O-Go is 72 Hz Mode. With this mode O-Go apps can choose to target 72 frames per second instead of the normal 60 frames per second. This mode is strictly optional, &amp; in some cases prohibitively expensive, but can be a significant quality improvement for apps that choose to support it.</p></li>
+<li><p>the purpose of this mode? - to improve the visual quality of the display. Typically,high frame rates for VR devices are associated with lowering latency, particularly when it comes to positional tracking. O-Go is not a positionally-tracked device, and though lower head tracking latency is comfortable, it’s not the primary reason to run at 72 Hz. The Oculus Go display has been tuned to be comfortable at 60 Hz. 72 Hz Mode allows the display to become brighter without causing a perceptible flicker, which improves the visual quality of the screen. In particular, this mode makes the display brighter, and causes colors to pop and appear warmer.</p></li>
+<li><p>optimizing for 72 hertz - any app that can accommodate 72 frames per second rendering should use 72 Hz Mode when running on O-Go. This means rendering at least 2.8 ms faster than usual, which is not always possible. Combined with Dynamic Throttling and Fixed Foveated Rendering, some apps may be able to simply toggle this mode on and run at a higher frame rate. Others may need to do significant optimization to achieve this level of performance. Again, running at 72 Hz is optional.</p></li>
+<li><p>regarding video - apps should carefully consider 72 Hz Mode. An app that renders video at 30 or 60 frames per second will look better at 60 fps than at 72. However, 24 Hz video looks a lot better when running in 72 Hz Mode because the display &amp; the video frame rates can be synchronized to avoid tears (24 is an even divisor of 72).</p></li>
+</ul>
+</body>
+</html>

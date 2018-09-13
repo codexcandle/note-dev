@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>draw-call-batching</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">draw-call-batching</h1>
+</header>
+<h2 id="q">Q</h2>
+<p>What is <code>Draw Call Batching</code> &amp; how does it affect game performance?</p>
+<h2 id="a">A</h2>
+<p>To draw a gameObject on screen, the engine has to issue a draw call to the graphics API (e.g. OpenGL, Direct3D).</p>
+<p>These draw calls are often resource-intesive - with the graphics API doing sigficant work for every draw call (causing performance overhead on the CPU side).</p>
+<p>This is mostly caused by state changes done between the draw calls</u> (e.g. switching to a different material), which causes resouce-intensive validtaion &amp; translation steps in the graphics driver.</p>
+<p>Unity uses 2 (batching) techniques to address this:</p>
+<ol type="1">
+<li>dynamic
+<ul>
+<li>automatically done by Unity! (as Unity can automatically batch moving GameObjects into the same draw call if they share the same Material - &amp; fulfill certain other criteria.)</li>
+<li>however, incurs extra CPU overhead as the engine must convert the vertices into world space (?)</li>
+</ul></li>
+<li>static
+<ul>
+<li>manually implemented.</li>
+<li>allows the engine to reduce draw calls for geometry of any size provided it:
+<ol type="1">
+<li>shares the same material</li>
+<li>does NOT move</li>
+</ol></li>
+<li>however, incurs a larger memory foot print.</li>
+</ul></li>
+</ol>
+<h6 id="further">FURTHER</h6>
+<p><a href="./../../engine/unity/optimize/dc-batch/">draw call batching</a></p>
+</body>
+</html>

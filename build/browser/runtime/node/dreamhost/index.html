@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>browser.runtime.node.dreamhost</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">browser.runtime.node.dreamhost</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#setup">setup</a>
+<ol type="1">
+<li><a href="#passenger">passenger</a></li>
+<li><a href="#standard-install">standarrd install</a></li>
+<li><a href="#custom-install">custom install</a></li>
+<li><a href="#test-install">test install</a></li>
+</ol></li>
+<li><a href="#packages">packages</a>
+<ol type="1">
+<li><a href="#local-package-installation">local package installation</a></li>
+<li><a href="#testing-locally">testing locally installed packages</a></li>
+<li><a href="#package-json">creating packages.json file for locally installed packages</a></li>
+<li><a href="#global-package">global package installation</a></li>
+</ol></li>
+<li><a href="#trouble-shoot">trouble-shoot</a></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li>your domain must run on a private server (vps) or dedicated server running ubuntu in order to enable node.js.</li>
+<li><a href="https://www.dreamhost.com/">more @ dreamhost</a></li>
+</ul>
+<h2 id="setup">Setup <a name="setup"></a></h2>
+<hr />
+<h3 id="passenger">passenger <a name="passenger"></a></h3>
+<ul>
+<li><p>using <a href="https://github.com/phusion/passenger/wiki/Phusion-Passenger%3A-Node.js-tutorial#understanding_passenger">passenger</a> - you can enable node with the dreamhost panel. (You can do this without the panel - as you can create a node app &amp; deploy it manually. However, this can be a lot of work. Thus, deploying your Node app with Passenger is much easier &amp; recommended. If you chose to not use Passenger, you would need to find a way to manually deploy your app.)</p></li>
+<li><p>when you enable the checkbox feature in the panel, Passenger knows your website is set up to run a Node.js app, &amp; automatically deploys it. For example, if you have the following setup:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="bn">    app directory: example.com/app.js</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="bn">    web directory: example.com/public</span></a></code></pre></div>
+<p>Passenger will automatically load the app.js file in the app directory. So if you visit example.com, it would load the app.js file.</p></li>
+<li><p>Passenger runs your Node.js files using the system version at:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="bn">    [server]$ which node</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="bn">    /usr/bin/node</span></a></code></pre></div>
+<p>If you installed a custom version, Node.js automatically writes lines to your user’s .bashrc file. Those lines change the version to your locally installed version. For example:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="bn">    [server]$ which node</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="bn">    /home/exampleuser/.nvm/versions/node/v6.10.0/bin/node</span></a></code></pre></div></li>
+</ul>
+<h3 id="standard-install">standard install <a name="standard-install"></a></h3>
+<ol type="1">
+<li><p>navigate to:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="bn">    Panel &gt; Domains &gt; Manage Domains</span></a></code></pre></div></li>
+<li><p>click edit (to the right of your domain under the ‘web hosting’ column.</p>
+<figure>
+<img src="./../../../../../www/_asset/img/lang/js/runtime/node/1.png" alt="dreamhost" /><figcaption>dreamhost</figcaption>
+</figure></li>
+<li><p>scroll down to ‘web options’, &amp; check ‘passenger (ruby/nodejs/python apps only):’. Your ‘Web directory’ field automatically adds a /public folder to the end.</p></li>
+<li><p>check node-js in the new option that appears to allow Node.js to use Passenger on your domain.</p>
+<figure>
+<img src="./../../../../../www/_asset/img/lang/js/runtime/node/2.png" alt="dreamhost" /><figcaption>dreamhost</figcaption>
+</figure></li>
+</ol>
+<h3 id="custom-install-of-node-nvm">custom install (of node &amp; nvm)<a name="custom-install"></a></h3>
+<ol type="1">
+<li><p>Check the version of Passenger running on your private server. The server must run version 4.0.37 or later.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb5-1" data-line-number="1">[server]$ dpkg -l | grep passenger</a></code></pre></div></li>
+<li>Visit <a href="https://github.com/creationix/nvm">NVM</a> site to see what version of NVM to install.</li>
+<li><p>Make sure you’re in your user’s directory.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="bn">    [server]$ cd ~</span></a></code></pre></div></li>
+<li><p>Run the following command to download NVM. Change the version number as needed:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="bn">    [server]$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash</span></a></code></pre></div></li>
+</ol>
+<ul>
+<li>this command installs NVM into a new directory under your user named /.nvm</li>
+<li><p>this command also adds the following to your .bashrc file:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="bn">    export NVM_DIR=&quot;$HOME/.nvm&quot;</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="bn">    [ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot; # This loads nvm</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="bn">    [ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \. &quot;$NVM_DIR/bash_completion&quot; # This loads nvm bash_completion</span></a></code></pre></div></li>
+</ul>
+<ol start="5" type="1">
+<li><p>View the creating &amp; editing a file via SSH article for instructions on how to edit your existing .bash_profile. Here, add the following:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="bn">    source ~/.bashrc</span></a></code></pre></div></li>
+<li><p>Run the following command to allow your shell to use this new version of nvm:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="bn">    [server]$ . ~/.bash_profile</span></a></code></pre></div></li>
+<li><p>To test if you can now use NVM, run the following which should respond with the version you have installed:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="bn">    [server]$ nvm --version</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="bn">    0.33.0</span></a></code></pre></div></li>
+<li><p>Check which versions of Node.js are available:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="bn">    [server]$ nvm ls-remote</span></a></code></pre></div></li>
+<li><p>Install any version of Node.js you wish:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="bn">    [server]$ nvm install 6.10.0</span></a></code></pre></div></li>
+<li><p>Check which version of Node.js is running by entering the following:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="bn">    [server]$ node -v</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="bn">    v6.10.0</span></a></code></pre></div>
+<p>Regarding <a href="https://docs.npmjs.com/">NPM</a>, at this point you have NVM and Node.js installed &amp; active. NPM is also installed with Node.js.</p></li>
+<li><p>Check the version:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="bn">    [server]$ npm -v</span></a></code></pre></div></li>
+<li><p>To update npm to the latest version:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="bn">    [server]$ npm install npm@latest -g</span></a></code></pre></div></li>
+<li><p>Check the directory NPM writes to:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="bn">    [server]$ npm config get prefix</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="bn">    /home/exampleuser/.nvm/versions/node/v6.10.0</span></a></code></pre></div>
+<p>If you installed NVM as shown above, you’ll see the directory response as the /.nvm folder under your current user.</p></li>
+</ol>
+<h3 id="test-install">test install <a name="test-install"></a></h3>
+<p>Now that you have installed node, to confirm it’s working:</p>
+<ul>
+<li><p>test via simple script:</p>
+<ol type="1">
+<li><p>create a file named <code>HelloWorld.js</code>, &amp; add the following:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="bn">    console.log(&#39;Hello World!&#39;);</span></a></code></pre></div></li>
+<li><p>via terminal, run the script:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="bn">    [server]$ node HelloWorld.js</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="bn">    Hello World!                // should show &quot;Hello World!&quot; in terminal output</span></a></code></pre></div></li>
+</ol></li>
+<li><p>or, test by creating a basic HTTP server to load a site:</p>
+<ol type="1">
+<li><p>create a file in your web directory titled <code>server.js</code>, &amp; add the following code in the file:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="bn">    // this HTTP server will listen on port 8888</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="bn">    var http = require(&quot;http&quot;);</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="bn">    http.createServer(function(request, response) {</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="bn">    response.writeHead(200, {&quot;Content-Type&quot;: &quot;text/plain&quot;});</span></a>
+<a class="sourceLine" id="cb20-6" data-line-number="6"><span class="bn">    response.write(&quot;Hello World&quot;);</span></a>
+<a class="sourceLine" id="cb20-7" data-line-number="7"><span class="bn">    response.end();</span></a>
+<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="bn">    }).listen(8888);</span></a></code></pre></div></li>
+<li><p>start the server by running the following:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="bn">    [server]$ node server.js</span></a></code></pre></div></li>
+<li><p>if you have enabled node.js in the panel, you can just visit your site to see the file functioning. If you have not, visit the page in a browser with port 8888 appended to the end (e.g. <code>http://example.com:8888</code>).</p></li>
+</ol>
+<p>If running correctly, your site will display the text Hello World!.</p></li>
+</ul>
+<h2 id="packages">Packages <a name="packages"></a></h2>
+<hr />
+<h3 id="local-package-installation">local package installation <a name="local-package-installation"></a></h3>
+<ul>
+<li><p>to install a package locally, nav to your site’s app directory (not the /public directory). The command to install a package is:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="bn">    [server]$ npm install &lt;package_name&gt;</span></a></code></pre></div>
+<p>For example, this installs a packages called ‘lodash’.:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="bn">    [server]$ npm install lodash</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="bn">    /home/username/example.com</span></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="bn">    └── lodash@4.17.4</span></a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="bn">    npm WARN enoent ENOENT: no such file or directory, open &#39;/home/username/example.com/package.json&#39;</span></a>
+<a class="sourceLine" id="cb23-6" data-line-number="6"><span class="bn">    npm WARN example.com No description</span></a>
+<a class="sourceLine" id="cb23-7" data-line-number="7"><span class="bn">    npm WARN example.com No repository field.</span></a>
+<a class="sourceLine" id="cb23-8" data-line-number="8"><span class="bn">    npm WARN example.com No README data</span></a>
+<a class="sourceLine" id="cb23-9" data-line-number="9"><span class="bn">    npm WARN example.com No license field.</span></a></code></pre></div>
+<p>This creates a directory in your site’s application directory called <code>/node_modules</code>.</p></li>
+<li><p>you should then check to confirm it was correctly installed. You must be in your site’s app directory where the local /node_modules directory resides:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="bn">    [server]$ ls node_modules</span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="bn">    lodash</span></a></code></pre></div></li>
+</ul>
+<h3 id="testing-locally-installed-packages">testing locally installed packages <a name="testing-locally"></a></h3>
+<ul>
+<li><p>as per an example (from <a href="docs.npmjs.com">npmjs-docs</a>:</p>
+<ol type="1">
+<li><p>create file named index.js:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="bn">    // index.js</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="bn">    var lodash = require(&#39;lodash&#39;);</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="bn">    var output = lodash.without([1, 2, 3], 1);</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5"><span class="bn">    console.log(output);</span></a></code></pre></div></li>
+<li><p>run the file using:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="bn">    node index.js       // should output [2, 3]</span></a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="bn">    [server]$ node index.js</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="bn">    [ 2, 3 ]</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="bn">    // if module wasn&#39;t correctly installed, an error will occur.</span></a></code></pre></div></li>
+</ol></li>
+</ul>
+<h3 id="creating-a-packages.json-file-for-locally-installed-packages">creating a packages.json file for locally installed packages <a name="package-json"></a></h3>
+<ul>
+<li><p>it’s a good idea to create a local packages.json file in your site’s app directory where the <code>/node_modules</code> directory resides (as this package.json file helps to manage your locally installed packages).</p></li>
+<li><p>to be clear, this package.json file is different than the package.json file within any locally installed package. For example:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="bn">    Local site package.json file location: /example.com/package.json</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="bn">    Locally installed package package.json file: /example.com/node_modules/&lt;module_name&gt;/package.json</span></a></code></pre></div></li>
+</ul>
+<h3 id="global-package-installation">global package installation <a name="global-package"></a></h3>
+<ul>
+<li><p>use the -g flag to install a package globally:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="bn">    [server]$ npm install -g &lt;package_name&gt;</span></a></code></pre></div></li>
+<li><p>for example, this installs a packages called ‘jshint’:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="bn">    [server]$ npm install -g jshint</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="bn">    /home/username/.nvm/versions/node/v6.10.0/bin/jshint -&gt; /home/username/.nvm/versions/node/v6.10.0/lib/node_modules/jshint/bin/jshint</span></a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="bn">    /home/username/.nvm/versions/node/v6.10.0/lib</span></a>
+<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="bn">    └─┬ jshint@2.9.4</span></a>
+<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="bn">    ├─┬ cli@1.0.1</span></a>
+<a class="sourceLine" id="cb30-6" data-line-number="6"><span class="bn">    │ └─┬ glob@7.1.1</span></a>
+<a class="sourceLine" id="cb30-7" data-line-number="7"><span class="bn">    │   ├── fs.realpath@1.0.0</span></a>
+<a class="sourceLine" id="cb30-8" data-line-number="8"><span class="bn">    │   ├─┬ inflight@1.0.6</span></a>
+<a class="sourceLine" id="cb30-9" data-line-number="9"><span class="bn">    │   │ └── wrappy@1.0.2</span></a>
+<a class="sourceLine" id="cb30-10" data-line-number="10"><span class="bn">    │   ├── inherits@2.0.3</span></a>
+<a class="sourceLine" id="cb30-11" data-line-number="11"><span class="bn">    │   ├── once@1.4.0</span></a>
+<a class="sourceLine" id="cb30-12" data-line-number="12"><span class="bn">    │   └── path-is-absolute@1.0.1</span></a>
+<a class="sourceLine" id="cb30-13" data-line-number="13"><span class="bn">    ├─┬ console-browserify@1.1.0</span></a>
+<a class="sourceLine" id="cb30-14" data-line-number="14"><span class="bn">    │ └── date-now@0.1.4</span></a>
+<a class="sourceLine" id="cb30-15" data-line-number="15"><span class="bn">    ├── exit@0.1.2</span></a>
+<a class="sourceLine" id="cb30-16" data-line-number="16"><span class="bn">    ├─┬ htmlparser2@3.8.3</span></a>
+<a class="sourceLine" id="cb30-17" data-line-number="17"><span class="bn">    │ ├── domelementtype@1.3.0</span></a>
+<a class="sourceLine" id="cb30-18" data-line-number="18"><span class="bn">    │ ├── domhandler@2.3.0</span></a>
+<a class="sourceLine" id="cb30-19" data-line-number="19"><span class="bn">    │ ├─┬ domutils@1.5.1</span></a>
+<a class="sourceLine" id="cb30-20" data-line-number="20"><span class="bn">    │ │ └─┬ dom-serializer@0.1.0</span></a>
+<a class="sourceLine" id="cb30-21" data-line-number="21"><span class="bn">    │ │   ├── domelementtype@1.1.3</span></a>
+<a class="sourceLine" id="cb30-22" data-line-number="22"><span class="bn">    │ │   └── entities@1.1.1</span></a>
+<a class="sourceLine" id="cb30-23" data-line-number="23"><span class="bn">    │ ├── entities@1.0.0</span></a>
+<a class="sourceLine" id="cb30-24" data-line-number="24"><span class="bn">    │ └─┬ readable-stream@1.1.14</span></a>
+<a class="sourceLine" id="cb30-25" data-line-number="25"><span class="bn">    │   ├── core-util-is@1.0.2</span></a>
+<a class="sourceLine" id="cb30-26" data-line-number="26"><span class="bn">    │   ├── isarray@0.0.1</span></a>
+<a class="sourceLine" id="cb30-27" data-line-number="27"><span class="bn">    │   └── string_decoder@0.10.31</span></a>
+<a class="sourceLine" id="cb30-28" data-line-number="28"><span class="bn">    ├── lodash@3.7.0</span></a>
+<a class="sourceLine" id="cb30-29" data-line-number="29"><span class="bn">    ├─┬ minimatch@3.0.3</span></a>
+<a class="sourceLine" id="cb30-30" data-line-number="30"><span class="bn">    │ └─┬ brace-expansion@1.1.6</span></a>
+<a class="sourceLine" id="cb30-31" data-line-number="31"><span class="bn">    │   ├── balanced-match@0.4.2</span></a>
+<a class="sourceLine" id="cb30-32" data-line-number="32"><span class="bn">    │   └── concat-map@0.0.1</span></a>
+<a class="sourceLine" id="cb30-33" data-line-number="33"><span class="bn">    ├── shelljs@0.3.0</span></a>
+<a class="sourceLine" id="cb30-34" data-line-number="34"><span class="bn">    └── strip-json-comments@1.0.4</span></a></code></pre></div></li>
+<li><p>global modules are installed under your user in the following directory:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="bn">    /home/username/.nvm/versions/node/v6.10.0/lib/node_modules</span></a></code></pre></div></li>
+<li><p>you can confirm which packages are installed globally by running the following:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="bn">    [server]$ npm list -g --depth=0</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="bn">    /home/username/.nvm/versions/node/v6.10.0/lib</span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="bn">    ├── jshint@2.9.4</span></a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="bn">    └── npm@4.4.1</span></a></code></pre></div></li>
+</ul>
+<h2 id="trouble-shoot">Trouble-shoot <a name="trouble-shoot"></a></h2>
+<hr />
+<ul>
+<li><blockquote>
+<p>Passenger is not using your custom version of Node.js</p>
+</blockquote>
+<p>If you find the custom version you installed is not being used:</p>
+<ol type="1">
+<li><p>Add the following code to an .htaccess file in your project’s directory:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="bn">    PassengerNodejs /home/username/.nvm/versions/node/v6.0.0/bin/node</span></a></code></pre></div>
+<p>(-make sure to change the username and version to the version you have installed!)</p></li>
+<li><p>reload Passenger by running the following command in the app’s directory:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="bn">    [server]$ mkdir tmp &amp;&amp; touch restart.txt</span></a></code></pre></div>
+<p>In the future, you just need to touch the restart.txt file to restart the application.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="bn">    [server]$ touch tmp/restart.txt</span></a></code></pre></div>
+<p><a href="https://www.phusionpassenger.com/library/config/apache/reference/">more info…</a></p></li>
+</ol></li>
+</ul>
+</body>
+</html>

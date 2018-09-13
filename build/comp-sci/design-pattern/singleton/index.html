@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>comp-sci.design-pattern.singleton</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">comp-sci.design-pattern.singleton</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#example">example</a></li>
+<li><a href="#tips">tips</a></li>
+<li><a href="#cons">cons</a></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li>ensures only one instance of an object exists throughout app’s lifetime.</li>
+<li>use for things that don’t need to be copied multiple times in a project (e.g. <code>GameManager</code>).</li>
+<li>there are several ways to implement singletons.</li>
+</ul>
+<h2 id="ex">EX <a name="example"></a><br />
+</h2>
+<hr />
+<ul>
+<li><p>basic - here is the simplest implementation:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1">      <span class="kw">public</span> <span class="kw">class</span> SingletonController:MonoBehaviour</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">      {</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">          <span class="kw">public</span> <span class="kw">static</span> SingleController instance;</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">          <span class="kw">private</span> <span class="dt">void</span> <span class="fu">Awake</span>()</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">          {</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">              <span class="kw">if</span>(instance != <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">              {</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">                  <span class="fu">Destroy</span>(gameObject);</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">              }</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">              <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">              {</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">                  Instance = <span class="kw">this</span>;</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">              }</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">          }</a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">      }</a></code></pre></div>
+<p>However, there are a few issues:</p>
+<ol type="1">
+<li>not persistent across scenes.</li>
+<li>all executeable code must be attached to gameObject in hierarchy</li>
+<li>it’s not recommended to call SingletonController.Instance in any Awake() method - since you don’t know the order that <code>Awake</code> will be executed through all scripts, and can end up with a <code>Null</code> reference exception.</li>
+<li>boilerplate code - is introduced when you want another singleton controller (e.g. AudioController) and have to copy the same code to this new class (and do minor changes to make it work!)</li>
+</ol></li>
+<li><p>fix to issue #1:</p>
+<p>Just add <code>DontDestroyOnLoad(gameObject)</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1">    <span class="kw">public</span> <span class="kw">class</span> SingleController:MonoBehaviour</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">    {</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">        <span class="kw">public</span> <span class="kw">static</span> SingleController instance;</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">Awake</span>()</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">        {</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">            <span class="kw">if</span>(instance != <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">            {</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">                <span class="fu">Destroy</span>(gameObject);</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">            }</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">            <span class="kw">else</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">            {</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">                Instance = <span class="kw">this</span>;</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">                <span class="fu">DontDestroyOnLoad</span>(gameObject);</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">            }</a>
+<a class="sourceLine" id="cb2-16" data-line-number="16">        }</a>
+<a class="sourceLine" id="cb2-17" data-line-number="17">    }</a></code></pre></div></li>
+<li><p>fix to issues #2 &amp; #3:</p>
+<p>“Lazily” instantiate (create only when needed):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1">    <span class="kw">public</span> <span class="kw">class</span> SingleController:MonoBehaviour</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">    {</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">        <span class="kw">public</span> <span class="kw">static</span> SingleController instance = <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">        <span class="kw">public</span> <span class="kw">static</span> SingletonController instance</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">        {</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">            get</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">            {</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">                <span class="kw">if</span>(instance == <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">                {</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">                    instance = FindObjectOftype&lt;SimpleSingleton&gt;();</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">                    <span class="kw">if</span>(instance == <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">                    {</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">                        GameObject go = <span class="kw">new</span> <span class="fu">GameObject</span>();</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">                        go.<span class="fu">name</span> = <span class="st">&quot;SingletonController&quot;</span>;</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">                        instance = go.<span class="fu">AddComponent</span>&lt;SingletonController&gt;();</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">                        <span class="fu">DontDestroyOnLoad</span>(go);</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">                    }</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">                }</a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">                <span class="kw">return</span> instance;</a>
+<a class="sourceLine" id="cb3-21" data-line-number="21">            }</a>
+<a class="sourceLine" id="cb3-22" data-line-number="22">        }</a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24">        <span class="kw">private</span> <span class="dt">void</span> <span class="fu">Awake</span>()</a>
+<a class="sourceLine" id="cb3-25" data-line-number="25">        {</a>
+<a class="sourceLine" id="cb3-26" data-line-number="26">            <span class="kw">if</span>(instance != <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb3-27" data-line-number="27">            {</a>
+<a class="sourceLine" id="cb3-28" data-line-number="28">                instance = <span class="kw">this</span>;</a>
+<a class="sourceLine" id="cb3-29" data-line-number="29">                <span class="fu">DontDestroyOnLoad</span>(<span class="kw">this</span>.<span class="fu">gameObject</span>);</a>
+<a class="sourceLine" id="cb3-30" data-line-number="30">            }</a>
+<a class="sourceLine" id="cb3-31" data-line-number="31">            <span class="kw">else</span></a>
+<a class="sourceLine" id="cb3-32" data-line-number="32">            {</a>
+<a class="sourceLine" id="cb3-33" data-line-number="33">                <span class="fu">Destroy</span>(gameObject);</a>
+<a class="sourceLine" id="cb3-34" data-line-number="34">            }</a>
+<a class="sourceLine" id="cb3-35" data-line-number="35">        }</a>
+<a class="sourceLine" id="cb3-36" data-line-number="36">    }</a></code></pre></div>
+<p>First, this searches for an instnace of SingleController in the scene, and if this component isn’t found, a GameObject is created &amp; a SingletonController component is atached to it. Thus, it’s not necessary for this controller to exist in the scene before-hand, &amp; any extra copies it finds will also be destroyed. Also, since lazily instantiating the singleton, you don’t have to worry about the null ref error.</p></li>
+<li><p>fix to #4:</p>
+<p>Use generics to eliminate boilerplate:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1">    <span class="kw">public</span> <span class="kw">class</span> GenericSingletonClass&lt;T&gt;:MonoBehaviour where T:Component</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">    {</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">        <span class="kw">private</span> <span class="kw">static</span> T instance;</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">        <span class="kw">public</span> <span class="kw">static</span> T Instance</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">        {</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">            get</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">            {</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">                <span class="kw">if</span>(instance == <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">                {</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">                    instance = FindObjectOfType&lt;T&gt;();</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">                    <span class="kw">if</span>(instance == <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">                    {</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">                        GameObject obj = <span class="kw">new</span> <span class="fu">GameObject</span>();</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">                        obj.<span class="fu">name</span> = <span class="kw">typeof</span>(T).<span class="fu">Name</span>;</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">                        instance = obj.<span class="fu">AddComponent</span>&lt;T&gt;();</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">                    }</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">                }</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">                <span class="kw">return</span> instance;</a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">            }</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">        }</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22">        <span class="kw">public</span> <span class="kw">virtual</span> <span class="dt">void</span> <span class="fu">Awake</span>()</a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">        {</a>
+<a class="sourceLine" id="cb4-24" data-line-number="24">            <span class="kw">if</span>(instance == <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb4-25" data-line-number="25">            {</a>
+<a class="sourceLine" id="cb4-26" data-line-number="26">                instance = <span class="kw">this</span> <span class="kw">as</span> T;</a>
+<a class="sourceLine" id="cb4-27" data-line-number="27">                <span class="fu">DontDestroyOnLoad</span>(<span class="kw">this</span>.<span class="fu">gameObject</span>);</a>
+<a class="sourceLine" id="cb4-28" data-line-number="28">            }</a>
+<a class="sourceLine" id="cb4-29" data-line-number="29">            <span class="kw">else</span></a>
+<a class="sourceLine" id="cb4-30" data-line-number="30">            {</a>
+<a class="sourceLine" id="cb4-31" data-line-number="31">                <span class="fu">Destroy</span>(gameObject);</a>
+<a class="sourceLine" id="cb4-32" data-line-number="32">            }</a>
+<a class="sourceLine" id="cb4-33" data-line-number="33">        }</a>
+<a class="sourceLine" id="cb4-34" data-line-number="34">    }</a></code></pre></div>
+<p>then to use, just inherit from above:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1">    <span class="kw">public</span> <span class="kw">class</span> MyAudioController:GenericSingletonClass&lt;MyAudioController&gt;</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">    {</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">        <span class="co">// ...</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">    }</a></code></pre></div></li>
+</ul>
+<h2 id="tips">Tips <a name="Tips"></a><br />
+</h2>
+<hr />
+<ul>
+<li><p>Have an <code>Awake</code> method already in your child class?</p>
+<figure>
+<img src="_asset/img/1.png" alt="Awake" /><figcaption>Awake</figcaption>
+</figure></li>
+<li><p>attach to a root gameObject if you want scene persistance.</p>
+<figure>
+<img src="_asset/img/2.png" alt="Root Object" /><figcaption>Root Object</figcaption>
+</figure></li>
+</ul>
+<h2 id="cons">Cons <a name="cons"></a><br />
+</h2>
+<hr />
+<ul>
+<li>use static vars instead:</li>
+</ul>
+<blockquote>
+<p>I don’t recommend using the Singleton pattern when you work in a team, as it’s the source of all kinds of code-coupling. Use static variables instead if you have to assure that there is only one instance of the class.</p>
+</blockquote>
+<h3 id="global-dependencies">1. global dependencies</h3>
+<p>Singletons are just a different way to dress a global variable - which is generally considered bad, because: * it’s hard to know who you’ll affect by modifying the global variable. * testing becomes difficult because the tests may depend on the state of the singleton. * depedencies aren’t obvious from examining the api.</p>
+<h3 id="tight-coupling">2. tight coupling</h3>
+<p>Say you program a singleton that’s able to deal with just a mysql database for a services class. Then suddenly your client comes to you asking for a service that also supports a doc-object-model (i.e. mongo). If you had programmed to an interface, this wouldn’t be a problem. However, in your casee, you have to rewrite your class since it was a singleton - with tight coupling to the backend.</p>
+<h3 id="api-disruption">3. api disruption</h3>
+<p>There’s nothing to stop someone form putting some heavy init logic in a singleton. For example, what if you call a constructor on some class (which you would assume to happen really quickly) - could result in a loooooong delay time if there’s a call to a remote server in said init function. This “delay” isn’t explicitly apparent in the api.</p>
+</body>
+</html>

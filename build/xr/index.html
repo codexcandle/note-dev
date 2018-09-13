@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>xr</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">xr</h1>
+</header>
+<ul>
+<li>hmd
+<ul>
+<li><a href="./hmd/go">oculus-go</a></li>
+<li><a href="./hmd/gear">gear-vr</a></li>
+</ul></li>
+</ul>
+<hr />
+<ul>
+<li>view
+<ul>
+<li><a href="./interactivity">interactivity</a></li>
+<li><a href="./ui">ui</a></li>
+</ul></li>
+</ul>
+<hr />
+<ul>
+<li>art
+<ul>
+<li><a href="#lod">lod</a></li>
+<li><a href="#scale">scale</a></li>
+<li><a href="#reticule">reticule</a></li>
+</ul></li>
+</ul>
+<hr />
+<ul>
+<li><a href="#locomotion">locomotion</a></li>
+</ul>
+<hr />
+<ul>
+<li><a href="#haptics">haptics</a></li>
+</ul>
+<hr />
+<ul>
+<li><a href="#time">time</a></li>
+</ul>
+<h2 id="art">Art <a name="art"></a></h2>
+<hr />
+<h3 id="lod">lod <a name="lod"></a></h3>
+<blockquote>
+<p>No normal maps, specular, txture mapping, bump mapping - as they don’t work well in vr.</p>
+</blockquote>
+<figure>
+<img src="./_asset/img/12.png" alt="LOD" /><figcaption>LOD</figcaption>
+</figure>
+<h3 id="scale">scale <a name="scale"></a></h3>
+<blockquote>
+<p>a water-bottle at arm’s length…</p>
+</blockquote>
+<figure>
+<img src="./_asset/img/13.png" alt="scale" /><figcaption>scale</figcaption>
+</figure>
+<h3 id="reticule-hands">reticule (hands) <a name="reticule"></a></h3>
+<figure>
+<img src="./_asset/img/18.png" alt="Reticule Hands" /><figcaption>Reticule Hands</figcaption>
+</figure>
+<h2 id="locomotion">Locomotion <a name="locomotion"></a></h2>
+<hr />
+<ul>
+<li>teleport like myst:</li>
+</ul>
+<figure>
+<img src="./_asset/img/15.png" alt="Locomotion" /><figcaption>Locomotion</figcaption>
+</figure>
+<ul>
+<li><p><code>keep the game running around 90 fps</code> - as special care is needed here because latency or performance jitters of any kind at this frame rate have triggered motion sickness, &amp; once that sickness starts, it doesn’t taper off until they take off the headset.</p></li>
+<li><p><code>beware vection</code> - when another object’s motion gives you the illusion that you’re moving. (Imagine sitting in a train that isn’t moving, and the sight of another train passing on another track gives you the sense that the train you are in is moving.) This, also is to avoid nausea for the player.</p>
+<blockquote>
+<p>Creative director Dan Junger and producer Joel Green at Cloudhead Games just made a big decision to kill vection and artificial acceleration at all costs on The Gallery: Call of the Starseed. “Rotational vection is just terrible,” says Junger. “Before we were on the Vive and using traditional controllers, we tried making a ‘VR comfort mode,’ to reduce what happens when you turn the camera with the right stick.”</p>
+</blockquote></li>
+</ul>
+<h2 id="haptics">Haptics <a name="haptics"></a></h2>
+<hr />
+<figure>
+<img src="./_asset/img/17.png" alt="Haptics" /><figcaption>Haptics</figcaption>
+</figure>
+<h2 id="time">Time <a name="time"></a></h2>
+<hr />
+<ul>
+<li><code>time dialation</code>:</li>
+</ul>
+<figure>
+<img src="./_asset/img/19.png" alt="Time" /><figcaption>Time</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/21.png" alt="Time" /><figcaption>Time</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/22.png" alt="Time" /><figcaption>Time</figcaption>
+</figure>
+<ul>
+<li>session time can be flexible:</li>
+</ul>
+<figure>
+<img src="./_asset/img/20.png" alt="Time" /><figcaption>Time</figcaption>
+</figure>
+</body>
+</html>

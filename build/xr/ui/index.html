@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>xr.ui</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">xr.ui</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#types">types</a>
+<ul>
+<li><a href="#non-diegetic">non-diegetic</a></li>
+<li><a href="#spatial">spatial</a></li>
+<li><a href="#diegetic">diegetic</a></li>
+</ul></li>
+<li><a href="#text">text</a>
+<ul>
+<li><a href="#distance">distance</a></li>
+<li><a href="#anti-aliasing">free anti-aliasing in vr!</a></li>
+<li><a href="#unity-scale-trick">unity-0.01 scale trick!</a></li>
+</ul></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li><code>diegetic &amp; 2-3 meters!</code> - uis should be a part of the world (diegetic), &amp; 2-3 meters from the viewer (recommended min dist = 0.75m). (Oculus discourages the use of traditional HUDs as they can quickly feel like a clunky relic, &amp; generally should be deprecated in favor of more user-friendly options.)</li>
+<li><code>fit inside the middle 1/3rd of the user's viewing area</code> - don’t require the user to swivel their eyes in their sockets. Otherwise, they should be able to examine the ui with head movements.</li>
+<li><code>use caution for ui elements that move or scale with head movements</code> - (el.g. long menu that scrolls or moves as you move your head to read it). Ensure they respond accurately to the user’s movemnts &amp; are easily readable without creating distracting motion or discomfort.</li>
+<li><code>draw cursors at same depth level</code> - as the object it’s targeting.</li>
+<li>more info @ vid -&gt; <a href="./_asset/vid/vr-ui-interaction-for-oculus-rift-&amp;-gear-vr-in-unity.mov">vr-ui-interaction-for-oculus-rift-&amp;-gear-vr-in-unity</a></li>
+</ul>
+<h2 id="types">Types <a name="types"></a></h2>
+<hr />
+<h3 id="non-diegetic">non-diegetic <a name="non-diegetic"></a></h3>
+<ul>
+<li><code>usually doesn’t work in VR</code> - as our eyes are unable to focus on something so close, &amp; Screen Space-Overlay is not supported in Unity VR.</li>
+<li>In non-VR projects, UI is frequently overlaid on top of the screen to show things like health, score, and so on as what we often refer to as a HUD (Heads Up Display). This is known as non-diegetic UI - it doesn’t exist within the world, but makes sense for the player in the context of viewing the game.</li>
+</ul>
+<blockquote>
+<p>This term is also used in film for things like non-diegetic sound - this could be music in a film or TV show. Whereas diegetic sound would be what makes sense to hear based on what you are seeing - character dialogue or sound effects for example.</p>
+</blockquote>
+<ul>
+<li>in Unity, adding HUD style non-diegetic UI is usually accomplished by using <code>Screen Space - Overlay</code> or <code>Screen Space - Camera</code> render modes on a UI Canvas.</li>
+</ul>
+<h3 id="spatial">spatial <a name="spatial"></a></h3>
+<ul>
+<li><p>Instead, we generally need to position our UI within the environment itself using World Space Canvas render mode. This will allow our eyes to focus on the UI.</p>
+<figure>
+<img src="./_asset/img/1.png" alt="Soatial UI" /><figcaption>Soatial UI</figcaption>
+</figure>
+<p>Placement of the UI within the world also needs some consideration. Too close to the user can cause eye strain, and too far away can feel like focussing on the horizon - this might work in an outdoor environment, but not in a small room. You’ll also need to scale the size of the UI accordingly, and perhaps dynamically depending on your needs.</p>
+<p>If possible, it’s best to position your UI at a comfortable reading distance, and scale it accordingly. See the UI in Main Menu for an example of this: It’s positioned a few meters away, and the text and images are large and easy to view.</p>
+<p>If you’re positioning the UI at a certain distance from the user, you may find the UI clipping into other objects. Take a look at the Reticle in the Interaction in VR article for how to modify a shader to draw on top of other objects, or simply use the shader included in the VR Samples. This shader can be used with text if you also need to stop it from clipping.</p>
+<p>Many developers will initially attach the UI to the camera, so that as the player moves around the UI will stay in a fixed position. While this could be useful for a reticle or something small, for larger UI elements this often has the effect of holding a newspaper in front of your face while looking around, and can lead to user discomfort or nausea. Take a look at the UI in Shooter 360 (Target Arena), where the UI will move into view after a short delay (see gif below), allowing the user to look around and become familiar with the environment without a UI element fixed to their field of view, obscuring their vision.</p>
+<figure>
+<img src="./_asset/img/2.png" alt="Soatial UI" /><figcaption>Soatial UI</figcaption>
+</figure>
+<p>While VR provides us with the opportunity to explore immersive 360-degree environments, sometimes you might need to indicate that the user needs to look in a specific direction. In some of our scenes we use arrows within the world to help direct the user’s attention towards a direction. These fade in and out depending on the direction that the user is facing.</p>
+<p>These can be found in the GUIArrows prefab, and are easy to reuse. They work by comparing the angle of the head compared to the desired direction. If the head is outside of a predefined angle (see Show Angle in the GUIArrows component below), then the arrows will fade in. When the user looks back towards the desired direction, they will begin to fade out.</p>
+<figure>
+<img src="./_asset/img/3.png" alt="Spatial UI" /><figcaption>Spatial UI</figcaption>
+</figure></li>
+<li><p>some examples:</p>
+<figure>
+<img src="./_asset/img/5.png" alt="Spatial UI" /><figcaption>Spatial UI</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/6.png" alt="Spatial UI" /><figcaption>Spatial UI</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/7.png" alt="Spatial UI" /><figcaption>Spatial UI</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/8.png" alt="Spatial UI" /><figcaption>Spatial UI</figcaption>
+</figure></li>
+</ul>
+<h3 id="digetic">digetic <a name="diegetic"></a></h3>
+<ul>
+<li><p>elements in the environment itself display information to the user. This could be a working clock on the wall, a TV, computer display, mobile phone, or a holographic display on a futuristic gun.</p></li>
+<li><p>some examples:</p>
+<figure>
+<img src="./_asset/img/9.png" alt="Diegetic UI" /><figcaption>Diegetic UI</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/10.png" alt="Diegetic UI" /><figcaption>Diegetic UI</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/14.png" alt="Diegetic UI" /><figcaption>Diegetic UI</figcaption>
+</figure></li>
+</ul>
+<h2 id="text">Text <a name="text"></a></h2>
+<hr />
+<ul>
+<li><p>As the resolution on DK2 is 1920 x 1080 (960 x 1080 per eye), and the Gear VR is 2560 x 1440 (1280 x 1440 per eye), this can lead to some noticeable pixelation on anything that occupies a few pixels in width or height.</p>
+<p>Of particular note are UI elements; bear in mind how large these will appear on-screen. One approach is to use larger or bold fonts, and designing UI without thin lines that can become pixelated when viewed in VR.</p></li>
+</ul>
+<h3 id="distance">distance <a name="distance"></a></h3>
+<blockquote>
+<p>If text shows up more than 20-30 feet away from the player, it won’t be immediately readable.</p>
+</blockquote>
+<h3 id="anti-aliasing">anti-aliasing <a name="anti-aliasing"></a></h3>
+<ul>
+<li><code>canvas scaler</code> - Use a Canvas Scaler on a Worldspace Canvas to achieve free (from a rendering cost standpoint) anti-aliasing on text in Unity. The UI should have a <code>Reference Pixels Per Unit</code> setting of <code>1</code>, then alter <code>Dynamic Pixels Per Unit</code> until you slightly soften the edges of the text.</li>
+<li><p>below you can see the difference between a setting of <code>3 Dynamic Pixels Per Unit</code> - where the edges look sharp - and an example of the Dynamic Pixels Per Unit being set to <code>1.75</code>, which gives a much softer edge.</p>
+<figure>
+<img src="./_asset/img/11.png" alt="Diegetic UI" /><figcaption>Diegetic UI</figcaption>
+</figure></li>
+</ul>
+<h3 id="unity-0.01-scale-trick">unity-0.01 scale trick! <a name="unity-scale-trick"></a></h3>
+<figure>
+<img src="./_asset/img/17.png" alt="0.01 scale trick!" /><figcaption>0.01 scale trick!</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/18.png" alt="0.01 scale trick!" /><figcaption>0.01 scale trick!</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/19.png" alt="0.01 scale trick!" /><figcaption>0.01 scale trick!</figcaption>
+</figure>
+</body>
+</html>
