@@ -12,7 +12,16 @@ let questionIndex = -1;
 const i = document.getElementById("contentFrame");
 const quizPageNameTF = document.getElementById("quizPageName");
 const submitBtn = document.getElementById("nextBtn");
-const questionFolderPath = "/_quiz/question/";
+
+// set target
+/* 
+TODO - find way to exlude literal mention of "notes" dir below,
+as server was calling an inccorrect url without this literal hack...
+*/
+const IS_LIVE = true;
+const QUESTION_DIR_LOCAL = "/_quiz/question/";
+const QUESTION_DIR_REMOTE = "/notes/_quiz/question/";
+const questionFolderPath = IS_LIVE ? QUESTION_DIR_REMOTE : QUESTION_DIR_LOCAL;
 
 // FUNCTION
 // ----------------------------------------------
@@ -23,7 +32,7 @@ window.addEventListener('load', function()
 
 function init()
 {
-	initQuiz();
+	loadRandomQuestion();
 
 	nextBtn.addEventListener("click", function(e)
 	{
@@ -31,30 +40,12 @@ function init()
 	});
 }
 
-function initQuiz()
-{
-// 	initQuizWindow();
-	loadRandomQuestion();	
-}
-
-/*
-function initQuizWindow()
-{
-	// append
-	document.body.appendChild(i);
-
-	// set
-	i.width = document.body.scrollWidth;
-	i.height = 960;
-}
-*/
-
 function loadRandomQuestion()
 {
 	// init vars
 	var newIndex = getUniqueRandomIndex(questions.length, questionIndex);
 	var question = questions[newIndex];
-	var path = questionFolderPath + question;
+	var path = questionFolderPath + question + "/index.html";
 
 	// set path
 	i.setAttribute("src", path);
@@ -62,9 +53,6 @@ function loadRandomQuestion()
 	// update label
 	// var newName = "> " + question;
 	// quizPageNameTF.innerHTML = newName;
-
-	// debug
-	// alert("*** LOAD-RAND-PAGE existing: " + questionIndex + " suggested: " + newIndex);
 
 	// update index
 	questionIndex = newIndex;
