@@ -19,6 +19,7 @@
 
 * numerology
     * [9](./numerology/9)
+    * [sound shape](./numerology/sound-shape)
 
 ---
 

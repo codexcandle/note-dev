@@ -14,7 +14,7 @@
 // INDEX
 // ----------------------------------------------
 // TODO - make OptString params dynamic!
-"pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
+// "pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
 
 
 // AUDIO
@@ -162,7 +162,8 @@
 // ----------------------------------------------
 // ... 9
 // "pandoc.htmlOptString": "-s -o ../../../www/math/numerology/9/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.numerology.9'"
-
+// ... sound-shape
+"pandoc.htmlOptString": "-s -o ../../../www/math/numerology/sound-shape/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.numerology.sound-shape'"
 
 // VCS
 // ----------------------------------------------
