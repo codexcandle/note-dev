@@ -24,7 +24,7 @@
 // ------------------------------------------ DAW
 // ----------------------------------------------
 // ... ableton
-"pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.ableton'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.ableton'"
 // ----------------------------------------------
 // --------------------------------------- ENGINE
 // ----------------------------------------------
@@ -36,11 +36,17 @@
 // --------------------------------------- M-WARE
 // ----------------------------------------------
 // ... fabric
-// "pandoc.htmlOptString": "-s -o ../../../www/audio/m-ware/fabric/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.middle-ware.fabric'"
-// ... fmod
-// "pandoc.htmlOptString": "-s -o ../../../www/audio/m-ware/fmod/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.middle-ware.fmod'"
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/m-ware/fabric/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.m-ware.fabric'"
 // ... wwise
-// "pandoc.htmlOptString": "-s -o ../../../www/audio/m-ware/wwise/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.middle-ware.wwise'"
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/m-ware/wwise/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.m-ware.wwise'"
+// ----------------------------------------- FMOD
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod'"
+// ... setup
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/setup/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.setup'"
+// ... single-sound
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/sound-single/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.single-sound'"
+// ... multi-sound
+"pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/sound-multi/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.multi-sound'"
 // ----------------------------------------------
 // --------------------------------------- THEORY
 // ----------------------------------------------   

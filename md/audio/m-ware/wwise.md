@@ -1,6 +1,4 @@
 * [overview](#overview)
-* [alternatives](#alternatives)
-    * [comparison](#comparison)
 
 ## Overview <a name="overview"></a>
 

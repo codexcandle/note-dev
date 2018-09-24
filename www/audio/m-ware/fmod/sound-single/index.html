@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>audio.m-ware.fmod.single-sound</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">audio.m-ware.fmod.single-sound</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a>
+<ol type="1">
+<li><a href="#create-event">create audio event</a></li>
+<li><a href="#import-sample">import sample</a></li>
+<li><a href="#demo-sample">demo sample</a></li>
+<li><a href="#loop-sample">loop sample</a></li>
+<li><a href="#randomize-start-point">randomize start point</a></li>
+<li><a href="#assign-to-bank">assign to bank</a></li>
+<li><a href="#build">build</a></li>
+<li><a href="#attach-emitter">attach emmitter</a></li>
+<li><a href="#attach-listener">attach listener</a></li>
+</ol></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<blockquote>
+<p>Q: How do you make a sound in Unity using FMOD?</p>
+</blockquote>
+<blockquote>
+<p>A: Let’s make a looping “torch” sound!</p>
+</blockquote>
+<h2 id="create-audio-event">Create Audio Event <a name="create-event"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/00.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/01.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/02.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<h2 id="import-sample">Import Sample <a name="import-sample"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/03.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/04.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/05.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/06.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/07.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/08.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<h2 id="demo-sample">Demo Sample <a name="demo-sample"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/09.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/10.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/11.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<h2 id="loop-sample">Loop Sample <a name="loop-sample"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/12.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/13.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/14.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<h2 id="randomize-start-point">Randomize Start Point <a name="randomize-start-point"></a></h2>
+<hr />
+<blockquote>
+<p>To use as multiple instances in your game scene - without the issue of audio phasing, ensure a randomized starting postion!</p>
+</blockquote>
+<figure>
+<img src="_asset/img/15.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/16.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/17.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/18.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/19.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/20.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/21.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/22.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<h2 id="assign-to-bank">Assign to Bank <a name="assign-to-bank"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/23.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/24.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<h2 id="build">Build <a name="build"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/25.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/26.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<h2 id="attach-emitter">Attach Emitter <a name="attach-emitter"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/27.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/28.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/29.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/30.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/31.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/32.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/33.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<h2 id="attach-listener">Attach Listener <a name="attach-listener"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/34.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/35.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/36.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/37.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<h6 id="refs">REFS</h6>
+<hr />
+<ul>
+<li><a href="https://www.youtube.com/watch?v=eJEpNmpy7Uo">Audio for Unity 5: Viking Village (2/5) - Basic Sounds</a></li>
+</ul>
+</body>
+</html>
