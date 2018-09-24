@@ -3,9 +3,6 @@
 
 ---
 
-* [procedural](../procedural)
-* [wwise](../wwise)
-
 ## Overview <a name="overview"></a>
 
 ---

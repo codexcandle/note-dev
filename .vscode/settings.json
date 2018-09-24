@@ -19,17 +19,37 @@
 
 // AUDIO
 // ----------------------------------------------
-// "pandoc.htmlOptString": "-s -o ../../www/audio/index.html -t html5 --css=../_asset/css/style.css --metadata title='audio'"   
-// ... spatial
-// "pandoc.htmlOptString": "-s -o ../../www/audio/spatial/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.spatial'"    
-// ... psycho-accoustic
-// "pandoc.htmlOptString": "-s -o ../../www/audio/psycho/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.psycho-accoustic'"
+// "pandoc.htmlOptString": "-s -o ../../www/audio/index.html -t html5 --css=../_asset/css/style.css --metadata title='audio'"
+// ----------------------------------------------
+// ------------------------------------------ DAW
+// ----------------------------------------------
+// ... ableton
+"pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.ableton'"
+// ----------------------------------------------
+// --------------------------------------- ENGINE
+// ----------------------------------------------
+// ... pure-data
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/engine/pd/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.pure-data'"
 // ... unity
-// "pandoc.htmlOptString": "-s -o ../../www/audio/unity/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.unity'"
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/engine/unity/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.unity'"
+// ----------------------------------------------
+// --------------------------------------- M-WARE
+// ----------------------------------------------
+// ... fabric
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/m-ware/fabric/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.middle-ware.fabric'"
+// ... fmod
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/m-ware/fmod/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.middle-ware.fmod'"
 // ... wwise
-// "pandoc.htmlOptString": "-s -o ../../www/audio/wwise/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.wwise'"
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/m-ware/wwise/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.middle-ware.wwise'"
+// ----------------------------------------------
+// --------------------------------------- THEORY
+// ----------------------------------------------   
 // ... procedural
-// "pandoc.htmlOptString": "-s -o ../../www/audio/procedural/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.procedural'"
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/theory/procedural/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.theory.procedural'"
+// ... psycho-accoustic
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/theory/psycho/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.theory.psycho-accoustic'"
+// ... spatial
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/theory/spatial/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.theory.spatial'" 
 
 
 // XR
@@ -163,7 +183,7 @@
 // ... 9
 // "pandoc.htmlOptString": "-s -o ../../../www/math/numerology/9/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.numerology.9'"
 // ... sound-shape
-"pandoc.htmlOptString": "-s -o ../../../www/math/numerology/sound-shape/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.numerology.sound-shape'"
+// "pandoc.htmlOptString": "-s -o ../../../www/math/numerology/sound-shape/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.numerology.sound-shape'"
 
 // VCS
 // ----------------------------------------------
