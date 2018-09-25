@@ -40,19 +40,19 @@
 // ... wwise
 // "pandoc.htmlOptString": "-s -o ../../../www/audio/m-ware/wwise/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.m-ware.wwise'"
 // ----------------------------------------- FMOD
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.m-ware.fmod'"
 // ... setup
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/setup/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.setup'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/setup/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.setup'"
 // ... single-sound
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/sound-single/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.single-sound'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/sound-single/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.single-sound'"
 // ... multi-sound
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/sound-multi/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.multi-sound'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/sound-multi/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.multi-sound'"
 // ... music
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/music/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.music'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/music/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.music'"
 // ... footsteps
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/footsteps/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.footsteps'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/footsteps/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.footsteps'"
 // ... mixing
-"pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/mixing/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.mixing'"
+"pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/mixing/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.mixing'"
 // ----------------------------------------------
 // --------------------------------------- THEORY
 // ----------------------------------------------   

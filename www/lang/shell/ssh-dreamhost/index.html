@@ -85,191 +85,176 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header>
 <h1 class="title">lang.shell.ssh-dreamhost</h1>
 </header>
-<ol type="1">
+<ul>
 <li><a href="#overview">overview</a></li>
-<li><a href="#setup">setup</a>
-<ol type="1">
-<li><a href="#enable">enable shell access</a>
-<ol start="2" type="1">
-<li><a href="#locate-hostname">locate hostname</a></li>
-</ol></li>
-</ol></li>
-<li>login
-<ol type="1">
-<li><a href="#simple">simple</a></li>
-<li><a href="#passwordless">advanced (passwordless)</a>
-<ol type="1">
-<li><a href="#passwordless-osx">osx</a></li>
-<li><a href="#passwordless-pc">pc</a></li>
-</ol></li>
-</ol></li>
-<li><a href="#local-config">local config (osx)</a></li>
-<li><a href="#invisible">invisible remote access (osx)</a></li>
-<li><a href="#examples">examples</a></li>
-</ol>
+<li><a href="#setup">setup</a></li>
+<li><a href="#login">login</a></li>
+<li><a href="#tricks">tricks</a>
+<ul>
+<li><a href="#profile-config">profile config!</a></li>
+<li><a href="#invisible">invisible remote access!</a></li>
+<li><a href="#command-list">post-login command list!</a></li>
+<li><a href="#multiple-machines">multiple machines!</a></li>
+</ul></li>
+</ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
 <ul>
-<li><p>aka secure shell - is most often used as a command line alternative to ftp.</p>
-<p>(with ftp, you use a client to log into your server. With SSH, you use a terminal (or shell) &amp; type in commands to access your server.)</p></li>
-<li><p>all ssh traffic travels over a secured connection, rather than plain text. Because of this, the connection is encrypted and secure.</p></li>
-</ul>
-<blockquote>
-<p>DreamHost currently uses OpenSSH software on the server end.</p>
-</blockquote>
-<ul>
-<li><p>ssh allows you to take advantage of many tools which are not available with an FTP client: - wget - curl - traceroute - rsync - top - (other tools)</p></li>
-<li><p><a href="https://en.wikipedia.org/wiki/Secure_Shell">more on wikipedia…</a></p></li>
+<li><p><code>ssh</code> - aka secure shell - is most often used as a command line alternative to ftp.</p>
+<p>With FTP, you use a client to log into your server. With SSH, you use a terminal (or shell) &amp; type in commands to access your server.</p>
+<p>All ssh traffic travels over a secured connection, rather than plain text. Because of this, the connection is encrypted &amp; secure.</p>
+<p>SSH allows you to take advantage of many tools which aren’t available with an FTP client (e.g. wget, curl, traceroute, rsync).</p></li>
+<li><p>DreamHost uses OpenSSH.</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Secure_Shell">more @ wikipedia</a></p></li>
 </ul>
 <h2 id="setup">Setup <a name="setup"></a></h2>
 <hr />
-<h3 id="enable-shell-access">enable shell access <a name="enable"></a><br />
-</h3>
-<ul>
-<li><a href="https://help.dreamhost.com/hc/en-us/articles/216385837-Enabling-Shell-access">enable shell acess for your user</a></li>
-</ul>
-<h3 id="locate-hostname">locate hostname <a name="locate-hostname"></a><br />
-</h3>
-<p>some options:</p>
-<ul>
-<li><p>example.com - can use this if you’re logging into a specific website. Just change <code>example.com</code> to your actual domain name.</p></li>
-<li><p>server.dreamhost.com - ‘server’ is the name of your Shared server</p></li>
-<li><p>ps123456.dreamhostps.com - ‘ps123456’ is the name of your VPS server</p></li>
-<li><p>ds123456.dreamservers.com ‘ds123456’ is the name of your Dedicated server</p></li>
-<li><p>dp-ab12cd34ef.dreamhostps.com ‘dp-ab12cd34ef’ is the name of your DreamPress instance</p></li>
-<li><p><a href="https://help.dreamhost.com/hc/en-us/articles/115000675027-FTP-overview-and-credentials#Finding_your_FTP_server_hostname">more info…</a></p></li>
-</ul>
+<ol type="1">
+<li><p><a href="https://help.dreamhost.com/hc/en-us/articles/216385837-Enabling-Shell-access">enable shell acess for your user</a></p></li>
+<li><p><a href="https://help.dreamhost.com/hc/en-us/articles/115000675027-FTP-overview-and-credentials#Finding_your_FTP_server_hostname">locate host-name</a></p></li>
+</ol>
 <h2 id="login">Login <a name="login"></a><br />
 </h2>
 <hr />
-<h3 id="simple">simple <a name="simple"></a><br />
-</h3>
 <ul>
-<li><p>run this in terminal:</p>
+<li><p><code>simple</code> method</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="bn">    [server]$ ssh username@server.dreamhost.com</span></a></code></pre></div>
 <p>OR</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="bn">    [server]$ ssh username@example.com</span></a></code></pre></div></li>
+<li><p><code>advanced</code> (passwordless)</p></li>
 </ul>
-<h3 id="advanced-passwordless">advanced (passwordless) <a name="passwordless"></a><br />
-</h3>
-<p>Once you set up a shell user, you must enter your password each time when logging into the server. To avoid this, you can set up passwordless Login. This way, you’ll be able to automatically log in each time without needing to enter your password.</p>
-<h4 id="osx">osx <a name="passwordless-osx"></a><br />
-</h4>
-<ol type="1">
-<li><p>Generate an RSA private key using ssh-keygen (unless you have already created one).</p>
-<p>Open terminal, &amp; run following command under your username:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="bn">    [server]$ ssh-keygen -t rsa</span></a></code></pre></div>
-<p>This creates a public/private keypair of the type (-t) rsa.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="bn">    Generating a public/private rsa key pair.</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="bn">    Enter the file in which you wish to save they key (i.e., /home/username/.ssh/id_rsa).</span></a></code></pre></div>
-<p>Enter passphrase.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="bn">    Just hit &lt;ENTER&gt; here (since you don&#39;t want a password).</span></a></code></pre></div>
-<p>when done, you’ll see:</p></li>
-</ol>
+<h4 id="osx">osx</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb3-1" data-line-number="1">1.</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">Generate an RSA private key using ssh-keygen (unless you have already created one).</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">Open terminal, &amp; run following command under your username:</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">------</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="bn">    [server]$ ssh-keygen -t rsa</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">------</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">This creates a public/private keypair of the type (-t) rsa.</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">------</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="bn">    Generating a public/private rsa key pair.</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="bn">    Enter the file in which you wish to save they key (i.e., /home/username/.ssh/id_rsa).</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">------</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">Enter passphrase.</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">------</a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="bn">    Just hit &lt;ENTER&gt; here (since you don&#39;t want a password).</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21">------</a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23">When done, you&#39;ll see:</a></code></pre></div>
 <figure>
-<img src="_asset/img/lang/shell/ssh/1.png" alt="RSA Fingerprint" /><figcaption>RSA Fingerprint</figcaption>
+<img src="_asset/img/1.png" alt="RSA Fingerprint" /><figcaption>RSA Fingerprint</figcaption>
 </figure>
-<ol start="2" type="1">
-<li>Copy the public key you just created on your home computer to your DreamHost server:</li>
-</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode md"><code class="sourceCode markdown"><a class="sourceLine" id="cb4-1" data-line-number="1">2.</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">Copy the public key you just created on your home computer to your DreamHost server:</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">------</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="bn">    /*</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="bn">        This command assumes you do NOT already have</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="bn">        an /.ssh directory under your DreamHost</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="bn">        username. This command creates the /.ssh</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="bn">        directory for you on your DreamHost server.</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="bn">        If you already have an /.ssh directory on</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="bn">        your web server, just remove the</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="bn">        &#39;mkdir ~/.ssh;&#39; section.</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="bn">    */</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="bn">    [server]$ cat ~/.ssh/id_rsa.pub | ssh username@server.dreamhost.com &quot;mkdir ~/.ssh; cat &gt;&gt; ~/.ssh/authorized_keys&quot;</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">------</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">...which responds with:</a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">------</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="bn">    The authenticity of host &#39;server.dreamhost.com (208.113.136.55)&#39; can&#39;t be established.</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="bn">    RSA key fingerprint is 50:46:95:5f:27:c9:fc:f5:f5:32:d4:3a:e9:cb:4f:9f.</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="bn">    Are you sure you want to continue connecting (yes/no)? yes</span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="bn">    Warning: Permanently added &#39;server.dreamhost.com,208.113.136.55&#39; (RSA) to the list of known hosts.</span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="bn">    username@server.dreamhost.com&#39;s password:</span></a>
+<a class="sourceLine" id="cb4-28" data-line-number="28">------</a>
+<a class="sourceLine" id="cb4-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb4-30" data-line-number="30">Enter your ssh uname/pword when prompted.</a>
+<a class="sourceLine" id="cb4-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32">3.</a>
+<a class="sourceLine" id="cb4-33" data-line-number="33">Confirm SSH connection.</a>
+<a class="sourceLine" id="cb4-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb4-35" data-line-number="35">------</a>
+<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="bn">    // now log in without a password!</span></a>
+<a class="sourceLine" id="cb4-37" data-line-number="37"><span class="bn">    [server]$ ssh username@server.dreamhost.com</span></a>
+<a class="sourceLine" id="cb4-38" data-line-number="38">------</a>
+<a class="sourceLine" id="cb4-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb4-40" data-line-number="40">NOTE: The commands above create a new folder under</a>
+<a class="sourceLine" id="cb4-41" data-line-number="41">your DreamHost user named <span class="bn">`/.ssh`</span> with 700 permissions.</a>
+<a class="sourceLine" id="cb4-42" data-line-number="42">In this folder, is your authorized_keys file which was</a>
+<a class="sourceLine" id="cb4-43" data-line-number="43">just copied from your home computer which has 600 </a>
+<a class="sourceLine" id="cb4-44" data-line-number="44">permissions.</a></code></pre></div>
+<h4 id="pc">pc</h4>
 <ul>
-<li><p>on mac:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="bn">    /*</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="bn">        This command assumes you do NOT already have </span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="bn">        an /.ssh directory under your DreamHost </span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="bn">        username. This command creates the /.ssh </span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="bn">        directory for you on your DreamHost server.</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="bn">        If you already have an /.ssh directory on </span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="bn">        your web server, just remove the </span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="bn">        &#39;mkdir ~/.ssh;&#39; section.</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="bn">    */</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="bn">    [server]$ cat ~/.ssh/id_rsa.pub | ssh username@server.dreamhost.com &quot;mkdir ~/.ssh; cat &gt;&gt; ~/.ssh/authorized_keys&quot;</span></a></code></pre></div>
-<p>which responds with:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="bn">    The authenticity of host &#39;server.dreamhost.com (208.113.136.55)&#39; can&#39;t be established.</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="bn">    RSA key fingerprint is 50:46:95:5f:27:c9:fc:f5:f5:32:d4:3a:e9:cb:4f:9f.</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="bn">    Are you sure you want to continue connecting (yes/no)? yes</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="bn">    Warning: Permanently added &#39;server.dreamhost.com,208.113.136.55&#39; (RSA) to the list of known hosts.</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="bn">    username@server.dreamhost.com&#39;s password:</span></a></code></pre></div>
-<p>Enter your ssh uname/pword when prompted.</p></li>
-</ul>
-<ol start="3" type="1">
-<li>Confirm the SSH connection:</li>
-</ol>
+<li><p>for windows users, use PuTTY (to emulate a shell enviro):</p>
 <ul>
-<li><p>the commands above create a new folder under your DreamHost user named <code>/.ssh</code> with 700 permissions. In this folder, is your authorized_keys file which was just copied from your home computer which has 600 permissions.</p></li>
-<li><p>if everything is configured properly, you should now be able to access your DreamHost account through SSH without a password. Run this command on your home computer where you just created the original keypair.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="bn">    // now log in without a password!</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="bn">    [server]$ ssh username@server.dreamhost.com</span></a></code></pre></div></li>
-</ul>
-<h4 id="pc">pc <a name="passwordless-pc"></a><br />
-</h4>
-<p>If you’re using Windows, you’ll need to download a third-party program named PuTTY to emulate a shell environment. View the following articles for further details:</p>
-<ol type="1">
 <li><p><a href="https://help.dreamhost.com/hc/en-us/articles/215464538-How-do-I-configure-PuTTY-">putty - how to configure</a></p></li>
 <li><p><a href="https://help.dreamhost.com/hc/en-us/articles/215464758-How-do-I-set-up-passwordless-login-in-PuTTY-">putty - how to setup passwordless login</a></p></li>
-</ol>
-<h2 id="local-config-osx">Local Config (OSX) <a name="local-config"></a><br />
+</ul></li>
+</ul>
+<h2 id="tricks">Tricks! <a name="tricks"></a><br />
 </h2>
 <hr />
-<p>By creating a local configuration file for SSH, you can create shortcuts for servers you frequently access, in addition to configuring more advanced options.</p>
+<h3 id="profile-config">profile config <a name="profile-config"></a><br />
+</h3>
+<hr />
+<p>By creating a local config file for SSH, you can create shortcuts for servers you frequently access.</p>
 <ol type="1">
 <li><p>make file:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="bn">    touch /Users/username/.ssh/config</span></a></code></pre></div>
-<p><em>NOTE:</em>/ Your <code>.ssh</code> directory is automatically created when you use the ssh command for the first time. If you have never used ssh before, under this user account - create the directory first using:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="bn">    mkdir /Users/username/.ssh &amp;&amp; chmod 700 /Users/username/.ssh</span></a></code></pre></div></li>
-<li><p>edit file - using vi or any unix text editor:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="bn">    // using vi</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="bn">    vi /Users/username/.ssh/config</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" data-line-number="1">    <span class="fu">touch</span> /Users/username/.ssh/config</a></code></pre></div>
+<p>NOTE: Your <code>.ssh</code> directory is automatically created when you use the ssh command for the first time. If you have never used ssh before, under this user account - create the directory first using:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" data-line-number="1">    <span class="fu">mkdir</span> /Users/username/.ssh <span class="kw">&amp;&amp;</span> <span class="fu">chmod</span> 700 /Users/username/.ssh</a></code></pre></div></li>
+<li><p>edit file (using vi or any unix text editor):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" data-line-number="1">    <span class="ex">//</span> using vi</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">    <span class="ex">vi</span> /Users/username/.ssh/config</a></code></pre></div></li>
 <li><p>include shortcuts:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="bn">    Host dv</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="bn">    HostName example.com</span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="bn">    User domainuser</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" data-line-number="1">    <span class="ex">Host</span> dv</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">    <span class="ex">HostName</span> example.com</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">    <span class="ex">User</span> domainuser</a></code></pre></div>
 <p>or to refresh your connection every 30 seconds for a max of one hour:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="bn">    Host dv</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="bn">    HostName dv.example.com</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="bn">    User ftpuser</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="bn">    ServerAliveInterval 30</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="bn">    ServerAliveCountMax 120</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="bn">    Host grid</span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="bn">    HostName grid.example.com</span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="bn">    User serveradmin@grid.example.com</span></a>
-<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="bn">    ServerAliveInterval 30</span></a>
-<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="bn">    ServerAliveCountMax 120</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" data-line-number="1">    <span class="ex">Host</span> dv</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">    <span class="ex">HostName</span> dv.example.com</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">    <span class="ex">User</span> ftpuser</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">    <span class="ex">ServerAliveInterval</span> 30</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">    <span class="ex">ServerAliveCountMax</span> 120</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">    <span class="ex">Host</span> grid</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">    <span class="ex">HostName</span> grid.example.com</a>
+<a class="sourceLine" id="cb9-11" data-line-number="11">    <span class="ex">User</span> serveradmin@grid.example.com</a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">    <span class="ex">ServerAliveInterval</span> 30</a>
+<a class="sourceLine" id="cb9-13" data-line-number="13">    <span class="ex">ServerAliveCountMax</span> 120</a></code></pre></div></li>
 <li><p>run cmd:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="bn">    ssh dv</span></a></code></pre></div>
-<h2 id="invisible-remote-access-osx">Invisible Remote Access (osx) <a name="invisible"></a><br />
-</h2></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" data-line-number="1">    <span class="fu">ssh</span> dv</a></code></pre></div></li>
 </ol>
+<h3 id="invisible-remote-access-osx">invisible remote access (osx) <a name="invisible"></a><br />
+</h3>
 <hr />
 <ul>
-<li>you can remotely log into a mac ’s command-line environment using ssh, without the currently logged-in grpahical user knowing you’re there! (This allows admins to make changes without alering the user to their work.)</li>
+<li>you can remotely log into a mac ’s command-line environment using ssh, without the currently logged-in “graphical” user knowing you’re there! (This allows admins to make changes without alerting the user to their work.)</li>
 <li>as ssh is a common standard - any os (that supports ssh) can remotely log into your mac!</li>
 </ul>
-<h2 id="ex">EX <a name="example"></a><br />
-</h2>
+<h3 id="post-login-command-list">post-login command list <a name="command-list"></a><br />
+</h3>
 <hr />
-<ul>
-<li><p>copy key to dreamhost server:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="bn">    // replace &quot;user-name@&quot; below with your actual username</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="bn">    cat ~/.ssh/id_rsa.pub | ssh user-name@ps1234.dreamhost.com &quot;mkdir ~/.ssh; cat &gt;&gt;</span></a></code></pre></div></li>
-<li><p>passwordless login:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="bn">    // replace &quot;user-name@&quot; below with your actual username</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="bn">    ssh user-name@ps1234.dreamhost.com</span></a></code></pre></div></li>
-<li><p><code>command list!</code> (login, run commands, log out!):</p></li>
-</ul>
 <figure>
 <img src="_asset/img/2.png" alt="Command list" /><figcaption>Command list</figcaption>
 </figure>
-<ul>
-<li><code>multiple machines</code></li>
-</ul>
+<h3 id="multiple-machines">multiple machines <a name="multiple-machines"></a><br />
+</h3>
+<hr />
 <figure>
 <img src="_asset/img/4.png" alt="Multiple Machines" /><figcaption>Multiple Machines</figcaption>
 </figure>
