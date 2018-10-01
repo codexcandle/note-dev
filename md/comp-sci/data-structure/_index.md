@@ -5,7 +5,6 @@
 * [stack](./stack)
 * [queue](./queue)
 * [tree](./tree)
-* [heap](./heap)
 * [trie](./trie)
 
 ## Overview <a name="overview"></a>

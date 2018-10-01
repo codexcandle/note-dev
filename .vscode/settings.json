@@ -52,7 +52,7 @@
 // ... footsteps
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/footsteps/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.footsteps'"
 // ... mixing
-"pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/mixing/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.mixing'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/m-ware/fmod/mixing/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.m-ware.fmod.mixing'"
 // ----------------------------------------------
 // --------------------------------------- THEORY
 // ----------------------------------------------   
@@ -112,14 +112,33 @@
 // BROWSER
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../www/browser/index.html -t html5 --css=../_asset/css/style.css --metadata title='browser'"
+// ... core-api
+// "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/core-api/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api'"
+// ... primitive
+// "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/primitive/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.primitive'"
 // ------------------------------------ FRAMEWORK
-// ----------------------------------------------
 // ... aframe
-// "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.aframe'"
-// ----------------------------------------- COMP
-// "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/component/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.comp'"
+"pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.aframe'"
+// ----------------------------------- CORE-API
+// ... entity
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/entity/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.entity'"
+// ... scene
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/scene/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.scene'"
+// ... animation
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/animation/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.animation'"
+// ... asset-mgmt
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/asset-mgmt/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.asset-mgmt-sys'"
+// ----------------------------------- COMPONENT
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/component/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.component'"
+// ... native
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/component/native/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.component.native'"
+// ... 3rd-party
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/component/3rd-party/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.component.3rd-party'"
+// ... system
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/system/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.system'"
+// ... mixin
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/mixin/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.mixin'"
 // -------------------------------------- RUNTIME
-// ----------------------------------------------
 // ... node
 // "pandoc.htmlOptString": "-s -o ../../../../www/browser/runtime/node/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.runtime.node'"    
 // ------------------------------------ DREAMHOST
@@ -161,12 +180,12 @@
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/stack/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.stack'"
 // ... queue
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/queue/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.queue'"
-// ... tree
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/tree/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.tree'"
-// ... heap
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/heap/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.heap'"
 // ... trie
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/trie/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.trie'"
+// ----------------------------------------- TREE
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.tree'"
+// ... heap
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/heap/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.data-structure.tree.heap'"
 // ------------------------------- DESIGN-PATTERN
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/design-pattern/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.design-pattern'"

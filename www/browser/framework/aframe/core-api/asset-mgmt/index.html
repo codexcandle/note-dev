@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>browser.framework.aframe.core-api.asset-mgmt-sys</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">browser.framework.aframe.core-api.asset-mgmt-sys</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#cors">cors</a></li>
+<li><a href="#preloading-av">preloading audio + video</a></li>
+<li><a href="#setting-timeout">setting a timeout</a></li>
+<li><a href="#event">events</a></li>
+<li><a href="#load-progress">load progress on invididual assets</a></li>
+<li><a href="#specifying-response-type">specifying response type</a></li>
+<li><a href="#internally">internally</a></li>
+<li><a href="#accessing-file-loader">accessing the file-loader &amp; cache</a></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li><p>aframe has an asset management system that allows us to place our assets in one place and to preload &amp; cache assets for better performance.</p></li>
+<li><p>the scene won’t render or initialize until the browser fetches (or errors out) all the assets or the asset system reaches the timeout.</p></li>
+<li><p>place assets within <code>&lt;a-assets&gt;</code>, &amp; place <code>&lt;a-assets&gt;</code> within <code>&lt;a-scene&gt;</code>, which include:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="op">*</span> <span class="op">&lt;</span>a<span class="op">-</span>asset<span class="op">-</span>item<span class="op">&gt;</span> <span class="op">-</span> Miscellaneous assets such <span class="im">as</span> 3D models and materials</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="op">*</span> <span class="op">&lt;</span>audio<span class="op">&gt;</span> <span class="op">-</span> Sound files</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="op">*</span> <span class="op">&lt;</span>img<span class="op">&gt;</span> <span class="op">-</span> Image textures</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="op">*</span> <span class="op">&lt;</span>video<span class="op">&gt;</span> <span class="op">-</span> Video textures</a></code></pre></div></li>
+<li><p>demo:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">/*</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">The scene and its entities will wait for every asset</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">(up until the timeout) before initializing and rendering.</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">*/</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="op">&lt;</span>a<span class="op">-</span>scene<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="op">&lt;!--</span> Asset management <span class="va">system</span>. <span class="op">--&gt;</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">    <span class="op">&lt;</span>a<span class="op">-</span>assets<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">        <span class="op">&lt;</span>a<span class="op">-</span>asset<span class="op">-</span>item id<span class="op">=</span><span class="st">&quot;horse-obj&quot;</span> src<span class="op">=</span><span class="st">&quot;horse.obj&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>asset<span class="op">-</span>item<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">        <span class="op">&lt;</span>a<span class="op">-</span>asset<span class="op">-</span>item id<span class="op">=</span><span class="st">&quot;horse-mtl&quot;</span> src<span class="op">=</span><span class="st">&quot;horse.mtl&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>asset<span class="op">-</span>item<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">        <span class="op">&lt;</span>a<span class="op">-</span>mixin id<span class="op">=</span><span class="st">&quot;giant&quot;</span> scale<span class="op">=</span><span class="st">&quot;5 5 5&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>mixin<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">        <span class="op">&lt;</span>audio id<span class="op">=</span><span class="st">&quot;neigh&quot;</span> src<span class="op">=</span><span class="st">&quot;neigh.mp3&quot;</span><span class="op">&gt;</span>&lt;/audio<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">        <span class="op">&lt;</span>img id<span class="op">=</span><span class="st">&quot;advertisement&quot;</span> src<span class="op">=</span><span class="st">&quot;ad.png&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">        <span class="op">&lt;</span>video id<span class="op">=</span><span class="st">&quot;kentucky-derby&quot;</span> src<span class="op">=</span><span class="st">&quot;derby.mp4&quot;</span><span class="op">&gt;</span>&lt;/video<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">    &lt;/a<span class="op">-</span>assets<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16">    <span class="op">&lt;!--</span> <span class="va">Scene</span>. <span class="op">--&gt;</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17">    <span class="op">&lt;</span>a<span class="op">-</span>plane src<span class="op">=</span><span class="st">&quot;#advertisement&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>plane<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18">    <span class="op">&lt;</span>a<span class="op">-</span>sound src<span class="op">=</span><span class="st">&quot;#neigh&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>sound<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19">    <span class="op">&lt;</span>a<span class="op">-</span>entity geometry<span class="op">=</span><span class="st">&quot;primitive: plane&quot;</span> material<span class="op">=</span><span class="st">&quot;src: #kentucky-derby&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20">    <span class="op">&lt;</span>a<span class="op">-</span>entity mixin<span class="op">=</span><span class="st">&quot;giant&quot;</span> obj<span class="op">-</span>model<span class="op">=</span><span class="st">&quot;obj: #horse-obj; mtl: #horse-mtl&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-21" data-line-number="21">&lt;/a<span class="op">-</span>scene<span class="op">&gt;</span></a></code></pre></div></li>
+</ul>
+<h2 id="cors-cross-origin-resource-sharing">CORS (cross-origin resource sharing) <a name="cors"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/1.png" alt="cors" /><figcaption>cors</figcaption>
+</figure>
+<h2 id="preloading-audio-video">Preloading Audio + Video <a name="preloading-av"></a></h2>
+<hr />
+<ul>
+<li><p>audio &amp; video assets will only block the scene if we set autoplay or if we set <code>preload=&quot;auto&quot;</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="op">&lt;</span>a<span class="op">-</span>scene<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">    <span class="op">&lt;</span>a<span class="op">-</span>assets<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">        <span class="op">&lt;!--</span> These will not <span class="va">block</span>. <span class="op">--&gt;</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">        <span class="op">&lt;</span>audio src<span class="op">=</span><span class="st">&quot;blockus.mp3&quot;</span><span class="op">&gt;</span>&lt;/audio<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">        <span class="op">&lt;</span>video src<span class="op">=</span><span class="st">&quot;loadofblocks.mp4&quot;</span><span class="op">&gt;</span>&lt;/video<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">        <span class="op">&lt;!--</span> These will <span class="va">block</span>. <span class="op">--&gt;</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">        <span class="op">&lt;</span>audio src<span class="op">=</span><span class="st">&quot;blocky.mp3&quot;</span> autoplay<span class="op">&gt;</span>&lt;/audio<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">        <span class="op">&lt;</span>video src<span class="op">=</span><span class="st">&quot;blockiscooking.mp4&quot;</span> preload<span class="op">=</span><span class="st">&quot;auto&quot;</span><span class="op">&gt;</span>&lt;/video<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">    &lt;/a<span class="op">-</span>assets<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">&lt;/a<span class="op">-</span>scene<span class="op">&gt;</span></a></code></pre></div></li>
+</ul>
+<h2 id="setting-a-timeout">Setting a Timeout <a name="setting-timeout"></a></h2>
+<hr />
+<ul>
+<li><p>can set a timeout that when reached, the scene will begin rendering and entities will begin initializing regardless of whether all the assets have loaded. The default timeout is 3 seconds. To set a different timeout, we just pass in the number of milliseconds to the timeout attribute:</p></li>
+<li><p>if some assets are taking a long time to load, we may want to set an appropriate timeout such that the user isn’t waiting all day in case their network is slow.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">&lt;a-scene&gt;</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">    <span class="kw">&lt;a-assets</span><span class="ot"> timeout=</span><span class="st">&quot;10000&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">        // you got until the count of 10 to load else the show will go on without you.</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">        <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;bigimage.png&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="kw">&lt;/a-assets&gt;</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="kw">&lt;/a-scene&gt;</span></a></code></pre></div></li>
+</ul>
+<h2 id="events">Events <a name="events"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/2.png" alt="Events" /><figcaption>Events</figcaption>
+</figure>
+<h2 id="load-progress-on-individual-assets">Load Progress on Individual Assets <a name="load-progress"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/3.png" alt="Load Progress on Individual Assets" /><figcaption>Load Progress on Individual Assets</figcaption>
+</figure>
+<h2 id="specifying-response-type">Specifying Response Type <a name="specifying-response"></a></h2>
+<hr />
+<ul>
+<li>content fetched by <code>&lt;a-asset-item&gt;</code> will be returned as plain text. If you want to use a different response type such as arraybuffer, use <code>&lt;a-asset-item&gt;</code>‘s response-type attribute:</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">&lt;a-asset-item</span><span class="ot"> response-type=</span><span class="st">&quot;arraybuffer&quot;</span><span class="ot"> src=</span><span class="st">&quot;model.gltf&quot;</span><span class="kw">&gt;&lt;/a-asset-item&gt;</span></a></code></pre></div>
+<h2 id="internally-how-it-works">Internally (how it works) <a name="internally"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/4.png" alt="Internally" /><figcaption>Internally</figcaption>
+</figure>
+<h2 id="accessing-the-fileloader-cache">Accessing the FileLoader &amp; Cache <a name="accessing-file-loader"></a></h2>
+<hr />
+<ul>
+<li><p>To access the three.js <code>FileLoader</code> if we want to listen more closely:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="va">console</span>.<span class="at">log</span>(<span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;a-assets&#39;</span>).<span class="at">fileLoader</span>)<span class="op">;</span></a></code></pre></div></li>
+<li><p>To access the cache that stores XHR responses:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="va">console</span>.<span class="at">log</span>(<span class="va">THREE</span>.<span class="at">Cache</span>)<span class="op">;</span></a></code></pre></div></li>
+</ul>
+</body>
+</html>
