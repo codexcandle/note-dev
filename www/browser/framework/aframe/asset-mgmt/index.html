@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>browser.framework.aframe.core-api.asset-mgmt-sys</title>
+  <title>browser.framework.aframe.asset-mgmt</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -76,25 +76,29 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../../../../_asset/css/style.css" />
+  <link rel="stylesheet" href="../../../../_asset/css/style.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
 <header>
-<h1 class="title">browser.framework.aframe.core-api.asset-mgmt-sys</h1>
+<h1 class="title">browser.framework.aframe.asset-mgmt</h1>
 </header>
 <ul>
 <li><a href="#overview">overview</a></li>
-<li><a href="#cors">cors</a></li>
+<li><a href="#cdn">cdn &amp; cors</a></li>
 <li><a href="#preloading-av">preloading audio + video</a></li>
 <li><a href="#setting-timeout">setting a timeout</a></li>
 <li><a href="#event">events</a></li>
 <li><a href="#load-progress">load progress on invididual assets</a></li>
 <li><a href="#specifying-response-type">specifying response type</a></li>
 <li><a href="#internally">internally</a></li>
-<li><a href="#accessing-file-loader">accessing the file-loader &amp; cache</a></li>
+<li><p><a href="#accessing-file-loader">accessing the file-loader &amp; cache</a></p>
+<hr /></li>
+<li><a href="#sounds">sounds</a></li>
+<li><a href="#model-format">3d model formats</a></li>
+<li><p><a href="#tips">tips</a></p></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
@@ -129,38 +133,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb2-20" data-line-number="20">    <span class="op">&lt;</span>a<span class="op">-</span>entity mixin<span class="op">=</span><span class="st">&quot;giant&quot;</span> obj<span class="op">-</span>model<span class="op">=</span><span class="st">&quot;obj: #horse-obj; mtl: #horse-mtl&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb2-21" data-line-number="21">&lt;/a<span class="op">-</span>scene<span class="op">&gt;</span></a></code></pre></div></li>
 </ul>
-<h2 id="cors-cross-origin-resource-sharing">CORS (cross-origin resource sharing) <a name="cors"></a></h2>
+<h2 id="cdn-cors-cross-origin-resource-sharing">CDN &amp; CORS (cross-origin resource sharing) <a name="cdn"></a></h2>
 <hr />
-<figure>
+<ul>
+<li><figure>
 <img src="_asset/img/1.png" alt="cors" /><figcaption>cors</figcaption>
-</figure>
+</figure></li>
+<li><p>if hosting assets externally, like on a CDN (content delivery network), then you should remember that the primary requirement for assets is that they be served with CORS (cross-origin resource sharing) enabled.</p></li>
+<li><p>plus, if using <code>&lt;a-assets&gt;</code>, for assets like img, audio, &amp; video, you should usually set:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1">    crossorigin<span class="op">=</span><span class="st">&quot;anonymous&quot;</span></a></code></pre></div></li>
+<li><p><a href="http://localhost/browser/framework/aframe/core-api/asset-mgmt/#cors">more @ cors</a></p></li>
+</ul>
 <h2 id="preloading-audio-video">Preloading Audio + Video <a name="preloading-av"></a></h2>
 <hr />
 <ul>
 <li><p>audio &amp; video assets will only block the scene if we set autoplay or if we set <code>preload=&quot;auto&quot;</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="op">&lt;</span>a<span class="op">-</span>scene<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">    <span class="op">&lt;</span>a<span class="op">-</span>assets<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">        <span class="op">&lt;!--</span> These will not <span class="va">block</span>. <span class="op">--&gt;</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">        <span class="op">&lt;</span>audio src<span class="op">=</span><span class="st">&quot;blockus.mp3&quot;</span><span class="op">&gt;</span>&lt;/audio<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">        <span class="op">&lt;</span>video src<span class="op">=</span><span class="st">&quot;loadofblocks.mp4&quot;</span><span class="op">&gt;</span>&lt;/video<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">        <span class="op">&lt;!--</span> These will <span class="va">block</span>. <span class="op">--&gt;</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">        <span class="op">&lt;</span>audio src<span class="op">=</span><span class="st">&quot;blocky.mp3&quot;</span> autoplay<span class="op">&gt;</span>&lt;/audio<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">        <span class="op">&lt;</span>video src<span class="op">=</span><span class="st">&quot;blockiscooking.mp4&quot;</span> preload<span class="op">=</span><span class="st">&quot;auto&quot;</span><span class="op">&gt;</span>&lt;/video<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">    &lt;/a<span class="op">-</span>assets<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">&lt;/a<span class="op">-</span>scene<span class="op">&gt;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">&lt;a-scene&gt;</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">    <span class="kw">&lt;a-assets&gt;</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">        <span class="co">&lt;!-- These will not block. --&gt;</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">        <span class="kw">&lt;audio</span><span class="ot"> src=</span><span class="st">&quot;blockus.mp3&quot;</span><span class="kw">&gt;&lt;/audio&gt;</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">        <span class="kw">&lt;video</span><span class="ot"> src=</span><span class="st">&quot;loadofblocks.mp4&quot;</span><span class="kw">&gt;&lt;/video&gt;</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">        <span class="co">&lt;!-- These will block. --&gt;</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">        <span class="kw">&lt;audio</span><span class="ot"> src=</span><span class="st">&quot;blocky.mp3&quot;</span><span class="ot"> autoplay</span><span class="kw">&gt;&lt;/audio&gt;</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">        <span class="kw">&lt;video</span><span class="ot"> src=</span><span class="st">&quot;blockiscooking.mp4&quot;</span><span class="ot"> preload=</span><span class="st">&quot;auto&quot;</span><span class="kw">&gt;&lt;/video&gt;</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">    <span class="kw">&lt;/a-assets&gt;</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="kw">&lt;/a-scene&gt;</span></a></code></pre></div></li>
 </ul>
 <h2 id="setting-a-timeout">Setting a Timeout <a name="setting-timeout"></a></h2>
 <hr />
 <ul>
 <li><p>can set a timeout that when reached, the scene will begin rendering and entities will begin initializing regardless of whether all the assets have loaded. The default timeout is 3 seconds. To set a different timeout, we just pass in the number of milliseconds to the timeout attribute:</p></li>
 <li><p>if some assets are taking a long time to load, we may want to set an appropriate timeout such that the user isn’t waiting all day in case their network is slow.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">&lt;a-scene&gt;</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">    <span class="kw">&lt;a-assets</span><span class="ot"> timeout=</span><span class="st">&quot;10000&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">        // you got until the count of 10 to load else the show will go on without you.</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">        <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;bigimage.png&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="kw">&lt;/a-assets&gt;</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="kw">&lt;/a-scene&gt;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">&lt;a-scene&gt;</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">    <span class="kw">&lt;a-assets</span><span class="ot"> timeout=</span><span class="st">&quot;10000&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">        <span class="co">&lt;!--</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">        you got until the count of 10 to load</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">        else the show will go on without you.</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">        --&gt;</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">        <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;bigimage.png&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">    <span class="kw">&lt;/a-assets&gt;</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="kw">&lt;/a-scene&gt;</span></a></code></pre></div></li>
 </ul>
 <h2 id="events">Events <a name="events"></a></h2>
 <hr />
@@ -177,7 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>content fetched by <code>&lt;a-asset-item&gt;</code> will be returned as plain text. If you want to use a different response type such as arraybuffer, use <code>&lt;a-asset-item&gt;</code>‘s response-type attribute:</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">&lt;a-asset-item</span><span class="ot"> response-type=</span><span class="st">&quot;arraybuffer&quot;</span><span class="ot"> src=</span><span class="st">&quot;model.gltf&quot;</span><span class="kw">&gt;&lt;/a-asset-item&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">&lt;a-asset-item</span><span class="ot"> response-type=</span><span class="st">&quot;arraybuffer&quot;</span><span class="ot"> src=</span><span class="st">&quot;model.gltf&quot;</span><span class="kw">&gt;&lt;/a-asset-item&gt;</span></a></code></pre></div>
 <h2 id="internally-how-it-works">Internally (how it works) <a name="internally"></a></h2>
 <hr />
 <figure>
@@ -187,9 +200,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 <ul>
 <li><p>To access the three.js <code>FileLoader</code> if we want to listen more closely:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="va">console</span>.<span class="at">log</span>(<span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;a-assets&#39;</span>).<span class="at">fileLoader</span>)<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="va">console</span>.<span class="at">log</span>(<span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;a-assets&#39;</span>).<span class="at">fileLoader</span>)<span class="op">;</span></a></code></pre></div></li>
 <li><p>To access the cache that stores XHR responses:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="va">console</span>.<span class="at">log</span>(<span class="va">THREE</span>.<span class="at">Cache</span>)<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="va">console</span>.<span class="at">log</span>(<span class="va">THREE</span>.<span class="at">Cache</span>)<span class="op">;</span></a></code></pre></div></li>
+</ul>
+<h2 id="sounds">Sounds <a name="sounds"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/15.png" alt="Sounds" /><figcaption>Sounds</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/16.png" alt="Sounds" /><figcaption>Sounds</figcaption>
+</figure>
+<h2 id="d-model-formats">3D Model Formats <a name="model-format"></a></h2>
+<hr />
+<ul>
+<li><p>summary:</p>
+<figure>
+<img src="_asset/img/6.png" alt="Model Formats" /><figcaption>Model Formats</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/13.png" alt="Model Formats" /><figcaption>Model Formats</figcaption>
+</figure></li>
+<li><p><code>gltf</code> - (GL Transmission Format) the ideal format as is feature-rich, compact, &amp; efficient. Focuses on providing a transmission format rather than an edito format, and is more interoperable with web technologies. (see aframe’s gltf component)</p></li>
+<li><p><code>collada</code> (.dae) - an xml-based format w/ a rich feature set. Is more common in comparison to gltf (since it’s older), but mor suited to nativ apps that package all their conents together. Ultimately, not recommended since they’re like the .psd files of 3d models (whereas gltf are like .png of 3d models. They’re heavy because they contain complete subscenes.)</p></li>
+<li><p><code>wavefront</code> (.obj) - a well-known format, but has limitations (like lack of animation support &amp; vertex color support).</p></li>
+<li><p>there are also ecosystem components for loading other formats:</p>
+<ul>
+<li>.PLY models</li>
+<li>three.js ..JSON Object</li>
+<li>three.js ..JSON Scene</li>
+</ul></li>
+</ul>
+<h2 id="tips">Tips <a name="tips"></a></h2>
+<hr />
+<ul>
+<li><p><code>textures</code></p>
+<figure>
+<img src="_asset/img/11.png" alt="Tips" /><figcaption>Tips</figcaption>
+</figure>
+<p><code>no youtube textures!</code></p>
+<figure>
+<img src="_asset/img/5.png" alt="Tips" /><figcaption>Tips</figcaption>
+</figure>
+<p><code>using asst-mgmt-sys</code></p>
+<figure>
+<img src="_asset/img/12.png" alt="Tips" /><figcaption>Tips</figcaption>
+</figure></li>
+<li><p><code>magica-voxel</code></p>
+<figure>
+<img src="_asset/img/14.png" alt="Tips" /><figcaption>Tips</figcaption>
+</figure></li>
+<li><p><code>trouble-shoot</code></p>
+<figure>
+<img src="_asset/img/7.png" alt="Tips" /><figcaption>Tips</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/17.png" alt="Debug" /><figcaption>Debug</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/18.png" alt="Debug" /><figcaption>Debug</figcaption>
+</figure></li>
+<li><p><code>optimize</code></p>
+<figure>
+<img src="_asset/img/8.png" alt="Tips" /><figcaption>Tips</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/9.png" alt="Tips" /><figcaption>Tips</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/10.png" alt="Tips" /><figcaption>Tips</figcaption>
+</figure></li>
 </ul>
 </body>
 </html>

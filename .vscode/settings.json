@@ -112,13 +112,15 @@
 // BROWSER
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../www/browser/index.html -t html5 --css=../_asset/css/style.css --metadata title='browser'"
-// ... core-api
-// "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/core-api/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api'"
+// ------------------------------------ FRAMEWORK
+// ----------------------------------------------
+// --------------------------------------- AFRAME
+// ----------------------------------------------
+"pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.aframe'"
 // ... primitive
 // "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/primitive/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.primitive'"
-// ------------------------------------ FRAMEWORK
-// ... aframe
-"pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.aframe'"
+// ... asset-mgmt
+// "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/asset-mgmt/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.asset-mgmt'"
 // ----------------------------------- CORE-API
 // ... entity
 // "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/entity/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.entity'"
@@ -126,19 +128,26 @@
 // "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/scene/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.scene'"
 // ... animation
 // "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/animation/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.animation'"
-// ... asset-mgmt
-// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/asset-mgmt/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.asset-mgmt-sys'"
-// ----------------------------------- COMPONENT
-// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/component/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.component'"
-// ... native
-// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/component/native/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.component.native'"
-// ... 3rd-party
-// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/component/3rd-party/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.component.3rd-party'"
 // ... system
 // "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/system/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.system'"
 // ... mixin
 // "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/core-api/mixin/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.core-api.mixin'"
+// ----------------------------------- COMPONENT
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/component/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.component'"
+// ... 3rd-party
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/component/3rd-party/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.component.3rd-party'"
+// ... native
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/component/native/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.component.native'"
+// ====================================== CUSTOM
+// "pandoc.htmlOptString": "-s -o ../../../../../../www/browser/framework/aframe/component/custom/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.component.custom'"
+// ... event-interactive
+// "pandoc.htmlOptString": "-s -o ../../../../../../www/browser/framework/aframe/component/custom/event-interactive/index.html -t html5 --css=../../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.component.custom.event-interactive'"
+// -------------------------------------- RECORD
+// "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/record/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.record'"
+// -------------------------------------- SETUP
+// "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/setup/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.setup'"
 // -------------------------------------- RUNTIME
+// ----------------------------------------------
 // ... node
 // "pandoc.htmlOptString": "-s -o ../../../../www/browser/runtime/node/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.runtime.node'"    
 // ------------------------------------ DREAMHOST

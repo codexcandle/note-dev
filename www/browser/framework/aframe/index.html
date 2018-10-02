@@ -87,47 +87,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 <ul>
 <li><a href="#overview">overview</a></li>
+<li><a href="./setup">setup</a></li>
+<li><a href="./asset-mgmt">asset-mgmt</a></li>
 <li><a href="./primitive">primitive</a></li>
-<li><a href="./component">component</a>
-<ul>
-<li><a href="./component/native">native</a></li>
-<li><a href="./component/3rd-party">3rd-party</a></li>
-</ul></li>
+<li><a href="./component">component</a></li>
 <li>core-api
 <ul>
 <li><a href="./core-api/entity">entity</a></li>
-<li><a href="./component">component</a></li>
 <li><a href="./core-api/system">system</a></li>
 <li><a href="./core-api/scene">scene</a></li>
 <li><a href="./core-api/animation">animation</a></li>
 <li><a href="./core-api/mixin">mixins</a></li>
-<li><a href="./core-api/asset-mgmt">asset-mngt</a></li>
 <li><a href="https://aframe.io/docs/0.8.0/core/globals.html">globals</a></li>
 <li><a href="https://aframe.io/docs/0.8.0/core/utils.html">utils</a></li>
-</ul></li>
-<li><a href="#setup">setup</a>
-<ul>
-<li><a href="#embed">embed</a></li>
-<li><a href="#ssl-https">ssl &amp; https</a></li>
-<li><a href="#using-local-server">using local server</a></li>
-<li><a href="#cdn">cdn &amp; cors</a></li>
-<li><a href="#model-formats">model formats</a></li>
-<li><a href="#debug">debug</a></li>
 </ul></li>
 <li><a href="#3rd-party">3rd party</a>
 <ul>
 <li><a href="#d3">d3</a></li>
 <li><a href="#node">node</a></li>
+<li><a href="#react">react</a></li>
 </ul></li>
+<li><a href="./record">record</a></li>
+<li><a href="#debug">debug</a></li>
 <li><a href="#tip">tip</a></li>
 <li><a href="#example">example</a></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
 <ul>
-<li><p>aframe, open-source &amp; originally from mozilla, is a javascript framework for building VR using custom HTML tags.</p></li>
+<li><p>open-source &amp; originally from mozilla, is a javascript framework for building VR using custom HTML tags.</p></li>
 <li><p>built atop the three.js framework (&amp; other technologies).</p></li>
-<li><p>uses <code>webvr</code></p>
+<li><p>uses <code>webvr</code> js api:</p>
 <blockquote>
 <p>…a JS API which provides data, which shouldn’t be confused with WebGL, which provides graphics &amp; rendering.) Via the WebVR API, you can gain access to VR headset sensor data (position, orientation) to transform the camera &amp; to render content directly to VR headsets. Note, WebVR started with the conceptualization of VRML (virtual reality markup langauage), but it never took off. Also, WebVR is a low-barrier entry point to develop VR for the web without having to be familiar with WebGL.</p>
 </blockquote>
@@ -149,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>performance-wise - aframe is optimized from the ground up for WebVR. While aframe uses the DOM, it’s elements don’t touch the browser layout engine. 3D object updates are all done in memory with little overhead under a single “requestAnimationFrame” call. (For ref, see <code>A-Painter</code>, a <code>Tilt Brush</code> clone built in aframe that runs like native; +90 fps).</li>
 <li>tool agnostic - aframe is built on top of the DOM - so compatible with most frameworks, libs, &amp; tools (web).</li>
 <li><code>meters</code> - are used with a 1:1 ratio (since WebVR API also uses meters when returning pose data).</li>
-<li><p>uses a right-hand coordinate system - positive x-as extends right, positive y-axis extends up, &amp; z-axis extends out of the screen toward you:</p>
+<li><p><code>right-hand coordinate system</code> - positive x-axis extends right, positive y extends up, &amp; z extends out of the screen TOWARD you:</p>
 <figure>
 <img src="_asset/img/1.png" alt="right-hand coordiante system" /><figcaption>right-hand coordiante system</figcaption>
 </figure></li>
@@ -157,93 +147,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://aframe.io">more @ aframe.io</a></li>
 <li><p><a href="https://webvr.rocks">more @ web-vr rocks</a></p></li>
 </ul>
-<h2 id="setup">Setup <a name="setup"></a></h2>
-<hr />
-<ul>
-<li><p>simple (manual):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">&lt;!-- cdn or js file - include lib in head of your html --&gt;</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">&lt;html&gt;</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="kw">&lt;head&gt;</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">        <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://aframe.io/releases/0.7.0/aframe.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">    <span class="kw">&lt;/head&gt;</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="kw">&lt;body&gt;</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">    ...</a></code></pre></div>
-<p>(NOTE: The script ref to the js-lib must be included before a-scene tag in body of html doc.)</p></li>
-<li><p>cooler! (npm):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1">    <span class="co">// install via npm</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">    npm install aframe</a></code></pre></div>
-<p>Then you can bundle aframe into your app (e.g. with browserify or webpack):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" data-line-number="1">    <span class="at">require</span>(<span class="st">&#39;aframe&#39;</span>)<span class="op">;</span></a></code></pre></div>
-<p>Also, if using NPM, can use <code>angle</code> (a cli for aframe), which can initialize a scene template with a single command:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" data-line-number="1">    npm install <span class="op">-</span>g angle <span class="op">&amp;&amp;</span> angle initscene</a></code></pre></div></li>
-</ul>
-<h3 id="embed">embed <a name="embed"></a></h3>
-<ul>
-<li><p>embedded component - use this if you want to embed an aframe scene into the layout of a 2D web page, which will remove fullscreen styles &amp; allow you to style the canvas with css.</p></li>
-<li><p>iframe - use these if you want multiple scenes on the page (as usually you can only embed one at a time into a page.)</p></li>
-</ul>
-<h3 id="ssl-https">ssl-https <a name="ssl-https"></a></h3>
-<ul>
-<li><code>ssl / https</code> - should be used when deploying site live due to a common security restriction of the browser’s webvr api.</li>
-</ul>
-<h3 id="using-local-server">using local server <a name="using-local-server"></a></h3>
-<ul>
-<li><p>you can develop projects using a local server (so that files are properly served, as otherwise the <code>file://</code> protocol doesn’t provide a domain, &amp; absolute &amp; relative links may not work!)</p>
-<p>Once server is running, open project in browser:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" data-line-number="1">http<span class="op">:</span><span class="co">//localhost:8000</span></a></code></pre></div></li>
-<li><p><a href="https://www.npmjs.com/">NPM (live server)</a> - run this command in a terminal in the same directory as your html file:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" data-line-number="1">    npm install <span class="op">-</span>g live<span class="op">-</span>server <span class="op">&amp;&amp;</span> live<span class="op">-</span>server</a></code></pre></div></li>
-<li><p><a href="https://github.com/cesanta/mongoose">MONGOOSE</a> - download this &amp; open in the same directory as your web app.</p></li>
-<li><p><a href="https://www.python.org/">PYTHON (simple http server)</a> - run this command in a terminal in the same directory as your html file:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" data-line-number="1">    python <span class="op">-</span>m SimpleHTTPServer</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">    <span class="co">// or python 3</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">    python <span class="op">-</span>m <span class="va">http</span>.<span class="at">server</span></a></code></pre></div></li>
-</ul>
-<h3 id="cdn-cors">cdn &amp; cors <a name="cdn"></a><br />
-</h3>
-<ul>
-<li><p>if hosting assets externally, like on a CDN (content delivery network), then you should remember that the primary requirement for assets is that they be served with CORS (cross-origin resource sharing) enabled.</p></li>
-<li><p>plus, if using <code>&lt;a-assets&gt;</code>, for assets like img, audio, &amp; video, you should usually set:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" data-line-number="1">    crossorigin<span class="op">=</span><span class="st">&quot;anonymous&quot;</span></a></code></pre></div></li>
-<li><p><a href="http://localhost/browser/framework/aframe/core-api/asset-mgmt/#cors">more @ cors</a></p></li>
-</ul>
-<h3 id="model-formats">model formats <a name="model-formats"></a></h3>
-<ul>
-<li><p><em>gltf</em> - (GL Transmission Format) the ideal format as is feature-rich, compact, &amp; efficient. Focuses on providing a transmission format rather than an edito format, and is more interoperable with web technologies. (see aframe’s gltf component)</p></li>
-<li><p>collada (.dae) - an xml-based format w/ a rich feature set. Is more common in comparison to gltf (since it’s older), but mor suited to nativ apps that package all their conents together. Ultimately, not recommended since they’re like the .psd files of 3d models (whereas gltf are like .png of 3d models. They’re heavy because they contain complete subscenes.)</p></li>
-<li><p>wavefront (.obj) - a well-known format, but has limitations (like lack of animation support &amp; vertex color support).</p></li>
-<li>there are also ecosystem components for loading other formats:
-<ul>
-<li>.PLY models</li>
-<li>three.js ..JSON Object</li>
-<li>three.js ..JSON Scene</li>
-</ul></li>
-</ul>
-<h3 id="debug">debug <a name="debug"></a></h3>
-<ul>
-<li><p><code>visual inspector</code> - aframe provides a handy built-in visual 3D inspector:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" data-line-number="1">  CNTRL <span class="op">+</span> ALT <span class="op">+</span> i</a></code></pre></div></li>
-<li><p><code>stats component</code> - use this to keep an eye on various metrics (fps, vertex &amp; face count, geometry &amp; material count, draw calls, # of entities). (-maximize FPS &amp; minimize everything else!)</p></li>
-</ul>
-<h2 id="rd-party">3rd Party <a name="3rd-party"></a><br />
-</h2>
+<h2 id="rd-party">3rd-Party <a name="3rd-party"></a></h2>
 <hr />
 <h3 id="d3">d3 <a name="d3"></a><br />
 </h3>
 <ul>
-<li>&amp; aframe work very well together!</li>
+<li><p>&amp; aframe work very well together!</p>
+<figure>
+<img src="_asset/img/10.png" alt="3rd-Party" /><figcaption>3rd-Party</figcaption>
+</figure></li>
 </ul>
 <h3 id="node-js">node-js <a name="node"></a><br />
 </h3>
 <ul>
 <li><p>although aframe can load in node, aframe isn’t (yet) able to run any simulations at run time. it’s possible to run aframe in node - to get access to its globals. however, you need to supply a browser <code>window</code> mock since node lacks a window object. aframe is tested with <code>jsdom</code> - although any js-based browser implementation should work:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="bn">    global.window = require(&#39;jsdom&#39;).jsdom().defaultView;</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="bn">    var aframe = require(&#39;aframe/src&#39;);</span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="bn">    console.log(aframe.version);</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="bn">    global.window = require(&#39;jsdom&#39;).jsdom().defaultView;</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="bn">    var aframe = require(&#39;aframe/src&#39;);</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="bn">    console.log(aframe.version);</span></a></code></pre></div></li>
 </ul>
-<h2 id="tip">Tip <a name="tip"></a><br />
-</h2>
+<h3 id="react">react <a name="react"></a></h3>
+<ul>
+<li><img src="_asset/img/6.png" title="fig:" alt="3rd-Party" /></li>
+</ul>
+<h2 id="debug">Debug <a name="debug"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/4.png" alt="Debug" /><figcaption>Debug</figcaption>
+</figure>
+<ul>
+<li><p><code>inspector</code> component - aframe provides a handy built-in visual 3D inspector:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1">  CNTRL <span class="op">+</span> ALT <span class="op">+</span> i</a></code></pre></div>
+<figure>
+<img src="_asset/img/2.png" alt="Debug" /><figcaption>Debug</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/7.png" alt="Debug" /><figcaption>Debug</figcaption>
+</figure></li>
+<li><p><code>stats</code> component - use this to keep an eye on various metrics (fps, vertex &amp; face count, geometry &amp; material count, draw calls, # of entities). (-maximize FPS &amp; minimize everything else!)</p>
+<figure>
+<img src="_asset/img/42.png" alt="Debug" /><figcaption>Debug</figcaption>
+</figure></li>
+</ul>
+<h2 id="tip">Tip <a name="tip"></a></h2>
 <hr />
 <ul>
 <li><p><code>components</code> - the core structure of aframe is ecs (entity-component). Place &amp; structure app code within purely aframe components for:</p>
@@ -270,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>how to display iframe’s or render hmtl in aframe? - There is NO way for the browser to display iframes within WebGL. While it’s possible to overlay an iframe on top of the canvas, the iframe will not display in VR nor can it integrate with the scene. However, you can redner basic html &amp; css as a texture without interactivity. We can paint to a canvas &amp; use the canvas as source for a texture. There are components in the ecosystem that enable this:</p>
 <p><a href="https://github.com/mayognaise/aframe-html-shader">HTML Shader</a></p></li>
 <li><p>remember to move the camera - when initially setting up your scene, as the default camera (or screen items) are positioned at the default position at the origin (0, 0, 0). (Do this by changing the “position” component to ransform the box in 3D space.)</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb12-1" data-line-number="1">    <span class="kw">&lt;a-entity</span><span class="ot"> id=</span><span class="st">&quot;box&quot;</span><span class="ot"> geometry=</span><span class="st">&quot;primitive: box&quot;</span><span class="ot"> material=</span><span class="st">&quot;color: red&quot;</span><span class="kw">&gt;&lt;/a-entity&gt;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">&lt;a-entity</span><span class="ot"> id=</span><span class="st">&quot;box&quot;</span><span class="ot"> geometry=</span><span class="st">&quot;primitive: box&quot;</span><span class="ot"> material=</span><span class="st">&quot;color: red&quot;</span><span class="kw">&gt;&lt;/a-entity&gt;</span></a></code></pre></div></li>
 <li><p>when considering scale - for a scene for vr, it’s important to consider the real world scale of the entites you create. (e.g. a box with height=“10” may look normal on your computer, but in VR the box will appear massive.)</p></li>
 <li><p>to determine the positive direction of rotation - use the right-hand-rule.</p></li>
 </ul>
@@ -278,58 +223,121 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </h2>
 <hr />
 <ul>
-<li><p><code>basic</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">&lt;html&gt;</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">    <span class="kw">&lt;head&gt;</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3">        <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://aframe.io/releases/0.70./afame.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4">    <span class="kw">&lt;/head&gt;</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5">    <span class="kw">&lt;body&gt;</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6">        <span class="kw">&lt;a-scene&gt;</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7">        <span class="kw">&lt;/a-scene&gt;</span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8">    <span class="kw">&lt;/body&gt;</span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="kw">&lt;/html&gt;</span></a></code></pre></div></li>
-<li><p><code>rotated box</code>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">&lt;html&gt;</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">    <span class="kw">&lt;head&gt;</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">        <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://aframe.io/releases/0.70./afame.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">    <span class="kw">&lt;/head&gt;</span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">    <span class="kw">&lt;body&gt;</span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">        <span class="co">&lt;!-- rotate box &amp; double its size --&gt;</span></a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">        <span class="kw">&lt;a-scene&gt;</span></a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">            <span class="kw">&lt;a-box</span><span class="ot"> color=</span><span class="st">&quot;red&quot;</span><span class="ot"> rotation=</span><span class="st">&quot;0 45 45&quot;</span><span class="ot"> scale=</span><span class="st">&quot;2 2 2&quot;</span><span class="kw">&gt;&lt;/a-box&gt;</span></a>
-<a class="sourceLine" id="cb14-9" data-line-number="9">        <span class="kw">&lt;/a-scene&gt;</span></a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">    <span class="kw">&lt;/body&gt;</span></a>
-<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="kw">&lt;/html&gt;</span></a></code></pre></div></li>
-<li><p><code>parent-child</code>:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co">&lt;!--</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co">underneath the hood (3js), the child&#39;s position</span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">is calculated by multiplying the matrices of the</span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">parent &amp; child&#39;s position.</span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">--&gt;</span></a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="kw">&lt;a-scene&gt;</span></a>
-<a class="sourceLine" id="cb15-7" data-line-number="7">    <span class="kw">&lt;a-box</span><span class="ot"> position=</span><span class="st">&quot;0 2 0&quot;</span><span class="ot"> rotation=</span><span class="st">&quot;0 45 45&quot;</span><span class="ot"> scale=</span><span class="st">&quot;2 4 2&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8">        <span class="kw">&lt;a-sphere</span><span class="ot"> position=</span><span class="st">&quot;1 0 3&quot;</span><span class="kw">&gt;&lt;/a-sphere&gt;</span></a>
-<a class="sourceLine" id="cb15-9" data-line-number="9">    <span class="kw">&lt;/a-box&gt;</span></a>
-<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="kw">&lt;/a-scene&gt;</span></a></code></pre></div></li>
-<li><p><code>panorama</code> (programmatic js-way vs aframe way):</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co">// via programmatic js</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co">// create scene</span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="kw">var</span> scene <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&#39;a-scene&#39;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">// create sky</span></a>
-<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="kw">var</span> sky <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&quot;a-sky&#39;);</span></a>
-<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="va">sky</span>.<span class="at">src</span> <span class="op">=</span> <span class="st">&#39;3d-image.jpg&#39;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="va">sky</span>.<span class="at">setAttribute</span>(<span class="st">&#39;rotation&#39;</span><span class="op">,</span> <span class="op">{</span><span class="dt">x</span><span class="op">:</span><span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:-</span><span class="dv">130</span><span class="op">,</span> <span class="dt">z</span><span class="op">:</span><span class="dv">0</span><span class="op">}</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb16-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="co">// inject into page</span></a>
-<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="va">scene</span>.<span class="at">appendChild</span>(sky)<span class="op">;</span></a>
-<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="va">document</span>.<span class="va">body</span>.<span class="at">appendChild</span>(scene)<span class="op">;</span></a></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co">&lt;!-- aframe way --&gt;</span></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw">&lt;a-scene&gt;</span></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3">    <span class="kw">&lt;a-sky</span><span class="ot"> src=</span><span class="st">&quot;https://davidwalsh.name/demo/3d-image.jpg&quot;</span></a>
-<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="ot">            rotation=</span><span class="st">&quot;0 -130 0&quot;</span><span class="kw">&gt;&lt;/a-sky&gt;</span></a>
-<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="kw">&lt;/a-scene&gt;</span></a></code></pre></div></li>
+<li><p><code>basic</code></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">&lt;html&gt;</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">    <span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">        <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://aframe.io/releases/0.70./afame.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">    <span class="kw">&lt;/head&gt;</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">    <span class="kw">&lt;body&gt;</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">        <span class="kw">&lt;a-scene&gt;</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">        <span class="kw">&lt;/a-scene&gt;</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">    <span class="kw">&lt;/body&gt;</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
+<p><code>very basic</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://aframe.io/releases/0.70./afame.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">&lt;body&gt;</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="kw">&lt;a-scene&gt;&lt;/a-scene&gt;</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw">&lt;/body&gt;</span></a></code></pre></div></li>
+<li><p><code>rotated box</code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">&lt;html&gt;</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">    <span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">        <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://aframe.io/releases/0.70./afame.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">    <span class="kw">&lt;/head&gt;</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">    <span class="kw">&lt;body&gt;</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">        <span class="co">&lt;!-- rotate box &amp; double its size --&gt;</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">        <span class="kw">&lt;a-scene&gt;</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">            <span class="kw">&lt;a-box</span><span class="ot"> color=</span><span class="st">&quot;red&quot;</span><span class="ot"> rotation=</span><span class="st">&quot;0 45 45&quot;</span><span class="ot"> scale=</span><span class="st">&quot;2 2 2&quot;</span><span class="kw">&gt;&lt;/a-box&gt;</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">        <span class="kw">&lt;/a-scene&gt;</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">    <span class="kw">&lt;/body&gt;</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="kw">&lt;/html&gt;</span></a></code></pre></div></li>
+<li><p><code>parent-child</code></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">&lt;!--</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">underneath the hood (3js), the child&#39;s position</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">is calculated by multiplying the matrices of the</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">parent &amp; child&#39;s position.</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">--&gt;</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="kw">&lt;a-scene&gt;</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">    <span class="kw">&lt;a-box</span><span class="ot"> position=</span><span class="st">&quot;0 2 0&quot;</span><span class="ot"> rotation=</span><span class="st">&quot;0 45 45&quot;</span><span class="ot"> scale=</span><span class="st">&quot;2 4 2&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">        <span class="kw">&lt;a-sphere</span><span class="ot"> position=</span><span class="st">&quot;1 0 3&quot;</span><span class="kw">&gt;&lt;/a-sphere&gt;</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">    <span class="kw">&lt;/a-box&gt;</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="kw">&lt;/a-scene&gt;</span></a></code></pre></div></li>
+<li><p><code>panorama</code> (programmatic js-way vs aframe way)</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">// via programmatic js</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">// create scene</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw">var</span> scene <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&#39;a-scene&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">// create sky</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="kw">var</span> sky <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&quot;a-sky&#39;);</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="va">sky</span>.<span class="at">src</span> <span class="op">=</span> <span class="st">&#39;3d-image.jpg&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="va">sky</span>.<span class="at">setAttribute</span>(<span class="st">&#39;rotation&#39;</span><span class="op">,</span> <span class="op">{</span><span class="dt">x</span><span class="op">:</span><span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:-</span><span class="dv">130</span><span class="op">,</span> <span class="dt">z</span><span class="op">:</span><span class="dv">0</span><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">// inject into page</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="va">scene</span>.<span class="at">appendChild</span>(sky)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="va">document</span>.<span class="va">body</span>.<span class="at">appendChild</span>(scene)<span class="op">;</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co">&lt;!-- aframe way --&gt;</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">&lt;a-scene&gt;</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">    <span class="kw">&lt;a-sky</span><span class="ot"> src=</span><span class="st">&quot;https://davidwalsh.name/demo/3d-image.jpg&quot;</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="ot">            rotation=</span><span class="st">&quot;0 -130 0&quot;</span><span class="kw">&gt;&lt;/a-sky&gt;</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="kw">&lt;/a-scene&gt;</span></a></code></pre></div></li>
+<li><p><code>interaction</code></p>
+<figure>
+<img src="_asset/img/9.png" alt="Example" /><figcaption>Example</figcaption>
+</figure></li>
+<li><p><code>ground</code></p>
+<figure>
+<img src="_asset/img/11.png" alt="Example" /><figcaption>Example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/12.png" alt="Example" /><figcaption>Example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/13.png" alt="Example" /><figcaption>Example</figcaption>
+</figure></li>
+<li><p><code>link</code></p>
+<figure>
+<img src="_asset/img/14.png" alt="Example" /><figcaption>Example</figcaption>
+</figure></li>
+<li><p><code>lights</code></p>
+<figure>
+<img src="_asset/img/15.png" alt="Example" /><figcaption>Example</figcaption>
+</figure></li>
+<li><p><code>camera</code></p>
+<figure>
+<img src="_asset/img/18.png" alt="Example" /><figcaption>Example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/21.png" alt="Example" /><figcaption>Example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/17.png" alt="Example" /><figcaption>Example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/16.png" alt="Example" /><figcaption>Example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/19.png" alt="Example" /><figcaption>Example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/20.png" alt="Example" /><figcaption>Example</figcaption>
+</figure></li>
+<li><p><code>sky</code></p>
+<figure>
+<img src="_asset/img/22.png" alt="Example" /><figcaption>Example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/23.png" alt="Example" /><figcaption>Example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/24.png" alt="Example" /><figcaption>Example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/25.png" alt="Example" /><figcaption>Example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/26.png" alt="Example" /><figcaption>Example</figcaption>
+</figure></li>
 </ul>
 </body>
 </html>

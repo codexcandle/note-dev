@@ -1,5 +1,5 @@
 * [overview](#overview)
-* [cors](#cors)
+* [cdn & cors](#cdn)
 * [preloading audio + video](#preloading-av)
 * [setting a timeout](#setting-timeout)
 * [events](#event)
@@ -7,6 +7,12 @@
 * [specifying response type](#specifying-response-type)
 * [internally](#internally)
 * [accessing the file-loader & cache](#accessing-file-loader)
+
+	---
+
+* [sounds](#sounds)
+* [3d model formats](#model-format)
+* [tips](#tips)
 
 ## Overview <a name="overview"></a>
 
@@ -51,11 +57,21 @@
 	</a-scene>
 	```
 
-## CORS (cross-origin resource sharing) <a name="cors"></a>
+## CDN & CORS (cross-origin resource sharing) <a name="cdn"></a>
 
 ---
 
-![cors](_asset/img/1.png)
+* ![cors](_asset/img/1.png)
+
+* if hosting assets externally, like on a CDN (content delivery network), then you should remember that the primary requirement for assets is that they be served with CORS (cross-origin resource sharing) enabled.
+
+* plus, if using `<a-assets>`, for assets like img, audio, & video, you should usually set:
+
+	```js
+		crossorigin="anonymous"
+	```
+
+* [more @ cors](http://localhost/browser/framework/aframe/core-api/asset-mgmt/#cors)
 
 ## Preloading Audio + Video <a name="preloading-av"></a>
 
@@ -63,7 +79,7 @@
 
 * audio & video assets will only block the scene if we set autoplay or if we set `preload="auto"`:
 
-	```js
+	```html
 	<a-scene>
 		<a-assets>
 			<!-- These will not block. -->
@@ -88,7 +104,10 @@
 	```html
 	<a-scene>
 		<a-assets timeout="10000">
-			// you got until the count of 10 to load else the show will go on without you.
+			<!--
+			you got until the count of 10 to load
+			else the show will go on without you.
+			-->
 			<img src="bigimage.png">
 		</a-assets>
 	</a-scene>
@@ -137,3 +156,69 @@
 	```js
 	console.log(THREE.Cache);
 	```
+
+## Sounds <a name="sounds"></a>
+
+---
+
+![Sounds](_asset/img/15.png)
+
+![Sounds](_asset/img/16.png)
+
+## 3D Model Formats <a name="model-format"></a>
+
+---
+
+* summary:
+
+	![Model Formats](_asset/img/6.png)
+
+	![Model Formats](_asset/img/13.png)
+
+* `gltf` - (GL Transmission Format) the ideal format as is feature-rich, compact, & efficient.  Focuses on providing a transmission format rather than an edito format, and is more interoperable with web technologies. (see aframe's gltf component)
+
+* `collada` (.dae) - an xml-based format w/ a rich feature set.  Is more common in comparison to gltf (since it's older), but mor suited to nativ apps that package all their conents together.  Ultimately, not recommended since they're like the .psd files of 3d models (whereas gltf are like .png of 3d models.  They're heavy because they contain complete subscenes.)
+
+* `wavefront` (.obj) - a well-known format, but has limitations (like lack of animation support & vertex color support).
+
+* there are also ecosystem components for loading other formats:
+
+	* .PLY models
+	* three.js ..JSON Object
+	* three.js ..JSON Scene
+
+## Tips <a name="tips"></a>
+
+---
+
+* `textures`
+
+	![Tips](_asset/img/11.png)
+
+	`no youtube textures!`
+
+	![Tips](_asset/img/5.png)
+
+	`using asst-mgmt-sys`
+
+	![Tips](_asset/img/12.png)
+
+* `magica-voxel`
+
+	![Tips](_asset/img/14.png)
+
+* `trouble-shoot`
+
+	![Tips](_asset/img/7.png)
+
+	![Debug](_asset/img/17.png)
+
+	![Debug](_asset/img/18.png)
+
+* `optimize`
+
+	![Tips](_asset/img/8.png)
+
+	![Tips](_asset/img/9.png)
+
+	![Tips](_asset/img/10.png)		

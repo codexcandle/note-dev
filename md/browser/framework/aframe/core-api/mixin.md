@@ -1,6 +1,7 @@
 * [overview](#overview)
 * [merging component properties](#merging-component-properties)
 * [order & precedence](#order-and-precedence)
+* [example](#example)
 
 ## Overview <a name="overview"></a>
 
@@ -96,3 +97,13 @@
 		<a-entity mixin="red blue cube" material="color: green"></a-entity>
 	</a-scene>
 	```
+
+## EX <a name="example"></a>
+
+---
+
+* `voxel`
+
+	![Example](_asset/img/01.png)
+
+	![Example](_asset/img/02.png)

@@ -16,6 +16,7 @@
 		* [accessing components members & methods](#members-and-methods)
 * [native](./native)
 * [3rd-party](./3rd-party)
+* [custom](./custom)
 
 ## Overview <a name="overview"></a>
 

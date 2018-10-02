@@ -1,28 +1,22 @@
 * [overview](#overview)
+* [setup](./setup)
+* [asset-mgmt](./asset-mgmt)
 * [primitive](./primitive)
 * [component](./component)
-	* [native](./component/native)
-	* [3rd-party](./component/3rd-party)
 * core-api
 	* [entity](./core-api/entity)
-	* [component](./component)
 	* [system](./core-api/system)
 	* [scene](./core-api/scene)
 	* [animation](./core-api/animation)
 	* [mixins](./core-api/mixin)
-	* [asset-mngt](./core-api/asset-mgmt)
 	* [globals](https://aframe.io/docs/0.8.0/core/globals.html)
 	* [utils](https://aframe.io/docs/0.8.0/core/utils.html)
-* [setup](#setup)
-	* [embed](#embed)
-	* [ssl & https](#ssl-https)
-	* [using local server](#using-local-server)
-	* [cdn & cors](#cdn)
-	* [model formats](#model-formats)
-	* [debug](#debug)
 * [3rd party](#3rd-party)
 	* [d3](#d3)
 	* [node](#node)
+	* [react](#react)
+* [record](./record)
+* [debug](#debug)
 * [tip](#tip)
 * [example](#example)
 
@@ -30,11 +24,11 @@
 
 ---
 
-* aframe, open-source & originally from mozilla,  is a javascript framework for building VR using custom HTML tags.
+* open-source & originally from mozilla, is a javascript framework for building VR using custom HTML tags.
 
 * built atop the three.js framework (& other technologies).
 
-* uses `webvr`
+* uses `webvr` js api:
 
 	> ...a JS API which provides data, which shouldn't be confused with WebGL, which provides graphics & rendering.) Via the WebVR API, you can gain access to VR headset sensor data (position, orientation) to transform the camera & to render content directly to VR headsets.  Note, WebVR started with the conceptualization of VRML (virtual reality markup langauage), but it never took off.  Also, WebVR is a low-barrier entry point to develop VR for the web without having to be familiar with WebGL.
 
@@ -57,7 +51,7 @@
 * performance-wise - aframe is optimized from the ground up for WebVR.  While aframe uses the DOM, it's elements don't touch the browser layout engine.  3D object updates are all done in memory with little overhead under a single "requestAnimationFrame" call.  (For ref, see `A-Painter`, a `Tilt Brush` clone built in aframe that runs like native; +90 fps).
 * tool agnostic - aframe is built on top of the DOM - so compatible with most frameworks, libs, & tools (web).
 * `meters` - are used with a 1:1 ratio (since WebVR API also uses meters when returning pose data).
-* uses a right-hand coordinate system - positive x-as extends right, positive y-axis extends up, & z-axis extends out of the screen toward you:
+* `right-hand coordinate system` - positive x-axis extends right, positive y extends up, & z extends out of the screen TOWARD you:
 
 	![right-hand coordiante system](_asset/img/1.png)
 
@@ -66,123 +60,15 @@
 * [more @ aframe.io](https://aframe.io)
 * [more @ web-vr rocks](https://webvr.rocks)
 
-## Setup <a name="setup"></a>
-
----
-
-* simple (manual):
-
-	```html
-	<!-- cdn or js file - include lib in head of your html -->
-	<html>
-		<head>
-			<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
-		</head>
-		<body>
-		...
-	```
-
-	(NOTE: The script ref to the js-lib must be included before a-scene tag in body of html doc.)
-
-
-* cooler! (npm):
-
-	```js
-		// install via npm
-		npm install aframe
-	```
-
-	Then you can bundle aframe into your app (e.g. with browserify or webpack):
-
-	```js
-		require('aframe');
-	```
-
-	Also, if using NPM, can use `angle` (a cli for aframe), which can initialize a scene template with a single command:
-
-	```js
-		npm install -g angle && angle initscene
-	```
-
-### embed <a name="embed"></a>
-
-* embedded component - use this if you want to embed an aframe scene into the layout of a 2D web page, which will remove fullscreen styles & allow you to style the canvas with css.
-
-* iframe - use these if you want multiple scenes on the page (as usually you can only embed one at a time into a page.)
-
-### ssl-https <a name="ssl-https"></a>
-
-* `ssl / https` - should be used when deploying site live due to a common security restriction of the browser's webvr api.
-
-### using local server <a name="using-local-server"></a>
-
-* you can develop projects using a local server (so that files are properly served, as otherwise the `file://` protocol doesn't provide a domain, & absolute & relative links may not work!)
-
-	Once server is running, open project in browser:
-
-	```js
-	http://localhost:8000
-	```
-
-* [NPM (live server)](https://www.npmjs.com/) - run this command in a terminal in the same directory as your html file:
-
-	```js
-		npm install -g live-server && live-server
-	```
-
-* [MONGOOSE](https://github.com/cesanta/mongoose) - download this & open in the same directory as your web app.
-
-* [PYTHON (simple http server)](https://www.python.org/) - run this command in a terminal in the same directory as your html file:
-
-	```js
-		python -m SimpleHTTPServer
-
-		// or python 3
-		python -m http.server
-	```
-
-### cdn & cors <a name="cdn"></a>\
-
-* if hosting assets externally, like on a CDN (content delivery network), then you should remember that the primary requirement for assets is that they be served with CORS (cross-origin resource sharing) enabled.
-
-* plus, if using `<a-assets>`, for assets like img, audio, & video, you should usually set:
-
-	```js
-		crossorigin="anonymous"
-	```
-
-* [more @ cors](http://localhost/browser/framework/aframe/core-api/asset-mgmt/#cors)
-
-### model formats <a name="model-formats"></a>
-
-* _gltf_ - (GL Transmission Format) the ideal format as is feature-rich, compact, & efficient.  Focuses on providing a transmission format rather than an edito format, and is more interoperable with web technologies. (see aframe's gltf component)
-
-* collada (.dae) - an xml-based format w/ a rich feature set.  Is more common in comparison to gltf (since it's older), but mor suited to nativ apps that package all their conents together.  Ultimately, not recommended since they're like the .psd files of 3d models (whereas gltf are like .png of 3d models.  They're heavy because they contain complete subscenes.)
-
-* wavefront (.obj) - a well-known format, but has limitations (like lack of animation support & vertex color support).
-
-* there are also ecosystem components for loading other formats:
-	+ .PLY models
-	+ three.js ..JSON Object
-	+ three.js ..JSON Scene
-
-### debug <a name="debug"></a>
-
-* `visual inspector` - aframe provides a handy built-in visual 3D inspector:
-
-  ```js
-  	CNTRL + ALT + i
-  ```
-
-* `stats component` - use this to keep an eye on various metrics (fps, vertex & face count, geometry & material count, draw calls, # of entities).  (-maximize FPS & minimize everything else!)
-
-## 3rd Party <a name="3rd-party"></a>\
+## 3rd-Party <a name="3rd-party"></a>
 
 ---
 
 ### d3 <a name="d3"></a>\
 
 * & aframe work very well together!
+
+	![3rd-Party](_asset/img/10.png)
 
 ### node-js <a name="node"></a>\
 
@@ -194,7 +80,31 @@
 		console.log(aframe.version);
 	```
 
-## Tip <a name="tip"></a>\
+### react <a name="react"></a>
+
+* ![3rd-Party](_asset/img/6.png)
+
+## Debug <a name="debug"></a>
+
+---
+
+![Debug](_asset/img/4.png)
+
+* `inspector` component - aframe provides a handy built-in visual 3D inspector:
+
+  ```js
+  	CNTRL + ALT + i
+  ```
+
+	![Debug](_asset/img/2.png)
+
+	![Debug](_asset/img/7.png)
+
+* `stats` component - use this to keep an eye on various metrics (fps, vertex & face count, geometry & material count, draw calls, # of entities).  (-maximize FPS & minimize everything else!)
+
+	![Debug](_asset/img/42.png)
+
+## Tip <a name="tip"></a>
 
 ---
 
@@ -237,7 +147,7 @@
 * remember to move the camera - when initially setting up your scene, as the default camera (or screen items) are positioned at the default position at the origin (0, 0, 0).  (Do this by changing the "position" component to ransform the box in 3D space.)
 
 	```html
-		<a-entity id="box" geometry="primitive: box" material="color: red"></a-entity>
+	<a-entity id="box" geometry="primitive: box" material="color: red"></a-entity>
 	```
 
 * when considering scale - for a scene for vr, it's important to consider the real world scale of the entites you create.  (e.g. a box with height="10" may look normal on your computer, but in VR the box will appear massive.)
@@ -248,7 +158,7 @@
 
 ---
 
-* `basic`:
+* `basic`
 
 	```html
 	<html>
@@ -262,7 +172,17 @@
 	</html>
 	```
 
-* `rotated box`:
+	`very basic`
+
+	```html
+	<script src="https://aframe.io/releases/0.70./afame.min.js"></script>
+
+	<body>
+		<a-scene></a-scene>
+	</body>
+	```
+
+* `rotated box`
 
 	```html
 	<html>
@@ -278,7 +198,7 @@
 	</html>
 	```
 
-* `parent-child`:
+* `parent-child`
 
 	```html
 	<!--
@@ -293,7 +213,7 @@
 	</a-scene>
 	```
 
-* `panorama` (programmatic js-way vs aframe way):
+* `panorama` (programmatic js-way vs aframe way)
 
 	```js
 	// via programmatic js
@@ -318,3 +238,49 @@
 				rotation="0 -130 0"></a-sky>
 	</a-scene>
 	```
+
+* `interaction`
+
+	![Example](_asset/img/9.png)
+
+* `ground`
+
+	![Example](_asset/img/11.png)
+
+	![Example](_asset/img/12.png)
+
+	![Example](_asset/img/13.png)
+
+* `link`
+
+	![Example](_asset/img/14.png)
+
+* `lights`
+
+	![Example](_asset/img/15.png)
+
+* `camera`
+
+	![Example](_asset/img/18.png)
+
+	![Example](_asset/img/21.png)
+
+	![Example](_asset/img/17.png)
+
+	![Example](_asset/img/16.png)
+
+	![Example](_asset/img/19.png)
+
+	![Example](_asset/img/20.png)		
+
+* `sky`
+
+	![Example](_asset/img/22.png)
+
+	![Example](_asset/img/23.png)
+
+	![Example](_asset/img/24.png)
+
+	![Example](_asset/img/25.png)
+
+	![Example](_asset/img/26.png)

@@ -106,27 +106,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
 <ul>
-<li>can add animations in A-Frame attaching an <a-animation> element as a child of the entity to animate.</li>
-<li><p>demo:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">/*</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">to define a 5-meter orbit on an entity about the Y-axis that takes 10 seconds...</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">- You can offset its position &amp; animate the rotation of a parent entity. </span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">- This animation starts with the initial rotation about the Y-axis of 0 degrees &amp; goes to 360 degrees.</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">- It’s:</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">    * defined with a duration of 10000 milliseconds</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">    * maintains the final value on each cycle of the animation</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">    * loops indefinitely.</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">*/</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="op">&lt;</span>a<span class="op">-</span>entity<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">    <span class="op">&lt;</span>a<span class="op">-</span>entity position<span class="op">=</span><span class="st">&quot;5 0 0&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;rotation&quot;</span></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14">                             dur<span class="op">=</span><span class="st">&quot;10000&quot;</span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">                             fill<span class="op">=</span><span class="st">&quot;forwards&quot;</span></a>
-<a class="sourceLine" id="cb1-16" data-line-number="16">                             to<span class="op">=</span><span class="st">&quot;0 360 0&quot;</span></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17">                             repeat<span class="op">=</span><span class="st">&quot;indefinite&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div></li>
-<li><p>check out <a href="https://github.com/ngokevin/kframe/tree/master/components/animation/">K-FRAME ANIMATION</a></p></li>
+<li><p>check out <a href="https://github.com/ngokevin/kframe/tree/master/components/animation/">K-FRAME ANIMATION</a></p>
+<figure>
+<img src="_asset/img/10.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
 </ul>
 <h2 id="attributes">Attributes <a name="attribute"></a></h2>
 <hr />
@@ -141,45 +124,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>these components consist of 3 factors: <code>X</code>, <code>Y</code>, &amp; <code>Z</code>.</li>
 <li>can pass 3 space-delimited numbers to the <code>from</code> &amp; <code>to</code> attributes just as we would define them on an entity. (In this case, the animation system will assume we are animating a vec3 value.)</li>
 <li><p>demo:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">// animate an entity going from one spot to another (using the postion component)</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;position&quot;</span> <span class="im">from</span><span class="op">=</span><span class="st">&quot;1 1 1&quot;</span> to<span class="op">=</span><span class="st">&quot;2 4 -8&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">// animate an entity going from one spot to another (using the postion component)</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;position&quot;</span> <span class="im">from</span><span class="op">=</span><span class="st">&quot;1 1 1&quot;</span> to<span class="op">=</span><span class="st">&quot;2 4 -8&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div></li>
 </ul>
 <h3 id="boolean">boolean <a name="boolean"></a></h3>
 <ul>
 <li>aframe has standard components that accept a single boolean value.</li>
 <li>boolean values can be <code>animated</code> by flipping the boolean at the end of each anim cycle.</li>
 <li><p>demo:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">// an animation that toggles the visibility of an entity after 5 seconds.</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;visible&quot;</span> dur<span class="op">=</span><span class="st">&quot;5000&quot;</span> to<span class="op">=</span><span class="st">&quot;false&quot;</span> repeat<span class="op">=</span><span class="st">&quot;indefinite&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">// an animation that toggles the visibility of an entity after 5 seconds.</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;visible&quot;</span> dur<span class="op">=</span><span class="st">&quot;5000&quot;</span> to<span class="op">=</span><span class="st">&quot;false&quot;</span> repeat<span class="op">=</span><span class="st">&quot;indefinite&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div></li>
 </ul>
 <h3 id="numeric">numeric <a name="numeric"></a></h3>
 <ul>
 <li><p>demo:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">// animate the intensity of the light primitive</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>light intensity<span class="op">=</span><span class="st">&quot;1&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;intensity&quot;</span> to<span class="op">=</span><span class="st">&quot;3&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">&lt;/a<span class="op">-</span>light<span class="op">&gt;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">// animate the intensity of the light primitive</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>light intensity<span class="op">=</span><span class="st">&quot;1&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;intensity&quot;</span> to<span class="op">=</span><span class="st">&quot;3&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">&lt;/a<span class="op">-</span>light<span class="op">&gt;</span></a></code></pre></div></li>
 </ul>
 <h3 id="color">color <a name="color"></a></h3>
 <ul>
 <li><p>demo:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">// animate a box from white to red</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity id<span class="op">=</span><span class="st">&quot;blushing-cube&quot;</span> geometry<span class="op">=</span><span class="st">&quot;primitive: box&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;material.color&quot;</span> <span class="im">from</span><span class="op">=</span><span class="st">&quot;white&quot;</span> to<span class="op">=</span><span class="st">&quot;red&quot;</span> dur<span class="op">=</span><span class="st">&quot;1000&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">// animate a box from white to red</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity id<span class="op">=</span><span class="st">&quot;blushing-cube&quot;</span> geometry<span class="op">=</span><span class="st">&quot;primitive: box&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;material.color&quot;</span> <span class="im">from</span><span class="op">=</span><span class="st">&quot;white&quot;</span> to<span class="op">=</span><span class="st">&quot;red&quot;</span> dur<span class="op">=</span><span class="st">&quot;1000&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div></li>
 </ul>
 <h3 id="component">component <a name="component"></a></h3>
 <ul>
 <li>can animate a certain property of a multi-property component (e.g. <code>componentName.propertyName</code>)</li>
 <li><p>demo:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">// animate a cone’s top radius, we can select the radiusTop value with geometry.radiusTop</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity geometry<span class="op">=</span><span class="st">&quot;primitive: cone; radiusTop: 1&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;geometry.radiusTop&quot;</span> to<span class="op">=</span><span class="st">&quot;0.5&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">// animate a cone’s top radius, we can select the radiusTop value with geometry.radiusTop</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity geometry<span class="op">=</span><span class="st">&quot;primitive: cone; radiusTop: 1&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;geometry.radiusTop&quot;</span> to<span class="op">=</span><span class="st">&quot;0.5&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div></li>
 </ul>
 <h2 id="begin">Begin <a name="begin"></a></h2>
 <hr />
@@ -187,16 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>the <code>begin</code> attribute defines when the animation should start playing.</li>
 <li>can either be a number, representing milliseconds to wait, or an event name to wait for.</li>
 <li><p>demo:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">// we can define an animation that waits 2 secs - before scaling an entity</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;scale&quot;</span> begin<span class="op">=</span><span class="st">&quot;2000&quot;</span> to<span class="op">=</span><span class="st">&quot;2 2 2&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">// we can define an animation that waits 2 secs - before scaling an entity</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;scale&quot;</span> begin<span class="op">=</span><span class="st">&quot;2000&quot;</span> to<span class="op">=</span><span class="st">&quot;2 2 2&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">// an anim that waits for the parent element to trigger an event named fade - before fading an entity</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity id<span class="op">=</span><span class="st">&quot;fading-cube&quot;</span> geometry<span class="op">=</span><span class="st">&quot;primitive: box&quot;</span> material<span class="op">=</span><span class="st">&quot;opacity: 1&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;material.opacity&quot;</span> begin<span class="op">=</span><span class="st">&quot;fade&quot;</span> to<span class="op">=</span><span class="st">&quot;0&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">// an anim that waits for the parent element to trigger an event named fade - before fading an entity</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="op">&lt;</span>a<span class="op">-</span>entity id<span class="op">=</span><span class="st">&quot;fading-cube&quot;</span> geometry<span class="op">=</span><span class="st">&quot;primitive: box&quot;</span> material<span class="op">=</span><span class="st">&quot;opacity: 1&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">    <span class="op">&lt;</span>a<span class="op">-</span>animation attribute<span class="op">=</span><span class="st">&quot;material.opacity&quot;</span> begin<span class="op">=</span><span class="st">&quot;fade&quot;</span> to<span class="op">=</span><span class="st">&quot;0&quot;</span><span class="op">&gt;</span>&lt;/a<span class="op">-</span>animation<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">&lt;/a<span class="op">-</span>entity<span class="op">&gt;</span></a></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">// trigger an event to begin fading.</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;#fading-cube&#39;</span>).<span class="at">emit</span>(<span class="st">&#39;fade&#39;</span>)<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">// trigger an event to begin fading.</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;#fading-cube&#39;</span>).<span class="at">emit</span>(<span class="st">&#39;fade&#39;</span>)<span class="op">;</span></a></code></pre></div></li>
 </ul>
 <h2 id="direction">Direction <a name="direction"></a></h2>
 <hr />
@@ -230,14 +213,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>elastic</li>
 <li>back</li>
 <li>bounce</li>
-</ul></li>
-<li><p>for example, the <code>cubic</code> group of easing functions would consist of:</p>
+</ul>
+<p>thus, the <code>cubic</code> group of easing functions would consist of:</p>
 <ul>
 <li>ease-cubic</li>
 <li>ease-in-cubic</li>
 <li>ease-out-cubic</li>
 <li>ease-in-out-cubic</li>
 </ul></li>
+<li><p><code>tween</code>:</p>
+<figure>
+<img src="_asset/img/8.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
 </ul>
 <h2 id="fill">Fill <a name="fill"></a></h2>
 <hr />
@@ -260,6 +247,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>The <a-animation> element emits a couple of events:</p>
 <figure>
 <img src="_asset/img/4.png" alt="Events" /><figcaption>Events</figcaption>
+</figure></li>
+<li><p><code>animating on events</code>:</p>
+<figure>
+<img src="_asset/img/9.png" alt="Events" /><figcaption>Events</figcaption>
 </figure></li>
 </ul>
 </body>

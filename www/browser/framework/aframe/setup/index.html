@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>browser.framework.aframe.setup</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">browser.framework.aframe.setup</h1>
+</header>
+<ul>
+<li><a href="#include">include</a></li>
+<li><a href="#embed">embed</a></li>
+<li><a href="#ssl-https">ssl &amp; https</a></li>
+<li><a href="#using-local-server">using local server</a></li>
+<li>3rd-party
+<ul>
+<li><a href="#angle-cli">angle-cli</a></li>
+</ul></li>
+</ul>
+<h2 id="include">Include <a name="include"></a></h2>
+<hr />
+<ul>
+<li><p>simple (manual):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">&lt;!-- cdn or js file - include lib in head of your html --&gt;</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">&lt;html&gt;</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">    <span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">        <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://aframe.io/releases/0.7.0/aframe.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">    <span class="kw">&lt;/head&gt;</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">    <span class="kw">&lt;body&gt;</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">    ...</a></code></pre></div>
+<p>(NOTE: The script ref to the js-lib must be included before a-scene tag in body of html doc.)</p></li>
+<li><p>cooler! (npm):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1">    <span class="co">// install via npm</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">    npm install aframe</a></code></pre></div>
+<p>Then you can bundle aframe into your app (e.g. with browserify or webpack):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1">    <span class="at">require</span>(<span class="st">&#39;aframe&#39;</span>)<span class="op">;</span></a></code></pre></div>
+<p>Also, if using NPM, can use <code>angle</code> (a cli for aframe), which can initialize a scene template with a single command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" data-line-number="1">    npm install <span class="op">-</span>g angle <span class="op">&amp;&amp;</span> angle initscene</a></code></pre></div></li>
+</ul>
+<h2 id="embed">Embed <a name="embed"></a></h2>
+<hr />
+<ul>
+<li><p>embedded component - use this if you want to embed an aframe scene into the layout of a 2D web page, which will remove fullscreen styles &amp; allow you to style the canvas with css.</p></li>
+<li><p>iframe - use these if you want multiple scenes on the page (as usually you can only embed one at a time into a page.)</p></li>
+</ul>
+<h2 id="ssl-https">SSL-HTTPS <a name="ssl-https"></a></h2>
+<hr />
+<ul>
+<li><code>ssl / https</code> - should be used when deploying site live due to a common security restriction of the browser’s webvr api.</li>
+</ul>
+<h2 id="using-local-server">Using Local Server <a name="using-local-server"></a></h2>
+<hr />
+<ul>
+<li><p>you can develop projects using a local server (so that files are properly served, as otherwise the <code>file://</code> protocol doesn’t provide a domain, &amp; absolute &amp; relative links may not work!)</p>
+<p>Once server is running, open project in browser:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" data-line-number="1">http<span class="op">:</span><span class="co">//localhost:8000</span></a></code></pre></div></li>
+<li><p><a href="https://www.npmjs.com/">NPM (live server)</a> - run this command in a terminal in the same directory as your html file:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" data-line-number="1">    npm install <span class="op">-</span>g live<span class="op">-</span>server <span class="op">&amp;&amp;</span> live<span class="op">-</span>server</a></code></pre></div></li>
+<li><p><a href="https://github.com/cesanta/mongoose">MONGOOSE</a> - download this &amp; open in the same directory as your web app.</p></li>
+<li><p><a href="https://www.python.org/">PYTHON (simple http server)</a> - run this command in a terminal in the same directory as your html file:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" data-line-number="1">    python <span class="op">-</span>m SimpleHTTPServer</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">    <span class="co">// or python 3</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">    python <span class="op">-</span>m <span class="va">http</span>.<span class="at">server</span></a></code></pre></div></li>
+</ul>
+<h2 id="rd-party">3rd-Party</h2>
+<hr />
+<h3 id="angle-cli">angle cli <a name="angle-cli"></a></h3>
+<ul>
+<li><p><a href="https://www.npmjs.com/package/angle">angle</a></p>
+<figure>
+<img src="_asset/img/01.png" alt="3rd-Party" /><figcaption>3rd-Party</figcaption>
+</figure></li>
+</ul>
+</body>
+</html>
