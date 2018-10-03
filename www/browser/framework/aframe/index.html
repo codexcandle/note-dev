@@ -88,9 +88,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><a href="#overview">overview</a></li>
 <li><a href="./setup">setup</a></li>
-<li><a href="./asset-mgmt">asset-mgmt</a></li>
-<li><a href="./primitive">primitive</a></li>
-<li><a href="./component">component</a></li>
+<li><a href="./asset-mgmt">asset</a></li>
+<li><a href="./primitive">primitive</a>
+<ul>
+<li><a href="./primitive/camera">camera</a></li>
+<li><a href="./primitive/light">light</a></li>
+<li><a href="./primitive/plane">plane</a></li>
+<li><a href="./primitive/sky">sky</a></li>
+</ul></li>
+<li><a href="./component">component</a>
+<ul>
+<li><a href="./component/native">native</a></li>
+<li><a href="./component/3rd-party">3rd-party</a></li>
+<li><a href="./component/custom">custom</a><br />
+</li>
+</ul></li>
 <li><a href="./core-api">core-api</a></li>
 <li><a href="./3rd-party">3rd-party</a></li>
 <li><a href="./link">link</a></li>
@@ -101,14 +113,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="#basic">basic</a></li>
 <li><a href="#rotated-box">rotated-box</a></li>
 <li><a href="#parent-child">parent-child</a></li>
-<li><a href="#panorama">panaorama (js-way!)</a></li>
-<li><a href="#ground">ground</a></li>
-<li><a href="#lights">lights</a></li>
-<li><a href="#camera">camera</a></li>
-<li><a href="#sky">sky</a></li>
-<li><a href="#gallery">gallery</a></li>
-<li><a href="#martian-rover">martian-rover</a></li>
-<li><a href="#physics">physics</a></li>
+<li><a href="#panorama">panaorama</a></li>
+<li><a href="./example/gallery">gallery</a></li>
+<li><a href="https://www.roadtovr.com/4-steps-to-start-experimenting-with-webvr-in-10-minutes/">martian-rover</a></li>
+<li><a href="https://github.com/bryik/aframe-ball-throw">physics-throw</a></li>
 </ul></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
@@ -143,8 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="_asset/img/1.png" alt="right-hand coordiante system" /><figcaption>right-hand coordiante system</figcaption>
 </figure></li>
 <li><p>rotational unit is in degrees (then will be internally converted to radians when passing to three.js).</p></li>
-<li><p><code>a-painter</code></p>
-<p><a href="https://github.com/aframevr/a-painter">demo</a></p></li>
+<li><p><a href="https://github.com/aframevr/a-painter"><code>a-painter</code></a> (cool app!)</p></li>
 <li><a href="https://aframe.io">more @ aframe.io</a></li>
 <li><a href="https://webvr.rocks">more @ web-vr rocks</a></li>
 <li><p><a href="https://webvr.info/">more @ web-vr info</a></p></li>
@@ -162,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb2-7" data-line-number="7">        <span class="kw">&lt;/a-scene&gt;</span></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="kw">&lt;/body&gt;</span></a>
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
-<p><code>very basic</code></p>
+<p><code>...very basic</code></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://aframe.io/releases/0.70./afame.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">&lt;body&gt;</span></a>
@@ -210,99 +217,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb7-3" data-line-number="3">    <span class="kw">&lt;a-sky</span><span class="ot"> src=</span><span class="st">&quot;https://davidwalsh.name/demo/3d-image.jpg&quot;</span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="ot">            rotation=</span><span class="st">&quot;0 -130 0&quot;</span><span class="kw">&gt;&lt;/a-sky&gt;</span></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw">&lt;/a-scene&gt;</span></a></code></pre></div></li>
-<li><p><code>ground</code> <a name="ground"></a></p>
-<figure>
-<img src="_asset/img/11.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/12.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/13.png" alt="Example" /><figcaption>Example</figcaption>
-</figure></li>
-<li><p><code>lights</code> <a name="lights"></a></p>
-<figure>
-<img src="_asset/img/15.png" alt="Example" /><figcaption>Example</figcaption>
-</figure></li>
-<li><p><code>camera</code> <a name="camera"></a></p>
-<figure>
-<img src="_asset/img/18.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/21.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/17.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/16.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/19.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/20.png" alt="Example" /><figcaption>Example</figcaption>
-</figure></li>
-<li><p><code>sky</code> <a name="sky"></a></p>
-<figure>
-<img src="_asset/img/22.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/23.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/24.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/25.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/26.png" alt="Example" /><figcaption>Example</figcaption>
-</figure></li>
-<li><p><code>gallery</code> <a name="gallery"></a></p>
-<p><code># 1</code></p>
-<figure>
-<img src="_asset/img/43.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/44.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/45.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/46.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/47.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/48.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/49.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/50.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/51.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/52.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/53.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/54.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<p><code># 2</code></p>
-<p><a href="https://github.com/aframevr/360-image-gallery-boilerplate">link</a></p></li>
-<li><p>[<code>martian rover</code>]<a name="martian-rover"></a></p>
-<p><a href="https://www.roadtovr.com/4-steps-to-start-experimenting-with-webvr-in-10-minutes/">road-to-vr</a></p></li>
-<li><p>[<code>physics</code>]<a name="physics"></a></p>
-<p><a href="https://github.com/bryik/aframe-ball-throw">throw</a></p></li>
 </ul>
 </body>
 </html>

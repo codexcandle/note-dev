@@ -1,8 +1,15 @@
 * [overview](#overview)
 * [setup](./setup)
-* [asset-mgmt](./asset-mgmt)
+* [asset](./asset-mgmt)
 * [primitive](./primitive)
+	* [camera](./primitive/camera)
+	* [light](./primitive/light)
+	* [plane](./primitive/plane)
+	* [sky](./primitive/sky)
 * [component](./component)
+	* [native](./component/native)
+	* [3rd-party](./component/3rd-party)
+	* [custom](./component/custom)		
 * [core-api](./core-api)
 * [3rd-party](./3rd-party)
 * [link](./link)
@@ -12,14 +19,10 @@
 	* [basic](#basic)
 	* [rotated-box](#rotated-box)
 	* [parent-child](#parent-child)
-	* [panaorama (js-way!)](#panorama)
-	* [ground](#ground)
-	* [lights](#lights)
-	* [camera](#camera)
-	* [sky](#sky)
-	* [gallery](#gallery)
-	* [martian-rover](#martian-rover)
-	* [physics](#physics)
+	* [panaorama](#panorama)
+	* [gallery](./example/gallery)
+	* [martian-rover](https://www.roadtovr.com/4-steps-to-start-experimenting-with-webvr-in-10-minutes/)
+	* [physics-throw](https://github.com/bryik/aframe-ball-throw)
 
 ## Overview <a name="overview"></a>
 
@@ -58,9 +61,7 @@
 
 * rotational unit is in degrees (then will be internally converted to radians when passing to three.js).
 
-* `a-painter`
-
-	[demo](https://github.com/aframevr/a-painter)
+* [`a-painter`](https://github.com/aframevr/a-painter) (cool app!)
 
 * [more @ aframe.io](https://aframe.io)
 * [more @ web-vr rocks](https://webvr.rocks)
@@ -84,7 +85,7 @@
 	</html>
 	```
 
-	`very basic`
+	`...very basic`
 
 	```html
 	<script src="https://aframe.io/releases/0.70./afame.min.js"></script>
@@ -150,81 +151,3 @@
 				rotation="0 -130 0"></a-sky>
 	</a-scene>
 	```
-
-* `ground` <a name="ground"></a>
-
-	![Example](_asset/img/11.png)
-
-	![Example](_asset/img/12.png)
-
-	![Example](_asset/img/13.png)
-
-* `lights` <a name="lights"></a>
-
-	![Example](_asset/img/15.png)
-
-* `camera` <a name="camera"></a>
-
-	![Example](_asset/img/18.png)
-
-	![Example](_asset/img/21.png)
-
-	![Example](_asset/img/17.png)
-
-	![Example](_asset/img/16.png)
-
-	![Example](_asset/img/19.png)
-
-	![Example](_asset/img/20.png)		
-
-* `sky` <a name="sky"></a>
-
-	![Example](_asset/img/22.png)
-
-	![Example](_asset/img/23.png)
-
-	![Example](_asset/img/24.png)
-
-	![Example](_asset/img/25.png)
-
-	![Example](_asset/img/26.png)
-
-* `gallery` <a name="gallery"></a>
-
-	`# 1`
-
-	![Example](_asset/img/43.png)
-
-	![Example](_asset/img/44.png)
-
-	![Example](_asset/img/45.png)
-
-	![Example](_asset/img/46.png)
-
-	![Example](_asset/img/47.png)
-
-	![Example](_asset/img/48.png)
-
-	![Example](_asset/img/49.png)
-
-	![Example](_asset/img/50.png)
-
-	![Example](_asset/img/51.png)
-
-	![Example](_asset/img/52.png)
-
-	![Example](_asset/img/53.png)
-
-	![Example](_asset/img/54.png)
-
-	`# 2`
-
-	[link](https://github.com/aframevr/360-image-gallery-boilerplate)
-
-* [`martian rover`]<a name="martian-rover"></a>
-
-	[road-to-vr](https://www.roadtovr.com/4-steps-to-start-experimenting-with-webvr-in-10-minutes/)
-
-* [`physics`]<a name="physics"></a>
-
-	[throw](https://github.com/bryik/aframe-ball-throw)
