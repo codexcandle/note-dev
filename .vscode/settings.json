@@ -116,7 +116,7 @@
 // ----------------------------------------------
 // --------------------------------------- AFRAME
 // ----------------------------------------------
-// "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.aframe'"
+"pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.aframe'"
 // ... 3rd-party
 // "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/3rd-party/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.3rd-party-tools'"
 // ... debug
@@ -155,7 +155,7 @@
 // ... gallery
 // "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/example/gallery/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.example.gallery'"
 // ----------------------------------- PRIMITIVE
-"pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/primitive/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.primitive'"
+// "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/primitive/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.primitive'"
 // ... camera
 // "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/primitive/camera/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.primitive.camera'"
 // ... light
