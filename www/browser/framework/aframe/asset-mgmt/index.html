@@ -97,7 +97,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><a href="#accessing-file-loader">accessing the file-loader &amp; cache</a></p>
 <hr /></li>
 <li><a href="#sounds">sounds</a></li>
-<li><a href="#model-format">3d model formats</a></li>
+<li><a href="#model-format">3d model formats</a>
+<ul>
+<li><a href="#obj-2-gltf">obj2gltf</a></li>
+</ul></li>
 <li><p><a href="#tips">tips</a></p></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
@@ -222,7 +225,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <figure>
 <img src="_asset/img/13.png" alt="Model Formats" /><figcaption>Model Formats</figcaption>
 </figure></li>
-<li><p><code>gltf</code> - (GL Transmission Format) the ideal format as is feature-rich, compact, &amp; efficient. Focuses on providing a transmission format rather than an edito format, and is more interoperable with web technologies. (see aframe’s gltf component)</p></li>
+<li><p><code>gltf</code> - (GL Transmission Format) the ideal format as is feature-rich, compact, &amp; efficient. Focuses on providing a transmission format rather than an edito format, and is more interoperable with web technologies. (see aframe’s gltf component)</p>
+<figure>
+<img src="_asset/img/19.png" alt="Model Formats" /><figcaption>Model Formats</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/20.png" alt="Model Formats" /><figcaption>Model Formats</figcaption>
+</figure></li>
 <li><p><code>collada</code> (.dae) - an xml-based format w/ a rich feature set. Is more common in comparison to gltf (since it’s older), but mor suited to nativ apps that package all their conents together. Ultimately, not recommended since they’re like the .psd files of 3d models (whereas gltf are like .png of 3d models. They’re heavy because they contain complete subscenes.)</p></li>
 <li><p><code>wavefront</code> (.obj) - a well-known format, but has limitations (like lack of animation support &amp; vertex color support).</p></li>
 <li><p>there are also ecosystem components for loading other formats:</p>
@@ -231,6 +240,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>three.js ..JSON Object</li>
 <li>three.js ..JSON Scene</li>
 </ul></li>
+</ul>
+<h3 id="obj-2-gltf">obj-2-gltf <a name="obj-2-gltf"></a></h3>
+<ul>
+<li><p><code>obj &gt; gltf</code> - convert OBJ assets to glTF 2.0</p>
+<p><a href="https://github.com/AnalyticalGraphicsInc/OBJ2GLTF">obj-2-gltf</a></p></li>
 </ul>
 <h2 id="tips">Tips <a name="tips"></a></h2>
 <hr />
@@ -271,6 +285,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <figure>
 <img src="_asset/img/10.png" alt="Tips" /><figcaption>Tips</figcaption>
 </figure></li>
+<li><p><code>mixins</code> - &amp; templating are useful to reuse &amp; reduce repeated html.</p></li>
+<li><p>use <code>recommended hardware specifications</code>.</p></li>
+<li><p><code>asset-management system</code> - make use of this to benefit from browser caching &amp; preloading. Trying to fetch assets while rendering is slower than fetching all assets before rendering.</p></li>
+<li><p>if using models, look to bake your lights into textures rather than relying on real-time lighting &amp; shadows.</p></li>
+<li><p>generally, the fewer the # of entitites &amp; lights in the scene, the better.</p></li>
+<li><p>make sure your textures’ resolutions are sized to power of two (e.g. 256x256, 512x1024) in order to avoid the renderer having to resize the texture during runtime.</p></li>
+<li><p>limit the # of faces &amp; vertices on models.</p></li>
+<li><p>some further techniques (not yet documented) include geometry instancing, geometry merging, level of detail (LOD).</p></li>
+<li><p>when using raycasters or colliders, select which entitites are to be raycasted against rather than raycasting against every object in the scene.</p></li>
+<li><p>when adding continuously running behaviors, use aframe component “tick handlers” to hook into the global render loop. Use utilities such as <code>AFRAME.utils.throttlTick</code> to limit the # of times the tick handler is run if appropriate.</p></li>
+<li><p>how to display iframe’s or render hmtl in aframe? - There is NO way for the browser to display iframes within WebGL. While it’s possible to overlay an iframe on top of the canvas, the iframe will not display in VR nor can it integrate with the scene. However, you can redner basic html &amp; css as a texture without interactivity. We can paint to a canvas &amp; use the canvas as source for a texture. There are components in the ecosystem that enable this:</p>
+<p><a href="https://github.com/mayognaise/aframe-html-shader">HTML Shader</a></p></li>
+<li><p>remember to move the camera - when initially setting up your scene, as the default camera (or screen items) are positioned at the default position at the origin (0, 0, 0). (Do this by changing the “position” component to ransform the box in 3D space.)</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">&lt;a-entity</span><span class="ot"> id=</span><span class="st">&quot;box&quot;</span><span class="ot"> geometry=</span><span class="st">&quot;primitive: box&quot;</span><span class="ot"> material=</span><span class="st">&quot;color: red&quot;</span><span class="kw">&gt;&lt;/a-entity&gt;</span></a></code></pre></div></li>
+<li><p>when considering scale - for a scene for vr, it’s important to consider the real world scale of the entites you create. (e.g. a box with height=“10” may look normal on your computer, but in VR the box will appear massive.)</p></li>
+<li><p>to determine the positive direction of rotation - use the right-hand-rule.</p></li>
 </ul>
 </body>
 </html>

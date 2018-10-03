@@ -6,7 +6,17 @@
 
 ---
 
-* ...
+* `components` - the core structure of aframe is ecs (entity-component).  Place & structure app code within purely aframe components for:
+
+	- reusability
+	- modularity
+	- composability
+	- decoupling
+	- encapsulation
+	- declaritiveness
+	- testability
+
+	It's ok at first to start out using content "script" tags, but look to move towards components!
 
 ## DOM Query <a name="dom-query"></a>
 

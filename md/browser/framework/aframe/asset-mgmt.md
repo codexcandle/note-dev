@@ -12,6 +12,7 @@
 
 * [sounds](#sounds)
 * [3d model formats](#model-format)
+	* [obj2gltf](#obj-2-gltf)
 * [tips](#tips)
 
 ## Overview <a name="overview"></a>
@@ -177,6 +178,10 @@
 
 * `gltf` - (GL Transmission Format) the ideal format as is feature-rich, compact, & efficient.  Focuses on providing a transmission format rather than an edito format, and is more interoperable with web technologies. (see aframe's gltf component)
 
+	![Model Formats](_asset/img/19.png)
+
+	![Model Formats](_asset/img/20.png)
+
 * `collada` (.dae) - an xml-based format w/ a rich feature set.  Is more common in comparison to gltf (since it's older), but mor suited to nativ apps that package all their conents together.  Ultimately, not recommended since they're like the .psd files of 3d models (whereas gltf are like .png of 3d models.  They're heavy because they contain complete subscenes.)
 
 * `wavefront` (.obj) - a well-known format, but has limitations (like lack of animation support & vertex color support).
@@ -186,6 +191,12 @@
 	* .PLY models
 	* three.js ..JSON Object
 	* three.js ..JSON Scene
+
+### obj-2-gltf <a name="obj-2-gltf"></a>
+
+* `obj > gltf` - convert OBJ assets to glTF 2.0
+
+	[obj-2-gltf](https://github.com/AnalyticalGraphicsInc/OBJ2GLTF)
 
 ## Tips <a name="tips"></a>
 
@@ -221,4 +232,38 @@
 
 	![Tips](_asset/img/9.png)
 
-	![Tips](_asset/img/10.png)		
+	![Tips](_asset/img/10.png)
+
+* `mixins` - & templating are useful to reuse & reduce repeated html.
+
+* use `recommended hardware specifications`.
+
+* `asset-management system` - make use of this to benefit from browser caching & preloading.  Trying to fetch assets while rendering is slower than fetching all assets before rendering.
+
+* if using models, look to bake your lights into textures rather than relying on real-time lighting & shadows.
+
+* generally, the fewer the # of entitites & lights in the scene, the better.
+
+* make sure your textures' resolutions are sized to power of two (e.g. 256x256, 512x1024) in order to avoid the renderer having to resize the texture during runtime.
+
+* limit the # of faces & vertices on models.
+
+* some further techniques (not yet documented) include geometry instancing, geometry merging, level of detail (LOD).
+
+* when using raycasters or colliders, select which entitites are to be raycasted against rather than raycasting against every object in the scene.
+
+* when adding continuously running behaviors, use aframe component "tick handlers" to hook into the global render loop.  Use utilities such as `AFRAME.utils.throttlTick` to limit the # of times the tick handler is run if appropriate.
+
+* how to display iframe's or render hmtl in aframe? - There is NO way for the browser to display iframes within WebGL.  While it's possible to overlay an iframe on top of the canvas, the iframe will not display in VR nor can it integrate with the scene.  However, you can redner basic html & css as a texture without interactivity. We can paint to a canvas & use the canvas as source for a texture.  There are components in the ecosystem that enable this:
+
+	[HTML Shader](https://github.com/mayognaise/aframe-html-shader)
+
+* remember to move the camera - when initially setting up your scene, as the default camera (or screen items) are positioned at the default position at the origin (0, 0, 0).  (Do this by changing the "position" component to ransform the box in 3D space.)
+
+	```html
+	<a-entity id="box" geometry="primitive: box" material="color: red"></a-entity>
+	```
+
+* when considering scale - for a scene for vr, it's important to consider the real world scale of the entites you create.  (e.g. a box with height="10" may look normal on your computer, but in VR the box will appear massive.)
+
+* to determine the positive direction of rotation - use the right-hand-rule.
