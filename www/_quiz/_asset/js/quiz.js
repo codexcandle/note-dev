@@ -1,6 +1,6 @@
 // VARIABLE
 // ----------------------------------------------
-const IS_LIVE = false;
+const IS_LIVE = true;
 
 const questions = [];
 questions.push("bracket-balance");
