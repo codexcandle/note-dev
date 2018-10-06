@@ -25,6 +25,8 @@
 // ----------------------------------------------
 // ... ableton
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.ableton'"
+// ... reaper
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/reaper/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.reaper'"
 // ----------------------------------------------
 // --------------------------------------- ENGINE
 // ----------------------------------------------
@@ -116,7 +118,7 @@
 // ----------------------------------------------
 // --------------------------------------- AFRAME
 // ----------------------------------------------
-"pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.aframe'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.aframe'"
 // ... 3rd-party
 // "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/aframe/3rd-party/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='browser.framework.aframe.3rd-party-tools'"
 // ... debug
@@ -177,9 +179,11 @@
 // "pandoc.htmlOptString": "-s -o ../../www/comp-sci/index.html -t html5 --css=../_asset/css/style.css --metadata title='comp-sci'"
 // ------------------------------------ ALGORITHM
 // ----------------------------------------------
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/algorithm/index.html -t html5 --css=../../_asset/css/style.css --metadata title='comp-sci.algorithm'"    
+//"pandoc.htmlOptString": "-s -o ../../../www/comp-sci/algorithm/index.html -t html5 --css=../../_asset/css/style.css --metadata title='comp-sci.algorithm'"    
 // ... big-O
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/algorithm/big-o/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.big-o'"
+// ... recursion
+// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/algorithm/recursion/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.recursion'"
 // ... search
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/algorithm/search/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.search'"
 // ... sort 
@@ -285,8 +289,14 @@
 // QUIZ *********************************************************************************
 // ... bracket balance
 // "pandoc.htmlOptString": "-s -o ../../www/_quiz/question/bracket-balance/index.html -t html5 --css=../../_asset/css/style.css --metadata title='bracket-balance'"
-// ... draw call batching
+// ... draw-call batching
 // "pandoc.htmlOptString": "-s -o ../../www/_quiz/question/drawcall-batching/index.html -t html5 --css=../../_asset/css/style.css --metadata title='draw-call-batching'"
+// ... factorial
+"pandoc.htmlOptString": "-s -o ../../www/_quiz/question/factorial/index.html -t html5 --css=../../_asset/css/style.css --metadata title='factorial'"
+// ... fibonacci (series)
+// "pandoc.htmlOptString": "-s -o ../../www/_quiz/question/fib-series/index.html -t html5 --css=../../_asset/css/style.css --metadata title='fibonacci-series'"
+// ... fibonacci (value)
+// "pandoc.htmlOptString": "-s -o ../../www/_quiz/question/fib-value/index.html -t html5 --css=../../_asset/css/style.css --metadata title='fibonacci-value'"
 // ... is-kinematic
 // "pandoc.htmlOptString": "-s -o ../../www/_quiz/question/is-kinematic/index.html -t html5 --css=../../_asset/css/style.css --metadata title='is-kinematic'"
 // ... out keyword

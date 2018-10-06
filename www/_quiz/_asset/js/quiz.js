@@ -1,8 +1,13 @@
 // VARIABLE
 // ----------------------------------------------
+const IS_LIVE = false;
+
 const questions = [];
 questions.push("bracket-balance");
 questions.push("drawcall-batching");
+questions.push("factorial");
+questions.push("fib-series");
+questions.push("fib-value");
 questions.push("is-kinematic");
 questions.push("out-keyword");
 questions.push("shuffle");
@@ -18,7 +23,6 @@ const submitBtn = document.getElementById("nextBtn");
 TODO - find way to exlude literal mention of "notes" dir below,
 as server was calling an inccorrect url without this literal hack...
 */
-const IS_LIVE = true;
 const QUESTION_DIR_LOCAL = "/_quiz/question/";
 const QUESTION_DIR_REMOTE = "/notes/_quiz/question/";
 const questionFolderPath = IS_LIVE ? QUESTION_DIR_REMOTE : QUESTION_DIR_LOCAL;

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>comp-sci.algorithm</title>
+  <title>factorial</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -83,57 +83,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>
 <header>
-<h1 class="title">comp-sci.algorithm</h1>
+<h1 class="title">factorial</h1>
 </header>
+<h2 id="q">Q</h2>
+<p>Write an algorithm to find <code>factorial 6</code>?</p>
+<h2 id="a">A</h2>
 <ul>
-<li><a href="#overview">overview</a></li>
-<li><a href="#divide">d &amp; c</a></li>
-<li><a href="./big-o">big-o</a></li>
-<li><a href="./recursion">recursion</a></li>
-<li>type
-<ul>
-<li><a href="./sort">sort</a></li>
-<li><a href="./search">search</a></li>
-<li><a href="#shuffle">shuffle</a></li>
-<li>insert (?)</li>
-<li>update (?)</li>
-<li>delete (?)</li>
-</ul></li>
+<li><p><code>value - recursive</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">/*</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">- factorial(6) = 720</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">- factorial(7) = 5040</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">- factorial(8) = 40320</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">*/</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw">public</span> <span class="dt">int</span> <span class="fu">factorial</span>(<span class="dt">int</span> n)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">{</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">    <span class="kw">if</span>(num &lt;= <span class="dv">0</span>) <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">    <span class="kw">else</span> <span class="kw">if</span>(num == <span class="dv">1</span>) <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">    <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">    {</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">        <span class="kw">return</span> (n * <span class="fu">factorial</span>(n - <span class="dv">1</span>));</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">    }</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">}</a></code></pre></div></li>
 </ul>
-<h2 id="overview">Overview <a name="overview"></a></h2>
-<hr />
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Algorithm">more @ wikipedia</a></li>
-</ul>
-<h3 id="shuffle">shuffle <a name="shuffle"></a></h3>
-<ul>
-<li><p>perhaps you need to shuffle a card deck:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1">    <span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">ShuffleArray</span>(<span class="dt">int</span>[] arr)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">    {</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">        <span class="dt">int</span> length = arr.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">        <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; length; i++)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">        {</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">            <span class="dt">int</span> temp = arr[i];</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">            <span class="dt">int</span> rand = Random.<span class="fu">Range</span>(<span class="dv">0</span>, length);</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">            arr[i] = arr[rand];</a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">            arr[rand] = temp;</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">        }</a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">    }</a></code></pre></div></li>
-</ul>
-<h2 id="divide-conquer">Divide &amp; Conquer <a name="divide"></a></h2>
-<hr />
-<figure>
-<img src="./_asset/img/1.png" alt="Greedy vs. Divide &amp; Conquer" /><figcaption>Greedy vs. Divide &amp; Conquer</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/2.png" alt="Greedy vs. Divide &amp; Conquer" /><figcaption>Greedy vs. Divide &amp; Conquer</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/3.png" alt="Greedy vs. Divide &amp; Conquer" /><figcaption>Greedy vs. Divide &amp; Conquer</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/4.png" alt="Greedy vs. Divide &amp; Conquer" /><figcaption>Greedy vs. Divide &amp; Conquer</figcaption>
-</figure>
+<h6 id="further">FURTHER</h6>
+<p><a href="./../../../comp-sci/algorithm/recursion/#factorial">fibonacci</a></p>
 </body>
 </html>

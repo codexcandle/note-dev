@@ -1,14 +1,14 @@
 * [overview](#overview)
 * [d & c](#divide)
 * [big-o](./big-o)
+* [recursion](./recursion)
 * type
     * [sort](./sort)
     * [search](./search)
     * [shuffle](#shuffle)
-    * [(?)- fibonaci / recursion](./fibonaci)
-    * [(?)- insert](./insert)
-    * [(?)- update](./update)
-    * [(?)- delete](./delete)
+    * insert (?)
+    * update (?)
+    * delete (?)
 
 ## Overview <a name="overview"></a>
 
