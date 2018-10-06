@@ -23,4 +23,4 @@ Write an algorithm to find `factorial 6`?
 	```
 
 ###### FURTHER
-[fibonacci](./../../../comp-sci/algorithm/recursion/#factorial)
+[factorial](./../../../comp-sci/algorithm/recursion/#factorial)
