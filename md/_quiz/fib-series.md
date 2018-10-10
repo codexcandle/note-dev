@@ -1,9 +1,10 @@
 ## Q
-Write an algorithm to print the Fibonacci series to the Nth degree?
+
+Write a function which returns the `n`th number in Fibonacci sequences with an input `n`.
 
 ## A
 
-* `series - recursive`:
+* `recursive`
 
 	```c#
 	static public void FibSeriesRecursive(int len)
@@ -30,7 +31,7 @@ Write an algorithm to print the Fibonacci series to the Nth degree?
 	}
 	```
 
-	vs. `iterative`
+* `iterative`
 
 	```c#
 	static public int[] FibSeriesIterative(int n)

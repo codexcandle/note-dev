@@ -179,15 +179,17 @@
 // "pandoc.htmlOptString": "-s -o ../../www/comp-sci/index.html -t html5 --css=../_asset/css/style.css --metadata title='comp-sci'"
 // ------------------------------------ ALGORITHM
 // ----------------------------------------------
-//"pandoc.htmlOptString": "-s -o ../../../www/comp-sci/algorithm/index.html -t html5 --css=../../_asset/css/style.css --metadata title='comp-sci.algorithm'"    
-// ... big-O
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/algorithm/big-o/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.big-o'"
+// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/algorithm/index.html -t html5 --css=../../_asset/css/style.css --metadata title='comp-sci.algorithm'"
 // ... recursion
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/algorithm/recursion/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.recursion'"
 // ... search
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/algorithm/search/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.search'"
 // ... sort 
 // "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/algorithm/sort/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.sort'"
+// ---------------------------------------- BIG-O
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/algorithm/big-o/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.big-o'"
+// ... a-notation
+"pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/algorithm/big-o/a-notation/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.algorithm.big-o.a-notation'"
 // --------------------------------------- BUBBLE
 // "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/algorithm/sort/bubble/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.algorithm.sort.bubble'"
 // ... selection
@@ -203,6 +205,8 @@
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/index.html -t html5 --css=../../_asset/css/style.css --metadata title='comp-sci.data-structure'"
 // ... array
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/array/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.array'" 
+// ... array-list
+// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/array-list/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.array-list'" 
 // ... hash-table
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/hash-table/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.hash-table'"    
 // ... linked-list
@@ -215,10 +219,27 @@
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/trie/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.trie'"
 // ----------------------------------------- TREE
 // "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.tree'"
+// ... bst
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/bst/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.data-structure.tree.bst'"
 // ... heap
 // "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/heap/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.data-structure.tree.heap'"
-// ------------------------------- DESIGN-PATTERN
+// ------------------------------------------ OOP
 // ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/oop/index.html -t html5 --css=../../_asset/css/style.css --metadata title='comp-sci.oop'"
+// ---------------------------------------- SOLID
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/oop/solid/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.oop.solid'"
+// ... s
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/oop/solid/s/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.oop.solid.s'"
+// ... o
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/oop/solid/o/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.oop.solid.o'"
+// ... l
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/oop/solid/l/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.oop.solid.l'"
+// ... i
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/oop/solid/i/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.oop.solid.i'"
+// ... d
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/oop/solid/d/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.oop.solid.d'"
+
+// ------------------------------- DESIGN-PATTERN
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/design-pattern/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.design-pattern'"
 // ... singleton
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/design-pattern/singleton/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.design-pattern.singleton'"
@@ -289,10 +310,14 @@
 // QUIZ *********************************************************************************
 // ... bracket balance
 // "pandoc.htmlOptString": "-s -o ../../www/_quiz/question/bracket-balance/index.html -t html5 --css=../../_asset/css/style.css --metadata title='bracket-balance'"
+// ... binary-search-iterative
+// "pandoc.htmlOptString": "-s -o ../../www/_quiz/question/binary-search-iterative/index.html -t html5 --css=../../_asset/css/style.css --metadata title='binary-search-iterative'"
+// ... binary-search-recursive
+// "pandoc.htmlOptString": "-s -o ../../www/_quiz/question/binary-search-recursive/index.html -t html5 --css=../../_asset/css/style.css --metadata title='binary-search-recursive'"
 // ... draw-call batching
 // "pandoc.htmlOptString": "-s -o ../../www/_quiz/question/drawcall-batching/index.html -t html5 --css=../../_asset/css/style.css --metadata title='draw-call-batching'"
 // ... factorial
-"pandoc.htmlOptString": "-s -o ../../www/_quiz/question/factorial/index.html -t html5 --css=../../_asset/css/style.css --metadata title='factorial'"
+// "pandoc.htmlOptString": "-s -o ../../www/_quiz/question/factorial/index.html -t html5 --css=../../_asset/css/style.css --metadata title='factorial'"
 // ... fibonacci (series)
 // "pandoc.htmlOptString": "-s -o ../../www/_quiz/question/fib-series/index.html -t html5 --css=../../_asset/css/style.css --metadata title='fibonacci-series'"
 // ... fibonacci (value)

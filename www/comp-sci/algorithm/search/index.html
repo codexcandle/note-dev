@@ -88,158 +88,130 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><a href="#overview">overview</a></li>
 <li><a href="#binary">binary</a></li>
-<li><a href="#example">EX</a></li>
+<li>example
+<ul>
+<li><a href="#pseudo-code">pseudo-code</a></li>
+<li><a href="#code">code</a></li>
+</ul></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Category:Search_algorithms">more @ wikipedia</a></li>
 </ul>
-<h2 id="binary-search">Binary search <a name="binary"></a></h2>
+<h2 id="binary">Binary <a name="binary"></a></h2>
 <hr />
 <ul>
-<li>a technique used to search <code>sorted</code> data sets.</li>
-<li>works by selecting the middle of the data set, essentially the median, &amp; compares it against a target value. If the values match, it will return success. If the target value is higher than the value of the probe element, it will take the upper half of the data-set &amp; perform the same operation against it. Likewise, if the target value is lower than the value of the probe element, it will perform the operation against the lower half. It will continue to halve the data-set w/ each iteration until the value has been found or until it can no longer split the data-set.</li>
-<li>This type of algorithm is O(log N). The iterative halving of data-sets described in the binary search example produces a growth curve that peaks at the beginning, &amp; slowly flattens out as the size of the data-sets increase (e.g. An input data-set containing 10 items takes two seconds, &amp; a data-set containing 1000 items will take 2 secs. Doubling the size fo the input data-set has little effect on its growth as after a single iteration of the algorithm, the data-set will be halved &amp; therefore on par w/ an input data-set half the size. This makes algorithms like binary search extremely efficient when dealing w/ large data-sets.</li>
+<li><p><code>binary search</code> - used to search <code>sorted</code> data sets.</p>
+<p>Works by selecting the middle of the data set, &amp; compares it against a target value. If values match, it will return success. If target value is higher than the value of the probe element, it will take the upper half of the data-set &amp; perform the same operation against it. If lower than the value of the probe element, it will perform the operation against the lower half. (It will continue to halve the data-set w/ each iteration until the value has been found or until it can no longer split the data-set.)</p></li>
+<li><p><code>logarithmic</code> - this type of algorithm is O(log N).</p>
+<p>The iterative halving of data-sets described in the binary search example produces a growth curve that peaks at the beginning, &amp; slowly flattens out as the size of the data-sets increase (e.g. An input data-set containing 10 items takes two seconds, &amp; a data-set containing 1000 items will take 2 secs. Doubling the size of the input data-set has little effect on its growth as after a single iteration of the algorithm, the data-set will be halved &amp; therefore on par w/ an input data-set half the size. <code>This makes algorithms like binary search extremely efficient when dealing w/ large data-sets.</code></p></li>
 </ul>
 <h2 id="ex">EX <a name="example"></a></h2>
 <hr />
 <ul>
-<li><p>code:</p>
-<p><code>Psuedo-code</code></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1">    lo = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">    hi = n – <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">    While lo &lt;= hi Do</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">        mid = (lo + hi) / <span class="dv">2</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">        If array[mid] == value:  <span class="kw">return</span> mid</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">        Else If array[mid] &lt; value: lo = mid + <span class="dv">1</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">        Else If array[mid] &gt; value: hi = mid – <span class="dv">1</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">        <span class="kw">return</span> <span class="dv">-1</span></a></code></pre></div>
-<p><code>Iterative</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">int</span> <span class="fu">DoBinarySearch</span>(<span class="dt">int</span>[] data, <span class="dt">int</span> key)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">{</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="dt">int</span> min = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">    <span class="dt">int</span> max = data.<span class="fu">Length</span> - <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="co">// sanitize!</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">    <span class="co">// (ensure sorted array is initially passed)</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">1</span>; i &lt;= max; i++)</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">    {</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">        <span class="kw">if</span>(data[i] &lt; data[i - <span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">        {</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">            <span class="co">// data is not sorted!</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">            <span class="kw">return</span> <span class="dv">-1</span>;</a>
-<a class="sourceLine" id="cb2-14" data-line-number="14">        }</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">    }</a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17">    <span class="co">// search!</span></a>
-<a class="sourceLine" id="cb2-18" data-line-number="18">    <span class="kw">while</span>(min &lt;= max)</a>
-<a class="sourceLine" id="cb2-19" data-line-number="19">    {</a>
-<a class="sourceLine" id="cb2-20" data-line-number="20">        <span class="dt">int</span> mid = (min + max) / <span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb2-21" data-line-number="21">        <span class="dt">int</span> midVal = data[mid];</a>
-<a class="sourceLine" id="cb2-22" data-line-number="22">        <span class="kw">if</span>(key == midVal)</a>
-<a class="sourceLine" id="cb2-23" data-line-number="23">        {</a>
-<a class="sourceLine" id="cb2-24" data-line-number="24">            <span class="co">// (midval + 1) since we&#39;re returning numPos</span></a>
-<a class="sourceLine" id="cb2-25" data-line-number="25">            <span class="kw">return</span> midVal++;</a>
-<a class="sourceLine" id="cb2-26" data-line-number="26">        }</a>
-<a class="sourceLine" id="cb2-27" data-line-number="27">        <span class="kw">else</span> <span class="kw">if</span> (key &lt; midVal)</a>
-<a class="sourceLine" id="cb2-28" data-line-number="28">        {</a>
-<a class="sourceLine" id="cb2-29" data-line-number="29">            max = mid - <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-30" data-line-number="30">        }</a>
-<a class="sourceLine" id="cb2-31" data-line-number="31">        <span class="kw">else</span> <span class="kw">if</span> (key &gt; midVal)</a>
-<a class="sourceLine" id="cb2-32" data-line-number="32">        {</a>
-<a class="sourceLine" id="cb2-33" data-line-number="33">            min = mid + <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-34" data-line-number="34">        }</a>
-<a class="sourceLine" id="cb2-35" data-line-number="35">    }</a>
-<a class="sourceLine" id="cb2-36" data-line-number="36"></a>
-<a class="sourceLine" id="cb2-37" data-line-number="37">    <span class="kw">return</span> <span class="dv">-1</span>;</a>
-<a class="sourceLine" id="cb2-38" data-line-number="38">}</a>
-<a class="sourceLine" id="cb2-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">// driver method to test above</span></a>
-<a class="sourceLine" id="cb2-41" data-line-number="41"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>()</a>
-<a class="sourceLine" id="cb2-42" data-line-number="42">{</a>
-<a class="sourceLine" id="cb2-43" data-line-number="43">    <span class="dt">int</span> []arr = {<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">40</span>};</a>
-<a class="sourceLine" id="cb2-44" data-line-number="44">    <span class="dt">int</span> n = arr.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb2-45" data-line-number="45">    <span class="dt">int</span> x = <span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb2-46" data-line-number="46">    <span class="dt">int</span> result = <span class="fu">DoBinarySearch</span>(arr, x);</a>
-<a class="sourceLine" id="cb2-47" data-line-number="47">    <span class="kw">if</span>(result == <span class="dv">-1</span>)</a>
-<a class="sourceLine" id="cb2-48" data-line-number="48">        Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Element not present&quot;</span>);</a>
-<a class="sourceLine" id="cb2-49" data-line-number="49">    <span class="kw">else</span></a>
-<a class="sourceLine" id="cb2-50" data-line-number="50">        Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Element found at &quot;</span> + <span class="st">&quot;index &quot;</span> + result);</a>
-<a class="sourceLine" id="cb2-51" data-line-number="51">}</a></code></pre></div>
-<p><code>Recursive #1</code></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">object</span> <span class="fu">BinarySearchRecursive</span>(<span class="dt">int</span> [] inputArray,</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">                                            <span class="dt">int</span> key,</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">                                            <span class="dt">int</span> min,</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">                                            <span class="dt">int</span> max)  </a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">{  </a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">      <span class="kw">if</span> (min &gt; max)  </a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">      {  </a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">          <span class="kw">return</span> <span class="st">&quot;Nil&quot;</span>;  </a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">      }  </a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">      <span class="kw">else</span>  </a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">      {  </a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">          <span class="dt">int</span> mid = (min+max)/<span class="dv">2</span>;  </a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">          <span class="kw">if</span> (key == inputArray [mid])  </a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">          {  </a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">             <span class="kw">return</span> ++mid;  </a>
-<a class="sourceLine" id="cb3-16" data-line-number="16">           }  </a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">           <span class="kw">else</span> <span class="kw">if</span> (key &lt; inputArray [mid])  </a>
-<a class="sourceLine" id="cb3-18" data-line-number="18">           {  </a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">               <span class="kw">return</span> <span class="fu">BinarySearchRecursive</span>(inputArray, key, min, mid - <span class="dv">1</span>);  </a>
-<a class="sourceLine" id="cb3-20" data-line-number="20">           }  </a>
-<a class="sourceLine" id="cb3-21" data-line-number="21">           <span class="kw">else</span>  </a>
-<a class="sourceLine" id="cb3-22" data-line-number="22">           {  </a>
-<a class="sourceLine" id="cb3-23" data-line-number="23">              <span class="kw">return</span> <span class="fu">BinarySearchRecursive</span>(inputArray, key, mid + <span class="dv">1</span>, max);  </a>
-<a class="sourceLine" id="cb3-24" data-line-number="24">           }  </a>
-<a class="sourceLine" id="cb3-25" data-line-number="25">      }  </a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"> }  </a></code></pre></div>
-<p><code>Recursive #2</code></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">class</span> GFG</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">{</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">    <span class="co">// returns index of x if it is present in </span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="co">// arr[l..r], else return -1</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="kw">static</span> <span class="dt">int</span> <span class="fu">binarySearch</span>(<span class="dt">int</span> []arr, <span class="dt">int</span> l, <span class="dt">int</span> r, <span class="dt">int</span> x)</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">    {</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">        <span class="kw">if</span> (r &gt;= l)</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">        {</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">            <span class="dt">int</span> mid = l + (r - l)/<span class="dv">2</span>;</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12">            <span class="co">// If the element is present at the </span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13">            <span class="co">// middle itself</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14">            <span class="kw">if</span> (arr[mid] == x)</a>
-<a class="sourceLine" id="cb4-15" data-line-number="15">                <span class="kw">return</span> mid;</a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17">            <span class="co">// If element is smaller than mid, then </span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18">            <span class="co">// it can only be present in left subarray</span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19">            <span class="kw">if</span> (arr[mid] &gt; x)</a>
-<a class="sourceLine" id="cb4-20" data-line-number="20">                <span class="kw">return</span> <span class="fu">binarySearch</span>(arr, l, mid<span class="dv">-1</span>, x);</a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22">            <span class="co">// Else the element can only be present</span></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23">            <span class="co">// in right subarray</span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb4-25" data-line-number="25">            <span class="kw">return</span> <span class="fu">binarySearch</span>(arr, mid+<span class="dv">1</span>, r, x);</a>
-<a class="sourceLine" id="cb4-26" data-line-number="26">        }</a>
-<a class="sourceLine" id="cb4-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb4-28" data-line-number="28">        <span class="co">// We reach here when element is not present in array</span></a>
-<a class="sourceLine" id="cb4-29" data-line-number="29">        <span class="kw">return</span> <span class="dv">-1</span>;</a>
-<a class="sourceLine" id="cb4-30" data-line-number="30">    }</a>
-<a class="sourceLine" id="cb4-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb4-32" data-line-number="32">    <span class="co">// Driver method to test above</span></a>
-<a class="sourceLine" id="cb4-33" data-line-number="33">    <span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>()</a>
-<a class="sourceLine" id="cb4-34" data-line-number="34">    {</a>
-<a class="sourceLine" id="cb4-35" data-line-number="35">        <span class="dt">int</span> []arr = {<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">40</span>};</a>
-<a class="sourceLine" id="cb4-36" data-line-number="36">        <span class="dt">int</span> n = arr.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb4-37" data-line-number="37">        <span class="dt">int</span> x = <span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb4-38" data-line-number="38"></a>
-<a class="sourceLine" id="cb4-39" data-line-number="39">        <span class="dt">int</span> result = <span class="fu">binarySearch</span>(arr, <span class="dv">0</span>, n<span class="dv">-1</span>, x);</a>
-<a class="sourceLine" id="cb4-40" data-line-number="40">        <span class="kw">if</span> result == <span class="dv">-1</span>)</a>
-<a class="sourceLine" id="cb4-41" data-line-number="41">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Element not present&quot;</span>);</a>
-<a class="sourceLine" id="cb4-42" data-line-number="42">        <span class="kw">else</span></a>
-<a class="sourceLine" id="cb4-43" data-line-number="43">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Element found at index &quot;</span> + result);</a>
-<a class="sourceLine" id="cb4-44" data-line-number="44">    }</a>
-<a class="sourceLine" id="cb4-45" data-line-number="45">}</a></code></pre></div></li>
+<li><p>pseudo-code <a name="pseudo-code"></a></p>
+<ol type="1">
+<li><p>In each step, compares the search key w/ the value of the middle element of the array.</p></li>
+<li><p>The keys matching in step <code>1</code> means, a matching element has been found &amp; its index (or position) is returned. Else step <code>3</code> or <code>4</code>.</p></li>
+<li><p>If the search key is less than the middle element, then the algorithm repeats its action on the sub-array to the left of the middle element or,</p></li>
+<li><p>If the search key is greater than the middle element, then the algorithm repeats its action on the sub-array to the right of the middle element.</p></li>
+<li><p>If the search key is not matching any of the subsequent left or right array, then it means that the key is not present in the array &amp; a special <code>Nil</code> indication can be returned.</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1">lo = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">hi = n – <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">While lo &lt;= hi Do</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">    mid = (lo + hi) / <span class="dv">2</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">    If array[mid] == value:  <span class="kw">return</span> mid</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">    Else If array[mid] &lt; value: lo = mid + <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">    Else If array[mid] &gt; value: hi = mid – <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">    <span class="kw">return</span> <span class="dv">-1</span></a></code></pre></div></li>
+<li><p>code #1 - <code>iterative</code> <a name="code"></a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">/*</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">e.g.</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">=============</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">int []arr = {2, 3, 4, 10, 40};</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">int n = arr.Length;</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">int x = 10;</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">int result = BinarySearchIterative(arr, x);</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">if(result == -1)</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">    Console.WriteLine(&quot;Element not present&quot;);</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">else</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">    Console.WriteLine(&quot;Element found at &quot; + &quot;index &quot; + result);</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">*/</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw">private</span> <span class="kw">static</span> <span class="dt">int</span> <span class="fu">BinarySearchIterative</span>(<span class="dt">int</span>[] arr, <span class="dt">int</span> key)</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">{</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">    <span class="dt">int</span> min = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-16" data-line-number="16">    <span class="dt">int</span> max = arr.<span class="fu">Length</span> - <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18">    <span class="co">// sanitize! - ensure sorted array is initially passed</span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19">    <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">1</span>; i &lt;= max; i++)</a>
+<a class="sourceLine" id="cb2-20" data-line-number="20">    {</a>
+<a class="sourceLine" id="cb2-21" data-line-number="21">        <span class="kw">if</span>(arr[i] &lt; arr[i - <span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb2-22" data-line-number="22">        {</a>
+<a class="sourceLine" id="cb2-23" data-line-number="23">            <span class="co">// data is not sorted!</span></a>
+<a class="sourceLine" id="cb2-24" data-line-number="24">            <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb2-25" data-line-number="25">        }</a>
+<a class="sourceLine" id="cb2-26" data-line-number="26">    }</a>
+<a class="sourceLine" id="cb2-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb2-28" data-line-number="28">    <span class="co">// search!</span></a>
+<a class="sourceLine" id="cb2-29" data-line-number="29">    <span class="kw">while</span>(min &lt;= max)</a>
+<a class="sourceLine" id="cb2-30" data-line-number="30">    {</a>
+<a class="sourceLine" id="cb2-31" data-line-number="31">        <span class="dt">int</span> midIndex = (min + max) / <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb2-32" data-line-number="32">        <span class="dt">int</span> midVal = arr[midIndex];</a>
+<a class="sourceLine" id="cb2-33" data-line-number="33">        <span class="kw">if</span>(key == midVal)</a>
+<a class="sourceLine" id="cb2-34" data-line-number="34">        {</a>
+<a class="sourceLine" id="cb2-35" data-line-number="35">            <span class="kw">return</span> midIndex;</a>
+<a class="sourceLine" id="cb2-36" data-line-number="36">        }</a>
+<a class="sourceLine" id="cb2-37" data-line-number="37">        <span class="kw">else</span> <span class="kw">if</span>(key &lt; midVal)</a>
+<a class="sourceLine" id="cb2-38" data-line-number="38">        {</a>
+<a class="sourceLine" id="cb2-39" data-line-number="39">            max = midIndex - <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-40" data-line-number="40">        }</a>
+<a class="sourceLine" id="cb2-41" data-line-number="41">        <span class="kw">else</span></a>
+<a class="sourceLine" id="cb2-42" data-line-number="42">        {</a>
+<a class="sourceLine" id="cb2-43" data-line-number="43">            min = midIndex + <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-44" data-line-number="44">        }</a>
+<a class="sourceLine" id="cb2-45" data-line-number="45">    }</a>
+<a class="sourceLine" id="cb2-46" data-line-number="46"></a>
+<a class="sourceLine" id="cb2-47" data-line-number="47">    <span class="kw">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb2-48" data-line-number="48">}</a></code></pre></div></li>
+<li><p>code #2 - <code>recursive</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">// e.g.</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">// =============</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">// ... (see above)</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">// int result = (int)(BinarySearchRecursive(arr, x, 0, n - 1));</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">private</span> <span class="kw">static</span> <span class="dt">object</span> <span class="fu">BinarySearchRecursive</span>(<span class="dt">int</span>[] arr,</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">                                                <span class="dt">int</span> key,</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">                                                <span class="dt">int</span> min,</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">                                                <span class="dt">int</span> max)</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">{</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="kw">if</span>(min &gt; max)</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">    {</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">        <span class="kw">return</span> <span class="st">&quot;Nil&quot;</span>;</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">    }</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">    <span class="kw">else</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">    {</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">        <span class="dt">int</span> midIndex = (min + max) / <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">        <span class="dt">int</span> midVal = arr[midIndex];</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">        <span class="kw">if</span> (key == midVal)</a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">        {</a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">            <span class="kw">return</span> midIndex;</a>
+<a class="sourceLine" id="cb3-21" data-line-number="21">        }</a>
+<a class="sourceLine" id="cb3-22" data-line-number="22">        <span class="kw">else</span> <span class="kw">if</span>(key &lt; midVal)</a>
+<a class="sourceLine" id="cb3-23" data-line-number="23">        {</a>
+<a class="sourceLine" id="cb3-24" data-line-number="24">            <span class="kw">return</span> <span class="fu">BinarySearchRecursive</span>(arr, key, min, midIndex - <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb3-25" data-line-number="25">        }</a>
+<a class="sourceLine" id="cb3-26" data-line-number="26">        <span class="kw">else</span></a>
+<a class="sourceLine" id="cb3-27" data-line-number="27">        {</a>
+<a class="sourceLine" id="cb3-28" data-line-number="28">            <span class="kw">return</span> <span class="fu">BinarySearchRecursive</span>(arr, key, midIndex + <span class="dv">1</span>, max);</a>
+<a class="sourceLine" id="cb3-29" data-line-number="29">        }</a>
+<a class="sourceLine" id="cb3-30" data-line-number="30">    }</a>
+<a class="sourceLine" id="cb3-31" data-line-number="31">}</a></code></pre></div></li>
+</ul>
+<h6 id="ref">REF</h6>
+<hr />
+<ul>
+<li>c-sharpcorner - <a href="https://www.c-sharpcorner.com/blogs/binary-search-implementation-using-c-sharp1"><code>Binary Search Implementation Using C#</code></a></li>
 </ul>
 </body>
 </html>

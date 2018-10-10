@@ -1,9 +1,14 @@
 // VARIABLE
 // ----------------------------------------------
-const IS_LIVE = true;
+const DEBUG = false;
 
 const questions = [];
+
+questions.push("binary-search-iterative");
+questions.push("binary-search-recursive");
 questions.push("bracket-balance");
+questions.push("binary-search-iterative");
+questions.push("binary-search-recursive");
 questions.push("drawcall-batching");
 questions.push("factorial");
 questions.push("fib-series");
@@ -11,6 +16,7 @@ questions.push("fib-value");
 questions.push("is-kinematic");
 questions.push("out-keyword");
 questions.push("shuffle");
+
 let questionIndex = -1;
 
 // get refs
@@ -25,7 +31,7 @@ as server was calling an inccorrect url without this literal hack...
 */
 const QUESTION_DIR_LOCAL = "/_quiz/question/";
 const QUESTION_DIR_REMOTE = "/notes/_quiz/question/";
-const questionFolderPath = IS_LIVE ? QUESTION_DIR_REMOTE : QUESTION_DIR_LOCAL;
+const questionFolderPath = DEBUG ? QUESTION_DIR_LOCAL : QUESTION_DIR_REMOTE;
 
 // FUNCTION
 // ----------------------------------------------

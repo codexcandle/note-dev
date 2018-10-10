@@ -21,218 +21,42 @@
 <h1 class="title">comp-sci.data-structure.tree</h1>
 </header>
 <ul>
-<li><a href="#overview">overview</a>
-<ul>
-<li><a href="#traversal">traversal</a></li>
-<li><a href="#runtime">runtime</a></li>
-</ul></li>
+<li><a href="#overview">overview</a></li>
 <li>type
 <ul>
-<li><a href="#binary-search">binary search tree</a></li>
+<li><a href="./bst">bst</a></li>
 <li><a href="./heap">heap</a></li>
-<li><a href="https://www.tutorialspoint.com/data_structures_algorithms/avl_tree_algorithm.htm">avl</a><br />
-</li>
-<li>red-black</li>
-<li><a href="https://www.tutorialspoint.com/data_structures_algorithms/spanning_tree.htm">spanning</a></li>
 </ul></li>
-<li><a href="#example">example</a>
-<ul>
-<li><a href="#code-1">code #1</a></li>
-<li><a href="#code-2">code #2</a></li>
-<li><a href="#code-3">code #3</a></li>
-</ul></li>
+<li><a href="#example">example</a></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
 <ul>
-<li><p>summary:</p>
-<figure>
+<li><figure>
 <img src="./_asset/img/1.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure>
 <figure>
 <img src="./_asset/img/2.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/3.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure></li>
-<li><p><code>binary</code> vs <code>binary-search</code> tree:</p>
-<figure>
-<img src="./_asset/img/00.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/60.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure></li>
-<li><p>review:</p>
-<figure>
-<img src="./_asset/img/7.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/8.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/9.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure></li>
-<li><p><a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">more @ wikipedia</a></p></li>
-</ul>
-<h3 id="traversal">traversal <a name="traversal"></a></h3>
-<ul>
-<li><p>summary:</p>
-<figure>
-<img src="./_asset/img/67.png" alt="Order" /><figcaption>Order</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/39.png" alt="Order" /><figcaption>Order</figcaption>
-</figure></li>
-<li><p><code>in-order</code></p>
-<figure>
-<img src="./_asset/img/68.png" alt="Order" /><figcaption>Order</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/15.png" alt="Order" /><figcaption>Order</figcaption>
-</figure></li>
-<li><p><code>pre-order</code></p>
-<figure>
-<img src="./_asset/img/69.png" alt="Order" /><figcaption>Order</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/16.png" alt="Order" /><figcaption>Order</figcaption>
-</figure></li>
-<li><p><code>post-order</code></p>
-<figure>
-<img src="./_asset/img/70.png" alt="Order" /><figcaption>Order</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/18.png" alt="Order" /><figcaption>Order</figcaption>
-</figure></li>
-</ul>
-<h3 id="run-time">run-time <a name="runtime"></a></h3>
-<ul>
-<li><p>summary:</p>
-<figure>
-<img src="./_asset/img/6.png" alt="Run-time" /><figcaption>Run-time</figcaption>
-</figure></li>
-<li><p><code>binary serach tree</code>:</p>
-<figure>
-<img src="./_asset/img/13.png" alt="Run-time" /><figcaption>Run-time</figcaption>
-</figure></li>
-<li><p><code>balanced v unbalanced</code></p>
-<figure>
-<img src="./_asset/img/34.png" alt="Run-time" /><figcaption>Run-time</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/10.png" alt="Run-time" /><figcaption>Run-time</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/11.png" alt="Run-time" /><figcaption>Run-time</figcaption>
-</figure></li>
-<li><p><a href="./../../algorithm/search/#binary">more @ algorithm.search.binary</a></p></li>
-</ul>
-<h2 id="binary-search-tree">Binary Search Tree <a name="binary-search"></a></h2>
-<hr />
-<ul>
-<li><p>summary:</p>
-<figure>
-<img src="./_asset/img/72.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/73.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/40.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/51.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure></li>
-<li><p><code>insert</code>:</p>
-<figure>
-<img src="./_asset/img/23.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/24.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/25.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/27.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/28.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/29.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/30.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/31.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/32.png" alt="binary search" /><figcaption>binary search</figcaption>
-</figure></li>
-</ul>
-<h2 id="ex">EX <a name="example"></a></h2>
-<hr />
-<ul>
-<li><p>visualized <a name="visualized"></a></p>
-<figure>
-<img src="./_asset/img/4.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/5.png" alt="Example" /><figcaption>Example</figcaption>
-</figure></li>
-<li><p>real-life <a name="real-life"></a></p>
+<li><p>usage</p>
 <figure>
 <img src="./_asset/img/19.png" alt="Example" /><figcaption>Example</figcaption>
 </figure>
 <figure>
-<img src="./_asset/img/20.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<figure>
 <img src="./_asset/img/21.png" alt="Example" /><figcaption>Example</figcaption>
 </figure></li>
-<li><p>code #1 <a name="code-1"></a></p>
-<p><code>insert</code></p>
+<li><p><a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">more @ wikipedia</a></p></li>
+</ul>
+<h2 id="ex">EX <a name="example"></a></h2>
 <hr />
-<p><img src="./_asset/img/43.png" alt="Example" /> <img src="./_asset/img/46.png" alt="Example" /> <img src="./_asset/img/47.png" alt="Example" /><br />
-<img src="./_asset/img/48.png" alt="Example" /></p>
-<p><code>contains</code></p>
-<hr />
-<p><img src="./_asset/img/49.png" alt="Example" /> <img src="./_asset/img/50.png" alt="Example" /> <img src="./_asset/img/52.png" alt="Example" /> <img src="./_asset/img/53.png" alt="Example" /></p>
-<p><code>print-in-order</code></p>
-<hr />
-<p><img src="./_asset/img/54.png" alt="Example" /> <img src="./_asset/img/55.png" alt="Example" /> <img src="./_asset/img/56.png" alt="Example" /> <img src="./_asset/img/58.png" alt="Example" /></p></li>
-<li><p>code #2 <a name="code-2"></a></p>
-<p><code>overview</code></p>
-<hr />
-<p><img src="./_asset/img/61.png" alt="Example" /> <img src="./_asset/img/62.png" alt="Example" /></p>
-<p><code>insert</code></p>
-<hr />
-<p><img src="./_asset/img/63.png" alt="Example" /><br />
-<img src="./_asset/img/64.png" alt="Example" /></p>
-<p><code>search</code></p>
-<hr />
-<p><img src="./_asset/img/65.png" alt="Example" /><br />
-<img src="./_asset/img/66.png" alt="Example" /></p></li>
-<li><p>code #3 <a name="code-3"></a></p>
-<p><code>overview</code></p>
-<hr />
+<ul>
+<li><p>word-prob #1</p>
 <figure>
-<img src="./_asset/img/74.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
+<img src="./_asset/img/7.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
+<li><p>word-prob #2</p>
 <figure>
-<img src="./_asset/img/75.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<p><code>insert</code></p>
-<hr />
-<figure>
-<img src="./_asset/img/77.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
-<p><code>search</code></p>
-<hr />
-<figure>
-<img src="./_asset/img/76.png" alt="Example" /><figcaption>Example</figcaption>
+<img src="./_asset/img/8.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure></li>
 </ul>
 </body>

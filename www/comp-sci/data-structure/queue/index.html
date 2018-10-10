@@ -87,52 +87,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 <ul>
 <li><a href="#overview">overview</a></li>
-<li><a href="#examples">example</a></li>
+<li><a href="#property">property</a></li>
+<li><a href="#method">method</a></li>
+<li>example
+<ul>
+<li><a href="#word-problem">word-problem</a></li>
+<li><a href="#pseudo-code">pseudo-code</a></li>
+<li><a href="#code">code</a></li>
+</ul></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
-<figure>
-<img src="./_asset/img/7.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/8.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure>
 <ul>
-<li><code>FIFO</code> - first in, first out (line at movies).</li>
+<li><p><code>FIFO</code> - first in, first out (line at movies).</p>
+<figure>
+<img src="./_asset/img/01.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/04.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
+<li><p>terminology</p>
+<ul>
+<li><code>bounded</code> queue - is a queue limited to a fixed # of items.</li>
 <li>operations
 <ul>
 <li><code>enqueue</code> - add new items to end.</li>
 <li><code>dequeue</code> - remove item from front.</li>
 </ul></li>
-<li>errors:
+<li>errors
 <ul>
 <li><code>overflow</code> - results from trying to add an element onto a full queue.</li>
 <li><code>underflow</code> - happens when trying to remove an element from an empty queue.</li>
 </ul></li>
-<li><code>bounded</code> queue - is a queue limited to a fixed # of items.</li>
-<li><a href="https://en.wikipedia.org/wiki/Queue_(abstract_data_type)">more @ wikipedia…</a></li>
+</ul></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Queue_(abstract_data_type)">more @ wikipedia</a></p></li>
 </ul>
-<h2 id="ex">EX <a name="examples"></a></h2>
+<h2 id="property">Property <a name="property"></a></h2>
 <hr />
 <ul>
-<li><p>common implementations:</p>
-<p><code>circular buffers</code> Fixed length arrays are limited in capacity, but it is not true that items need to be copied towards the head of the queue. The simple trick of turning the array into a closed circle and letting the head and tail drift around endlessly in that circle makes it unnecessary to ever move items stored in the array. If n is the size of the array, then computing indices modulo n will turn the array into a circle. This is still the conceptually simplest way to construct a queue in a high level language, but it does admittedly slow things down a little, because the array indices must be compared to zero and the array size, which is comparable to the time taken to check whether an array index is out of bounds, which some languages do, but this will certainly be the method of choice for a quick and dirty implementation, or for any high level language that does not have pointer syntax. The array size must be declared ahead of time, but some implementations simply double the declared array size when overflow occurs. Most modern languages with objects or pointers can implement or come with libraries for dynamic lists. Such data structures may have not specified fixed capacity limit besides memory constraints.</p>
+<li><img src="./_asset/img/02.png" title="fig:" alt="Property" /></li>
+</ul>
+<h2 id="method">Method <a name="method"></a></h2>
+<hr />
+<ul>
+<li><img src="./_asset/img/03.png" title="fig:" alt="Method" /></li>
+</ul>
+<h2 id="ex">EX <a name="example"></a></h2>
+<hr />
+<ul>
+<li><p>word problem #1 <a name="word-problem"></a></p>
+<figure>
+<img src="./_asset/img/10.png" alt="Example" /><figcaption>Example</figcaption>
+</figure></li>
+<li><p>word problem #2</p>
+<figure>
+<img src="./_asset/img/13.png" alt="Example" /><figcaption>Example</figcaption>
+</figure></li>
+<li><p>word problem #3</p>
+<figure>
+<img src="./_asset/img/14.png" alt="Example" /><figcaption>Example</figcaption>
+</figure></li>
+<li><p>pseudo-code #1 - <code>circular buffers</code> <a name="pseudo-code"></a></p>
+<p>Fixed length arrays are limited in capacity, but it is not true that items need to be copied towards the head of the queue. The simple trick of turning the array into a closed circle and letting the head and tail drift around endlessly in that circle makes it unnecessary to ever move items stored in the array. If n is the size of the array, then computing indices modulo n will turn the array into a circle. This is still the conceptually simplest way to construct a queue in a high level language, but it does admittedly slow things down a little, because the array indices must be compared to zero and the array size, which is comparable to the time taken to check whether an array index is out of bounds, which some languages do, but this will certainly be the method of choice for a quick and dirty implementation, or for any high level language that does not have pointer syntax. The array size must be declared ahead of time, but some implementations simply double the declared array size when overflow occurs. Most modern languages with objects or pointers can implement or come with libraries for dynamic lists. Such data structures may have not specified fixed capacity limit besides memory constraints.</p>
 <code>linked lists</code>
 <ul>
 <li>A doubly linked list has O(1) insertion and deletion at both ends, so is a natural choice for queues.</li>
 <li>A regular singly linked list only has efficient insertion and deletion at one end. However, a small modification—keeping a pointer to the last node in addition to the first one—will enable it to implement an efficient queue.</li>
 </ul></li>
-<li><p>word probs:</p>
-<figure>
-<img src="./_asset/img/10.png" alt="Examples" /><figcaption>Examples</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/13.png" alt="Examples" /><figcaption>Examples</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/14.png" alt="Examples" /><figcaption>Examples</figcaption>
-</figure></li>
-<li><p>code:</p>
+<li><p>code #1 - <code>basic</code> <a name="code"></a></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">public</span> <span class="kw">class</span> Queue</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">{</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="kw">private</span> <span class="kw">static</span> <span class="kw">class</span> Node</a>
@@ -146,8 +168,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1-11" data-line-number="11">    }</a>
 <a class="sourceLine" id="cb1-12" data-line-number="12">  }</a>
 <a class="sourceLine" id="cb1-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14">  <span class="kw">private</span> Node head;      <span class="co">// remove f/ the head</span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">  <span class="kw">private</span> Node tail;      <span class="co">// add things here</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">  <span class="kw">private</span> Node head;    <span class="co">// remove f/ the head</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">  <span class="kw">private</span> Node tail;    <span class="co">// add things here</span></a>
 <a class="sourceLine" id="cb1-16" data-line-number="16"></a>
 <a class="sourceLine" id="cb1-17" data-line-number="17">  <span class="kw">public</span> boolean <span class="fu">isEmpty</span>()</a>
 <a class="sourceLine" id="cb1-18" data-line-number="18">  {</a>
@@ -187,8 +209,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1-52" data-line-number="52"></a>
 <a class="sourceLine" id="cb1-53" data-line-number="53">    <span class="kw">return</span> data;</a>
 <a class="sourceLine" id="cb1-54" data-line-number="54">  }</a>
-<a class="sourceLine" id="cb1-55" data-line-number="55">}</a>
-<a class="sourceLine" id="cb1-56" data-line-number="56">}</a></code></pre></div></li>
+<a class="sourceLine" id="cb1-55" data-line-number="55">}</a></code></pre></div></li>
+<li><p>code #2 - <code>c# queue object</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">/*</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">Current queue:</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">A M G W</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">Current queue:</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">A M G W V H</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">Removing values</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">The removed value: A</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">The removed value: M</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">*/</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="kw">using</span> System.<span class="fu">Collections</span>;</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw">namespace</span> CollectionsApplication</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">{</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">  <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb2-16" data-line-number="16">  {</a>
+<a class="sourceLine" id="cb2-17" data-line-number="17">    <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb2-18" data-line-number="18">    {</a>
+<a class="sourceLine" id="cb2-19" data-line-number="19">      Queue q = <span class="kw">new</span> <span class="fu">Queue</span>();</a>
+<a class="sourceLine" id="cb2-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb2-21" data-line-number="21">      q.<span class="fu">Enqueue</span>(<span class="ch">&#39;A&#39;</span>);</a>
+<a class="sourceLine" id="cb2-22" data-line-number="22">      q.<span class="fu">Enqueue</span>(<span class="ch">&#39;M&#39;</span>);</a>
+<a class="sourceLine" id="cb2-23" data-line-number="23">      q.<span class="fu">Enqueue</span>(<span class="ch">&#39;G&#39;</span>);</a>
+<a class="sourceLine" id="cb2-24" data-line-number="24">      q.<span class="fu">Enqueue</span>(<span class="ch">&#39;W&#39;</span>);</a>
+<a class="sourceLine" id="cb2-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb2-26" data-line-number="26">      Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Current queue: &quot;</span>);</a>
+<a class="sourceLine" id="cb2-27" data-line-number="27">      <span class="kw">foreach</span> (<span class="dt">char</span> c <span class="kw">in</span> q) Console.<span class="fu">Write</span>(c + <span class="st">&quot; &quot;</span>);</a>
+<a class="sourceLine" id="cb2-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb2-29" data-line-number="29">      Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb2-30" data-line-number="30">      q.<span class="fu">Enqueue</span>(<span class="ch">&#39;V&#39;</span>);</a>
+<a class="sourceLine" id="cb2-31" data-line-number="31">      q.<span class="fu">Enqueue</span>(<span class="ch">&#39;H&#39;</span>);</a>
+<a class="sourceLine" id="cb2-32" data-line-number="32">      Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Current queue: &quot;</span>);</a>
+<a class="sourceLine" id="cb2-33" data-line-number="33">      <span class="kw">foreach</span> (<span class="dt">char</span> c <span class="kw">in</span> q) Console.<span class="fu">Write</span>(c + <span class="st">&quot; &quot;</span>);</a>
+<a class="sourceLine" id="cb2-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb2-35" data-line-number="35">      Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb2-36" data-line-number="36">      Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Removing some values &quot;</span>);</a>
+<a class="sourceLine" id="cb2-37" data-line-number="37">      <span class="dt">char</span> ch = (<span class="dt">char</span>)q.<span class="fu">Dequeue</span>();</a>
+<a class="sourceLine" id="cb2-38" data-line-number="38">      Console.<span class="fu">WriteLine</span>(<span class="st">&quot;The removed value: {0}&quot;</span>, ch);</a>
+<a class="sourceLine" id="cb2-39" data-line-number="39">      ch = (<span class="dt">char</span>)q.<span class="fu">Dequeue</span>();</a>
+<a class="sourceLine" id="cb2-40" data-line-number="40">      Console.<span class="fu">WriteLine</span>(<span class="st">&quot;The removed value: {0}&quot;</span>, ch);</a>
+<a class="sourceLine" id="cb2-41" data-line-number="41"></a>
+<a class="sourceLine" id="cb2-42" data-line-number="42">      Console.<span class="fu">ReadKey</span>();</a>
+<a class="sourceLine" id="cb2-43" data-line-number="43">    }</a>
+<a class="sourceLine" id="cb2-44" data-line-number="44">  }</a>
+<a class="sourceLine" id="cb2-45" data-line-number="45">}</a></code></pre></div></li>
 </ul>
 </body>
 </html>

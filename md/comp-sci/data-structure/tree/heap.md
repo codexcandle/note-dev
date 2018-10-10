@@ -1,96 +1,100 @@
 * [overview](#overview)
-	* [runtime](#runtime)
-* [example](#example)
+* [runtime](#runtime)
+* operation
+	* [insert](#insert)
+	* [remove](#remove)
+* example
+  * [word-prob](#word-prob)
+  * [code](#code)
 
 ## Overview <a name="overview"></a>
 
 ---
 
-* summary:
-
-	![Overview](_asset/img/81.png)
-
-	![Overview](_asset/img/82.png)
+* ![Overview](_asset/img/81.png)
 
 	![Overview](_asset/img/83.png)
 
 	![Overview](_asset/img/85.png)
 
-* runtime: <a name="runtime"></a>
+* property
 
-	![Overview](_asset/img/84.png)
+	![Overview](_asset/img/5.png)
+
+	![Overview](_asset/img/6.png)
+
+* usage
+
+	![Overview](_asset/img/95.png)
 
 * [more @ wikipedia](https://en.wikipedia.org/wiki/Heap_(data_structure))
+
+## Runtime <a name="runtime"></a>
+
+---
+
+![Run-time](./_asset/img/84.png)
+
+## Operation <a name="operation"></a>\
+
+---
+
+* insert <a name="insert"></a>
+
+	![Operation](_asset/img/87.png)
+
+	![Operation](_asset/img/8.png)
+
+	![Operation](_asset/img/9.png)
+
+	![Operation](_asset/img/10.png)
+
+	![Operation](_asset/img/11.png)
+
+	![Operation](_asset/img/12.png)
+
+	![Operation](_asset/img/14.png)
+
+* remove <a name="remove"></a>
+
+	![Operation](_asset/img/94.png)
+
+	![Operation](_asset/img/15.png)
+
+	![Operation](_asset/img/16.png)
+
+	![Operation](_asset/img/17.png)
+
+	![Operation](_asset/img/18.png)
+
+	![Operation](_asset/img/19.png)
+
+	![Operation](_asset/img/20.png)
 
 ## EX <a name="example"></a>\
 
 ---
 
-// -----------------------------------------------------------------------------
+* word-prob <a name="word-prob"></a>\
 
-![EX](_asset/img/1.png)
+	![Example](_asset/img/88.png)
 
-![EX](_asset/img/2.png)
+	![Example](_asset/img/89.png)
 
-![alt](_asset/img/3.png)
-![alt](_asset/img/4.png)
-![alt](_asset/img/5.png)
+	![Example](_asset/img/90.png)
 
-![alt](_asset/img/6.png)
-![alt](_asset/img/7.png)
-![alt](_asset/img/8.png)
-![alt](_asset/img/9.png)
-![alt](_asset/img/10.png)
+	![Example](_asset/img/91.png)
 
-![alt](_asset/img/11.png)
-![alt](_asset/img/12.png)
-![alt](_asset/img/13.png)
-![alt](_asset/img/14.png)
-![alt](_asset/img/15.png)
+	![Example](_asset/img/92.png)
 
-![alt](_asset/img/16.png)
-![alt](_asset/img/17.png)
-![alt](_asset/img/18.png)
-![alt](_asset/img/19.png)
-![alt](_asset/img/20.png)
+	![Example](_asset/img/93.png)
 
-![alt](_asset/img/31.png)
-![alt](_asset/img/32.png)
-![alt](_asset/img/33.png)
-![alt](_asset/img/34.png)
-![alt](_asset/img/35.png)
+* code <a name="code"></a>
 
-![alt](_asset/img/36.png)
-![alt](_asset/img/37.png)
-![alt](_asset/img/38.png)
-![alt](_asset/img/39.png)
-![alt](_asset/img/40.png)
+	![Example](_asset/img/47.png)
 
-![alt](_asset/img/41.png)
-![alt](_asset/img/42.png)
-![alt](_asset/img/43.png)
-![alt](_asset/img/44.png)
-![alt](_asset/img/45.png)
+	![Example](_asset/img/3.png)
 
-![alt](_asset/img/46.png)
-![alt](_asset/img/47.png)
-![alt](_asset/img/48.png)
-![alt](_asset/img/49.png)
-![alt](_asset/img/50.png)
+	![Example](_asset/img/50.png)
 
-![alt](_asset/img/51.png)
-![alt](_asset/img/52.png)
-![alt](_asset/img/53.png)
-![alt](_asset/img/54.png)
-![alt](_asset/img/55.png)
-
-![alt](_asset/img/56.png)
-
-![alt](_asset/img/87.png)
-![alt](_asset/img/88.png)
-![alt](_asset/img/89.png)
-![alt](_asset/img/90.png)
-![alt](_asset/img/91.png)
-![alt](_asset/img/92.png)
-![alt](_asset/img/93.png)
-![alt](_asset/img/94.png)
+	![Example](_asset/img/56.png)

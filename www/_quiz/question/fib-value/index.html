@@ -86,39 +86,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">fibonacci-value</h1>
 </header>
 <h2 id="q">Q</h2>
-<p>What’s Nth value of Fibonacci series?</p>
+<p>Write a method <code>Fib</code> that takes an integer <code>n</code> &amp; returns the <code>nth</code> Fibonacci number.</p>
+<p><i>Let’s say our Fibonacci series is 0-indexed &amp; starts with <code>0</code>:</i></p>
+<pre><code>Fib(0);  // =&gt; 0
+Fib(1);  // =&gt; 1
+Fib(2);  // =&gt; 1
+Fib(3);  // =&gt; 2
+Fib(4);  // =&gt; 3</code></pre>
 <h2 id="a">A</h2>
 <ul>
-<li><p><code>value - recursive</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">/*</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">* e.g.</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">* Find 8th value = FibonacciValueRecursive(8) = 13!</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">*/</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">public</span> <span class="dt">int</span> <span class="fu">FibValueRecursive</span>(<span class="dt">int</span> n)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">{</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">    <span class="kw">if</span>(num &lt;= <span class="dv">0</span>) <span class="kw">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">    <span class="kw">else</span> <span class="kw">if</span>(num == <span class="dv">1</span>) <span class="kw">return</span> <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">    <span class="kw">else</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">    {</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">        <span class="kw">return</span> (<span class="fu">fib</span>(n - <span class="dv">1</span>) + <span class="fu">fib</span>(n - <span class="dv">2</span>));</a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">    }</a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">}</a></code></pre></div>
-<p>vs. <code>iterative</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">static</span> <span class="kw">public</span> <span class="dt">int</span> <span class="fu">FibValueIterative</span>(<span class="dt">int</span> numPos)</a>
+<li><p><code>recursive</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">public</span> <span class="dt">int</span> <span class="fu">FibValueRecursive</span>(<span class="dt">int</span> n)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">{</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="dt">int</span> index = numPos - <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">    <span class="dt">int</span>[] fib = <span class="kw">new</span> <span class="dt">int</span>[numPos];</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">    fib[<span class="dv">0</span>] = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">    fib[<span class="dv">1</span>] = <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">    <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">2</span>; i &lt;= index; i++)</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">    {</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">            fib[i] = fib[i - <span class="dv">1</span>] + fib[i - <span class="dv">2</span>];</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">    }</a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14">    <span class="kw">return</span> fib[index];</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">}</a></code></pre></div></li>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="kw">if</span>(num &lt;= <span class="dv">0</span>) <span class="kw">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">    <span class="kw">else</span> <span class="kw">if</span>(num == <span class="dv">1</span>) <span class="kw">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">    <span class="kw">else</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">    {</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">        <span class="kw">return</span> (<span class="fu">fib</span>(n - <span class="dv">1</span>) + <span class="fu">fib</span>(n - <span class="dv">2</span>));</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    }</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">}</a></code></pre></div></li>
+<li><p><code>iterative</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">static</span> <span class="kw">public</span> <span class="dt">int</span> <span class="fu">FibValueIterative</span>(<span class="dt">int</span> numPos)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">    <span class="dt">int</span> index = numPos - <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="dt">int</span>[] fib = <span class="kw">new</span> <span class="dt">int</span>[numPos];</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">    fib[<span class="dv">0</span>] = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">    fib[<span class="dv">1</span>] = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">    <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">2</span>; i &lt;= index; i++)</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">    {</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">        fib[i] = fib[i - <span class="dv">1</span>] + fib[i - <span class="dv">2</span>];</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">    }</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">    <span class="kw">return</span> fib[index];</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">}</a></code></pre></div></li>
 </ul>
 <h6 id="further">FURTHER</h6>
 <p><a href="./../../../comp-sci/algorithm/recursion/#fibonacci">fibonacci</a></p>

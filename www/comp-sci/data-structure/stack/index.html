@@ -87,203 +87,268 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 <ul>
 <li><a href="#overview">overview</a></li>
+<li><a href="#property">property</a></li>
 <li><a href="#method">method</a></li>
-<li><a href="#example">example</a></li>
+<li>example
+<ul>
+<li><a href="#word-prob">word-prob</a></li>
+<li><a href="#pseudo-code">pseudo-code</a></li>
+<li><a href="#code">code</a></li>
+</ul></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li><figure>
+<img src="./_asset/img/01.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
 <figure>
 <img src="./_asset/img/2.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure>
 <figure>
 <img src="./_asset/img/4.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure>
-<ul>
-<li>can do anything from helping to navigate a maze, traversing a graph, to an undo system.</li>
-<li><code>LIFO</code> - stack of pancakes (last in, first out).</li>
-<li><p>two principal operations: <code>push</code> - adds element <code>pop</code> - removes most recently added element</p>
-NOTE: above operations occur only at one end of the structure, aka <code>top</code> of the stack. This makes it possible to implement a stack as a <code>singly-linked list</code> and a pointer to this top element.</li>
+</figure></li>
+<li><p><code>LIFO</code> - stack of pancakes (last in, first out).</p>
+<p>2 principal operations:</p>
+<p><code>push</code> - adds element <code>pop</code> - removes most recently added element</p>
+<blockquote>
+<p>NOTE: above operations occur only at one end of the structure, aka <code>top</code> of the stack. This makes it possible to implement a stack as a <code>singly-linked list</code> &amp; a pointer to this top element.</p>
+</blockquote></li>
+<li><p><code>usage</code> - can do anything from helping to navigate a maze, traversing a graph, to an undo system.</p>
+<figure>
+<img src="./_asset/img/5.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
 <li><code>overflow pop</code> - If the stack is full and does not contain enough space to accept an entity to be pushed, the stack is then considered to be in an overflow state. The pop operation removes an item from the top of the stack.</li>
 <li><code>dynamic array</code> - it’s possible to implement a stack that can grow or shrink as much as needed. The size of the stack is simply the size of the dynamic array, which is a very efficient implementation of a stack since adding items to or removing items from the end of a dynamic array requires amortized O(1) time.</li>
-<li><p><a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">more @ wikipedia…</a></p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">more @ wikipedia</a></p></li>
 </ul>
-<h2 id="methods">Methods <a name="method"></a></h2>
+<h2 id="property">Property <a name="property"></a></h2>
 <hr />
-<figure>
-<img src="./_asset/img/3.png" alt="Methods" /><figcaption>Methods</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/1.png" alt="Methods" /><figcaption>Methods</figcaption>
-</figure>
+<ul>
+<li><img src="./_asset/img/02.png" title="fig:" alt="Property" /></li>
+</ul>
+<h2 id="method">Method <a name="method"></a></h2>
+<hr />
+<ul>
+<li><img src="./_asset/img/03.png" title="fig:" alt="Method" /></li>
+</ul>
 <h2 id="ex">EX <a name="example"></a></h2>
 <hr />
 <ul>
-<li><p><code>maze</code></p>
-<figure>
-<img src="./_asset/img/5.png" alt="Example" /><figcaption>Example</figcaption>
-</figure></li>
-<li><p>word problems:</p>
+<li><p>word-prob #1 <a name="word-prob"></a></p>
 <figure>
 <img src="./_asset/img/6.png" alt="Example" /><figcaption>Example</figcaption>
-</figure>
+</figure></li>
+<li><p>word-prob #2</p>
 <figure>
 <img src="./_asset/img/12.png" alt="Example" /><figcaption>Example</figcaption>
 </figure></li>
-<li><p>code:</p>
-<figure>
-<img src="./_asset/img/13.png" alt="Code" /><figcaption>Code</figcaption>
-</figure>
-<p><code>brackets problem</code></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1">  <span class="kw">private</span> <span class="dt">bool</span> <span class="fu">CheckIfBalancedBrackets</span>(<span class="dt">string</span> bracketStr)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">  {</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">      Stack stack = <span class="kw">new</span> <span class="fu">Stack</span>();</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">      <span class="kw">foreach</span>(<span class="dt">char</span> c <span class="kw">in</span> bracketStr)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">      {</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">          <span class="co">// if =&gt; char is openChar</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">          <span class="kw">if</span>(c == <span class="ch">&#39;{&#39;</span> ||</a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">              c == <span class="ch">&#39;[&#39;</span> ||</a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">              c == <span class="ch">&#39;(&#39;</span>)</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">          {</a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">              stack.<span class="fu">Push</span>(c);</a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">          }</a>
-<a class="sourceLine" id="cb1-14" data-line-number="14">          <span class="kw">else</span> <span class="kw">if</span>(c == <span class="ch">&#39;}&#39;</span> ||</a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">              c == <span class="ch">&#39;]&#39;</span> ||</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16">              c == <span class="ch">&#39;)&#39;</span>)</a>
-<a class="sourceLine" id="cb1-17" data-line-number="17">          {</a>
-<a class="sourceLine" id="cb1-18" data-line-number="18">              <span class="co">// check if c == counterpart to top item on stack</span></a>
-<a class="sourceLine" id="cb1-19" data-line-number="19">              <span class="dt">string</span> stackChar = stack.<span class="fu">Peek</span>().<span class="fu">ToString</span>();</a>
-<a class="sourceLine" id="cb1-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb1-21" data-line-number="21">              <span class="co">// attempt to get counter-char</span></a>
-<a class="sourceLine" id="cb1-22" data-line-number="22">              <span class="dt">string</span> counterChar = <span class="fu">GetCharCounterpart</span>(stackChar);</a>
-<a class="sourceLine" id="cb1-23" data-line-number="23">              <span class="kw">if</span> (counterChar == <span class="kw">null</span>) <span class="kw">return</span> <span class="kw">false</span>;</a>
-<a class="sourceLine" id="cb1-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb1-25" data-line-number="25">              <span class="co">// check if match!</span></a>
-<a class="sourceLine" id="cb1-26" data-line-number="26">              <span class="kw">if</span> (c == (counterChar[<span class="dv">0</span>]))</a>
-<a class="sourceLine" id="cb1-27" data-line-number="27">              {</a>
-<a class="sourceLine" id="cb1-28" data-line-number="28">                  <span class="co">// remove item from stack</span></a>
-<a class="sourceLine" id="cb1-29" data-line-number="29">                  stack.<span class="fu">Pop</span>();</a>
-<a class="sourceLine" id="cb1-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb1-31" data-line-number="31">                  <span class="co">// proceed with loop!</span></a>
-<a class="sourceLine" id="cb1-32" data-line-number="32">              }</a>
-<a class="sourceLine" id="cb1-33" data-line-number="33">          }</a>
-<a class="sourceLine" id="cb1-34" data-line-number="34">      }</a>
-<a class="sourceLine" id="cb1-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb1-36" data-line-number="36">      <span class="co">// if stack is not empty, then not balanced!</span></a>
-<a class="sourceLine" id="cb1-37" data-line-number="37">      <span class="kw">return</span> (stack.<span class="fu">Count</span> == <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-38" data-line-number="38">  }</a>
-<a class="sourceLine" id="cb1-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb1-40" data-line-number="40">  <span class="kw">private</span> <span class="dt">string</span> <span class="fu">GetCharCounterpart</span>(<span class="dt">string</span> str)</a>
-<a class="sourceLine" id="cb1-41" data-line-number="41">  {</a>
-<a class="sourceLine" id="cb1-42" data-line-number="42">      <span class="co">// sanitize!</span></a>
-<a class="sourceLine" id="cb1-43" data-line-number="43">      <span class="co">// TODO - swap this for char?</span></a>
-<a class="sourceLine" id="cb1-44" data-line-number="44">      <span class="kw">if</span> (str.<span class="fu">Length</span> != <span class="dv">1</span>) <span class="kw">return</span> <span class="kw">null</span>;</a>
-<a class="sourceLine" id="cb1-45" data-line-number="45"></a>
-<a class="sourceLine" id="cb1-46" data-line-number="46">      <span class="kw">switch</span> (str[<span class="dv">0</span>])</a>
-<a class="sourceLine" id="cb1-47" data-line-number="47">      {</a>
-<a class="sourceLine" id="cb1-48" data-line-number="48">          <span class="kw">case</span> <span class="ch">&#39;{&#39;</span>:</a>
-<a class="sourceLine" id="cb1-49" data-line-number="49">              <span class="kw">return</span> <span class="st">&quot;}&quot;</span>;</a>
-<a class="sourceLine" id="cb1-50" data-line-number="50">          <span class="kw">case</span> <span class="ch">&#39;[&#39;</span>:</a>
-<a class="sourceLine" id="cb1-51" data-line-number="51">              <span class="kw">return</span> <span class="st">&quot;]&quot;</span>;</a>
-<a class="sourceLine" id="cb1-52" data-line-number="52">          <span class="kw">case</span> <span class="ch">&#39;(&#39;</span>:</a>
-<a class="sourceLine" id="cb1-53" data-line-number="53">              <span class="kw">return</span> <span class="st">&quot;)&quot;</span>;</a>
-<a class="sourceLine" id="cb1-54" data-line-number="54">          <span class="kw">default</span>:</a>
-<a class="sourceLine" id="cb1-55" data-line-number="55">              <span class="kw">break</span>;</a>
-<a class="sourceLine" id="cb1-56" data-line-number="56">      }</a>
-<a class="sourceLine" id="cb1-57" data-line-number="57"></a>
-<a class="sourceLine" id="cb1-58" data-line-number="58">      <span class="kw">return</span> <span class="kw">null</span>;</a>
-<a class="sourceLine" id="cb1-59" data-line-number="59">  }</a></code></pre></div>
-<p><code>non-native implementation</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1">    <span class="co">// stack</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">    <span class="kw">public</span> <span class="kw">class</span> Stack</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">    {</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">      <span class="kw">private</span> <span class="kw">static</span> <span class="kw">class</span> Node</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">      {</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">        <span class="kw">private</span> <span class="dt">int</span> data;</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">        <span class="kw">private</span> Node next;</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">        <span class="kw">private</span> <span class="fu">Node</span>(<span class="dt">int</span> data)</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">        {</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">          <span class="kw">this</span>.<span class="fu">data</span> = data;</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">        }</a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">      }</a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">      <span class="kw">private</span> Node top;</a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17">      <span class="kw">public</span> boolean <span class="fu">isEmpty</span>()</a>
-<a class="sourceLine" id="cb2-18" data-line-number="18">      {</a>
-<a class="sourceLine" id="cb2-19" data-line-number="19">        <span class="kw">return</span> top == <span class="kw">null</span>;</a>
-<a class="sourceLine" id="cb2-20" data-line-number="20">      }</a>
-<a class="sourceLine" id="cb2-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb2-22" data-line-number="22">      <span class="kw">public</span> <span class="dt">int</span> <span class="fu">peek</span>()</a>
-<a class="sourceLine" id="cb2-23" data-line-number="23">      {</a>
-<a class="sourceLine" id="cb2-24" data-line-number="24">        <span class="kw">return</span> top.<span class="fu">data</span>;</a>
-<a class="sourceLine" id="cb2-25" data-line-number="25">      }</a>
-<a class="sourceLine" id="cb2-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb2-27" data-line-number="27">      <span class="kw">public</span> <span class="dt">void</span> <span class="fu">push</span>(<span class="dt">int</span> data)</a>
-<a class="sourceLine" id="cb2-28" data-line-number="28">      {</a>
-<a class="sourceLine" id="cb2-29" data-line-number="29">        Node node = <span class="kw">new</span> <span class="fu">Node</span>(data);</a>
-<a class="sourceLine" id="cb2-30" data-line-number="30">        node.<span class="fu">next</span> = top;</a>
-<a class="sourceLine" id="cb2-31" data-line-number="31">        top = node;</a>
-<a class="sourceLine" id="cb2-32" data-line-number="32">      }</a>
-<a class="sourceLine" id="cb2-33" data-line-number="33"></a>
-<a class="sourceLine" id="cb2-34" data-line-number="34">      <span class="kw">public</span> <span class="dt">int</span> <span class="fu">pop</span>()</a>
-<a class="sourceLine" id="cb2-35" data-line-number="35">      {</a>
-<a class="sourceLine" id="cb2-36" data-line-number="36">        <span class="dt">int</span> data = top.<span class="fu">data</span>;</a>
-<a class="sourceLine" id="cb2-37" data-line-number="37">        top = top.<span class="fu">next</span>;</a>
-<a class="sourceLine" id="cb2-38" data-line-number="38">        <span class="kw">return</span> data;</a>
-<a class="sourceLine" id="cb2-39" data-line-number="39">      }</a>
-<a class="sourceLine" id="cb2-40" data-line-number="40">    }</a></code></pre></div>
-<p>A stack can be easily implemented either through an array or a linked list. What identifies the data structure as a stack in either case is not the implementation but the interface: the user is only allowed to pop or push items onto the array or linked list, with few other helper operations. The following will demonstrate both implementations, using pseudocode.</p>
-<p>Option #1 - ARRAY</p>
-<p>An array can be used to implement a (bounded) stack, as follows. The first element (usually at the zero offset) is the bottom, resulting in array[0] being the first element pushed onto the stack and the last element popped off. The program must keep track of the size (length) of the stack, using a variable top that records the number of items pushed so far, therefore pointing to the place in the array where the next element is to be inserted (assuming a zero-based index convention). Thus, the stack itself can be effectively implemented as a three-element structure:</p>
-<hr />
-<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1">    structure stack:</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">      maxsize : integer</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">      top : integer</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">      items : array of item</a></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1">    procedure <span class="fu">initialize</span>(stk : stack, size : integer):</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">      stk.<span class="fu">items</span> ← <span class="kw">new</span> array of size items, initially empty</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">      stk.<span class="fu">maxsize</span> ← size</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">      stk.<span class="fu">top</span> ← <span class="dv">0</span></a></code></pre></div>
+<li><p>pseudo-code #1 - <code>array</code> <a name="pseudo-code"></a></p>
+<p>A stack can be easily implemented either through an array or a linked list. <code>What identifies the data structure as a stack in either case is not the implementation but the interface</code> - the user is only allowed to pop or push items onto the array or linked list, with few other helper operations. The following will demonstrate both implementations, using pseudocode.</p>
+<p>An array can be used to implement a (bounded) stack, as follows. The first element (usually at the zero offset) is the bottom, resulting in array[0] being the first element pushed onto the stack and the last element popped off. The program must keep track of the size (length) of the stack, using a variable <code>top</code> that records the # of items pushed so far, therefore pointing to the place in the array where the next element is to be inserted (assuming a zero-based index convention). Thus, the stack itself can be effectively implemented as a 3-element structure:</p>
+<p>``txt structure stack: maxsize : integer top : integer items : array of item ```</p>
+<pre class="txt"><code>procedure initialize(stk : stack, size : integer):
+  stk.items ← new array of size items, initially empty
+  stk.maxsize ← size
+  stk.top ← 0</code></pre>
 <p>The push operation adds an element and increments the top index, after checking for overflow: procedure push(stk : stack, x : item):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1">    <span class="kw">if</span> stk.<span class="fu">top</span> = stk.<span class="fu">maxsize</span>:</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">      report overflow error</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">    <span class="kw">else</span>:</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">      stk.<span class="fu">items</span>[stk.<span class="fu">top</span>] ← x</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">      stk.<span class="fu">top</span> ← stk.<span class="fu">top</span> + <span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1">    <span class="kw">if</span> stk.<span class="fu">top</span> = stk.<span class="fu">maxsize</span>:</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">      report overflow error</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="kw">else</span>:</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">      stk.<span class="fu">items</span>[stk.<span class="fu">top</span>] ← x</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">      stk.<span class="fu">top</span> ← stk.<span class="fu">top</span> + <span class="dv">1</span></a></code></pre></div>
 <p>Similarly, pop decrements the top index after checking for underflow, and returns the item that was previously the top one:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb6-1" data-line-number="1">    procedure <span class="fu">pop</span>(stk : stack):</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">      <span class="kw">if</span> stk.<span class="fu">top</span> = <span class="dv">0</span>:</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">        report underflow error</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">      <span class="kw">else</span>:</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">        stk.<span class="fu">top</span> ← stk.<span class="fu">top</span> − <span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">        r ← stk.<span class="fu">items</span>[stk.<span class="fu">top</span>]</a></code></pre></div>
-<p>Option #2 - LINKED-LIST</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1">    procedure <span class="fu">pop</span>(stk : stack):</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">      <span class="kw">if</span> stk.<span class="fu">top</span> = <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">        report underflow error</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">      <span class="kw">else</span>:</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">        stk.<span class="fu">top</span> ← stk.<span class="fu">top</span> − <span class="dv">1</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">        r ← stk.<span class="fu">items</span>[stk.<span class="fu">top</span>]</a></code></pre></div></li>
+<li><p>pseudo-code #2 - <code>linked-list</code></p>
 <p>Another option for implementing stacks is to use a singly linked list. A stack is then a pointer to the “head” of the list, with perhaps a counter to keep track of the size of the list:</p>
-<hr />
-<div class="sourceCode" id="cb7"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb7-1" data-line-number="1">    structure frame:</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">      data : item</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">      next : frame or nil</a></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb8-1" data-line-number="1">    structure stack:</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">      head : frame or nil</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">      size : integer</a></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb9-1" data-line-number="1">    procedure <span class="fu">initialize</span>(stk : stack):</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">      stk.<span class="fu">head</span> ← nil</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">      stk.<span class="fu">size</span> ← <span class="dv">0</span></a></code></pre></div>
-<p>Pushing and popping items happens at the head of the list; overflow is not possible in this implementation (unless memory is exhausted):</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb10-1" data-line-number="1">    procedure <span class="fu">push</span>(stk : stack, x : item):</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">      newhead ← <span class="kw">new</span> frame</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">      newhead.<span class="fu">data</span> ← x</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">      newhead.<span class="fu">next</span> ← stk.<span class="fu">head</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">      stk.<span class="fu">head</span> ← newhead</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">      stk.<span class="fu">size</span> ← stk.<span class="fu">size</span> + <span class="dv">1</span></a></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb11-1" data-line-number="1">    procedure <span class="fu">pop</span>(stk : stack):</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">      <span class="kw">if</span> stk.<span class="fu">head</span> = nil:</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">        report underflow error</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">      r ← stk.<span class="fu">head</span>.<span class="fu">data</span></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">      stk.<span class="fu">head</span> ← stk.<span class="fu">head</span>.<span class="fu">next</span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">      stk.<span class="fu">size</span> ← stk.<span class="fu">size</span> - <span class="dv">1</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">      <span class="kw">return</span> r</a></code></pre></div></li>
+<pre class="txt"><code>structure frame:
+  data : item
+  next : frame or nil</code></pre>
+<pre class="txt"><code>structure stack:
+  head : frame or nil
+  size : integer</code></pre>
+<pre class="txt"><code>procedure initialize(stk:stack):
+  stk.head ← nil
+  stk.size ← 0</code></pre>
+<p>Pushing &amp; popping items happens at the head of the list; <code>overflow isn't possible in this implementation</code> (unless memory is exhausted):</p>
+<pre class="txt"><code>procedure push(stk:stack, x:item):
+  newhead ← new frame
+  newhead.data ← x
+  newhead.next ← stk.head
+  stk.head ← newhead
+  stk.size ← stk.size + 1</code></pre>
+<pre class="txt"><code>procedure pop(stk:stack):
+  if stk.head = nil:
+    report underflow error
+  r ← stk.head.data
+  stk.head ← stk.head.next
+  stk.size ← stk.size - 1
+  return r</code></pre></li>
+<li><p>code #1 - <code>basic</code> <a name="code"></a></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">// stack</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">public</span> <span class="kw">class</span> Stack</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">{</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">  <span class="kw">private</span> <span class="kw">static</span> <span class="kw">class</span> Node</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">  {</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">    <span class="kw">private</span> <span class="dt">int</span> data;</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">    <span class="kw">private</span> Node next;</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">    <span class="kw">private</span> <span class="fu">Node</span>(<span class="dt">int</span> data)</a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">    {</a>
+<a class="sourceLine" id="cb9-11" data-line-number="11">      <span class="kw">this</span>.<span class="fu">data</span> = data;</a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">    }</a>
+<a class="sourceLine" id="cb9-13" data-line-number="13">  }</a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15">  <span class="kw">private</span> Node top;</a>
+<a class="sourceLine" id="cb9-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb9-17" data-line-number="17">  <span class="kw">public</span> boolean <span class="fu">isEmpty</span>()</a>
+<a class="sourceLine" id="cb9-18" data-line-number="18">  {</a>
+<a class="sourceLine" id="cb9-19" data-line-number="19">    <span class="kw">return</span> top == <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb9-20" data-line-number="20">  }</a>
+<a class="sourceLine" id="cb9-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb9-22" data-line-number="22">  <span class="kw">public</span> <span class="dt">int</span> <span class="fu">peek</span>()</a>
+<a class="sourceLine" id="cb9-23" data-line-number="23">  {</a>
+<a class="sourceLine" id="cb9-24" data-line-number="24">    <span class="kw">return</span> top.<span class="fu">data</span>;</a>
+<a class="sourceLine" id="cb9-25" data-line-number="25">  }</a>
+<a class="sourceLine" id="cb9-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb9-27" data-line-number="27">  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">push</span>(<span class="dt">int</span> data)</a>
+<a class="sourceLine" id="cb9-28" data-line-number="28">  {</a>
+<a class="sourceLine" id="cb9-29" data-line-number="29">    Node node = <span class="kw">new</span> <span class="fu">Node</span>(data);</a>
+<a class="sourceLine" id="cb9-30" data-line-number="30">    node.<span class="fu">next</span> = top;</a>
+<a class="sourceLine" id="cb9-31" data-line-number="31">    top = node;</a>
+<a class="sourceLine" id="cb9-32" data-line-number="32">  }</a>
+<a class="sourceLine" id="cb9-33" data-line-number="33"></a>
+<a class="sourceLine" id="cb9-34" data-line-number="34">  <span class="kw">public</span> <span class="dt">int</span> <span class="fu">pop</span>()</a>
+<a class="sourceLine" id="cb9-35" data-line-number="35">  {</a>
+<a class="sourceLine" id="cb9-36" data-line-number="36">    <span class="dt">int</span> data = top.<span class="fu">data</span>;</a>
+<a class="sourceLine" id="cb9-37" data-line-number="37">    top = top.<span class="fu">next</span>;</a>
+<a class="sourceLine" id="cb9-38" data-line-number="38">    <span class="kw">return</span> data;</a>
+<a class="sourceLine" id="cb9-39" data-line-number="39">  }</a>
+<a class="sourceLine" id="cb9-40" data-line-number="40">}</a></code></pre></div></li>
+<li><p>code #2 - <code>c# stack object</code></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co">/*</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">Current stack:</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">W G M A</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">The next poppable value in stack: H</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">Current stack:</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">H V W G M A</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">Removing values</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">Current stack:</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">G M A</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">*/</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="kw">using</span> System.<span class="fu">Collections</span>;</a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="kw">namespace</span> CollectionsApplication</a>
+<a class="sourceLine" id="cb10-15" data-line-number="15">{</a>
+<a class="sourceLine" id="cb10-16" data-line-number="16">  <span class="kw">class</span> Program</a>
+<a class="sourceLine" id="cb10-17" data-line-number="17">  {</a>
+<a class="sourceLine" id="cb10-18" data-line-number="18">    <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb10-19" data-line-number="19">    {</a>
+<a class="sourceLine" id="cb10-20" data-line-number="20">      Stack st = <span class="kw">new</span> <span class="fu">Stack</span>();</a>
+<a class="sourceLine" id="cb10-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb10-22" data-line-number="22">      st.<span class="fu">Push</span>(<span class="ch">&#39;A&#39;</span>);</a>
+<a class="sourceLine" id="cb10-23" data-line-number="23">      st.<span class="fu">Push</span>(<span class="ch">&#39;M&#39;</span>);</a>
+<a class="sourceLine" id="cb10-24" data-line-number="24">      st.<span class="fu">Push</span>(<span class="ch">&#39;G&#39;</span>);</a>
+<a class="sourceLine" id="cb10-25" data-line-number="25">      st.<span class="fu">Push</span>(<span class="ch">&#39;W&#39;</span>);</a>
+<a class="sourceLine" id="cb10-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb10-27" data-line-number="27">      Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Current stack: &quot;</span>);</a>
+<a class="sourceLine" id="cb10-28" data-line-number="28">      <span class="kw">foreach</span>(<span class="dt">char</span> c <span class="kw">in</span> st)</a>
+<a class="sourceLine" id="cb10-29" data-line-number="29">      {</a>
+<a class="sourceLine" id="cb10-30" data-line-number="30">        Console.<span class="fu">Write</span>(c + <span class="st">&quot; &quot;</span>);</a>
+<a class="sourceLine" id="cb10-31" data-line-number="31">      }</a>
+<a class="sourceLine" id="cb10-32" data-line-number="32">      Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb10-33" data-line-number="33"></a>
+<a class="sourceLine" id="cb10-34" data-line-number="34">      st.<span class="fu">Push</span>(<span class="ch">&#39;V&#39;</span>);</a>
+<a class="sourceLine" id="cb10-35" data-line-number="35">      st.<span class="fu">Push</span>(<span class="ch">&#39;H&#39;</span>);</a>
+<a class="sourceLine" id="cb10-36" data-line-number="36">      Console.<span class="fu">WriteLine</span>(<span class="st">&quot;The next poppable value in stack: {0}&quot;</span>, st.<span class="fu">Peek</span>());</a>
+<a class="sourceLine" id="cb10-37" data-line-number="37">      Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Current stack: &quot;</span>);</a>
+<a class="sourceLine" id="cb10-38" data-line-number="38"></a>
+<a class="sourceLine" id="cb10-39" data-line-number="39">      <span class="kw">foreach</span>(<span class="dt">char</span> c <span class="kw">in</span> st)</a>
+<a class="sourceLine" id="cb10-40" data-line-number="40">      {</a>
+<a class="sourceLine" id="cb10-41" data-line-number="41">        Console.<span class="fu">Write</span>(c + <span class="st">&quot; &quot;</span>);</a>
+<a class="sourceLine" id="cb10-42" data-line-number="42">      }</a>
+<a class="sourceLine" id="cb10-43" data-line-number="43"></a>
+<a class="sourceLine" id="cb10-44" data-line-number="44">      Console.<span class="fu">WriteLine</span>();</a>
+<a class="sourceLine" id="cb10-45" data-line-number="45"></a>
+<a class="sourceLine" id="cb10-46" data-line-number="46">      Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Removing values &quot;</span>);</a>
+<a class="sourceLine" id="cb10-47" data-line-number="47">      st.<span class="fu">Pop</span>();</a>
+<a class="sourceLine" id="cb10-48" data-line-number="48">      st.<span class="fu">Pop</span>();</a>
+<a class="sourceLine" id="cb10-49" data-line-number="49">      st.<span class="fu">Pop</span>();</a>
+<a class="sourceLine" id="cb10-50" data-line-number="50"></a>
+<a class="sourceLine" id="cb10-51" data-line-number="51">      Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Current stack: &quot;</span>);</a>
+<a class="sourceLine" id="cb10-52" data-line-number="52">      <span class="kw">foreach</span>(<span class="dt">char</span> c <span class="kw">in</span> st)</a>
+<a class="sourceLine" id="cb10-53" data-line-number="53">      {</a>
+<a class="sourceLine" id="cb10-54" data-line-number="54">        Console.<span class="fu">Write</span>(c + <span class="st">&quot; &quot;</span>);</a>
+<a class="sourceLine" id="cb10-55" data-line-number="55">      }</a>
+<a class="sourceLine" id="cb10-56" data-line-number="56">    }</a>
+<a class="sourceLine" id="cb10-57" data-line-number="57">  }</a>
+<a class="sourceLine" id="cb10-58" data-line-number="58">}</a></code></pre></div></li>
+<li><p>code #3 - <code>brackets problem</code></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">private</span> <span class="dt">bool</span> <span class="fu">CheckIfBalancedBrackets</span>(<span class="dt">string</span> bracketStr)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">  Stack stack = <span class="kw">new</span> <span class="fu">Stack</span>();</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">  <span class="kw">foreach</span>(<span class="dt">char</span> c <span class="kw">in</span> bracketStr)</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">  {</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">      <span class="co">// if =&gt; char is openChar</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">      <span class="kw">if</span>(c == <span class="ch">&#39;{&#39;</span> ||</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">          c == <span class="ch">&#39;[&#39;</span> ||</a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">          c == <span class="ch">&#39;(&#39;</span>)</a>
+<a class="sourceLine" id="cb11-11" data-line-number="11">      {</a>
+<a class="sourceLine" id="cb11-12" data-line-number="12">          stack.<span class="fu">Push</span>(c);</a>
+<a class="sourceLine" id="cb11-13" data-line-number="13">      }</a>
+<a class="sourceLine" id="cb11-14" data-line-number="14">      <span class="kw">else</span> <span class="kw">if</span>(c == <span class="ch">&#39;}&#39;</span> ||</a>
+<a class="sourceLine" id="cb11-15" data-line-number="15">          c == <span class="ch">&#39;]&#39;</span> ||</a>
+<a class="sourceLine" id="cb11-16" data-line-number="16">          c == <span class="ch">&#39;)&#39;</span>)</a>
+<a class="sourceLine" id="cb11-17" data-line-number="17">      {</a>
+<a class="sourceLine" id="cb11-18" data-line-number="18">          <span class="co">// check if c == counterpart to top item on stack</span></a>
+<a class="sourceLine" id="cb11-19" data-line-number="19">          <span class="dt">string</span> stackChar = stack.<span class="fu">Peek</span>().<span class="fu">ToString</span>();</a>
+<a class="sourceLine" id="cb11-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb11-21" data-line-number="21">          <span class="co">// attempt to get counter-char</span></a>
+<a class="sourceLine" id="cb11-22" data-line-number="22">          <span class="dt">string</span> counterChar = <span class="fu">GetCharCounterpart</span>(stackChar);</a>
+<a class="sourceLine" id="cb11-23" data-line-number="23">          <span class="kw">if</span> (counterChar == <span class="kw">null</span>) <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb11-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb11-25" data-line-number="25">          <span class="co">// check if match!</span></a>
+<a class="sourceLine" id="cb11-26" data-line-number="26">          <span class="kw">if</span> (c == (counterChar[<span class="dv">0</span>]))</a>
+<a class="sourceLine" id="cb11-27" data-line-number="27">          {</a>
+<a class="sourceLine" id="cb11-28" data-line-number="28">              <span class="co">// remove item from stack</span></a>
+<a class="sourceLine" id="cb11-29" data-line-number="29">              stack.<span class="fu">Pop</span>();</a>
+<a class="sourceLine" id="cb11-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb11-31" data-line-number="31">              <span class="co">// proceed with loop!</span></a>
+<a class="sourceLine" id="cb11-32" data-line-number="32">          }</a>
+<a class="sourceLine" id="cb11-33" data-line-number="33">      }</a>
+<a class="sourceLine" id="cb11-34" data-line-number="34">  }</a>
+<a class="sourceLine" id="cb11-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb11-36" data-line-number="36">  <span class="co">// if stack is not empty, then not balanced!</span></a>
+<a class="sourceLine" id="cb11-37" data-line-number="37">  <span class="kw">return</span> (stack.<span class="fu">Count</span> == <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb11-38" data-line-number="38">}</a>
+<a class="sourceLine" id="cb11-39" data-line-number="39"></a>
+<a class="sourceLine" id="cb11-40" data-line-number="40"><span class="kw">private</span> <span class="dt">string</span> <span class="fu">GetCharCounterpart</span>(<span class="dt">string</span> str)</a>
+<a class="sourceLine" id="cb11-41" data-line-number="41">{</a>
+<a class="sourceLine" id="cb11-42" data-line-number="42">    <span class="co">// sanitize!</span></a>
+<a class="sourceLine" id="cb11-43" data-line-number="43">    <span class="co">// TODO - swap this for char?</span></a>
+<a class="sourceLine" id="cb11-44" data-line-number="44">    <span class="kw">if</span> (str.<span class="fu">Length</span> != <span class="dv">1</span>) <span class="kw">return</span> <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb11-45" data-line-number="45"></a>
+<a class="sourceLine" id="cb11-46" data-line-number="46">    <span class="kw">switch</span> (str[<span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb11-47" data-line-number="47">    {</a>
+<a class="sourceLine" id="cb11-48" data-line-number="48">        <span class="kw">case</span> <span class="ch">&#39;{&#39;</span>:</a>
+<a class="sourceLine" id="cb11-49" data-line-number="49">            <span class="kw">return</span> <span class="st">&quot;}&quot;</span>;</a>
+<a class="sourceLine" id="cb11-50" data-line-number="50">        <span class="kw">case</span> <span class="ch">&#39;[&#39;</span>:</a>
+<a class="sourceLine" id="cb11-51" data-line-number="51">            <span class="kw">return</span> <span class="st">&quot;]&quot;</span>;</a>
+<a class="sourceLine" id="cb11-52" data-line-number="52">        <span class="kw">case</span> <span class="ch">&#39;(&#39;</span>:</a>
+<a class="sourceLine" id="cb11-53" data-line-number="53">            <span class="kw">return</span> <span class="st">&quot;)&quot;</span>;</a>
+<a class="sourceLine" id="cb11-54" data-line-number="54">        <span class="kw">default</span>:</a>
+<a class="sourceLine" id="cb11-55" data-line-number="55">            <span class="kw">break</span>;</a>
+<a class="sourceLine" id="cb11-56" data-line-number="56">    }</a>
+<a class="sourceLine" id="cb11-57" data-line-number="57"></a>
+<a class="sourceLine" id="cb11-58" data-line-number="58">    <span class="kw">return</span> <span class="kw">null</span>;</a>
+<a class="sourceLine" id="cb11-59" data-line-number="59">}</a></code></pre></div></li>
 </ul>
 </body>
 </html>

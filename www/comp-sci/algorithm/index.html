@@ -87,17 +87,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 <ul>
 <li><a href="#overview">overview</a></li>
-<li><a href="#divide">d &amp; c</a></li>
+<li><a href="#divide">divide &amp; cconquer</a></li>
 <li><a href="./big-o">big-o</a></li>
 <li><a href="./recursion">recursion</a></li>
 <li>type
 <ul>
-<li><a href="./sort">sort</a></li>
 <li><a href="./search">search</a></li>
 <li><a href="#shuffle">shuffle</a></li>
-<li>insert (?)</li>
-<li>update (?)</li>
-<li>delete (?)</li>
+<li><a href="./sort">sort</a></li>
+</ul>
+<hr />
+<ul>
+<li><a href="#duplicate-check">duplicate check</a></li>
 </ul></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
@@ -105,25 +106,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Algorithm">more @ wikipedia</a></li>
 </ul>
-<h3 id="shuffle">shuffle <a name="shuffle"></a></h3>
-<ul>
-<li><p>perhaps you need to shuffle a card deck:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1">    <span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">ShuffleArray</span>(<span class="dt">int</span>[] arr)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">    {</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">        <span class="dt">int</span> length = arr.<span class="fu">Length</span>;</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">        <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; length; i++)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">        {</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">            <span class="dt">int</span> temp = arr[i];</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">            <span class="dt">int</span> rand = Random.<span class="fu">Range</span>(<span class="dv">0</span>, length);</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">            arr[i] = arr[rand];</a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">            arr[rand] = temp;</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">        }</a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">    }</a></code></pre></div></li>
-</ul>
 <h2 id="divide-conquer">Divide &amp; Conquer <a name="divide"></a></h2>
 <hr />
-<figure>
+<ul>
+<li><figure>
 <img src="./_asset/img/1.png" alt="Greedy vs. Divide &amp; Conquer" /><figcaption>Greedy vs. Divide &amp; Conquer</figcaption>
 </figure>
 <figure>
@@ -134,6 +120,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 <figure>
 <img src="./_asset/img/4.png" alt="Greedy vs. Divide &amp; Conquer" /><figcaption>Greedy vs. Divide &amp; Conquer</figcaption>
-</figure>
+</figure></li>
+</ul>
+<h2 id="shuffle">Shuffle <a name="shuffle"></a></h2>
+<hr />
+<ul>
+<li><p><code>card deck shuffle</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">ShuffleArray</span>(<span class="dt">int</span>[] arr)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">    <span class="dt">int</span> length = arr.<span class="fu">Length</span>;</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">    <span class="kw">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; length; i++)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">    {</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">        <span class="dt">int</span> temp = arr[i];</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">        <span class="dt">int</span> rand = Random.<span class="fu">Range</span>(<span class="dv">0</span>, length);</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">        arr[i] = arr[rand];</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">        arr[rand] = temp;</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">    }</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">}</a></code></pre></div></li>
+</ul>
+<h2 id="duplicate-check">Duplicate check <a name="duplicate-check"></a></h2>
+<hr />
+<ul>
+<li><p>demo:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="dt">bool</span> <span class="fu">ContainsDupes</span>(IList&lt;<span class="dt">string</span>&gt; elements)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="kw">for</span>(<span class="dt">var</span> outer = <span class="dv">0</span>; outer &lt; elements.<span class="fu">COunt</span>; outer++)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">    {</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">        <span class="kw">for</span>(<span class="dt">var</span> inner = <span class="dv">0</span>; inner &lt; elements.<span class="fu">Count</span>; inner++)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">        {</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">            <span class="co">// don&#39;t compare with self</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">            <span class="kw">if</span>(outer == inner) <span class="kw">continue</span>;</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">            <span class="kw">if</span>(elements[outer] == elements[inner]) <span class="kw">return</span> <span class="kw">true</span>;</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">        }</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">    }</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">    <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">}</a></code></pre></div></li>
+</ul>
 </body>
 </html>

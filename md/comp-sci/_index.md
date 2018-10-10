@@ -1,7 +1,7 @@
 * [overview](#overview)
 * [algorithm](./algorithm)
 * [data-structure](./data-structure)
-* [design-pattern](./design-pattern)		
+* [oop](./oop)
 
 ## Overview <a name="overview"></a>
 
