@@ -18,6 +18,8 @@
 
 * returns element that matches specific ID value you pass to it.
 * returns `null` if no element on the page has the specified ID.
+* MORE efficient (performance-wise) than `querySelector`, but possible not an issue with recent hardware.
+* supported by ALL browsers, while `querySelector` might not be supported on older browsers.
 * demo
 
 	```js
@@ -70,7 +72,15 @@ var tag = function(){
 ---
 
 * returns the FIRST element it finds that matches the selector criteria passed to it
-* demo - `find by unique id`
+* demo #1 - `find by class name`
+
+	```js
+	<script type="text/javascript">
+		var elem = document.querySelector(".searchContainer");
+	</script>
+	```
+
+* demo #2 - `find by unique id`
 
 	```js
 	<script type="text/javascript">
