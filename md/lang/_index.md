@@ -1,5 +1,5 @@
 * [c#](./csharp)
-* [js](./js)
+* [javascript](./js)
 
 ---
 

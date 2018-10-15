@@ -189,7 +189,7 @@
 // ---------------------------------------- BIG-O
 // "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/algorithm/big-o/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.algorithm.big-o'"
 // ... a-notation
-"pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/algorithm/big-o/a-notation/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.algorithm.big-o.a-notation'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/algorithm/big-o/a-notation/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.algorithm.big-o.a-notation'"
 // --------------------------------------- BUBBLE
 // "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/algorithm/sort/bubble/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.algorithm.sort.bubble'"
 // ... selection
@@ -290,7 +290,10 @@
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/parameter-modifier/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.parameter-modifier'" 
 // ------------------------------------------- JS
 // ----------------------------------------------
-// "pandoc.htmlOptString": "-s -o ../../../www/lang/js/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.java-script'"
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/js/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.javascript'"
+// ------------------------------------------ DOM
+// ... select
+"pandoc.htmlOptString": "-s -o ../../../../www/lang/js/dom/select/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='lang.javascript.dom.select'"
 // ---------------------------------------- SHELL
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/shell/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.shell'"
