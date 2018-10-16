@@ -279,7 +279,7 @@
 // "pandoc.htmlOptString": "-s -o ../../www/lang/index.html -t html5 --css=../_asset/css/style.css --metadata title='lang'"
 // ------------------------------------------- C#
 // ----------------------------------------------
-"pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.c#'"
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.c#'"
 // ... generic
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/generic/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.generic'"    
 // ... lambda-expression
@@ -290,8 +290,10 @@
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/parameter-modifier/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.parameter-modifier'" 
 // ------------------------------------------- JS
 // ----------------------------------------------
-// "pandoc.htmlOptString": "-s -o ../../../www/lang/js/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.javascript'"
+"pandoc.htmlOptString": "-s -o ../../../www/lang/js/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.javascript'"
 // ------------------------------------------ DOM
+// ... alter
+// "pandoc.htmlOptString": "-s -o ../../../../www/lang/js/dom/alter/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='lang.javascript.dom.alter'"
 // ... select
 // "pandoc.htmlOptString": "-s -o ../../../../www/lang/js/dom/select/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='lang.javascript.dom.select'"
 // ---------------------------------------- SHELL

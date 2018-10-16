@@ -10,7 +10,7 @@
 
 ---
 
-* [more @ wikipedia](http://www.infocodify.com/html_dom/selecting_items)
+* [more @ info-codify](http://www.infocodify.com/html_dom/selecting_items)
 
 ## getElementById <a name="get-element-by-id"></a>
 
