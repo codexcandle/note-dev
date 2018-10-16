@@ -25,6 +25,11 @@
 // ----------------------------------------------
 // ... ableton
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.ableton'"
+// ----------------------------------------- RACK
+// "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/rack/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack'"
+// ----------------------------------------------
+// ----------------------------------------- DRUM
+"pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/rack/drum/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.drum'"
 // ... reaper
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/reaper/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.reaper'"
 // ----------------------------------------------
@@ -290,7 +295,7 @@
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/parameter-modifier/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.parameter-modifier'" 
 // ------------------------------------------- JS
 // ----------------------------------------------
-"pandoc.htmlOptString": "-s -o ../../../www/lang/js/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.javascript'"
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/js/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.javascript'"
 // ------------------------------------------ DOM
 // ... alter
 // "pandoc.htmlOptString": "-s -o ../../../../www/lang/js/dom/alter/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='lang.javascript.dom.alter'"
