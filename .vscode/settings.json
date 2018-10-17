@@ -29,7 +29,13 @@
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/rack/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack'"
 // ----------------------------------------------
 // ----------------------------------------- DRUM
-"pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/rack/drum/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.drum'"
+// "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/rack/drum/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.drum'"
+// ----------------------------------------------
+// --------------------------------------- EFFECT
+// "pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/rack/effect/index.html -t html5 --css=../../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.effect'"
+// ... dry-wet
+"pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/rack/effect/dry-wet/index.html -t html5 --css=../../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.effect.dry-wet'"
+
 // ... reaper
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/reaper/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.reaper'"
 // ----------------------------------------------

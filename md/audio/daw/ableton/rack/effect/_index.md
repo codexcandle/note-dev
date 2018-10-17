@@ -1,5 +1,6 @@
 * [overview](#overview)
-* [rack](./rack)
+* rack
+	* [dry-wet](./dry-wet)
 
 ## Overview <a name="overview"></a>
 
