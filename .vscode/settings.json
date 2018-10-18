@@ -25,6 +25,8 @@
 // ----------------------------------------------
 // ... ableton
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.ableton'"
+// --------------------------------------- GROOVE
+"pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/groove/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.groove'"
 // ----------------------------------------- RACK
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/rack/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack'"
 // ----------------------------------------------
@@ -34,7 +36,7 @@
 // --------------------------------------- EFFECT
 // "pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/rack/effect/index.html -t html5 --css=../../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.effect'"
 // ... dry-wet
-"pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/rack/effect/dry-wet/index.html -t html5 --css=../../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.effect.dry-wet'"
+// "pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/rack/effect/dry-wet/index.html -t html5 --css=../../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.effect.dry-wet'"
 
 // ... reaper
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/reaper/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.reaper'"
@@ -291,14 +293,22 @@
 // ------------------------------------------- C#
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.c#'"
+// ... attribute
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/attribute/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.attribute'"
 // ... generic
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/generic/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.generic'"    
+// ... indexer
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/indexer/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.indexer'" 
 // ... lambda-expression
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/lambda-expression/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.lambda-expression'"    
 // ... linq
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/linq/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.linq'" 
 // ... parameter-modifier
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/parameter-modifier/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.parameter-modifier'" 
+// ... reflection
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/reflection/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.reflection'" 
+// ... property
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/property/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.property'" 
 // ------------------------------------------- JS
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/js/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.javascript'"
