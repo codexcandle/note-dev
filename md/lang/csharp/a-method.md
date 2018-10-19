@@ -11,7 +11,8 @@
 
 	```c#
 	/*
-	The code block Console.WriteLine("Anonymous Method: {0}", x); is the body of the anonymous method.
+	The code block Console.WriteLine("Anonymous Method: {0}", x);
+	is the body of the anonymous method.
 	*/
 	delegate void NumberChanger(int n);
 	...
@@ -43,53 +44,53 @@
 	using System;
 
 	delegate void NumberChanger(int n);
-	namespace DelegateAppl
+	namespace DelegateApp
 	{
 		class TestDelegate
 		{
-				static int num = 10;
+			static int num = 10;
 
-				public static void AddNum(int p)
+			public static void AddNum(int p)
+			{
+				num += p;
+				Console.WriteLine("Named Method: {0}", num);
+			}
+
+			public static void MultNum(int q)
+			{
+				num *= q;
+				Console.WriteLine("Named Method: {0}", num);
+			}
+
+			public static int getNum()
+			{
+				return num;
+			}
+
+			static void Main(string[] args)
+			{
+				//create delegate instances using anonymous method
+				NumberChanger nc = delegate(int x)
 				{
-					num += p;
-					Console.WriteLine("Named Method: {0}", num);
-				}
+						Console.WriteLine("Anonymous Method: {0}", x);
+				};
 
-				public static void MultNum(int q)
-				{
-					num *= q;
-					Console.WriteLine("Named Method: {0}", num);
-				}
+				//calling the delegate using the anonymous method 
+				nc(10);
 
-				public static int getNum()
-				{
-					return num;
-				}
+				//instantiating the delegate using the named methods 
+				nc =  new NumberChanger(AddNum);
 
-				static void Main(string[] args)
-				{
-					//create delegate instances using anonymous method
-					NumberChanger nc = delegate(int x)
-					{
-							Console.WriteLine("Anonymous Method: {0}", x);
-					};
+				//calling the delegate using the named methods 
+				nc(5);
 
-					//calling the delegate using the anonymous method 
-					nc(10);
+				//instantiating the delegate using another named methods 
+				nc =  new NumberChanger(MultNum);
 
-					//instantiating the delegate using the named methods 
-					nc =  new NumberChanger(AddNum);
-
-					//calling the delegate using the named methods 
-					nc(5);
-
-					//instantiating the delegate using another named methods 
-					nc =  new NumberChanger(MultNum);
-
-					//calling the delegate using the named methods 
-					nc(2);
-					Console.ReadKey();
-				}
+				//calling the delegate using the named methods 
+				nc(2);
+				Console.ReadKey();
+			}
 		}
 	}
 	```
