@@ -1,5 +1,4 @@
 * [overview](#overview)
-* [generic](./generic)
 * [lambda-expression](./lambda-expression)
 * [linq](./linq)
 * [parameter-modifier](./parameter-modifier)
@@ -7,6 +6,8 @@
 * [reflection](./reflection)
 * [property](./property)
 * [indexer](./indexer)
+* [collection](./collection)
+* [generic](./generic)
 
 	---
 
