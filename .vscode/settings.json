@@ -290,7 +290,9 @@
 // "pandoc.htmlOptString": "-s -o ../../www/lang/index.html -t html5 --css=../_asset/css/style.css --metadata title='lang'"
 // ------------------------------------------- C#
 // ----------------------------------------------
-"pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.c#'"
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.c#'"
+// ... anonymous-method
+"pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/a-method/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.anonymous-method'"
 // ... attribute
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/attribute/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.attribute'"
 // ... generic

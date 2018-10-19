@@ -8,6 +8,9 @@
 * [indexer](./indexer)
 * [collection](./collection)
 * [generic](./generic)
+* [anonymous method](./a-method)
+* [unsafe codes](https://www.tutorialspoint.com/csharp/csharp_unsafe_codes.htms)
+* [multi-threading](https://www.tutorialspoint.com/csharp/csharp_multithreading.htm)
 
 	---
 
