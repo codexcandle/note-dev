@@ -7,6 +7,8 @@
 * [reflection](./reflection)
 * [property](./property)
 * [indexer](./indexer)
+* [delegate](./delegate)
+* [event](./event)
 
 	---
 

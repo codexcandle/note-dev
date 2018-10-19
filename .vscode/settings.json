@@ -26,7 +26,7 @@
 // ... ableton
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.ableton'"
 // --------------------------------------- GROOVE
-"pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/groove/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.groove'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/groove/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.groove'"
 // ----------------------------------------- RACK
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/rack/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack'"
 // ----------------------------------------------
@@ -292,9 +292,13 @@
 // "pandoc.htmlOptString": "-s -o ../../www/lang/index.html -t html5 --css=../_asset/css/style.css --metadata title='lang'"
 // ------------------------------------------- C#
 // ----------------------------------------------
-// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.c#'"
+"pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.c#'"
 // ... attribute
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/attribute/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.attribute'"
+// ... delegate
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/delegate/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.delegate'"
+// ... event
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/event/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.event'"
 // ... generic
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/generic/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.generic'"    
 // ... indexer
