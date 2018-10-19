@@ -217,9 +217,7 @@
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/index.html -t html5 --css=../../_asset/css/style.css --metadata title='comp-sci.data-structure'"
 // ... array
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/array/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.array'" 
-// ... array-list
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/array-list/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.array-list'" 
+// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/array/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.array'"
 // ... hash-table
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/hash-table/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.hash-table'"    
 // ... linked-list
@@ -292,13 +290,11 @@
 // "pandoc.htmlOptString": "-s -o ../../www/lang/index.html -t html5 --css=../_asset/css/style.css --metadata title='lang'"
 // ------------------------------------------- C#
 // ----------------------------------------------
-"pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.c#'"
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.c#'"
+// ... anonymous-method
+"pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/a-method/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.anonymous-method'"
 // ... attribute
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/attribute/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.attribute'"
-// ... delegate
-// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/delegate/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.delegate'"
-// ... event
-// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/event/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.event'"
 // ... generic
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/generic/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.generic'"    
 // ... indexer
@@ -313,6 +309,14 @@
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/reflection/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.reflection'" 
 // ... property
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/property/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.property'" 
+// ----------------------------------- COLLECTION
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/collection/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.collection'"
+// ... array-list
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/collection/array-list/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='lang.c#.collection.array-list'" 
+// ... bit-array
+// "pandoc.htmlOptString": "-s -o ../../../../www/lang/csharp/collection/bit-array/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='lang.c#.collection.bit-array'" 
+// ... sorted-list
+// "pandoc.htmlOptString": "-s -o ../../../../www/lang/csharp/collection/sorted-list/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='lang.c#.collection.sorted-list'" 
 // ------------------------------------------- JS
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/js/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.javascript'"
