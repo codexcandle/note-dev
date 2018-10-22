@@ -36,21 +36,17 @@
 
 ---
 
-### lod <a name="lod"></a>
+* `level-of-detail` <a name="lod"></a> - no normal maps, specular, texture mapping, bump mapping - as they don't work well in vr.
 
-> No normal maps, specular, txture mapping, bump mapping - as they don't work well in vr.
+	![Art](./_asset/img/12.png)
 
-![LOD](./_asset/img/12.png)
+* `scale` <a name="scale"></a> - a water-bottle at arm's length...
 
-### scale <a name="scale"></a>
+	![Art](./_asset/img/13.png)
 
-> a water-bottle at arm's length...
+* `reticule (hands)` <a name="reticule"></a>
 
-![scale](./_asset/img/13.png)
-
-### reticule (hands) <a name="reticule"></a>
-
-![Reticule Hands](./_asset/img/18.png)
+	![Art](./_asset/img/18.png)
 
 ## Locomotion <a name="locomotion"></a>
 

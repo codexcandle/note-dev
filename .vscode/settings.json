@@ -81,9 +81,9 @@
 
 // XR
 // ----------------------------------------------
-// "pandoc.htmlOptString": "-s -o ../../www/xr/index.html -t html5 --css=../_asset/css/style.css --metadata title='xr'"
+"pandoc.htmlOptString": "-s -o ../../www/xr/index.html -t html5 --css=../_asset/css/style.css --metadata title='xr'"
 // ... slam
-"pandoc.htmlOptString": "-s -o ../../www/xr/map/slam/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='xr.map.slam'"
+// "pandoc.htmlOptString": "-s -o ../../www/xr/map/slam/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='xr.map.slam'"
 // ----------------------------------------------
 // ------------------------------------------ HMD
 // ----------------------------------------------
