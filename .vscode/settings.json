@@ -82,6 +82,8 @@
 // XR
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../www/xr/index.html -t html5 --css=../_asset/css/style.css --metadata title='xr'"
+// ... slam
+"pandoc.htmlOptString": "-s -o ../../www/xr/map/slam/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='xr.map.slam'"
 // ----------------------------------------------
 // ------------------------------------------ HMD
 // ----------------------------------------------
@@ -120,6 +122,9 @@
 // "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/optimize/dll/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.optimize.dll'"   
 // ... pool
 // "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/optimize/pool/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.optimize.pool'"    
+// --------------------------------- MULTI-THREAD
+// ----------------------------------------------
+// "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/optimize/m-thread/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.optimize.multi-thread'"
 // --------------------------------------- SHADER
 // "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/shader/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.shader'"
 
@@ -292,7 +297,7 @@
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.c#'"
 // ... anonymous-method
-"pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/a-method/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.anonymous-method'"
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/a-method/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.anonymous-method'"
 // ... attribute
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/attribute/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.attribute'"
 // ... generic

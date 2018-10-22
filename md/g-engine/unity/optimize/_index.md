@@ -5,13 +5,14 @@
     * [triangles, vertices, & drawcalls](#triangles-vertices-drawcalls)
     * [shaders](#shaders)
 * code
+    * [multi-thread](./m-thread)
     * [dll-lib](./dll)
-    * [object pool](./pool)
+    * [instantiate-destroy](#instantiate-destroy)
+        * [object pool](./pool)
     * [foreach](#foreach)
     * [tag-comparison](#tag-comparison)
     * [string-concatenation](#string-concatenation)
     * [get-component](#get-component)
-    * [instantiate-destroy](#instantiate-destroy) / [object-pool](./pool)
 
 ## Graphics
 
