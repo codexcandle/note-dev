@@ -31,7 +31,7 @@
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/rack/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack'"
 // ----------------------------------------------
 // ----------------------------------------- DRUM
-// "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/rack/drum/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.drum'"
+"pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/rack/drum/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.drum'"
 // ----------------------------------------------
 // --------------------------------------- EFFECT
 // "pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/rack/effect/index.html -t html5 --css=../../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.effect'"
@@ -234,7 +234,7 @@
 // ... trie
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/trie/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='cs.data-structure.trie'"
 // ----------------------------------------- TREE
-"pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='cs.data-structure.tree'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='cs.data-structure.tree'"
 // ... bst
 // "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/bst/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='cs.data-structure.tree.bst'"
 // ... heap
