@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>comp-sci.data-structure.stack</title>
+  <title>cs.data-structure.stack</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -83,12 +83,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>
 <header>
-<h1 class="title">comp-sci.data-structure.stack</h1>
+<h1 class="title">cs.data-structure.stack</h1>
 </header>
 <ul>
-<li><a href="#overview">overview</a></li>
+<li><a href="#overview">overview</a>
+<ul>
 <li><a href="#property">property</a></li>
 <li><a href="#method">method</a></li>
+</ul></li>
 <li>example
 <ul>
 <li><a href="#word-prob">word-prob</a></li>
@@ -99,21 +101,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
 <ul>
-<li><figure>
+<li><p><code>LIFO</code> - stack of pancakes (last in, first out)</p>
+<figure>
 <img src="./_asset/img/01.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure>
 <figure>
 <img src="./_asset/img/2.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure>
+</figure></li>
+<li><p>operations (which only occur at <code>top</code> of stack, making it possible to implement a stack as a <code>singly-linked list</code> &amp; a pointer to this top element):</p>
+<p><code>push</code> - adds element<br />
+<code>pop</code> - removes most recently added element<br />
+</p></li>
+<li><p>demo</p>
 <figure>
 <img src="./_asset/img/4.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure></li>
-<li><p><code>LIFO</code> - stack of pancakes (last in, first out).</p>
-<p>2 principal operations:</p>
-<p><code>push</code> - adds element <code>pop</code> - removes most recently added element</p>
-<blockquote>
-<p>NOTE: above operations occur only at one end of the structure, aka <code>top</code> of the stack. This makes it possible to implement a stack as a <code>singly-linked list</code> &amp; a pointer to this top element.</p>
-</blockquote></li>
 <li><p><code>usage</code> - can do anything from helping to navigate a maze, traversing a graph, to an undo system.</p>
 <figure>
 <img src="./_asset/img/5.png" alt="Overview" /><figcaption>Overview</figcaption>

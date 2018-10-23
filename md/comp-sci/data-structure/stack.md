@@ -1,6 +1,6 @@
 * [overview](#overview)
-* [property](#property)
-* [method](#method)
+  * [property](#property)
+  * [method](#method)
 * example
   * [word-prob](#word-prob)
   * [pseudo-code](#pseudo-code)
@@ -10,20 +10,20 @@
 
 ---
 
-* ![Overview](./_asset/img/01.png)
+* `LIFO` - stack of pancakes (last in, first out)
+
+  ![Overview](./_asset/img/01.png)
 
   ![Overview](./_asset/img/2.png)
 
-  ![Overview](./_asset/img/4.png)
-
-* `LIFO` - stack of pancakes (last in, first out).
-
-  2 principal operations:
+* operations (which only occur at `top` of stack, making it possible to implement a stack as a `singly-linked list` & a pointer to this top element):
   
-  `push` - adds element
-  `pop` - removes most recently added element
+  `push` - adds element \
+  `pop` - removes most recently added element \
 
-  > NOTE: above operations occur only at one end of the structure, aka `top` of the stack. This makes it possible to implement a stack as a `singly-linked list` & a pointer to this top element.
+* demo
+
+  ![Overview](./_asset/img/4.png)
 
 * `usage` - can do anything from helping to navigate a maze, traversing a graph, to an undo system.
 

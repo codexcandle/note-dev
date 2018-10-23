@@ -81,7 +81,7 @@
 
 // XR
 // ----------------------------------------------
-"pandoc.htmlOptString": "-s -o ../../www/xr/index.html -t html5 --css=../_asset/css/style.css --metadata title='xr'"
+// "pandoc.htmlOptString": "-s -o ../../www/xr/index.html -t html5 --css=../_asset/css/style.css --metadata title='xr'"
 // ... slam
 // "pandoc.htmlOptString": "-s -o ../../www/xr/map/slam/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='xr.map.slam'"
 // ----------------------------------------------
@@ -222,23 +222,23 @@
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/index.html -t html5 --css=../../_asset/css/style.css --metadata title='comp-sci.data-structure'"
 // ... array
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/array/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.array'"
+// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/array/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='cs.data-structure.array'"
 // ... hash-table
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/hash-table/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.hash-table'"    
+// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/hash-table/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='cs.data-structure.hash-table'"    
 // ... linked-list
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/linked-list/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.linked-list'"    
+// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/linked-list/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='cs.data-structure.linked-list'"    
 // ... stack
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/stack/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.stack'"
+// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/stack/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='cs.data-structure.stack'"
 // ... queue
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/queue/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.queue'"
+// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/queue/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='cs.data-structure.queue'"
 // ... trie
-// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/trie/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.trie'"
+// "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/data-structure/trie/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='cs.data-structure.trie'"
 // ----------------------------------------- TREE
-// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='comp-sci.data-structure.tree'"
+"pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='cs.data-structure.tree'"
 // ... bst
-// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/bst/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.data-structure.tree.bst'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/bst/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='cs.data-structure.tree.bst'"
 // ... heap
-// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/heap/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='comp-sci.data-structure.tree.heap'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/comp-sci/data-structure/tree/heap/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='cs.data-structure.tree.heap'"
 // ------------------------------------------ OOP
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/comp-sci/oop/index.html -t html5 --css=../../_asset/css/style.css --metadata title='comp-sci.oop'"

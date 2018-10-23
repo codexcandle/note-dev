@@ -1,8 +1,8 @@
 * [overview](#overview)
-* [property](#property)
-* [method](#method)
+  * [property](#property)
+  * [method](#method)
 * example
-  * [word-problem](#word-problem)
+  * [word-prob](#word-problem)
   * [pseudo-code](#pseudo-code)
   * [code](#code)
 
@@ -10,13 +10,13 @@
 
 ---
 
-* `FIFO` - first in, first out (line at movies).
+* `FIFO` - first in, first out (line at movies)
 
   ![Overview](./_asset/img/01.png)
 
   ![Overview](./_asset/img/04.png)
 
-* terminology
+* terms
 
   - `bounded` queue - is a queue limited to a fixed # of items.
   - operations
@@ -44,15 +44,15 @@
 
 ---
 
-* word problem #1 <a name="word-problem"></a>
+* word prob #1 <a name="word-problem"></a>
 
   ![Example](./_asset/img/10.png)
 
-* word problem #2
+* word prob #2
 
   ![Example](./_asset/img/13.png)
 
-* word problem #3
+* word prob #3
 
   ![Example](./_asset/img/14.png)
 

@@ -1,7 +1,10 @@
 * [overview](#overview)
-* [divide & cconquer](#divide)
-* [big-o](./big-o)
-* [recursion](./recursion)
+* strategy
+    * [greedy](#greedy)
+    * [divide & cconquer](#divide)
+    * [recursion](./recursion)
+* perf
+    * [big-o](./big-o)
 * type
     * [search](./search)
     * [shuffle](#shuffle)
@@ -9,7 +12,7 @@
 
     ---
 
-    * [duplicate check](#duplicate-check)
+    * [dupe check](#duplicate-check)
 
 ## Overview <a name="overview"></a>
 
@@ -17,17 +20,21 @@
 
 * [more @ wikipedia](https://en.wikipedia.org/wiki/Algorithm)
 
-## Divide & Conquer <a name="divide"></a>
+## Strategy <a name="strategy"></a>
 
 ---
 
-* ![Greedy vs. Divide & Conquer](./_asset/img/1.png)
+### greedy <a name="greedy"></a>
 
-  ![Greedy vs. Divide & Conquer](./_asset/img/2.png)
+* ![Greedy](./_asset/img/1.png)
 
-  ![Greedy vs. Divide & Conquer](./_asset/img/3.png)
+  ![Greedy](./_asset/img/2.png)
 
-  ![Greedy vs. Divide & Conquer](./_asset/img/4.png)
+### divide & conquer <a name="divide"></a>
+
+* ![divide & conquer](./_asset/img/3.png)
+
+  ![divide & conquer](./_asset/img/4.png)
 
 ## Shuffle <a name="shuffle"></a>
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>comp-sci.data-structure.hash-table</title>
+  <title>cs.data-structure.hash-table</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -83,44 +83,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>
 <header>
-<h1 class="title">comp-sci.data-structure.hash-table</h1>
+<h1 class="title">cs.data-structure.hash-table</h1>
 </header>
 <ul>
-<li><a href="#overview">overview</a></li>
-<li><a href="#big-o">big-0</a></li>
-<li><a href="#hashing">hashing</a>
+<li><a href="#overview">overview</a>
 <ul>
-<li><a href="#hash-function">hash function</a></li>
-<li><a href="#collision">collision</a></li>
-</ul></li>
+<li><a href="#pro-v-con">pro vs. con</a></li>
+<li><a href="#runtime">runtime</a></li>
 <li><a href="#property">property</a></li>
 <li><a href="#method">method</a></li>
-<li><a href="#example">example</a></li>
+</ul></li>
+<li><a href="#hashing">hashing</a>
+<ul>
+<li><a href="#hash-function">hash-function</a></li>
+<li><a href="#collision">collision</a></li>
+</ul></li>
+<li>example
+<ul>
+<li><a href="#word-prob">word-prob</a></li>
+<li><a href="#code">code</a></li>
+</ul></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
-<figure>
-<img src="./_asset/img/01.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure>
 <ul>
-<li>aka <code>HASH MAP</code></li>
-<li>key-value lookup (via “associative array” abstract data type!)</li>
+<li><figure>
+<img src="./_asset/img/01.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
+<li>aka <code>HASH MAP</code>- key-value lookup (via “associative array” abstract data type).</li>
 <li><p><code>can contain linked-lists</code> - rather than storing just simple values, hash-tables often contain LISTS of key-value pairs.</p>
-While hash-tables are great because you can have immediate lookup to a value (assuming table has unique node for each value), they otherwise use a linked-list for keys that share the same index. Why would you have keys share the same index?To save space! - and if you have a set list length, and want to <code>pack</code> the data in as you go <code>assigning</code> values. Then once you found the correct index for an item in the list, you traverse that <code>linked list</code> to lookup if node value equals your desired value.</li>
-<li>pros
+<p>While hash-tables are great because you can have immediate lookup to a value (assuming table has unique node for each value), they otherwise use a linked-list for keys that share the same index. Why would you have keys share the same index?To save space! - and if you have a set list length, and want to <code>pack</code> the data in as you go <code>assigning</code> values. Then once you found the correct index for an item in the list, you traverse that <code>linked list</code> to lookup if node value equals your desired value.</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Hash_table">more @ wikipedia</a></p></li>
+</ul>
+<h2 id="pro-vs-con">Pro vs Con <a name="pro-v-con"></a></h2>
+<hr />
+<h3 id="pro">pro</h3>
 <ul>
 <li><code>speedy!</code> - for any problem, have hash tables at the top of your mind! Often used to index large amounts of data, their main advantage (vs other table data structures) is speed. This is more apparent when the # of entries is large. They are particularly efficient - when the max # of entries can be predicted in advance, so that the bucket array can be allocated once with the optimum size &amp; never resized. Hash tables are (on average) more efficient than search trees or any other table lookup structure. Thus, used in many kinds of computer software, particularly for associative arrays, database-indexing, caches, &amp; sets.</li>
-</ul></li>
-<li><p>cons</p>
+</ul>
+<h3 id="con">con</h3>
 <ul>
 <li><code>not effective when # of entries is very small.</code> - although operations on a hash table take constant time on average, the cost of a good hash function can be significantly higher than the inner loop of the lookup algorithm for a sequential list or search tree. (However, in some cases the high cost of computing the hash function can be mitigated by saving the hash value together with the key.)</li>
 <li><code>entries can be enumerated efficiently (at constant cost per entry), but only in some pseudo-random order.</code> - there is no efficient way to locate an entry whose key is nearest to a given key. Listing all n entries in some specific order generally requires a separate sorting step, whose cost is proportional to log(n) per entry. In comparison, ordered search trees have lookup and insertion cost proportional to log(n), but allow finding the nearest key at about the same cost, and ordered enumeration of all entries at constant cost per entry.</li>
 <li><code>may be no easy way to enumerate the keys that are present in the table at any given moment.</code> - if the keys are not stored (because the hash function is collision-free).</li>
 <li><code>become quite inefficient when there are many collisions.</code> - while extremely uneven hash distributions are extremely unlikely to arise by chance, a malicious adversary with knowledge of the hash function may be able to supply information to a hash that creates worst-case behavior by causing excessive collisions, resulting in very poor performance, e.g., a denial of service attack. In critical applications, a data structure with better worst-case guarantees can be used; however, universal hashing—a randomized algorithm that prevents the attacker from predicting which inputs cause worst-case behavior—may be preferable. (The hash function used by the hash table in the Linux routing table cache was changed with Linux version 2.4.2 as a countermeasure against such attacks.)</li>
-</ul></li>
-<li><p><a href="https://en.wikipedia.org/wiki/Hash_table">more @ wikipedia</a></p></li>
 </ul>
-<h2 id="big-o">Big-O <a name="big-o"></a></h2>
+<h2 id="runtime">Runtime <a name="runtime"></a></h2>
 <hr />
 <ul>
 <li><p><code>good</code> (hashtable)</p>
@@ -131,6 +139,16 @@ While hash-tables are great because you can have immediate lookup to a value (as
 <pre class="txt"><code>// i.e. lots of collisions
 `O(n)` (linear)</code></pre></li>
 </ul>
+<h2 id="property">Property <a name="property"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/02.png" alt="Proeprty" /><figcaption>Proeprty</figcaption>
+</figure>
+<h2 id="method">Method <a name="Method"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/03.png" alt="Method" /><figcaption>Method</figcaption>
+</figure>
 <h2 id="hashing">Hashing <a name="hashing"></a></h2>
 <hr />
 <ul>
@@ -138,7 +156,7 @@ While hash-tables are great because you can have immediate lookup to a value (as
 <li>a good hash function and implementation algorithm are essential for good hash table performance, but may be difficult to achieve.</li>
 <li>hash collisions are practically unavoidable when hashing a random subset of a large set of possible keys.</li>
 </ul>
-<h3 id="hash-function">hash function <a name="hash-function"></a></h3>
+<h3 id="hash-function">hash-function <a name="hash-function"></a></h3>
 <hr />
 <ul>
 <li><p>each hash-table has a hash function, a calculation applied to a key to transform it into an address. It’s used to assign keys to specific indices, then to be able to do subsequent look-ups via this same hash function logic. Should:</p>
@@ -179,20 +197,23 @@ Divides the key into equal parts, then adds them together:
 // 50 / 100 (50 items, in an array of 100 nodes)
 // ½ = 50%</code></pre></li>
 </ul>
-<h2 id="property">Property <a name="property"></a></h2>
-<hr />
-<figure>
-<img src="_asset/img/02.png" alt="Proeprty" /><figcaption>Proeprty</figcaption>
-</figure>
-<h2 id="method">Method <a name="Method"></a></h2>
-<hr />
-<figure>
-<img src="_asset/img/03.png" alt="Method" /><figcaption>Method</figcaption>
-</figure>
 <h3 id="ex">EX <a name="example"></a></h3>
 <hr />
 <ul>
-<li><p><code>#1</code></p>
+<li><p>word-prob <a name="word-prob"></a></p>
+<p>Q:<br />
+You have 100 students names. You have an array with 11 slots. How could you use a hash function to pack the data?</p>
+<p>A:<br />
+Use a formula like:<br />
+<code>index # = sum ASCII codes % (mod) (size of array)</code></p>
+<p>So, student name <code>Ada</code>, would be assigned to position <code>9</code>:</p>
+<blockquote>
+<p><code>Ada = (65 + 100 + 97) = 262</code><br />
+<code>Ada = 262 % 11</code><br />
+<code>Ada = 9</code><br />
+</p>
+</blockquote></li>
+<li><p>code #1 - <code>basic</code> <a name="code"></a></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">using</span> System;</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">using</span> System.<span class="fu">Collections</span>;</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"></a>
@@ -232,20 +253,7 @@ Divides the key into equal parts, then adds them together:
 <a class="sourceLine" id="cb6-37" data-line-number="37">    }</a>
 <a class="sourceLine" id="cb6-38" data-line-number="38">  }</a>
 <a class="sourceLine" id="cb6-39" data-line-number="39">}</a></code></pre></div></li>
-<li><p><code>#2</code></p>
-<p>Q:<br />
-You have 100 students names. You have an array with 11 slots. How could you use a hash function to pack the data?</p>
-<p>A:<br />
-Use a formula like:<br />
-<code>index # = sum ASCII codes % (mod) (size of array)</code></p>
-<p>So, student name <code>Ada</code>, would be assigned to position <code>9</code>:</p>
-<blockquote>
-<p><code>Ada = (65 + 100 + 97) = 262</code><br />
-<code>Ada = 262 % 11</code><br />
-<code>Ada = 9</code><br />
-</p>
-</blockquote></li>
-<li><p><code>#3</code></p>
+<li><p>code #2</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">// hash function</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="dt">int</span> <span class="fu">hashCode</span>(String s)</a>
 <a class="sourceLine" id="cb7-3" data-line-number="3">{</a>

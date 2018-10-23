@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>comp-sci.data-structure.linked-list</title>
+  <title>cs.data-structure.linked-list</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -83,32 +83,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>
 <header>
-<h1 class="title">comp-sci.data-structure.linked-list</h1>
+<h1 class="title">cs.data-structure.linked-list</h1>
 </header>
 <ul>
-<li><a href="#overview">overview</a></li>
-<li><a href="#singly-linked">singly-linked</a></li>
-<li><a href="#doubly-linked">doubly-linked</a></li>
+<li><a href="#overview">overview</a>
+<ul>
+<li><a href="#pro-v-con">pro vs. con</a></li>
+<li><a href="#runtime">runtime</a></li>
+</ul></li>
+<li>type
+<ul>
+<li><a href="#singly-linked">singly</a></li>
+<li><a href="#doubly-linked">doubly</a></li>
+</ul></li>
 <li><a href="#example">example</a></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
 <ul>
-<li><p>a linear collection of data elements, in which linear order is not given by their physical placement in memory. Instead, each element points to the next, which allows for efficient insertion / removal of elements from any position in the sequence during iteration. (More complex variants add additional links, allowing efficient insertion or removal from arbitrary element references.)</p>
-<p>Basically, good for anytime you need to have “fast” insertions &amp; deletions (-but random access less is important!)</p>
-<p>However, uses sequential access - so nodes must be read in order (from the beginning!)</p>
-<figure>
+<li>is a linear collection of data elements, in which linear order is not given by their physical placement in memory. Instead, each element points to the next, which allows for efficient insertion / removal of elements from any position in the sequence during iteration. (More complex variants add additional links, allowing efficient insertion or removal from arbitrary element references.)</li>
+<li><p>good for anytime you need to have “fast” insertions &amp; deletions, but random access less is important! (as uses sequential access - so nodes must be read in order - from the beginning!)</p></li>
+<li><figure>
 <img src="./_asset/img/17.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure></li>
-<li><p>pro</p>
+<li><p><a href="https://en.wikipedia.org/wiki/Linked_list">more @ wikipedia</a></p></li>
+</ul>
+<h2 id="pro-vs-con">Pro vs Con <a name="pro-v-con"></a></h2>
+<hr />
+<h3 id="pro">pro</h3>
 <ul>
-<li><p><code>among simplest &amp; most common data structures</code> - can be used to implement several other common abstract data types (lists, stacks, queues, associative arrays) - though not uncommon to implement the other data structures directly without using a list as the basis of implementation.</p></li>
-<li><p><code>list elements can easily be inserted / removed</code> - without reallocation or reorganization of the entire structure because the data items need not be stored contiguously in memory or on disk, while an array has to be declared in the source code, before compiling and running the program. Linked lists allow insertion and removal of nodes at any point in the list, and can do so with a constant number of operations if the link previous to the link being added or removed is maintained during list traversal.</p>
-<pre class="txt"><code>inserts / deletes – constant time → O(1)</code></pre>
-<figure>
-<img src="./_asset/img/22.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure></li>
-<li><p><code>link data</code> (with varying location / type)</p>
+<li><code>among simplest &amp; most common data structures</code> - can be used to implement several other common abstract data types (lists, stacks, queues, associative arrays) - though not uncommon to implement the other data structures directly without using a list as the basis of implementation.</li>
+<li><p><code>link data</code> - with varying location / type</p>
 <figure>
 <img src="./_asset/img/31.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure></li>
@@ -116,8 +121,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <figure>
 <img src="./_asset/img/3.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure></li>
-</ul></li>
-<li><p>con</p>
+<li><p><code>list elements can easily be inserted / removed</code> - without reallocation or reorganization of the entire structure because the data items need not be stored contiguously in memory or on disk, while an array has to be declared in the source code, before compiling and running the program. Linked lists allow insertion and removal of nodes at any point in the list, and can do so with a constant number of operations if the link previous to the link being added or removed is maintained during list traversal.</p>
+<pre class="txt"><code>inserts / deletes – constant time → O(1)</code></pre>
+<figure>
+<img src="./_asset/img/22.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
+</ul>
+<h3 id="con">con</h3>
 <ul>
 <li><p><code>slower search time than array</code> - access time is linear, as faster access, (e.g. random access) isn’t feasible. Thus, many basic operations (e.g. obtaining last node of the list, finding a node that contains a given datum, or locating the place where a new node should be inserted) may require sequential scanning of most (or all) of the list elements.</p>
 <pre class="txt"><code>random access – linear time → O(n)</code></pre>
@@ -129,68 +139,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure></li>
 <li><code>uses more memory than arrays</code>- because of storage used by their pointers.</li>
 <li><code>increased element access time</code> - nodes are stored incontiguously, greatly increasing the time periods required to access individual elements within the list.</li>
-<li><code>reverse traversal is difficult</code> - difficulties arise in linked lists when it comes to reverse traversing. Singly-linked lists are cumbersome to navigate backwards. Doubly-linked lists are somewhat easier to read, but memory is consumed in allocating space for a back-pointer.</li>
-</ul></li>
-<li><p>run-time (vs. array):</p>
-<figure>
-<img src="./_asset/img/8.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/6.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure></li>
-<li><p><a href="https://en.wikipedia.org/wiki/Linked_list">more @ wikipedia</a></p></li>
+<li><p><code>reverse traversal is difficult</code> - difficulties arise in linked lists when it comes to reverse traversing. Singly-linked lists are cumbersome to navigate backwards. Doubly-linked lists are somewhat easier to read, but memory is consumed in allocating space for a back-pointer.</p></li>
 </ul>
+<h2 id="runtime">Runtime <a name="runtime"></a></h2>
+<hr />
+<figure>
+<img src="./_asset/img/8.png" alt="Runtime" /><figcaption>Runtime</figcaption>
+</figure>
 <h2 id="singly-linked">Singly-linked <a name="singly-linked"></a></h2>
 <hr />
 <ul>
-<li><figure>
+<li><p><code>head</code> - the 1st node of the list (or <code>null</code> ref if list is empty)</p>
+<figure>
 <img src="./_asset/img/1.png" alt="Singly-Linked" /><figcaption>Singly-Linked</figcaption>
 </figure>
-<p><code>Node</code> (or element) - each record of a linked list.</p>
-<p><code>Head</code> - refers to the 1st node of the list, &amp; would make a good name for the variable storing the reference of that node; would expect it to contain a “null” refernce if the list was empty.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">// 1-23-34-23-55-33-21</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">// here, “1” is the “head”</span></a></code></pre></div>
-<p><code>Tail</code> - depending on context, can refer to different things. Sometimes the tail is intendeded to mean all the nodes that follow the head, while usually it just means the last node.</p>
-<p><code>Next</code> (pointer) - the field of each node that contains the address of the next node.</p></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">// 14-23-34-23-55-33-21</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">// head =&gt; “14”</span></a></code></pre></div></li>
+<li><code>tail</code> - usually means the last node (though sometimes is intendeded to mean all nodes that follow the head).</li>
+<li><p><code>next</code> (pointer) - the field of each node that contains the address of the next node.</p></li>
 </ul>
 <h2 id="doubly-linked">Doubly-linked <a name="doubly-linked"></a></h2>
 <hr />
 <ul>
-<li><figure>
-<img src="./_asset/img/20.png" alt="Doubly-Linked" /><figcaption>Doubly-Linked</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/10.png" alt="Doubly-Linked" /><figcaption>Doubly-Linked</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/11.png" alt="Doubly-Linked" /><figcaption>Doubly-Linked</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/18.png" alt="Doubly-Linked" /><figcaption>Doubly-Linked</figcaption>
-</figure></li>
-<li><p>each node contains 3 fields:</p>
+<li><p>each node contains <code>3 fields</code></p>
 <ul>
 <li>integer value</li>
 <li>link forward (to next node)</li>
 <li>link backward (to previous node)</li>
-</ul></li>
-<li><p><code>usage</code> - many modern os’s use doubly linked lists to maintain references to active processes, threads, and other dynamic objects. (A common strategy for rootkits to evade detection is to unlink themselves from these lists.)</p>
-<p><code>Brwoser history</code></p>
+</ul>
 <figure>
-<img src="./_asset/img/21.png" alt="Doubly-Linked" /><figcaption>Doubly-Linked</figcaption>
+<img src="./_asset/img/20.png" alt="Doubly-Linked" /><figcaption>Doubly-Linked</figcaption>
 </figure></li>
 <li><p><code>tail pointer</code></p>
+<figure>
+<img src="./_asset/img/10.png" alt="Doubly-Linked" /><figcaption>Doubly-Linked</figcaption>
+</figure>
 <figure>
 <img src="./_asset/img/12.png" alt="Doubly-Linked" /><figcaption>Doubly-Linked</figcaption>
 </figure>
 <figure>
 <img src="./_asset/img/13.png" alt="Doubly-Linked" /><figcaption>Doubly-Linked</figcaption>
-</figure>
+</figure></li>
+<li><p>usage</p>
+<p><code>OS</code></p>
+<p>Many modern os’s use doubly-linked lists to maintain references to active processes, threads, &amp; other dynamic objects. (A common strategy for rootkits to evade detection is to unlink themselves from these lists.)</p>
+<p><code>Brwoser history</code></p>
 <figure>
-<img src="./_asset/img/19.png" alt="Doubly-Linked" /><figcaption>Doubly-Linked</figcaption>
-</figure>
-<h2 id="ex">EX <a name="example"></a></h2></li>
+<img src="./_asset/img/21.png" alt="Doubly-Linked" /><figcaption>Doubly-Linked</figcaption>
+</figure></li>
+<li><p>demo</p>
+<p><code>#1</code> <img src="./_asset/img/11.png" alt="Doubly-Linked" /></p>
+<p><code>#2</code> <img src="./_asset/img/18.png" alt="Doubly-Linked" /></p>
+<p><code>#3</code> <img src="./_asset/img/19.png" alt="Doubly-Linked" /></p></li>
 </ul>
+<h2 id="ex">EX <a name="example"></a></h2>
 <hr />
 <ul>
 <li><p>code</p>
@@ -198,55 +200,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb4-2" data-line-number="2">{</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">  Node next;</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="dt">int</span> data;</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">  <span class="kw">public</span> <span class="fu">Node</span>(<span class="dt">int</span> data)</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">  {</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="kw">this</span>.<span class="fu">data</span> = data;</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">  }</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">}</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="kw">public</span> <span class="kw">class</span> LinkedList</a>
-<a class="sourceLine" id="cb4-12" data-line-number="12">{</a>
-<a class="sourceLine" id="cb4-13" data-line-number="13">  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">append</span>(<span class="dt">int</span> data)</a>
-<a class="sourceLine" id="cb4-14" data-line-number="14">  {</a>
-<a class="sourceLine" id="cb4-15" data-line-number="15">    <span class="kw">if</span>(head == <span class="kw">null</span>)</a>
-<a class="sourceLine" id="cb4-16" data-line-number="16">    {</a>
-<a class="sourceLine" id="cb4-17" data-line-number="17">      head = <span class="kw">new</span> <span class="fu">Node</span>(data);</a>
-<a class="sourceLine" id="cb4-18" data-line-number="18">      <span class="kw">return</span>;</a>
-<a class="sourceLine" id="cb4-19" data-line-number="19">    }</a>
-<a class="sourceLine" id="cb4-20" data-line-number="20">    Node current = head;</a>
-<a class="sourceLine" id="cb4-21" data-line-number="21">    <span class="kw">while</span>(current.<span class="fu">next</span> != <span class="kw">null</span>)</a>
-<a class="sourceLine" id="cb4-22" data-line-number="22">    {</a>
-<a class="sourceLine" id="cb4-23" data-line-number="23">      current = current.<span class="fu">next</span>;</a>
-<a class="sourceLine" id="cb4-24" data-line-number="24">    }</a>
-<a class="sourceLine" id="cb4-25" data-line-number="25">    current.<span class="fu">next</span> = <span class="kw">new</span> <span class="fu">Node</span>(data);</a>
-<a class="sourceLine" id="cb4-26" data-line-number="26">  }</a>
-<a class="sourceLine" id="cb4-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb4-28" data-line-number="28">  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">prepend</span>(<span class="dt">int</span> data)</a>
-<a class="sourceLine" id="cb4-29" data-line-number="29">  {</a>
-<a class="sourceLine" id="cb4-30" data-line-number="30">    Node newHead = <span class="kw">new</span> <span class="fu">Node</span>(data);</a>
-<a class="sourceLine" id="cb4-31" data-line-number="31">    newHead.<span class="fu">next</span> = head;</a>
-<a class="sourceLine" id="cb4-32" data-line-number="32">    head = newHead;</a>
-<a class="sourceLine" id="cb4-33" data-line-number="33">  }</a>
-<a class="sourceLine" id="cb4-34" data-line-number="34"></a>
-<a class="sourceLine" id="cb4-35" data-line-number="35">  <span class="co">/* when you remove a value here, essentially making</span></a>
-<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">  an “orphan node?”, said node is never explicitly</span></a>
-<a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">  “destroyed”, but no one can access it, so it&#39;s</span></a>
-<a class="sourceLine" id="cb4-38" data-line-number="38"><span class="co">  essentially gone. */</span></a>
-<a class="sourceLine" id="cb4-39" data-line-number="39">  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">deleteWithValue</span>(<span class="dt">int</span> data)</a>
-<a class="sourceLine" id="cb4-40" data-line-number="40">  {</a>
-<a class="sourceLine" id="cb4-41" data-line-number="41">    <span class="kw">if</span>(head == <span class="kw">null</span>) <span class="kw">return</span>;</a>
-<a class="sourceLine" id="cb4-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb4-43" data-line-number="43">    Node current = head;</a>
-<a class="sourceLine" id="cb4-44" data-line-number="44">    <span class="kw">while</span>(current.<span class="fu">next</span> != <span class="kw">null</span>)</a>
-<a class="sourceLine" id="cb4-45" data-line-number="45">    {</a>
-<a class="sourceLine" id="cb4-46" data-line-number="46">      <span class="kw">if</span>(current.<span class="fu">next</span>.<span class="fu">data</span> == data)</a>
-<a class="sourceLine" id="cb4-47" data-line-number="47">      {</a>
-<a class="sourceLine" id="cb4-48" data-line-number="48">        current.<span class="fu">next</span> = current.<span class="fu">next</span>.<span class="fu">next</span>;</a>
-<a class="sourceLine" id="cb4-49" data-line-number="49">        <span class="kw">return</span>;</a>
-<a class="sourceLine" id="cb4-50" data-line-number="50">      }</a>
-<a class="sourceLine" id="cb4-51" data-line-number="51">    }</a>
-<a class="sourceLine" id="cb4-52" data-line-number="52">  }</a>
-<a class="sourceLine" id="cb4-53" data-line-number="53">}</a></code></pre></div></li>
+<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">  <span class="kw">public</span> <span class="fu">Node</span>(<span class="dt">int</span> data)</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">  {</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">    <span class="kw">this</span>.<span class="fu">data</span> = data;</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">  }</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">}</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="kw">public</span> <span class="kw">class</span> LinkedList</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">{</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">append</span>(<span class="dt">int</span> data)</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">  {</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">    <span class="kw">if</span>(head == <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">    {</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">      head = <span class="kw">new</span> <span class="fu">Node</span>(data);</a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">      <span class="kw">return</span>;</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21">    }</a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">    Node current = head;</a>
+<a class="sourceLine" id="cb4-24" data-line-number="24">    <span class="kw">while</span>(current.<span class="fu">next</span> != <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb4-25" data-line-number="25">    {</a>
+<a class="sourceLine" id="cb4-26" data-line-number="26">      current = current.<span class="fu">next</span>;</a>
+<a class="sourceLine" id="cb4-27" data-line-number="27">    }</a>
+<a class="sourceLine" id="cb4-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb4-29" data-line-number="29">    current.<span class="fu">next</span> = <span class="kw">new</span> <span class="fu">Node</span>(data);</a>
+<a class="sourceLine" id="cb4-30" data-line-number="30">  }</a>
+<a class="sourceLine" id="cb4-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32">  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">prepend</span>(<span class="dt">int</span> data)</a>
+<a class="sourceLine" id="cb4-33" data-line-number="33">  {</a>
+<a class="sourceLine" id="cb4-34" data-line-number="34">    Node newHead = <span class="kw">new</span> <span class="fu">Node</span>(data);</a>
+<a class="sourceLine" id="cb4-35" data-line-number="35">    newHead.<span class="fu">next</span> = head;</a>
+<a class="sourceLine" id="cb4-36" data-line-number="36">    head = newHead;</a>
+<a class="sourceLine" id="cb4-37" data-line-number="37">  }</a>
+<a class="sourceLine" id="cb4-38" data-line-number="38"></a>
+<a class="sourceLine" id="cb4-39" data-line-number="39">  <span class="co">/* when you remove a value here, essentially making</span></a>
+<a class="sourceLine" id="cb4-40" data-line-number="40"><span class="co">  an “orphan node?”, said node is never explicitly</span></a>
+<a class="sourceLine" id="cb4-41" data-line-number="41"><span class="co">  “destroyed”, but no one can access it, so it&#39;s</span></a>
+<a class="sourceLine" id="cb4-42" data-line-number="42"><span class="co">  essentially gone. */</span></a>
+<a class="sourceLine" id="cb4-43" data-line-number="43">  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">deleteWithValue</span>(<span class="dt">int</span> data)</a>
+<a class="sourceLine" id="cb4-44" data-line-number="44">  {</a>
+<a class="sourceLine" id="cb4-45" data-line-number="45">    <span class="kw">if</span>(head == <span class="kw">null</span>) <span class="kw">return</span>;</a>
+<a class="sourceLine" id="cb4-46" data-line-number="46"></a>
+<a class="sourceLine" id="cb4-47" data-line-number="47">    Node current = head;</a>
+<a class="sourceLine" id="cb4-48" data-line-number="48">    <span class="kw">while</span>(current.<span class="fu">next</span> != <span class="kw">null</span>)</a>
+<a class="sourceLine" id="cb4-49" data-line-number="49">    {</a>
+<a class="sourceLine" id="cb4-50" data-line-number="50">      <span class="kw">if</span>(current.<span class="fu">next</span>.<span class="fu">data</span> == data)</a>
+<a class="sourceLine" id="cb4-51" data-line-number="51">      {</a>
+<a class="sourceLine" id="cb4-52" data-line-number="52">        current.<span class="fu">next</span> = current.<span class="fu">next</span>.<span class="fu">next</span>;</a>
+<a class="sourceLine" id="cb4-53" data-line-number="53"></a>
+<a class="sourceLine" id="cb4-54" data-line-number="54">        <span class="kw">return</span>;</a>
+<a class="sourceLine" id="cb4-55" data-line-number="55">      }</a>
+<a class="sourceLine" id="cb4-56" data-line-number="56">    }</a>
+<a class="sourceLine" id="cb4-57" data-line-number="57">  }</a>
+<a class="sourceLine" id="cb4-58" data-line-number="58">}</a></code></pre></div></li>
 </ul>
 </body>
 </html>
