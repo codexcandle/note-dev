@@ -2,6 +2,10 @@
 * automation
 * [modulation](#modulation)
 
+	---
+
+	* [lynda](./lynda-mod)
+
 ## Overview <a name="overview"></a>
 
 ---
