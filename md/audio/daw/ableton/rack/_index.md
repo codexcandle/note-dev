@@ -8,23 +8,23 @@
 
 * summary #1
 
-	![Oveview](_asset/img/00.jpeg)
+	![Oveview](_asset/img/1.png)
 
-	![Oveview](_asset/img/01.jpeg)
+	![Oveview](_asset/img/2.png)
 
-	![Oveview](_asset/img/02.jpeg)
+	![Oveview](_asset/img/3.png)
 
-	![Oveview](_asset/img/03.jpeg)
+	![Oveview](_asset/img/4.png)
 
-	![Oveview](_asset/img/04.jpeg)
+	![Oveview](_asset/img/5.png)
 
-	![Oveview](_asset/img/05.jpeg)
+	![Oveview](_asset/img/6.png)
 
-	![Oveview](_asset/img/06.jpeg)
+	![Oveview](_asset/img/7.png)
 
-	![Oveview](_asset/img/07.jpeg)
+	![Oveview](_asset/img/8.png)
 
-	![Oveview](_asset/img/08.jpeg)
+	![Oveview](_asset/img/00.png)
 
 * summary #2
 
@@ -33,3 +33,9 @@
 	![Oveview](_asset/img/10.png)
 
 * [more @ ableton](https://www.ableton.com/)
+
+###### REF
+
+---
+
+* good-reads - [`Ableton Live 9 Power!: The Comprehensive Guide`](https://www.goodreads.com/book/show/17197480-ableton-live-9-power)

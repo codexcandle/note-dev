@@ -18,13 +18,13 @@
 
 ---
 
-* ![Oveview](_asset/img/00.jpeg)
+* ![Oveview](_asset/img/00.png)
 
-* ![Oveview](_asset/img/01.jpeg)
+* ![Oveview](_asset/img/01.png)
 
-* ![Oveview](_asset/img/02.jpeg)
+* ![Oveview](_asset/img/02.png)
 
-* ![Oveview](_asset/img/03.jpeg)
+* ![Oveview](_asset/img/03.png)
 
 * [more @ ableton](https://www.ableton.com/)
 
@@ -195,3 +195,9 @@
 	![FX](_asset/img/29.png)
 
 	![FX](_asset/img/30.png)
+
+###### REF
+
+---
+
+* good-reads - [`Ableton Live 9 Power!: The Comprehensive Guide`](https://www.goodreads.com/book/show/17197480-ableton-live-9-power)
