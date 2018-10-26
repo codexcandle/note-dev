@@ -5,7 +5,7 @@
 
 ---
 
-* daw
+* [daw](./daw)
 	* [ableton](./daw/ableton)
 	* [reaper](./daw/reaper)
 

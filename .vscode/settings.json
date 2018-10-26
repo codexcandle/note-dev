@@ -23,6 +23,7 @@
 // ----------------------------------------------
 // ------------------------------------------ DAW
 // ----------------------------------------------
+"pandoc.htmlOptString": "-s -o ../../../www/audio/daw/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.daw'"
 // ... ableton
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.ableton'"
 // --------------------------------------- GROOVE
@@ -33,7 +34,7 @@
 // ----------------------------------------- DRUM
 // "pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/rack/drum/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.drum'"
 // ... dubspot-rack
-"pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/rack/drum/dubspot/index.html -t html5 --css=../../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.drum.dubspot'"
+// "pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/rack/drum/dubspot/index.html -t html5 --css=../../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.drum.dubspot'"
 // ----------------------------------------------
 // --------------------------------------- EFFECT
 // "pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/rack/effect/index.html -t html5 --css=../../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack.effect'"
