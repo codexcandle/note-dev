@@ -5,12 +5,6 @@
 
 ---
 
-* [daw](./daw)
-	* [ableton](./daw/ableton)
-	* [reaper](./daw/reaper)
-
----
-
 * engine
 	* [unity](./engine/unity)
 	* [pure-data](./engine/pd)
@@ -21,6 +15,13 @@
 	* [fabric](./m-ware/fabric)
 	* [fmod](./m-ware/fmod)
 	* [wwise](./m-ware/wwise)
+
+---
+
+* [daw](./daw)
+	* [ableton](./daw/ableton)
+	* [reaper](./daw/reaper)
+* [dj](./dj)
 
 ## Middle-ware <a name="m-ware"></a>\
 

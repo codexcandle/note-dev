@@ -7,23 +7,23 @@
 
 ---
 
+* ![Overview](_asset/img/27.png)
+
+* ![Overview](_asset/img/28.png)
+
+	![Overview](_asset/img/26.png)
+
 * [more @ ableton](https://www.ableton.com/)
 
 ## V1 <a name="v1"></a>
 
 ---
 
-* ![Overview](_asset/img/23.png)
+![Overview](_asset/img/23.png)
 
-* ![Overview](_asset/img/24.png)
+![Overview](_asset/img/24.png)
 
-* ![Overview](_asset/img/25.png)
-
-* ![Overview](_asset/img/26.png)
-
-* ![Overview](_asset/img/27.png)
-
-* ![Overview](_asset/img/28.png)
+![Overview](_asset/img/25.png)
 
 ## V2 <a name="v2"></a>
 
