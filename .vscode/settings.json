@@ -14,7 +14,7 @@
 // INDEX
 // ----------------------------------------------
 // TODO - make OptString params dynamic!
-// "pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
+"pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
 
 
 // AUDIO
@@ -29,7 +29,7 @@
 // ----------------------------------------------
 // ------------------------------------------- DJ
 // ----------------------------------------------
-"pandoc.htmlOptString": "-s -o ../../../www/audio/dj/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.dj'"
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/dj/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.dj'"
 // ----------------------------------- GENERATIVE
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/generative/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.generative'"
 // --------------------------------------- GROOVE
@@ -140,6 +140,8 @@
 // "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/optimize/m-thread/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.optimize.multi-thread'"
 // --------------------------------------- SHADER
 // "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/shader/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.shader'"
+// ------------------------------------------- UI
+// "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/ui/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.ui'"
 
 
 // BROWSER

@@ -25,4 +25,5 @@
 
 ## faves
 * [aframe](./browser/framework/aframe)
-* [node @ dreamhost](./browser/runtime/node/dreamhost)
+* [fmod](./audio/m-ware/fmod)
+* [node-dreamhost](./browser/runtime/node/dreamhost)
