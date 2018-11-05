@@ -280,7 +280,7 @@
 
 // MATH
 // ----------------------------------------------
-"pandoc.htmlOptString": "-s -o ../../www/math/index.html -t html5 --css=../_asset/css/style.css --metadata title='math'"
+// "pandoc.htmlOptString": "-s -o ../../www/math/index.html -t html5 --css=../_asset/css/style.css --metadata title='math'"
 // -------------------------------------- ALGEBRA
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/math/algebra/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.algebra'"
