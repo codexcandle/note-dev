@@ -32,6 +32,8 @@
 // "pandoc.htmlOptString": "-s -o ../../../www/audio/dj/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.dj'"
 // ----------------------------------- GENERATIVE
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/generative/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.generative'"
+// -------------------------------------- MIXDOWN
+"pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/mixdown/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.mixdown'"
 // --------------------------------------- GROOVE
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/groove/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.groove'"
 // ----------------------------------------- RACK
