@@ -7,6 +7,10 @@
 
 	* [generative](./generative)
 
+---
+
+* [mixdown](./mixdown)
+
 ## Overview <a name="overview"></a>
 
 ---
