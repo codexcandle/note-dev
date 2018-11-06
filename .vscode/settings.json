@@ -33,7 +33,9 @@
 // ----------------------------------- GENERATIVE
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/generative/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.generative'"
 // -------------------------------------- MIXDOWN
-// "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/mixdown/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.mixdown'"
+"pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/mixdown/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.mixdown'"
+// ... freq-map
+// "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/mixdown/freq-map/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.mixdown.freq-map'"
 // --------------------------------------- GROOVE
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/groove/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.groove'"
 // ----------------------------------------- RACK
@@ -322,7 +324,7 @@
 // ... indexer
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/indexer/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.indexer'" 
 // ... lambda-expression
-"pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/lambda-expression/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.lambda-expression'"    
+// "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/lambda-expression/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.lambda-expression'"    
 // ... linq
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/csharp/linq/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='lang.c#.linq'" 
 // ... parameter-modifier

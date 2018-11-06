@@ -13,6 +13,12 @@
 
 ---
 
+* `track prep`
+
+	`rms vs peak`
+
+	![cue point](_asset/img/82.png)
+
 * [more @ wikipedia](https://en.wikipedia.org/wiki/DJ_mix)
 
 ## Cue Point <a name="cue-point"></a>

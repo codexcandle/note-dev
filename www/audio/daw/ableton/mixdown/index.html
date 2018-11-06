@@ -17,26 +17,58 @@
   <![endif]-->
 </head>
 <body>
-<header id="title-block-header">
+<header>
 <h1 class="title">audio.daw.ableton.mixdown</h1>
 </header>
 <ul>
-<li><a href="#setup">setup</a>
+<li><p><a href="./freq-map">freq-map</a></p>
+<hr /></li>
+<li>tool-prep
 <ul>
 <li><a href="#eq8">eq8</a></li>
 <li><a href="#saturator">saturator</a></li>
 <li><a href="#track">track</a></li>
-<li><a href="#group">group</a></li>
 <li><a href="#rack">rack</a></li>
-</ul></li>
 </ul>
-<h2 id="setup">Setup <a name="setup"></a></h2>
+<hr /></li>
+<li><a href="#setup-project">project</a></li>
+<li><a href="#mix">mix</a></li>
+<li><p><a href="#export">export</a></p></li>
+</ul>
+<h2 id="project">Project <a name="setup-project"></a></h2>
+<hr />
+<ul>
+<li><p><code>reference track</code></p>
+<figure>
+<img src="_asset/img/14.png" alt="mix" /><figcaption>mix</figcaption>
+</figure></li>
+<li><p><code>name, color, &amp; group</code></p>
+<figure>
+<img src="_asset/img/19.png" alt="setup" /><figcaption>setup</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/20.png" alt="setup" /><figcaption>setup</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/08.png" alt="setup" /><figcaption>setup</figcaption>
+</figure></li>
+<li><p><code>ear fatigue</code></p>
+<p>#1 - <code>take breaks, don't rush!</code></p>
+<figure>
+<img src="_asset/img/22.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<p>#2 - <code>mix @ talk volume!</code></p>
+<figure>
+<img src="_asset/img/29.png" alt="mix" /><figcaption>mix</figcaption>
+</figure></li>
+</ul>
+<h2 id="tool">Tool</h2>
 <hr />
 <ul>
 <li><p>set default <code>eq8</code> <a name="eq8"></a></p>
 <ol type="1">
 <li>filter1 -&gt; 4x high-pass @ 30 Hz</li>
-<li>filter 3 -&gt; steep nothc @ 250 Hz (deactivated!)</li>
+<li>filter 3 -&gt; steep notch @ 250 Hz (deactivated!)</li>
 <li>filter 7 -&gt; high-shelf</li>
 <li>filter 8 -&gt; low-pass @ 22 kHz (deactivated!)</li>
 <li>filters 2, 4, 5, 6 - leave as unmodified bell curves</li>
@@ -49,7 +81,7 @@
 <li><p>set default <code>saturator</code> <a name="saturator"></a></p>
 <ol type="1">
 <li>wave-shape -&gt; sinoid fold</li>
-<li>turn on <code>over-sampling / hi-qulity</code> (right-click title bar)</li>
+<li>turn on <code>hi-quality</code> (right-click title bar)</li>
 <li><p><code>save as default preset</code> (right-click title bar)</p>
 <figure>
 <img src="_asset/img/05.png" alt="Overview" /><figcaption>Overview</figcaption>
@@ -62,7 +94,7 @@
 <ol type="1">
 <li>create <code>audio track</code></li>
 <li>value -&gt; <code>-7.dB</code></li>
-<li><p>add fx -&gt; <code>eq8</code> + <code>saturator</code> (Disable both!)</p>
+<li><p>add fx -&gt; <code>saturator</code> + <code>eq8</code> (disable both!)</p>
 <pre class="txt"><code>NOTE: Heavy on cpu; only really needed at `mixdown` stage.</code></pre></li>
 <li><p><code>save as default AUDIO track</code> (right-click track)</p></li>
 </ol></li>
@@ -81,10 +113,6 @@
 <img src="_asset/img/07.png" alt="setup" /><figcaption>setup</figcaption>
 </figure></li>
 </ul></li>
-<li><p><code>group</code> similar tracks <a name="group"></a></p>
-<figure>
-<img src="_asset/img/08.png" alt="group" /><figcaption>group</figcaption>
-</figure></li>
 <li><p>set default mixing <code>rack</code> <a name="rack"></a></p>
 <ol type="1">
 <li><p>via audio track above, add fx</p>
@@ -97,6 +125,94 @@
 </figure></li>
 <li><p>hit rack’s <code>save</code> button (e.g. <code>My-Mixing-Rack-2018</code>)</p></li>
 </ol></li>
+</ul>
+<h2 id="mix">Mix <a name="mix"></a></h2>
+<hr />
+<ul>
+<li><p><code>chains</code></p>
+<p>#1</p>
+<figure>
+<img src="_asset/img/83.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<p>#2</p>
+<figure>
+<img src="_asset/img/84.png" alt="mix" /><figcaption>mix</figcaption>
+</figure></li>
+<li><p><code>headroom</code></p>
+<figure>
+<img src="_asset/img/13.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/28.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/30.png" alt="mix" /><figcaption>mix</figcaption>
+</figure></li>
+<li><p><code>eq + filter</code></p>
+<p>#1 - <code>use as much as you can!</code></p>
+<figure>
+<img src="_asset/img/14.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<p>#2 - <code>sonic territory</code></p>
+<figure>
+<img src="_asset/img/33.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<p>#3 - <code>cut below 30 Hz</code></p>
+<figure>
+<img src="_asset/img/31.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<p>#4 - <code>snare</code></p>
+<figure>
+<img src="_asset/img/27.png" alt="mix" /><figcaption>mix</figcaption>
+</figure></li>
+<li><p><code>layering</code></p>
+<p><code>sine-wave</code> (or deeper kick)</p>
+<figure>
+<img src="_asset/img/32.png" alt="mix" /><figcaption>mix</figcaption>
+</figure></li>
+<li><p><code>compression</code></p>
+<p>#1 - <code>side-chain</code></p>
+<figure>
+<img src="_asset/img/15.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<p>#2 - <code>new-york</code></p>
+<figure>
+<img src="_asset/img/21.png" alt="mix" /><figcaption>mix</figcaption>
+</figure></li>
+<li><p><code>panning</code></p>
+<p>#1 - <code>stereo image</code></p>
+<figure>
+<img src="_asset/img/16.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<p>#2 - <code>mono</code> (bass + kick)</p>
+<figure>
+<img src="_asset/img/34.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<p>#3 - <code>Haas Effect</code></p>
+<figure>
+<img src="_asset/img/17.png" alt="mix" /><figcaption>mix</figcaption>
+</figure></li>
+<li><p><code>distortion</code></p>
+<p>#1 - <code>bussing #1</code></p>
+<figure>
+<img src="_asset/img/23.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<p>#1 - <code>bussing #2</code></p>
+<figure>
+<img src="_asset/img/24.png" alt="mix" /><figcaption>mix</figcaption>
+</figure>
+<p>#1 - <code>bussing #3</code></p>
+<figure>
+<img src="_asset/img/25.png" alt="mix" /><figcaption>mix</figcaption>
+</figure></li>
+</ul>
+<h2 id="export">Export <a name="export"></a></h2>
+<hr />
+<ul>
+<li><p><code>stem</code></p>
+<figure>
+<img src="_asset/img/26.png" alt="setup" /><figcaption>setup</figcaption>
+</figure></li>
 </ul>
 <h6 id="ref">REF</h6>
 <hr />
