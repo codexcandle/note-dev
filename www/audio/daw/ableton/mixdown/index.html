@@ -21,41 +21,82 @@
 <h1 class="title">audio.daw.ableton.mixdown</h1>
 </header>
 <ul>
-<li><a href="#overview">overview</a></li>
+<li><a href="#setup">setup</a>
+<ul>
+<li><a href="#eq8">eq8</a></li>
+<li><a href="#saturator">saturator</a></li>
+<li><a href="#track">track</a></li>
+<li><a href="#group">group</a></li>
+<li><a href="#rack">rack</a></li>
+</ul></li>
 </ul>
-<h2 id="overview">Overview <a name="overview"></a></h2>
+<h2 id="setup">Setup <a name="setup"></a></h2>
 <hr />
 <ul>
-<li><figure>
-<img src="_asset/img/11.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure></li>
-<li><figure>
-<img src="_asset/img/01.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure></li>
-<li><figure>
-<img src="_asset/img/02.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure></li>
-<li><figure>
+<li><p>set default <code>eq8</code> <a name="eq8"></a></p>
+<ol type="1">
+<li>filter1 -&gt; 4x high-pass @ 30 Hz</li>
+<li>filter 3 -&gt; steep nothc @ 250 Hz (deactivated!)</li>
+<li>filter 7 -&gt; high-shelf</li>
+<li>filter 8 -&gt; low-pass @ 22 kHz (deactivated!)</li>
+<li>filters 2, 4, 5, 6 - leave as unmodified bell curves</li>
+<li>turn on <code>over-sampling / hi-qulity</code> (right-click title bar)</li>
+<li><p><code>save as default preset</code> (right-click title bar)</p>
+<figure>
 <img src="_asset/img/03.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure></li>
-<li><figure>
-<img src="_asset/img/04.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure></li>
-<li><figure>
+</ol></li>
+<li><p>set default <code>saturator</code> <a name="saturator"></a></p>
+<ol type="1">
+<li>wave-shape -&gt; sinoid fold</li>
+<li>turn on <code>over-sampling / hi-qulity</code> (right-click title bar)</li>
+<li><p><code>save as default preset</code> (right-click title bar)</p>
+<figure>
 <img src="_asset/img/05.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure></li>
-<li><figure>
-<img src="_asset/img/06.png" alt="Overview" /><figcaption>Overview</figcaption>
+</ol></li>
+<li><p>set default <code>track</code> <a name="track"></a></p>
+<ul>
+<li><p>audio</p>
+<hr />
+<ol type="1">
+<li>create <code>audio track</code></li>
+<li>value -&gt; <code>-7.dB</code></li>
+<li><p>add fx -&gt; <code>eq8</code> + <code>saturator</code> (Disable both!)</p>
+<pre class="txt"><code>NOTE: Heavy on cpu; only really needed at `mixdown` stage.</code></pre></li>
+<li><p><code>save as default AUDIO track</code> (right-click track)</p></li>
+</ol></li>
+<li><p>midi</p>
+<hr />
+<ol type="1">
+<li>create <code>midi track</code></li>
+<li>value -&gt; <code>-7.dB</code></li>
+<li>via audio track above, copy over disabled fx -&gt; <code>eq8</code> + <code>saturator</code></li>
+<li><code>save as default MIDI track</code> (right-click track)</li>
+</ol>
+<figure>
+<img src="_asset/img/11.png" alt="setup" /><figcaption>setup</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/07.png" alt="setup" /><figcaption>setup</figcaption>
 </figure></li>
-<li><figure>
-<img src="_asset/img/07.png" alt="Overview" /><figcaption>Overview</figcaption>
+</ul></li>
+<li><p><code>group</code> similar tracks <a name="group"></a></p>
+<figure>
+<img src="_asset/img/08.png" alt="group" /><figcaption>group</figcaption>
 </figure></li>
-<li><figure>
-<img src="_asset/img/08.png" alt="Overview" /><figcaption>Overview</figcaption>
+<li><p>set default mixing <code>rack</code> <a name="rack"></a></p>
+<ol type="1">
+<li><p>via audio track above, add fx</p>
+<pre class="txt"><code>- dynamic tube
+- saturator
+- glue compressor
+- eq8</code></pre>
+<figure>
+<img src="_asset/img/12.png" alt="setup" /><figcaption>setup</figcaption>
 </figure></li>
-<li><figure>
-<img src="_asset/img/09.png" alt="Overview" /><figcaption>Overview</figcaption>
-</figure></li>
+<li><p>hit rack’s <code>save</code> button (e.g. <code>My-Mixing-Rack-2018</code>)</p></li>
+</ol></li>
 </ul>
 <h6 id="ref">REF</h6>
 <hr />
