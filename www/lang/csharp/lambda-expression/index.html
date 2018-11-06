@@ -87,173 +87,178 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 <ul>
 <li><a href="#overview">overview</a></li>
-<li><a href="#pros">pros</a></li>
+<li><a href="#pro">pro</a></li>
 <li><a href="#example">example</a></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
 <ul>
-<li>is an anonymous function, &amp; mostly used to create delegates in LINQ.</li>
-<li>created by C#’s use of the =&gt; symbol as an operator.</li>
-<li>basic form is <code>(params) =&gt; executed code</code>.</li>
-<li>should be short (as a complex definition makes the calling code difficult to read.)</li>
-<li>can’t use var - when instantiating an Action&lt;&gt; or a Func&lt;&gt; (because no way for compiler to infer the types used in a Lambda expression).</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1">    Action sayHello = () =&gt; {Debug.<span class="fu">Log</span>(<span class="st">&quot;Hello&quot;</span>);</a></code></pre></div>
+<li>is shorthand to write a method in the same place you are going to use it.</li>
+<li>is an <code>anonymous function</code>, &amp; mostly used to create delegates in <code>LINQ</code>.</li>
+<li>created by C#’s use of the <code>=&gt;</code> symbol (with basic form <code>(params) =&gt; code</code>)</li>
+<li><p><code>pro</code></p>
 <ul>
-<li><p>is a shorthand that allows you to write a method in the same place you are going to use it. Is especially useful in places where a method is being used only once, &amp; the metho definiton is short (as it saves you the effort of declaring / wriing a separate method to the containiing class).</p></li>
-<li><p>is a language feature that cleanly wraps up in-line functionality, meaning you don’t have to worry about defining delegates, or worry about attaching / unattaching events for callbacks. But the flexibility goes much further than just being an alternative for managing events!</p></li>
-<li><p>“expression trees”?</p></li>
-</ul>
-<h2 id="pros">Pros <a name="pros"></a></h2>
-<hr />
-<ul>
-<li>reduced typing - as no need to specify function name, return type, &amp; access modifier.</li>
-<li>easier code reading - as you don’t need to look elsewhere for the method’s definition.</li>
-<li>circumvent the standard event system - as actions can be a quick shortcut to callbacks!</li>
-</ul>
+<li><code>reduced typing</code> - no need to specify function name, return type, &amp; access modifier.</li>
+<li><code>easier code reading</code> - you don’t need to look elsewhere for the method’s definition.</li>
+<li><p><code>circumvent standard event system</code> - actions can be a quick shortcut to callbacks!</p>
 <blockquote>
 <p>-because events &amp; delegates are for chumps!</p>
-</blockquote>
-<ul>
-<li>functions allow you to create powerful helper methods.</li>
-<li>dynamically bind functionality to variables - as inline expressions can bind variables from outside their scope:</li>
+</blockquote></li>
+<li><p><code>dynamically bind functionality to vars</code> - as inline expressions can bind variables from outside their scope:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">/*</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">-Say you want pass in a save start time,</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">&amp; when done, output it to the logs.</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">Also, even though the &quot;write&quot; method will return,</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">any vars within it&#39;s scope that are passed in,</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">used in the expression, will hang around</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">until it&#39;s disposed of!</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">*/</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="dt">void</span> <span class="fu">write</span>(<span class="dt">string</span> filename)</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">{</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">    <span class="dt">var</span> mySaveService = <span class="kw">new</span> <span class="fu">SaveService</span>();</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">    <span class="dt">var</span> startTime = DateTime.<span class="fu">Now</span>;</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">    mySaveService.<span class="fu">doSave</span>(filename, success =&gt;</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">    {</a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">        <span class="kw">if</span>(success)</a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">        {</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">            Debug.<span class="fu">Log</span>(<span class="st">&quot;Hooray! We saved &quot;</span></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">                    + filename + <span class="st">&quot; starting at &quot;</span></a>
+<a class="sourceLine" id="cb1-20" data-line-number="20">                    + startTime + <span class="st">&quot; ending at &quot;</span></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">                    + DateTime.<span class="fu">Now</span>);</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">        }</a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">        <span class="kw">else</span></a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">        {</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">            Debug.<span class="fu">Log</span>(<span class="st">&quot;error!&quot;</span>);</a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">        }</a>
+<a class="sourceLine" id="cb1-27" data-line-number="27">    }</a>
+<a class="sourceLine" id="cb1-28" data-line-number="28">}</a></code></pre></div></li>
+</ul></li>
+<li><p>note, can’t use <code>var</code> - when instantiating an Action&lt;&gt; or a Func&lt;&gt; (because no way for compiler to infer the types used in a Lambda expression).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1">Action sayHello = () =&gt; {Debug.<span class="fu">Log</span>(<span class="st">&quot;Hello&quot;</span>);</a></code></pre></div></li>
+<li><p>to pass multiple arguements to an expression:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1">Action&lt;<span class="dt">int</span>, <span class="dt">string</span>, <span class="dt">bool</span>&gt; sendToLog =</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">(value, description, doLog) =&gt;</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">{</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">    <span class="kw">if</span>(doLog) Debug.<span class="fu">Log</span>(<span class="st">&quot;Logging out &quot;</span> + value + <span class="st">&quot; and &quot;</span> + description);</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">};</a></code></pre></div></li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1">    <span class="co">// say you want pass in a save start time, &amp; when done, output it to the logs. (You don&#39;t need to pass the filename into the dynamic express; c# does this for you.)</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="co">// even though the &quot;write&quot; method will return, any vars within it&#39;s scope that are passed used in the expression will hang around until it&#39;s disposed of, also.</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">    <span class="dt">void</span> <span class="fu">write</span>(<span class="dt">string</span> filename)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">    {</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">        <span class="dt">var</span> mySaveService = <span class="kw">new</span> <span class="fu">SaveService</span>();</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">        <span class="dt">var</span> startTime = DateTime.<span class="fu">Now</span>;</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">        mySaveService.<span class="fu">doSave</span>(filename, success =&gt; </a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">        {</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">            <span class="kw">if</span>(success)</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">            {</a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">                Debug.<span class="fu">Log</span>(<span class="st">&quot;Hooray! We saved &quot;</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14">                        + filename + <span class="st">&quot; starting at &quot;</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">                        + startTime + <span class="st">&quot; ending at &quot;</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16">                        + DateTime.<span class="fu">Now</span>);</a>
-<a class="sourceLine" id="cb2-17" data-line-number="17">            }</a>
-<a class="sourceLine" id="cb2-18" data-line-number="18">            <span class="kw">else</span></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19">            {</a>
-<a class="sourceLine" id="cb2-20" data-line-number="20">                Debug.<span class="fu">Log</span>(<span class="st">&quot;error!&quot;</span>);</a>
-<a class="sourceLine" id="cb2-21" data-line-number="21">            }</a>
-<a class="sourceLine" id="cb2-22" data-line-number="22">        }</a>
-<a class="sourceLine" id="cb2-23" data-line-number="23">    }</a></code></pre></div>
-<ul>
-<li>the Action generic type - is how you define the signature of your expression. The generic parameters define the arguments types. For example, Action will be a method that takes no arguements and Action<bool> will mean the expression has a single boolean arguement, while Action&lt;string, int?&gt; will be an expression that has a string and a nullable int.</li>
-</ul>
-<p>Closely related to Action&lt;&gt; is Func&lt;&gt;, which works pretty much the same way except is has a return value. The last type used in the generic is the return type. For example, Func&lt;int, bool&gt; will have a boolean. You can have any # of arguements (and only one return type in the case of a Func&lt;&gt;).</p>
 <h2 id="ex">EX <a name="example"></a></h2>
 <hr />
 <ul>
-<li><p>basic:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1">      <span class="co">// this says create an anonymous function taking a single argument x &amp; return the value of x + 1.</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">      x =&gt; x + <span class="dv">1</span></a></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1">      <span class="kw">using</span> System;</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">      <span class="dt">void</span> <span class="fu">someMethod</span>()</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">      {</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">          Action sayHello = () =&gt; {Debug.<span class="fu">Log</span>(<span class="st">&quot;Hello&quot;</span>);</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">          <span class="fu">sayHello</span>();</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">          Action&lt;<span class="dt">int</span>&gt; sendToLog = (arg) =&gt; {Debug.<span class="fu">Log</span>(arg);};</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">          <span class="fu">sendToLog</span>(<span class="dv">5</span>);</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">          <span class="fu">sendToLog</span>(-<span class="dv">10</span>);</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">          <span class="fu">sendToLog</span>(<span class="dv">42</span>);</a>
-<a class="sourceLine" id="cb4-12" data-line-number="12">      }</a></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1">      <span class="co">/* &quot;input parametr named &quot;n&quot; goes to anonymous function which returns &quot;true&quot; if the input is odd&quot; */</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">      n =&gt; n %<span class="dv">2</span> == <span class="dv">1</span></a>
+<li><p>code #1</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1">x =&gt; x + <span class="dv">1</span></a></code></pre></div></li>
+<li><p>code #2</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1">      <span class="co">// returns `true` if odd</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">      n =&gt; n % <span class="dv">2</span> == <span class="dv">1</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">      List&lt;<span class="dt">int</span>&gt; nums = <span class="kw">new</span> List&lt;<span class="dt">int</span>&gt;{<span class="dv">11</span>, <span class="dv">37</span>, <span class="dv">52</span>};</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">      List&lt;<span class="dt">int</span>&gt; oddNums = nums.<span class="fu">where</span>(n =&gt; n % <span class="dv">2</span> == <span class="dv">1</span>).<span class="fu">ToList</span>();</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">      <span class="co">// ... now, oddNums is equal to 11 &amp; 37</span></a></code></pre></div></li>
-<li><p>“normal” way vs. lambda way:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb6-1" data-line-number="1">      <span class="kw">static</span> <span class="dt">bool</span> <span class="fu">LessthanTen</span>(<span class="dt">int</span> num)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">      {</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">          <span class="kw">return</span> n&lt;<span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">      }</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">      ...</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">      <span class="kw">delegate</span> <span class="dt">bool</span> <span class="fu">del</span>(<span class="dt">int</span> n);</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">      <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">      {</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">          del Lessthanten = n =&gt; n&lt;<span class="dv">10</span>;</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">          <span class="dt">bool</span> j = <span class="fu">LessThanTen</span>(<span class="dv">5</span>);    <span class="co">// j = true</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12">      }</a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14">      ...</a>
-<a class="sourceLine" id="cb6-15" data-line-number="15">      Static <span class="dt">void</span> <span class="fu">PrintResult</span>(num, del newDel)</a>
-<a class="sourceLine" id="cb6-16" data-line-number="16">      {</a>
-<a class="sourceLine" id="cb6-17" data-line-number="17">          <span class="kw">if</span>(<span class="fu">newDel</span>(num))</a>
-<a class="sourceLine" id="cb6-18" data-line-number="18">          {</a>
-<a class="sourceLine" id="cb6-19" data-line-number="19">              Console.<span class="fu">WriteLine</span>(&#39;condition <span class="kw">is</span> true<span class="st">&quot;)</span></a>
-<a class="sourceLine" id="cb6-20" data-line-number="20">          }</a>
-<a class="sourceLine" id="cb6-21" data-line-number="21">          <span class="kw">else</span> <span class="kw">if</span>(!<span class="fu">newDel</span>(num))</a>
-<a class="sourceLine" id="cb6-22" data-line-number="22">          {</a>
-<a class="sourceLine" id="cb6-23" data-line-number="23">              Console.<span class="fu">WriteLine</span>(<span class="st">&quot;condition is false&quot;</span>)</a>
-<a class="sourceLine" id="cb6-24" data-line-number="24">          }</a>
-<a class="sourceLine" id="cb6-25" data-line-number="25">      }</a></code></pre></div>
-<p>vesus:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb7-1" data-line-number="1">      <span class="fu">PrintResult</span>(<span class="dv">5</span>, n =&gt; n &lt; <span class="dv">10</span>);</a></code></pre></div></li>
-<li><p>to pass multiple arguements to an expression:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb8-1" data-line-number="1">      Action&lt;<span class="dt">int</span>, <span class="dt">string</span>, <span class="dt">bool</span>&gt; sendToLog =</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">      (value, description, doLog) =&gt;</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">      {</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">          <span class="kw">if</span>(doLog) Debug.<span class="fu">Log</span>(<span class="st">&quot;Logging out &quot;</span> + value + <span class="st">&quot; and &quot;</span> + description);</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">      };</a></code></pre></div></li>
-<li><p>one use - one-shot callbacks! Say you want to pass a ballback to a method when a process save is complete (vs. using delegates &amp; events, subscribing to an event that need to be detached later. Instead this one-shot method will be disposed of when complete.):</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb9-1" data-line-number="1">      <span class="dt">var</span> mySaveService = <span class="kw">new</span> <span class="fu">SaveService</span>();</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">      mySaveService.<span class="fu">doSave</span>(success =&gt; </a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">      {</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">          <span class="kw">if</span>(success) Debug.<span class="fu">Log</span>(<span class="st">&quot;yes!&quot;</span>);</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">          <span class="kw">else</span> Debug.<span class="fu">Log</span>(<span class="st">&quot;boo!&quot;</span>);</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">      })</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">      <span class="co">// ...</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10">      <span class="co">// method signature w/ action</span></a>
-<a class="sourceLine" id="cb9-11" data-line-number="11">      <span class="dt">void</span> <span class="fu">doSave</span>(Action&lt;<span class="dt">bool</span>&gt; callback);</a></code></pre></div></li>
-<li><p>to implement a simple filter - using a Func&lt;&gt; (that returns a bool):</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb10-1" data-line-number="1">      <span class="dt">void</span> <span class="fu">doFilter</span>(IEnumerable&lt;<span class="dt">int</span>&gt; list, Func&lt;<span class="dt">int</span>, <span class="dt">bool</span>&gt; filter)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">      {</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">          <span class="dt">var</span> filterList = <span class="kw">new</span> List&lt;<span class="dt">int</span>&gt;();</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">          <span class="kw">foreach</span>(var value <span class="kw">in</span> list)</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">          {</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">              <span class="kw">if</span>(<span class="fu">filter</span>(value)) fitleredList.<span class="fu">add</span>(value);</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">          }</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">      <span class="co">// sets to `11` &amp; `37`</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">      List&lt;<span class="dt">int</span>&gt; oddNums = nums.<span class="fu">where</span>(n =&gt; n % <span class="dv">2</span> == <span class="dv">1</span>).<span class="fu">ToList</span>();</a></code></pre></div></li>
+<li><p>code #3</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="dt">void</span> <span class="fu">someMethod</span>()</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">{</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">    Action sayHello = () =&gt; {Debug.<span class="fu">Log</span>(<span class="st">&quot;Hello&quot;</span>)};</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">    <span class="fu">sayHello</span>();</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">    Action&lt;<span class="dt">int</span>&gt; sendToLog = (arg) =&gt; {Debug.<span class="fu">Log</span>(arg);};</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">    <span class="fu">sendToLog</span>(<span class="dv">5</span>);</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">    <span class="fu">sendToLog</span>(-<span class="dv">10</span>);</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">    <span class="fu">sendToLog</span>(<span class="dv">42</span>);</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">}</a></code></pre></div></li>
+<li><p>code #4 - <code>normal v lambda</code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="fu">PrintResult</span>(<span class="dv">5</span>, n =&gt; n &lt; <span class="dv">10</span>);</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">Static <span class="dt">void</span> <span class="fu">PrintResult</span>(num, del newDel)</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">{</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">    <span class="kw">if</span>(<span class="fu">newDel</span>(num))</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">    {</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">        Console.<span class="fu">WriteLine</span>(&#39;condition <span class="kw">is</span> true<span class="st">&quot;)</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">    }</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">    <span class="kw">else</span> <span class="kw">if</span>(!<span class="fu">newDel</span>(num))</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">    {</a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">        Console.<span class="fu">WriteLine</span>(<span class="st">&quot;condition is false&quot;</span>)</a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">    }</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13">}</a></code></pre></div>
+<p>vs.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">static</span> <span class="dt">bool</span> <span class="fu">LessthanTen</span>(<span class="dt">int</span> num)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">    <span class="kw">return</span> n &lt; <span class="dv">10</span>;</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">}</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">...</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="kw">delegate</span> <span class="dt">bool</span> <span class="fu">del</span>(<span class="dt">int</span> n);</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>(<span class="dt">string</span>[] args)</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">{</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">    del Lessthanten = n =&gt; n&lt;<span class="dv">10</span>;</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11">    <span class="dt">bool</span> j = <span class="fu">LessThanTen</span>(<span class="dv">5</span>);</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12">}</a></code></pre></div></li>
+<li><p>code #5 - <code>one-shot callback</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">/*</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">Say you want to pass a ballback to a method when a</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">process save is complete (vs. using delegates &amp;</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">events, subscribing to an event that need to be</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">detached later.  Instead this one-shot method will</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">be disposed of when complete.</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">*/</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">    <span class="dt">var</span> mySaveService = <span class="kw">new</span> <span class="fu">SaveService</span>();</a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">    mySaveService.<span class="fu">doSave</span>(success =&gt;</a>
+<a class="sourceLine" id="cb9-11" data-line-number="11">    {</a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">        <span class="kw">if</span>(success) Debug.<span class="fu">Log</span>(<span class="st">&quot;yes!&quot;</span>);</a>
+<a class="sourceLine" id="cb9-13" data-line-number="13">        <span class="kw">else</span> Debug.<span class="fu">Log</span>(<span class="st">&quot;boo!&quot;</span>);</a>
+<a class="sourceLine" id="cb9-14" data-line-number="14">    })</a>
+<a class="sourceLine" id="cb9-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb9-16" data-line-number="16">    <span class="co">// ...</span></a>
+<a class="sourceLine" id="cb9-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb9-18" data-line-number="18">    <span class="co">// method signature w/ action</span></a>
+<a class="sourceLine" id="cb9-19" data-line-number="19">    <span class="dt">void</span> <span class="fu">doSave</span>(Action&lt;<span class="dt">bool</span>&gt; callback);</a></code></pre></div></li>
+<li><p>code #6 - <code>implement a simple filter</code> (using a Func&lt;&gt; that returns a bool)</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="dt">void</span> <span class="fu">doFilter</span>(IEnumerable&lt;<span class="dt">int</span>&gt; list, Func&lt;<span class="dt">int</span>, <span class="dt">bool</span>&gt; filter)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">    <span class="dt">var</span> filterList = <span class="kw">new</span> List&lt;<span class="dt">int</span>&gt;();</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">    <span class="kw">foreach</span>(var value <span class="kw">in</span> list)</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">    {</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">        <span class="kw">if</span>(<span class="fu">filter</span>(value)) fitleredList.<span class="fu">add</span>(value);</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">    }</a>
 <a class="sourceLine" id="cb10-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9">          <span class="kw">return</span> filteredList;</a>
-<a class="sourceLine" id="cb10-10" data-line-number="10">      }</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">    <span class="kw">return</span> filteredList;</a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">}</a>
 <a class="sourceLine" id="cb10-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12">      <span class="co">// by changing the expression passed to the filter, you get different results!</span></a>
-<a class="sourceLine" id="cb10-13" data-line-number="13">      <span class="dt">var</span> evenNums = <span class="fu">doFilter</span>(someNumList, (value) =&gt; (<span class="kw">return</span> value % <span class="dv">2</span>) == <span class="dv">0</span>; });</a>
-<a class="sourceLine" id="cb10-14" data-line-number="14">      <span class="dt">var</span> oddNums = <span class="fu">doFilter</span>(someNumList, (value) =&gt; (<span class="kw">return</span> value % <span class="dv">2</span>) == <span class="dv">1</span>; });</a></code></pre></div></li>
-<li><p>as a unity example - say you wanted to have a quick way to perform a task after x secs. With a simple wrap around unity’s co-routine feature, you can implement this using an Action:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb11-1" data-line-number="1">      <span class="kw">private</span> IEnumerator <span class="fu">waitThenCallback</span>(<span class="dt">float</span> time, Action callback)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">      {</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">          <span class="kw">yield</span> <span class="kw">return</span> <span class="kw">new</span> <span class="fu">WaitForSeconds</span>(time);</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">          <span class="fu">callback</span>();</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">      }</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">      <span class="dt">void</span> <span class="fu">Start</span>()</a>
-<a class="sourceLine" id="cb11-9" data-line-number="9">      {</a>
-<a class="sourceLine" id="cb11-10" data-line-number="10">          splashScreen.<span class="fu">show</span>();</a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12">          <span class="fu">StartCoroutine</span>(<span class="fu">waitThencallback</span>(<span class="dv">5</span>, () =&gt;</a>
-<a class="sourceLine" id="cb11-13" data-line-number="13">              {Debug.<span class="fu">Log</span>(<span class="st">&quot;5 secs have pased!&quot;</span>)}));</a>
-<a class="sourceLine" id="cb11-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb11-15" data-line-number="15">          <span class="fu">StartCoroutine</span>(<span class="fu">waitThencallback</span>(<span class="dv">10</span>, () =&gt;</a>
-<a class="sourceLine" id="cb11-16" data-line-number="16">              {Debug.<span class="fu">Log</span>(<span class="st">&quot;10 secs have pased!&quot;</span>)}));</a>
-<a class="sourceLine" id="cb11-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb11-18" data-line-number="18">          <span class="fu">StartCoroutine</span>(<span class="fu">waitThencallback</span>(<span class="dv">20</span>, () =&gt;</a>
-<a class="sourceLine" id="cb11-19" data-line-number="19">              {Debug.<span class="fu">Log</span>(<span class="st">&quot;20 secs have pased!&quot;</span>)</a>
-<a class="sourceLine" id="cb11-20" data-line-number="20">              splashScren.<span class="fu">hide</span>();</a>
-<a class="sourceLine" id="cb11-21" data-line-number="21">          }));</a>
-<a class="sourceLine" id="cb11-22" data-line-number="22">      }</a></code></pre></div></li>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">// by changing the expression passed to the filter, you get different results!</span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="dt">var</span> evenNums = <span class="fu">doFilter</span>(someNumList, (value) =&gt; (<span class="kw">return</span> value % <span class="dv">2</span>) == <span class="dv">0</span>; });</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="dt">var</span> oddNums = <span class="fu">doFilter</span>(someNumList, (value) =&gt; (<span class="kw">return</span> value % <span class="dv">2</span>) == <span class="dv">1</span>; });</a></code></pre></div></li>
+<li><p>code #7 - <code>unity example</code></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co">/*</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">- say you wanted to have a quick way to perform a task after x secs.  </span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">With a simple wrap around unity&#39;s co-routine feature, you can implement</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">this using an Action.</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">*/</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="kw">private</span> IEnumerator <span class="fu">waitThenCallback</span>(<span class="dt">float</span> time, Action callback)</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">{</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">    <span class="kw">yield</span> <span class="kw">return</span> <span class="kw">new</span> <span class="fu">WaitForSeconds</span>(time);</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">    <span class="fu">callback</span>();</a>
+<a class="sourceLine" id="cb11-11" data-line-number="11">}</a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="dt">void</span> <span class="fu">Start</span>()</a>
+<a class="sourceLine" id="cb11-14" data-line-number="14">{</a>
+<a class="sourceLine" id="cb11-15" data-line-number="15">    splashScreen.<span class="fu">show</span>();</a>
+<a class="sourceLine" id="cb11-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb11-17" data-line-number="17">    <span class="fu">StartCoroutine</span>(<span class="fu">waitThencallback</span>(<span class="dv">5</span>, () =&gt;</a>
+<a class="sourceLine" id="cb11-18" data-line-number="18">        {Debug.<span class="fu">Log</span>(<span class="st">&quot;5 secs have pased!&quot;</span>)}));</a>
+<a class="sourceLine" id="cb11-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb11-20" data-line-number="20">    <span class="fu">StartCoroutine</span>(<span class="fu">waitThencallback</span>(<span class="dv">10</span>, () =&gt;</a>
+<a class="sourceLine" id="cb11-21" data-line-number="21">        {Debug.<span class="fu">Log</span>(<span class="st">&quot;10 secs have pased!&quot;</span>)}));</a>
+<a class="sourceLine" id="cb11-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb11-23" data-line-number="23">    <span class="fu">StartCoroutine</span>(<span class="fu">waitThencallback</span>(<span class="dv">20</span>, () =&gt;</a>
+<a class="sourceLine" id="cb11-24" data-line-number="24">        {Debug.<span class="fu">Log</span>(<span class="st">&quot;20 secs have pased!&quot;</span>)</a>
+<a class="sourceLine" id="cb11-25" data-line-number="25">        splashScren.<span class="fu">hide</span>();</a>
+<a class="sourceLine" id="cb11-26" data-line-number="26">    }));</a>
+<a class="sourceLine" id="cb11-27" data-line-number="27">}</a></code></pre></div></li>
 </ul>
 </body>
 </html>
