@@ -68,21 +68,35 @@
 
 ---
 
-* ![Overview](_asset/img/8.png)
+* overview
 
-* ![Overview](_asset/img/1.png)
+	![Modulation](_asset/img/8.png)
 
-* ![Overview](_asset/img/2.png)
+	![Modulation](_asset/img/1.png)
 
-* ![Overview](_asset/img/3.png)
+	![Modulation](_asset/img/2.png)
 
-* ![Overview](_asset/img/4.png)
+* `show modulation`
 
-* ![Overview](_asset/img/5.png)
+	![Modulation](_asset/img/3.png)
 
-* ![Overview](_asset/img/6.png)
+* `modulating audio clip properties`
 
-* ![Overview](_asset/img/7.png)
+	![Modulation](_asset/img/4.png)
+
+	![Modulation](_asset/img/5.png)
+
+* `midi controller envelopes`
+
+	![Modulation](_asset/img/5d.png)
+
+	![Modulation](_asset/img/5e.png)
+
+* `unlinked envelopes`
+
+	![Modulation](_asset/img/6.png)
+
+	![Modulation](_asset/img/7.png)
 
 ###### REF
 
