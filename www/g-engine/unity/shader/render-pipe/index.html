@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>g-engine.unity.shader.render-pipeline</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">g-engine.unity.shader.render-pipeline</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#phase">phase</a>
+<ul>
+<li><a href="#geometry">geometry</a></li>
+<li><a href="#illumination">illumination</a></li>
+<li><a href="#viewing-perspective">viewing perspective</a></li>
+<li><a href="#clipping">clipping</a></li>
+<li><a href="#screen-space-projection">screen space projection</a></li>
+<li><a href="#rasterization">rasterization</a></li>
+<li>display</li>
+</ul></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li><p><code>rendering</code> - the process of drawing to the screen, which involves the mathmematical combo of:</p>
+<ul>
+<li>geometry</li>
+<li>textures</li>
+<li>surface treatment</li>
+<li>viewer’s perspective</li>
+<li>lighting</li>
+</ul></li>
+<li><p><code>rendering pipeline</code> (aka <code>graphics pipeline</code>) - represents flow of processes that take place to get a virtual enviro drawn to screen. Occurs in 3 phases:</p>
+<figure>
+<img src="_asset/img/01.png" alt="overview" /><figcaption>overview</figcaption>
+</figure>
+<ul>
+<li><code>application</code> phase - occurs on the cpu, and involves all processes that occur in the software (including moving objects, collisions, input, etc).</li>
+<li><p><code>geometry</code> phase - determines how the virtual enviro is situated with respect to the player. Involves calculations about the position of the camera, the rotation / transformations / scaling of the world, and ALL the polygons).</p>
+<figure>
+<img src="_asset/img/02.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><p><code>rasterization</code> phase - gets the world out of the computer &amp; onto the screen (i.e. shaders). Involves processing the environment numerous times to draw it out with different filters that are then added together to produce a final image.</p></li>
+</ul></li>
+<li><p><code>vector mathematics</code> - since shaders use real-world lighting models, studying this will help!</p>
+<figure>
+<img src="_asset/img/12.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Graphics_pipeline">more @ wikipedia</a></p></li>
+</ul>
+<h2 id="phase">Phase <a name="phase"></a></h2>
+<hr />
+<ul>
+<li><p>closer look @ <code>geometry</code> &amp; <code>rasterization</code> phases:</p>
+<figure>
+<img src="_asset/img/03.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h2 id="geometry">geometry <a name="geometry"></a></h2>
+<ul>
+<li><p>1st the geometry is processed, &amp; the vertices of the polygon is collected.</p>
+<figure>
+<img src="_asset/img/04.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h2 id="illumination">illumination <a name="illumination"></a></h2>
+<ul>
+<li><p>where the models are colored &amp; lit (i.e. shaders). Before the advent of modern gpu’s, the functionality of illumination was <code>fixed</code>. However, today you can specify how this stage will run, and the order these filters occur:</p>
+<figure>
+<img src="_asset/img/05.png" alt="overview" /><figcaption>overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/06.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h2 id="viewing-perspective">viewing perspective <a name="viewing-perspective"></a></h2>
+<ul>
+<li><p>before making it onto the screen, the model is then processed through a viewing perspective that considers how the cam is setup - including whether or not it’s in <code>perspective</code> or <code>orthogrpahic</code>, as well as details like <code>fov</code>.</p>
+<figure>
+<img src="_asset/img/07.png" alt="overview" /><figcaption>overview</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/08.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h2 id="clipping">clipping <a name="clipping"></a></h2>
+<ul>
+<li><p>then the scene is clipped to remove any details outside of the camera’s viewing volume.</p>
+<figure>
+<img src="_asset/img/09.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h2 id="screen-space-projection">screen space projection <a name="screen-space-projection"></a></h2>
+<ul>
+<li><p>then a projection of the 3d object onto 2d space occurs.</p>
+<figure>
+<img src="_asset/img/10.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h2 id="rasterization">rasterization <a name="rasterization"></a></h2>
+<ul>
+<li><p>any post-processing fx are added here. (These are extra visual fx that occur to the 2d version of the image, &amp; not in 3d space. Includes things like <code>depth-of-field</code> &amp; <code>bloom</code>.)</p>
+<figure>
+<img src="_asset/img/11.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+</body>
+</html>

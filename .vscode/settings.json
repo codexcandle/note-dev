@@ -14,7 +14,7 @@
 // INDEX
 // ----------------------------------------------
 // TODO - make OptString params dynamic!
-// "pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
+"pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
 
 
 // AUDIO
@@ -33,7 +33,7 @@
 // ----------------------------------- GENERATIVE
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/generative/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.generative'"
 // -------------------------------------- MIXDOWN
-"pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/mixdown/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.mixdown'"
+// "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/mixdown/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.mixdown'"
 // ... freq-map
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/mixdown/freq-map/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.mixdown.freq-map'"
 // --------------------------------------- GROOVE
@@ -144,6 +144,8 @@
 // "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/optimize/m-thread/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.optimize.multi-thread'"
 // --------------------------------------- SHADER
 // "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/shader/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.shader'"
+// ... render pipeline
+// "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/shader/render-pipe/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.shader.render-pipeline'"
 // ------------------------------------------- UI
 // "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/ui/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.ui'"
 
