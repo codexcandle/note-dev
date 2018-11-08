@@ -14,7 +14,7 @@
 // INDEX
 // ----------------------------------------------
 // TODO - make OptString params dynamic!
-"pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
+// "pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
 
 
 // AUDIO
@@ -63,7 +63,7 @@
 // ... pure-data
 // "pandoc.htmlOptString": "-s -o ../../../www/audio/engine/pd/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.pure-data'"
 // ... unity
-// "pandoc.htmlOptString": "-s -o ../../../www/audio/engine/unity/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.unity'"
+"pandoc.htmlOptString": "-s -o ../../../www/audio/engine/unity/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.unity'"
 // ----------------------------------------------
 // --------------------------------------- M-WARE
 // ----------------------------------------------
