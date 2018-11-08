@@ -33,7 +33,7 @@
 // ----------------------------------- GENERATIVE
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/generative/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.generative'"
 // -------------------------------------- MIXDOWN
-// "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/mixdown/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.mixdown'"
+"pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/mixdown/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.mixdown'"
 // ... freq-map
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/mixdown/freq-map/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.mixdown.freq-map'"
 // --------------------------------------- GROOVE
@@ -41,7 +41,7 @@
 // ----------------------------------------- RACK
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/rack/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.rack'"
 // ------------------------------------- ENVELOPE
-"pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/envelope/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.envelope'"
+// "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/envelope/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.envelope'"
 // ... lynda-mod
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/envelope/lynda-mod/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.envelope.lynda-modulation'"
 // ----------------------------------------------

@@ -1,7 +1,3 @@
-* [freq-map](./freq-map)
-
-	---
-
 * tool-prep
 	* [eq8](#eq8)
 	* [saturator](#saturator)
@@ -13,6 +9,11 @@
 * [project](#setup-project)
 * [mix](#mix)
 * [export](#export)
+
+	---
+
+* [freq-map](./freq-map)
+* [dc-offset](#dc-offset)
 
 ## Project <a name="setup-project"></a>
 
@@ -199,6 +200,16 @@
 * `stem`
 
 	![setup](_asset/img/26.png)
+
+## DC Offset <a name="dc-offset"></a>
+
+---
+
+* ![dc offset](_asset/img/85.png)
+
+* ![dc offset](_asset/img/86.png)
+
+* ![dc offset](_asset/img/87.png)
 
 ###### REF
 
