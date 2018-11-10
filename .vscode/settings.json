@@ -63,7 +63,7 @@
 // ... pure-data
 // "pandoc.htmlOptString": "-s -o ../../../www/audio/engine/pd/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.pure-data'"
 // ... unity
-"pandoc.htmlOptString": "-s -o ../../../www/audio/engine/unity/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.unity'"
+// "pandoc.htmlOptString": "-s -o ../../../www/audio/engine/unity/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.unity'"
 // ----------------------------------------------
 // --------------------------------------- M-WARE
 // ----------------------------------------------
@@ -205,6 +205,9 @@
 // "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/primitive/plane/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.primitive.plane'"
 // ... sky
 // "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/primitive/sky/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.primitive.sky'"
+// ------------------------------------ BOOTSTRAP
+// ----------------------------------------------
+"pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/bootstrap/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.bootstrap'"
 // -------------------------------------- RUNTIME
 // ----------------------------------------------
 // ... node
