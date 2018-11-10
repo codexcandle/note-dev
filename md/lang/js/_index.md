@@ -1,4 +1,7 @@
 * [overview](#overview)
+
+---
+
 * dom
 	* html
 		* [innerHTML](#inner-html)
@@ -7,6 +10,11 @@
 	* [event](#event)
 * [set-timeout](#set-timeout)
 * [alert](#alert)
+
+---
+
+* serialize
+	* [fetch](./serialize/fetch)
 
 ## Overview <a name="overview"></a>
 

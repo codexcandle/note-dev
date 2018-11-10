@@ -14,7 +14,7 @@
 // INDEX
 // ----------------------------------------------
 // TODO - make OptString params dynamic!
-// "pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
+"pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
 
 
 // AUDIO
@@ -207,7 +207,7 @@
 // "pandoc.htmlOptString": "-s -o ../../../../../www/browser/framework/aframe/primitive/sky/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='browser.framework.aframe.primitive.sky'"
 // ------------------------------------ BOOTSTRAP
 // ----------------------------------------------
-"pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/bootstrap/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.bootstrap'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/browser/framework/bootstrap/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.framework.bootstrap'"
 // -------------------------------------- RUNTIME
 // ----------------------------------------------
 // ... node
@@ -354,6 +354,10 @@
 // "pandoc.htmlOptString": "-s -o ../../../../www/lang/js/dom/alter/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='lang.javascript.dom.alter'"
 // ... select
 // "pandoc.htmlOptString": "-s -o ../../../../www/lang/js/dom/select/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='lang.javascript.dom.select'"
+// ------------------------------------ SERIALIZE
+// ... fetch
+// "pandoc.htmlOptString": "-s -o ../../../../www/lang/js/serialize/fetch/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='lang.javascript.serialize.fetch'"
+
 // ---------------------------------------- SHELL
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/lang/shell/index.html -t html5 --css=../../_asset/css/style.css --metadata title='lang.shell'"
