@@ -17,29 +17,35 @@
   <![endif]-->
 </head>
 <body>
-<header>
+<header id="title-block-header">
 <h1 class="title">audio.theory.spatial</h1>
 </header>
 <ul>
 <li><a href="#overview">overview</a></li>
-<li>details
-<ul>
 <li><a href="#surround-vs-3d">3d &gt; surround</a></li>
 <li><a href="#hrtf">hrtf</a></li>
-<li><a href="#tips">tips</a></li>
+<li>format
+<ul>
+<li><a href="#ambisonics">ambisonics</a></li>
+<li>mpeg-h</li>
+<li>ac4</li>
 </ul></li>
+<li><a href="#tip">tip</a></li>
 </ul>
-<p>// SORTING…. // ——————————— * <a href="#unity">unity</a> * <a href="#spatializers">spatializers</a> * <a href="#formats">formats</a> * <a href="#ambisonics">ambisonics</a> * mpeg-h * ac4 // ———————————</p>
+<h6 id="related">RELATED</h6>
+<ul>
+<li><a href="../../engine/unity/spatializer">spatializer (unity)</a></li>
+</ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
 <ul>
-<li><p>aka 3d-Audio, spatial audio.</p></li>
-<li><p>replicates how sound waves interact with the environment as well as your head &amp; ears, so that you really feel like you’re in the virtual world. is how we naturally hear sound.</p></li>
-<li><p>using headphones, sounds seem to come from the outside world - not the headphones. Because sounds are transferred directly into your auditory canal (without reaching your head, body, or ear), this technology allows for replication of true 3d.</p></li>
+<li><code>spatial audio</code> - aka <code>3d-Stereo Sound</code>.</li>
+<li>replicates how sound waves interact with the environment as well as your head &amp; ears, so that you really feel like you’re in the virtual world, &amp; is how we naturally hear sound.</li>
+<li>using headphones, sounds seem to come from the outside world - not the headphones. Because sounds are transferred directly into your auditory canal (without reaching your head, body, or ear), this technology allows for replication of true 3d.</li>
+<li><a href="https://www.microsoft.com/en-us/research/project/spatial-audio/">more @ microsoft</a></li>
 </ul>
-<h2 id="details">Details <a name="details"></a></h2>
-<h3 id="d-surround">3d &gt; surround <a name="surround-vs-3d"></a><br />
-</h3>
+<h2 id="d-surround">3d &gt; Surround <a name="surround-vs-3d"></a><br />
+</h2>
 <hr />
 <ul>
 <li><p>in movie theaters years ago, the entire soundtrack was played in one speaker, or a collection of speakers, that were placed behind the movie screen. Today, audiences in movie theaters are used to having sounds thunder from each side of them. What they expect is - surround sound.</p></li>
@@ -51,43 +57,28 @@
 <li><p>however, with 3d sound, sounds come from above &amp; below you (vs. just left or right).</p></li>
 <li><p>with surround sound speakers, the sound is sent to both ears (instead of left or right), and the spekaers interfere with the clear signal each ear should have.</p></li>
 </ul>
-<h3 id="hrtf">hrtf <a name="hrtf"></a><br />
-</h3>
+<h2 id="hrtf">HRTF <a name="hrtf"></a><br />
+</h2>
 <hr />
 <ul>
-<li><p>head-related transfer functions - mesurements that describe the directivity pattern of human ears, that is, a description of how sound, arriving from given direction, reaches the left ear and right ear. A person’s HRTF’s measurements depend on the direction, elevation, distance, and the frequency of the sound.</p></li>
-<li><p>Below (left) shows the representation of the right HRTF of a human for the horizontal plane only and at a distance of one meter. The right-side shows the sensitivity of the right ear for 1khz as function of the direction &amp; elevation for a distance of one meter.</p>
+<li><code>head-related transfer function</code> - mesures the directivity pattern of human ears. This is a description of how sound, arriving from given direction, reaches the left ear &amp; right ear. A person’s HRTF’s measurements depend on the direction, elevation, distance, &amp; frequency of the sound.</li>
+<li><p>Below (left) shows the representation of the right HRTF of a human for the horizontal plane only and at a distance of one meter. The right-side shows the sensitivity of the right ear for 1khz as a function of the direction &amp; elevation for a distance of one meter.</p>
 <figure>
 <img src="_asset/img/2.png" alt="HRTF" /><figcaption>HRTF</figcaption>
 </figure></li>
 </ul>
-<h3 id="tips">tips <a name="tips"></a><br />
-</h3>
+<h2 id="format">Format <a name="format"></a><br />
+</h2>
 <hr />
-<ul>
-<li>mono @ 48khz - for the best experience, make all spatialized audio files this.</li>
-</ul>
-<p>// SORTING BELOW…………………………………….</p>
-<h2 id="unity">Unity <a name="unity"></a></h2>
-<h3 id="spatializers">spatializers <a name="spatializers"></a><br />
-</h3>
-<figure>
-<img src="_asset/img/3.png" alt="Spatializers" /><figcaption>Spatializers</figcaption>
-</figure>
-<h2 id="formats">Formats <a name="formats"></a></h2>
+<h3 id="ambisonics">ambisonics <a name="ambisonics"></a></h3>
 <hr />
-<h3 id="ambisonics">Ambisonics <a name="ambisonics"></a></h3>
 <ul>
 <li>is a 40-yr old format for encoding 3d audio</li>
 <li>up until recently, was considered a bit of a relic.</li>
 <li>however, translates perfectly to VR!</li>
 <li>google adopted this for vr &amp; 360-video on youtube.</li>
 </ul>
-<h3 id="mpeg-h">MPEG-H</h3>
-<p>–</p>
-<h3 id="ac4">AC4</h3>
-<p>–</p>
-<h2 id="tips-1">Tips <a name="tips"></a></h2>
+<h2 id="tip">Tip <a name="tip"></a></h2>
 <hr />
 <blockquote>
 <p>“Audio’s function within any game, film or any other medium is either to give the player or viewer information or to influence their emotional state.”</p>
@@ -96,9 +87,10 @@
 <p>“Because of the fragility of the player’s acceptance of the virtual world, audio should be an integral part of the design process. If immersion &amp; presence is your goal, your sound team will be the ones that will have to deliver.”</p>
 </blockquote>
 <ul>
-<li><p><code>voice in your head</code> - you don’t want that voice-in-your-head effect as sounds that are more localized to space sound more convincing if going for an immersive effect. “If something is close, it needs to sound close, and if something is far away it needs to sound far away.  How we give players information about distance is absolutely critical for them to be able to localise something accurately in VR…. If you were to shut your eyes, you’d usually be able to tell what sort of room you were in just by listening to how sounds tail off within it.</p></li>
-<li><p><code>proximity effect</code> - sounds that appear closer to you have more of a bassier tone (e.g. narrator’s voice in an old movie – sounds closer, was recorded with condenser mic closer than normal stage mic.)</p></li>
-<li><p><code>law of two &amp; a half</code> - there are limits to the amount of auditory info that can be processed by the brain. If you have 1 person in a room, you can hear them clearly; if you have 2, you can maybe make our parts from each; but if you have 3 - you will probably hear a garbled mess &amp; become annoyed. For example, 1 or 2 sets of footsteps can easily be isolted by the brain, but 3 becomes a group of things happening, and out goes your ability to distinguish between individual elements. So make sure audio considerations are made in early in the design process, &amp; care must be taken to respect the limits of the brain’s ability to process auditory info. However - if you want to briefly disorient the player on purpose, this can be used to great effect! (but like everything, you need “light &amp; shade.”)</p></li>
+<li><code>mono @ 48khz</code> - for the best experience, make all spatialized audio files this.</li>
+<li><code>voice in your head</code> - you don’t want that voice-in-your-head effect as sounds that are more localized to space sound more convincing if going for an immersive effect. “If something is close, it needs to sound close, and if something is far away it needs to sound far away.  How we give players information about distance is absolutely critical for them to be able to localise something accurately in VR…. If you were to shut your eyes, you’d usually be able to tell what sort of room you were in just by listening to how sounds tail off within it.</li>
+<li><code>proximity effect</code> - sounds that appear closer to you have more of a bassier tone (e.g. narrator’s voice in an old movie – sounds closer, was recorded with condenser mic closer than normal stage mic.)</li>
+<li><code>law of two &amp; a half</code> - there are limits to the amount of auditory info that can be processed by the brain. If you have 1 person in a room, you can hear them clearly; if you have 2, you can maybe make our parts from each; but if you have 3 - you will probably hear a garbled mess &amp; become annoyed. For example, 1 or 2 sets of footsteps can easily be isolted by the brain, but 3 becomes a group of things happening, and out goes your ability to distinguish between individual elements. So make sure audio considerations are made in early in the design process, &amp; care must be taken to respect the limits of the brain’s ability to process auditory info. However - if you want to briefly disorient the player on purpose, this can be used to great effect! (but like everything, you need “light &amp; shade.”)</li>
 <li><p><code>bend reality</code> - use audio to bend reality without breaking it:</p>
 <figure>
 <img src="_asset/img/4.png" alt="Bend Reality" /><figcaption>Bend Reality</figcaption>

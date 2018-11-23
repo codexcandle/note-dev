@@ -2,13 +2,7 @@
 * [rack](./rack)
 * [groove](./groove)
 * [envelope](./envelope)
-
-	---
-
-	* [generative](./generative)
-
----
-
+* [generative](./generative)
 * [mixdown](./mixdown)
 
 ## Overview <a name="overview"></a>
