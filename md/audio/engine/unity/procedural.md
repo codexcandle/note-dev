@@ -1,5 +1,6 @@
 * [overview](#overview)
-* [audio filter](#audio-filter)
+* [flow](#flow)
+* [on-audio-filter-read](#on-audio-filter-read)
 * example
 	* [noisy lo-fi sound](#noisy-lofi-sound)
 	* [engine sound](#engine-sound)
@@ -9,7 +10,7 @@
 
 ###### RELATED
 
-* [procedural audio](../../../theory/procedural)
+* [procedural audio (theory)](../../../theory/procedural)
 
 ## Overview <a name="overview"></a>
 
@@ -17,27 +18,29 @@
 
 * [more @ unity](https://unity3d.com/learn/tutorials/s/audio)
 
-## Audio Filter <a name="audio-filter"></a>
+## Flow <a name="flow"></a>
+
+---
+
+![Flow](./_asset/img/2.png)
+
+![Flow](./_asset/img/3.png)
+
+## OnAudioFilterRead <a name="on-audio-filter-read"></a>
 
 ---
 
 * overview:
 
-![Audio Filter](./_asset/img/2.png)
+	![Audio Filter](./_asset/img/10.png)
 
-![Audio Filter](./_asset/img/3.png)
+	![Audio Filter](./_asset/img/4.png)
 
-* [OnAudioFilterRead](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnAudioFilterRead.html)
+	![Audio Filter](./_asset/img/5.png)
 
-![Audio Filter](./_asset/img/10.png)
+* [AudioEffect @ unity](https://docs.unity3d.com/Manual/class-AudioEffect.html)
 
-![Audio Filter](./_asset/img/4.png)
-
-![Audio Filter](./_asset/img/5.png)
-
-![Audio Filter](./_asset/img/20.png)
-
-* [more @ unity](https://docs.unity3d.com/Manual/class-AudioEffect.html)
+* [OnAudioFilterRead @ unity](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnAudioFilterRead.html)
 
 ## EX
 
