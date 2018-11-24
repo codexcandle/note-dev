@@ -70,7 +70,7 @@
 // ... pure-data
 // "pandoc.htmlOptString": "-s -o ../../../www/audio/engine/pd/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.pure-data'"
 // ... unity
-"pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.unity'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.unity'"
 // ... unity -> mic
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/mic/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.engine.unity.mic'"
 // ... unity -> procedural
@@ -139,12 +139,15 @@
 // ----------------------------------------------
 // ---------------------------------------- UNITY
 // ----------------------------------------------
-// "pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/index.html -t html5 --css=../../_asset/css/style.css --metadata title='g-engine.unity'"
+"pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/index.html -t html5 --css=../../_asset/css/style.css --metadata title='g-engine.unity'"
 // ... editor
 // "pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/editor/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.editor'"
+// ---------------------------------------- ARCH
+// ... zen-ject
+// "pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/arch/zen-ject/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.arch.zen-ject'"
 // ---------------------------------------- PHYSX
 // "pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/physx/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.physics'"
-// ------------------------------------- OPTIMIZE
+// -------------------------------------- OPTIMIZE
 // "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/optimize/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.optimize'"
 // ... profile
 // "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/optimize/profile/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.optimize.profile'" 
