@@ -1,12 +1,17 @@
 * [overview](#overview)
-* [flow](#flow)
+* [dsp-time](#dsp-time)
 * [on-audio-filter-read](#on-audio-filter-read)
 * example
-	* [noisy lo-fi sound](#noisy-lofi-sound)
-	* [engine sound](#engine-sound)
-	* [rock chew sound](#rock-chew-sound)
-	* [sine @ 440hz](#sine@440-sound)
-	* [fire](#fire-sound)
+	* [engine](#engine)
+	* [rock-chew](#rock-chew)
+	* [metronome](#metronome)
+	* [sequencer](#sequencer)
+	* [synth](#synth)
+	* [noisy lo-fi](#noisy-lofi)
+	* [sine @ 440hz](#sine@440)
+	* [fire](#fire)
+* 3rd-party
+	* [usfxr](https://github.com/zeh/usfxr)
 
 ###### RELATED
 
@@ -16,92 +21,312 @@
 
 ---
 
-* [more @ unity](https://unity3d.com/learn/tutorials/s/audio)
+* `audio flow`
 
-## Flow <a name="flow"></a>
+	![Overview](./_asset/img/2.png)
+
+	![Overview](./_asset/img/3.png)
+
+* `performance`
+
+	![Overview](./_asset/img/32.png)
+
+* [Audio @ unity](https://unity3d.com/learn/tutorials/s/audio)
+* [AudioEffect @ unity](https://docs.unity3d.com/Manual/class-AudioEffect.html)
+
+## dspTime <a name="dsp-time"></a>
 
 ---
 
-![Flow](./_asset/img/2.png)
-
-![Flow](./_asset/img/3.png)
+![dspTime](./_asset/img/35.png)
 
 ## OnAudioFilterRead <a name="on-audio-filter-read"></a>
 
 ---
 
-* overview:
+![OnAudioFilterRead](./_asset/img/33.png)
 
-	![Audio Filter](./_asset/img/10.png)
+![OnAudioFilterRead](./_asset/img/34.png)
 
-	![Audio Filter](./_asset/img/4.png)
-
-	![Audio Filter](./_asset/img/5.png)
-
-* [AudioEffect @ unity](https://docs.unity3d.com/Manual/class-AudioEffect.html)
-
-* [OnAudioFilterRead @ unity](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnAudioFilterRead.html)
+![OnAudioFilterRead](./_asset/img/5.png)
 
 ## EX
 
 ---
 
-* `noisy lo-fi sound` <a name="noisy-lofi-sound">
+* `engine` <a name="engine"></a>
 
-![Examples](./_asset/img/6.png)
+	```c#
+	using UnityEngine;
 
-![Example](./_asset/img/7.png)
+	public class EngineAudio:MonoBehaviour
+	{
+		[Range(-1f, 1f)]
+		public float offset;
 
-* `engine sound` <a name="engine-sound">
+		System.Random rand = new System.Random();
 
-![Examples](./_asset/img/11.png)
+		void OnAudioFilterRead(float[] data, int channels)
+		{
+			for(int i = 0; i < data.Length; i++)
+			{
+					data[i] = (float)(rand.NextDouble() * 2.0 - 1.0 + offset);
+			}
+		}
+	}
+	```
 
-![Examples](./_asset/img/12.png)
+	![Example](./_asset/img/31.png)
 
-![Examples](./_asset/img/13.png)
+	![Example](./_asset/img/13.png)
 
-![Examples](./_asset/img/14.png)
+	The `final` script:
 
-* `rock chew sound` <a name="rock-chew-sound">
+	```c#
+	using UnityEngine;
 
-![Examples](./_asset/img/15.png)
+	public class EngineAudio:MonoBehaviour
+	{
+		[Range(-1f, 1f)]
+		public float offset;
 
-![Examples](./_asset/img/16.png)
+		public float cutoffOn = 800;
+		public float cutoffOff = 100;
 
-![Examples](./_asset/img/17.png)
+		public bool engineOn;
 
-* `sine @ 440Hz` <a name="sine@440-sound">
+		System.Random rand = new System.Random();
+		AudioLowPassFilter lowPassFilter;
 
-![Examples](./_asset/img/21.png)
+		void Awake()
+		{
+			lowPassFilter = GetComponent<AudioLowPassFilter>();
 
-![Examples](./_asset/img/22.png)
+			Update();
+		}
 
-![Examples](./_asset/img/28.png)
+		void OnAudioFilterRead(float[] data, int channels)
+		{
+			for(int i = 0; i < data.Length; i++)
+			{
+				data[i] = (float)(rand.NextDouble() * 2.0 - 1.0 + offset);
+			}
+		}
 
-![Examples](./_asset/img/29.png)
+		void Update()
+		{
+			lowPassFilter.cutoffFrequency = engineOn ? cutoffOn : cutoffOff;
+		}
+	}
+	```
 
-* `fire` <a name="fire-sound">
+* `rock-chew` <a name="rock-chew"></a>
 
-![Examples](./_asset/img/23.png)
+	[LISTEN (@ youtube)](https://youtu.be/IrdeYul24uM)
 
-![Examples](./_asset/img/24.png)
+	```c#
+	using UnityEngine;
 
-![Examples](./_asset/img/25.png)
+	public class RockChewAudio:MonoBehaviour
+	{
+		public static int clicks = 0;
+		System.Random rand = new System.Random();
 
-![Examples](./_asset/img/26.png)
+		void OnAudioFilterRead(float[] data, int channels)
+		{
+			/*
+			whether we're generating a click (true)
+			or silence (false)
+			*/
+			bool inClick = false;
 
-![Examples](./_asset/img/27.png)
+			/*
+			how many samples of that click
+			or silence we still have to go
+			*/
+			int samplesLeft = 0;
+			for(int i = 0; i < data.Length; i += channels)
+			{
+				if(samplesLeft < 1)
+				{
+					/*
+					if out of clicks, then just generate
+					silence for the rest of the time.
+					*/
+					if(clicks < 1)
+					{
+						inClick = false;
+
+						samplesLeft = data.Length / channels;
+					}
+					else if(inClick)
+					{
+						// generate a small random silence.
+						inClick = false;
+
+						samplesLeft = rand.Next(1,10);
+					}
+					else
+					{
+						// generate a click.
+						inClick = true;
+
+						samplesLeft = rand.Next(2,5);
+
+						clicks--;
+					}
+				}
+
+				for(int j=0; j<channels; j++)
+				{
+					data[i+j] = inClick ? (float)(rand.NextDouble() * 2.0 - 1.0) : 0;
+				}
+
+				samplesLeft--;
+			}
+			clicks = 0;
+		}
+	}
+	```
+
+	![Example](./_asset/img/15.png)
+
+	![Example](./_asset/img/17.png)
+
+* `metronome` <a name="metronome"></a>
+
+	```c#
+	using UnityEngine;
+
+	/*
+	The code example shows how to implement a
+	metronome that procedurally generates the
+	click sounds via the OnAudioFilterRead callback.
+
+	While the game is paused or suspended, this time
+	will not be updated and sounds playing will be
+	paused. Therefore developers of music scheduling
+	routines do not have to do any rescheduling after
+	the app is unpaused.
+	*/
+	[RequireComponent(typeof(AudioSource))]
+	public class AudioTest:MonoBehaviour
+	{
+		public double bpm = 140.0F;
+		public float gain = 0.5F;
+		public int signatureHi = 4;
+		public int signatureLo = 4;
+
+		private double nextTick = 0.0F;
+		private float amp = 0.0F;
+		private float phase = 0.0F;
+		private double sampleRate = 0.0F;
+		private int accent;
+		private bool running = false;
+
+		void Start()
+		{
+			accent = signatureHi;
+			double startTick = AudioSettings.dspTime;
+			sampleRate = AudioSettings.outputSampleRate;
+			nextTick = startTick * sampleRate;
+			running = true;
+		}
+
+		void OnAudioFilterRead(float[] data, int channels)
+		{
+			if(!running) return;
+
+			double samplesPerTick = sampleRate * 60.0F / bpm * 4.0F / signatureLo;
+			double sample = AudioSettings.dspTime * sampleRate;
+			int dataLen = data.Length / channels;
+
+			int n = 0;
+			while(n < dataLen)
+			{
+				float x = gain * amp * Mathf.Sin(phase);
+				int i = 0;
+				while(i < channels)
+				{
+					data[n * channels + i] += x;
+					i++;
+				}
+
+				while(sample + n >= nextTick)
+				{
+					nextTick += samplesPerTick;
+					amp = 1.0F;
+					if(++accent > signatureHi)
+					{
+						accent = 1;
+						amp *= 2.0F;
+					}
+
+					Debug.Log("Tick: " + accent + "/" + signatureHi);
+				}
+
+				phase += amp * 0.3F;
+				amp *= 0.993F;
+				n++;
+			}
+		}
+	}
+	```
+
+* `sequencer` <a name="sequencer"></a>
+
+	[#1 - `LUDOMANCER`](https://github.com/Ludomancer/Unity-Audio-Sequencer)
+
+	[#2 - `CHARLIEHUGE`](https://github.com/charliehuge/DesigningSoundMusicSystem)
+
+* `synth` <a name="synth"></a>
+
+	[#1 - `KONSFIK`](http://www.konsfik.com/procedural-audio-made-in-unity3d/)
+
+* `noisy lo-fi` <a name="noisy-lofi"></a>
+
+	![Example](./_asset/img/6.png)
+
+	![Example](./_asset/img/7.png)
+
+* `sine @ 440Hz` <a name="sine@440"></a>
+
+	![Example](./_asset/img/21.png)
+
+	![Example](./_asset/img/22.png)
+
+	![Example](./_asset/img/28.png)
+
+	![Example](./_asset/img/29.png)
+
+* `fire` <a name="fire"></a>
+
+	![Example](./_asset/img/23.png)
+
+	![Example](./_asset/img/24.png)
+
+	![Example](./_asset/img/25.png)
+
+	![Example](./_asset/img/26.png)
+
+	![Example](./_asset/img/27.png)
+
+###### REF
 
 ---
 
-## REFS
+* `gamasutra`
 
----
+	[Procedural Audio In Unity](https://www.gamasutra.com/blogs/JoeStrout/20170223/292317/Procedural_Audio_in_Unity.php)
 
-* `mclimatiano.com`
+* `mclimatiano`
 
-[Audio Filters in unity3D](http://www.mclimatiano.com/audio-filters-in-unity3d/)
+	[Audio Filters in Unity3D](http://www.mclimatiano.com/audio-filters-in-unity3d/)
 
-* `mcvuk.com`
+* `mcvuk`
 
-[Procedural Audio with Unity](https://www.mcvuk.com/development/procedural-audio-with-unity)
+	[Procedural Audio with Unity](https://www.mcvuk.com/development/procedural-audio-with-unity)
+
+* `unity`
+
+	[OnAudioFilterRead](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnAudioFilterRead.html)
