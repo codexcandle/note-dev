@@ -1,6 +1,6 @@
 * [overview](#overview)
 * [mic](./mic)
-* [pocedural](./procedural)
+* [procedural](./procedural)
 * [spatializer](./spatializer)
 
 ## Overview <a name="overview"></a>
