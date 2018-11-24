@@ -31,6 +31,10 @@
 
 	![Overview](./_asset/img/32.png)
 
+* `api bug` - no positional audio?
+
+	![Overview](./_asset/img/36.png)
+
 * [Audio @ unity](https://unity3d.com/learn/tutorials/s/audio)
 * [AudioEffect @ unity](https://docs.unity3d.com/Manual/class-AudioEffect.html)
 

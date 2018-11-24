@@ -15,7 +15,7 @@
 
 ---
 
-* `spatial audio` - aka `3d-Stereo Sound`.
+* `spatialized audio` - aka `3d-Stereo Sound`, `360 audio`, `binaural audio`(?)
 * replicates how sound waves interact with the environment as well as your head & ears, so that you really feel like you're in the virtual world, & is how we naturally hear sound.
 * using headphones, sounds seem to come from the outside world - not the headphones.  Because sounds are transferred directly into your auditory canal (without reaching your head, body, or ear), this technology allows for replication of true 3d.
 * [more @ microsoft](https://www.microsoft.com/en-us/research/project/spatial-audio/)
