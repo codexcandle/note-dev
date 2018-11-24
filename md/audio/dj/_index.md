@@ -1,6 +1,6 @@
 * [overview](#overview)
 * [cdj](./cdj)
-* [itunes](./itunes)
+* itunes
 * [traktor](./traktor)
 
 ## Overview <a name="overview"></a>

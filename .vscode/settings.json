@@ -59,9 +59,9 @@
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/audio/dj/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.dj'"
 // ... cdj
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/dj/cdj/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.dj.cdj'"
+"pandoc.htmlOptString": "-s -o ../../../../www/audio/dj/cdj/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.dj.cdj'"
 // ... traktor
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/dj/traktor/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.dj.traktor'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/dj/traktor/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.dj.traktor'"
 // .................
 // ----------------------------------------------
 // --------------------------------------- ENGINE
@@ -72,11 +72,11 @@
 // ... unity
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.unity'"
 // ... unity -> mic
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/mic/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.engine.unity.mic'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/mic/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.engine.unity.mic'"
 // ... unity -> procedural
-"pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/procedural/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.engine.unity.procedural'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/procedural/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.engine.unity.procedural'"
 // ... unity -> spatializer
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/spatializer/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.engine.unity.spatializer'"
+// "pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/spatializer/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.engine.unity.spatializer'"
 // ----------------------------------------------
 // ------------------------------------- MID-WARE
 // ----------------------------------------------
