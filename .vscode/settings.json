@@ -74,7 +74,7 @@
 // ... unity -> mic
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/mic/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.engine.unity.mic'"
 // ... unity -> procedural
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/procedural/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.engine.unity.procedural'"
+"pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/procedural/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.engine.unity.procedural'"
 // ... unity -> spatializer
 // "pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/spatializer/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.engine.unity.spatializer'"
 // ----------------------------------------------
@@ -139,7 +139,7 @@
 // ----------------------------------------------
 // ---------------------------------------- UNITY
 // ----------------------------------------------
-"pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/index.html -t html5 --css=../../_asset/css/style.css --metadata title='g-engine.unity'"
+// "pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/index.html -t html5 --css=../../_asset/css/style.css --metadata title='g-engine.unity'"
 // ... editor
 // "pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/editor/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.editor'"
 // ---------------------------------------- ARCH

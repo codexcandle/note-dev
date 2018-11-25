@@ -14,7 +14,7 @@
   <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -27,13 +27,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,7 +80,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <![endif]-->
 </head>
 <body>
-<header>
+<header id="title-block-header">
 <h1 class="title">audio.engine.unity.procedural</h1>
 </header>
 <ul>
@@ -356,8 +354,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb4-74" data-line-number="74">    }</a>
 <a class="sourceLine" id="cb4-75" data-line-number="75">}</a></code></pre></div></li>
 <li><p><code>sequencer</code> <a name="sequencer"></a></p>
-<p><a href="https://github.com/Ludomancer/Unity-Audio-Sequencer">#1 - <code>LUDOMANCER</code></a></p>
-<p><a href="https://github.com/charliehuge/DesigningSoundMusicSystem">#2 - <code>CHARLIEHUGE</code></a></p></li>
+<p><a href="https://github.com/cfloisand/BeatSynchronizer">#1 - <code>FLOISAND</code></a></p>
+<p><a href="https://github.com/Ludomancer/Unity-Audio-Sequencer">#2 - <code>LUDOMANCER</code></a></p>
+<p><a href="https://github.com/charliehuge/DesigningSoundMusicSystem">#3 - <code>CHARLIEHUGE</code></a></p></li>
 <li><p><code>synth</code> <a name="synth"></a></p>
 <p><a href="http://www.konsfik.com/procedural-audio-made-in-unity3d/">#1 - <code>KONSFIK</code></a></p></li>
 <li><p><code>noisy lo-fi</code> <a name="noisy-lofi"></a></p>

@@ -279,9 +279,11 @@
 
 * `sequencer` <a name="sequencer"></a>
 
-	[#1 - `LUDOMANCER`](https://github.com/Ludomancer/Unity-Audio-Sequencer)
+	[#1 - `FLOISAND`](https://github.com/cfloisand/BeatSynchronizer)
 
-	[#2 - `CHARLIEHUGE`](https://github.com/charliehuge/DesigningSoundMusicSystem)
+	[#2 - `LUDOMANCER`](https://github.com/Ludomancer/Unity-Audio-Sequencer)
+
+	[#3 - `CHARLIEHUGE`](https://github.com/charliehuge/DesigningSoundMusicSystem)
 
 * `synth` <a name="synth"></a>
 
