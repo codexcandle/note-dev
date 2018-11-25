@@ -24,6 +24,9 @@
 * [QUIZ](./_quiz)
 
 ## faves
+* [procedural audio (unity)](./audio/engine/unity/procedural/)
+* [shader](./g-engine/unity/shader/)
+* [zen-ject](./g-engine/unity/arch/zen-ject)
+* [fmod](./audio/mid-ware/fmod)
 * [aframe](./browser/framework/aframe)
-* [fmod](./audio/m-ware/fmod)
-* [node-dreamhost](./browser/runtime/node/dreamhost)
+* [node (dreamhost)](./browser/runtime/node/dreamhost)
