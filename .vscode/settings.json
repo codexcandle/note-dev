@@ -14,7 +14,7 @@
 // INDEX
 // ----------------------------------------------
 // TODO - make OptString params dynamic!
-"pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
+// "pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
 
 
 // AUDIO
@@ -144,7 +144,7 @@
 // "pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/editor/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.editor'"
 // ---------------------------------------- ARCH
 // ... zen-ject
-// "pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/arch/zen-ject/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.arch.zen-ject'"
+"pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/arch/zen-ject/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.arch.zen-ject'"
 // ---------------------------------------- PHYSX
 // "pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/physx/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.physics'"
 // -------------------------------------- OPTIMIZE
