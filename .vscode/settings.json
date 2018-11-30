@@ -150,9 +150,9 @@
 // ... zen-ject -> context
 // "pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/arch/zen-ject/context/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='g-engine.unity.arch.zen-ject.context'"
 // ... zen-ject -> injection
-// "pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/arch/zen-ject/injection/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='g-engine.unity.arch.zen-ject.injection'"
+"pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/arch/zen-ject/injection/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='g-engine.unity.arch.zen-ject.injection'"
 // ... zen-ject -> installer
-"pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/arch/zen-ject/installer/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='g-engine.unity.arch.zen-ject.installer'"
+// "pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/arch/zen-ject/installer/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='g-engine.unity.arch.zen-ject.installer'"
 // ---------------------------------------- PHYSX
 // "pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/physx/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.physics'"
 // -------------------------------------- OPTIMIZE

@@ -28,6 +28,16 @@
 
 	![Type](./_asset/img/09.jpg)
 
+## Order of Operations <a name="order"></a>
+
+---
+
+![Order](./_asset/img/10.png)
+
+![Order](./_asset/img/11.png)
+
+![Order](./_asset/img/12.png)
+
 ###### REF
 
 ---
