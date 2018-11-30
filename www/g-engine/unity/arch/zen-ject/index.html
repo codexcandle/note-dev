@@ -22,239 +22,26 @@
 </header>
 <ul>
 <li><a href="#overview">overview</a></li>
-<li><a href="#container">container</a></li>
-<li><a href="#composition-root">composition root</a></li>
-<li><a href="#injection">injection</a></li>
-<li><a href="#binding">binding</a></li>
-<li><a href="#installer">installer</a>
-<ul>
-<li><a href="#reusing-mono-installers">reusing mono-installers</a></li>
-</ul></li>
+<li><a href="./injection">injection</a></li>
+<li><a href="./binding">binding</a></li>
+<li><a href="./installer">installer</a></li>
 <li><a href="./context">context</a></li>
-<li><a href="#non-monoheaviour">non-monobehaviour</a></li>
-<li><a href="#signal">signal</a></li>
-<li><a href="#container-nested">container (nested)</a></li>
+<li>[non-mono-behaviour]</li>
+<li>[signal]</li>
+<li>[container (nested)]</li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
 <ul>
-<li><a href="https://github.com/svermeulen/Zenject">more @ github</a></li>
-</ul>
-<h2 id="container">Container <a name="container"></a></h2>
-<hr />
+<li><p><code>container</code></p>
 <figure>
-<img src="./_asset/img/02.jpg" alt="container" /><figcaption>container</figcaption>
-</figure>
-<h2 id="composition-root">Composition Root <a name="composition-root"></a></h2>
-<hr />
-<figure>
-<img src="./_asset/img/01.jpg" alt="composition root" /><figcaption>composition root</figcaption>
-</figure>
-<h2 id="injection">Injection <a name="injection"></a></h2>
-<hr />
-<ul>
-<li><p><code>overview</code></p>
-<figure>
-<img src="./_asset/img/04.jpg" alt="injection" /><figcaption>injection</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/05.jpg" alt="injection" /><figcaption>injection</figcaption>
+<img src="./_asset/img/02.jpg" alt="overview" /><figcaption>overview</figcaption>
 </figure></li>
-<li><p><code>4 ways</code></p>
+<li><p><code>composition root</code></p>
 <figure>
-<img src="./_asset/img/03.jpg" alt="injection" /><figcaption>injection</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/06.jpg" alt="injection" /><figcaption>injection</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/07.jpg" alt="injection" /><figcaption>injection</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/08.jpg" alt="injection" /><figcaption>injection</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/09.jpg" alt="injection" /><figcaption>injection</figcaption>
+<img src="./_asset/img/01.jpg" alt="overview" /><figcaption>overview</figcaption>
 </figure></li>
-</ul>
-<h2 id="binding">Binding <a name="binding"></a></h2>
-<hr />
-<ul>
-<li><p><code>overview</code></p>
-<figure>
-<img src="./_asset/img/10.jpg" alt="binding" /><figcaption>binding</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/14.jpg" alt="binding" /><figcaption>binding</figcaption>
-</figure></li>
-<li><p><code>demo</code></p>
-<figure>
-<img src="./_asset/img/11.jpg" alt="binding" /><figcaption>binding</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/12.jpg" alt="binding" /><figcaption>binding</figcaption>
-</figure></li>
-<li><p><code>parts</code></p>
-<ol type="1">
-<li><p><code>contract type</code></p>
-<p><code>Bind</code> <img src="./_asset/img/13.jpg" alt="binding" /></p></li>
-<li><p><code>result type</code></p>
-<p><code>To</code> <img src="./_asset/img/15.png" alt="binding" /></p></li>
-<li><p><code>identifier</code></p>
-<p><code>WithId</code> <img src="./_asset/img/16.png" alt="binding" /></p></li>
-<li><p><code>construction</code></p>
-<p><code>FromNew</code></p>
-<figure>
-<img src="./_asset/img/17.png" alt="binding" /><figcaption>binding</figcaption>
-</figure>
-<p><code>FromInstance</code></p>
-<figure>
-<img src="./_asset/img/18.png" alt="binding" /><figcaption>binding</figcaption>
-</figure>
-<p><code>FromFactory</code></p>
-<figure>
-<img src="./_asset/img/19.png" alt="binding" /><figcaption>binding</figcaption>
-</figure></li>
-<li><p><code>scope</code></p>
-<p><code>AsTransient</code></p>
-<figure>
-<img src="./_asset/img/20.png" alt="binding" /><figcaption>binding</figcaption>
-</figure>
-<p><code>AsCached</code></p>
-<figure>
-<img src="./_asset/img/21.png" alt="binding" /><figcaption>binding</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/23.png" alt="binding" /><figcaption>binding</figcaption>
-</figure>
-<p><code>AsSingle</code></p>
-<figure>
-<img src="./_asset/img/22.png" alt="binding" /><figcaption>binding</figcaption>
-</figure></li>
-<li><p><code>argument</code></p>
-<p><code>WithArguments</code></p>
-<figure>
-<img src="./_asset/img/24.png" alt="binding" /><figcaption>binding</figcaption>
-</figure></li>
-<li><p><code>condition</code></p>
-<p><code>When</code></p>
-<figure>
-<img src="./_asset/img/25.png" alt="binding" /><figcaption>binding</figcaption>
-</figure>
-<p><code>WhenInjectedInto</code></p>
-<figure>
-<img src="./_asset/img/26.png" alt="binding" /><figcaption>binding</figcaption>
-</figure></li>
-<li><p><code>sub-container</code></p>
-<p><code>CopyIntoAllSubContainers</code></p>
-<figure>
-<img src="./_asset/img/27.png" alt="binding" /><figcaption>binding</figcaption>
-</figure></li>
-<li><p><code>non-lazy</code></p>
-<p><code>NonLazy</code></p>
-<figure>
-<img src="./_asset/img/28.png" alt="binding" /><figcaption>binding</figcaption>
-</figure></li>
-</ol></li>
-</ul>
-<h2 id="installer">Installer <a name="installer"></a></h2>
-<hr />
-<ul>
-<li><p><code>3 types</code></p>
-<figure>
-<img src="./_asset/img/29.png" alt="installer" /><figcaption>installer</figcaption>
-</figure>
-<ol type="1">
-<li><p><code>generic installer</code></p>
-<figure>
-<img src="./_asset/img/30.png" alt="installer" /><figcaption>installer</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/31.png" alt="installer" /><figcaption>installer</figcaption>
-</figure></li>
-<li><p><code>mono-installer</code></p>
-<figure>
-<img src="./_asset/img/31b.png" alt="installer" /><figcaption>installer</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/34.png" alt="installer" /><figcaption>installer</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/35.png" alt="installer" /><figcaption>installer</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/36.png" alt="installer" /><figcaption>installer</figcaption>
-</figure></li>
-<li><p><code>scriptable-object-installer</code></p>
-<figure>
-<img src="./_asset/img/37.png" alt="installer" /><figcaption>installer</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/38.png" alt="installer" /><figcaption>installer</figcaption>
-</figure></li>
-</ol></li>
-</ul>
-<h2 id="reusing-monoinstallers">Reusing MonoInstallers <a name="reusing-mono-installers"></a></h2>
-<hr />
-<ul>
-<li><p><code>3 ways</code></p>
-<figure>
-<img src="./_asset/img/39.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<ol type="1">
-<li><code>in-scene prefab</code></li>
-</ol>
-<figure>
-<img src="./_asset/img/40.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/41.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/42.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/43.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/44.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/45.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<ol start="2" type="1">
-<li><code>prefab installer</code></li>
-</ol>
-<figure>
-<img src="./_asset/img/46.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/47.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<ol start="3" type="1">
-<li><code>resource installer</code></li>
-</ol>
-<figure>
-<img src="./_asset/img/48.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/49.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/50.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/51.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/52.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/53.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure>
-<figure>
-<img src="./_asset/img/54.png" alt="reusing mono-installers" /><figcaption>reusing mono-installers</figcaption>
-</figure></li>
+<li><p><a href="https://github.com/svermeulen/Zenject">more @ github</a></p></li>
 </ul>
 </body>
 </html>
