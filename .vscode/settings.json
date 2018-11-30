@@ -144,7 +144,9 @@
 // "pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/editor/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.editor'"
 // ---------------------------------------- ARCH
 // ... zen-ject
-"pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/arch/zen-ject/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.arch.zen-ject'"
+// "pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/arch/zen-ject/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.arch.zen-ject'"
+// ... zen-ject -> context
+"pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/arch/zen-ject/context/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='g-engine.unity.arch.zen-ject.context'"
 // ---------------------------------------- PHYSX
 // "pandoc.htmlOptString": "-s -o ../../../www/g-engine/unity/physx/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.physics'"
 // -------------------------------------- OPTIMIZE
