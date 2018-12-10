@@ -1,0 +1,33 @@
+@ECHO OFF
+SETLOCAL EnableDelayedExpansion
+
+rem TODOs
+rem 1. have script call PANDOC to complete build.
+rem 2. map this command to HOT-KEY (so don't have to call by IDE-menu!)
+
+ECHO "** CODEBYCANDLE Pandoc Build Script **********"
+
+SET "PANDOC_SETTINGS_FILE_PATH_LOCAL=\_config\pandoc-settings.json"
+SET "VSCODE_SETTINGS_DIR=\.vscode\"
+SET "TARGET_SETTINGS_FILE=settings.json"
+
+SET "PROJECT_ROOT_DIR_PATH=%1"
+SET "REQUESTING_FILE_DIR_PATH=%2"
+
+SET "LOCAL_SETTINGS_PATH=%REQUESTING_FILE_DIR_PATH%%PANDOC_SETTINGS_FILE_PATH_LOCAL%"
+ECHO "SETTINGS-LOCAL: %LOCAL_SETTINGS_PATH%"
+
+SET "TARGET_SETTINGS_FILE_DEST_PATH=%PROJECT_ROOT_DIR_PATH%%VSCODE_SETTINGS_DIR%%TARGET_SETTINGS_FILE%"
+ECHO "SETTINGS-DEST: %TARGET_SETTINGS_FILE_DEST_PATH%"
+
+if exist %1 (
+	COPY "!LOCAL_SETTINGS_PATH!" "!TARGET_SETTINGS_FILE_DEST_PATH!"
+
+	rem TODO - build HTML page with PANDOC!
+) else (
+	ECHO ERROR!!! - Input DIR doesn't exist?
+)
+
+ECHO "*************************** (script end)."
+
+ECHO ON

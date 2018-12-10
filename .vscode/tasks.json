@@ -1,0 +1,18 @@
+{
+"version":              "2.0.0",
+"tasks":
+[{
+    "label":            "BUILD-HTML",
+    "type":             "shell",
+    "command":          "./_build/build-pandoc.cmd '${fileDirname}",
+    "windows":
+    {
+        "command":      "./_build/build-pandoc.cmd '${workspaceFolder}' '${fileDirname}'"
+    },
+    "group":            "test",
+    "presentation":
+    {
+        "reveal":       "always",
+        "panel":        "new"
+    }
+}]}
