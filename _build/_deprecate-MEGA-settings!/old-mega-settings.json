@@ -1,16 +1,4 @@
 {
-// COMMON WORKPLACE SETTINGS
-// ==============================================
-/*
-"editor.fontSize":          16,
-"editor.tabSize":           2,
-"editor.insertSpaces":      false,
-"editor.wrappingColumn":    0,
-"editor.quickSuggestions":  false,
-*/
-// "editor.wordWrap":       "on",
-
-
 // PANDOC SETTINGS
 // ==============================================
 // INDEX
@@ -21,13 +9,10 @@
 
 // AUDIO
 // ----------------------------------------------
-// "pandoc.htmlOptString": "-s -o ../../www/audio/index.html -t html5 --css=../_asset/css/style.css --metadata title='audio'"
-// ----------------------------------------------
 // ------------------------------------------ DAW
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../../www/audio/daw/index.html -t html5 --css=../../_asset/css/style.css --metadata title='audio.daw'"
-// ... ableton
-// "pandoc.htmlOptString": "-s -o ../../../../www/audio/daw/ableton/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.daw.ableton'"
+
 // ----------------------------------- GENERATIVE
 // "pandoc.htmlOptString": "-s -o ../../../../../www/audio/daw/ableton/generative/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.daw.ableton.generative'"
 // -------------------------------------- MIXDOWN
