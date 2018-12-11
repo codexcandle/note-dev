@@ -1,12 +1,4 @@
 {
-// PANDOC SETTINGS
-// ==============================================
-// INDEX
-// ----------------------------------------------
-// TODO - make OptString params dynamic!
-// "pandoc.htmlOptString": "-s -o ../www/index.html -t html5 --css=_asset/css/style.css --metadata title='Dev-Notes'"
-
-
 // AUDIO
 // ----------------------------------------------
 // ------------------------------------------ DAW
