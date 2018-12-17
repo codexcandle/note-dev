@@ -15,8 +15,6 @@
 
 * `#1`
 
-	![example](_asset/img/04.png)
-
 	![example](_asset/img/05.png)
 
 	![example](_asset/img/06.png)
@@ -24,8 +22,6 @@
 	![example](_asset/img/07.png)
 
 	![example](_asset/img/08.png)
-
-	![example](_asset/img/09.png)
 
 	![example](_asset/img/10.png)
 

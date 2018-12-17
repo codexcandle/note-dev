@@ -1,3 +1,3 @@
 {
-"pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/m4l/audio-effect/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.m4l.audio-effect'"
+"pandoc.htmlOptString": "-s -o ../../../../../../www/audio/daw/ableton/m4l/midi-instru/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='audio.daw.ableton.m4l.midi-instru'"
 }
