@@ -337,12 +337,6 @@
 // ... sound-shape
 // "pandoc.htmlOptString": "-s -o ../../../www/math/numerology/sound-shape/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='math.numerology.sound-shape'"
 
-// VCS
-// ----------------------------------------------
-// ... git
-// "pandoc.htmlOptString": "-s -o ../../../www/vcs/git/index.html -t html5 --css=../../_asset/css/style.css --metadata title='version-control.git'"    
-
-
 // LANG
 // ----------------------------------------------
 // "pandoc.htmlOptString": "-s -o ../../www/lang/index.html -t html5 --css=../_asset/css/style.css --metadata title='lang'"

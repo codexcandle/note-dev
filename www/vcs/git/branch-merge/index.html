@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>version-control.git.branch-merge</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">version-control.git.branch-merge</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a>
+<ul>
+<li><a href="#branch">branch</a></li>
+<li><a href="#checkout">checkout</a></li>
+<li><a href="#merge">merge</a></li>
+<li><a href="#log">log</a></li>
+<li><a href="#stash">stash</a></li>
+<li><a href="#tag">tag</a></li>
+</ul></li>
+<li>example
+<ul>
+<li><a href="#create-branch-from-existing">create branch from exisitng</a></li>
+</ul></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<p><a href="https://git-scm.com/book/en/v2">more @ git-book</a></p>
+<h3 id="branch">branch <a name="branch"></a></h3>
+<hr />
+<ul>
+<li><code>git branch</code> - this command is actually something of a branch management tool. It can list the branches you have, create a new branch, delete branches &amp; rename branches.</li>
+<li><code>tracking branch</code> - in Tracking Branches, we use the <code>git branch -u</code> option to set up a tracking branch.</li>
+</ul>
+<h3 id="checkout">checkout <a name="checkout"></a></h3>
+<hr />
+<ul>
+<li><code>git checkout</code> - this command is used to switch branches &amp; check content out into your working directory.</li>
+<li><code>--track</code> flag - used to start tracking branches in Tracking Branches.</li>
+<li><code>--conflict=diff3</code> flag - used to reintroduce file conflicts.</li>
+<li><p><code>-b</code> - causes new branch to be created as if git-branch were called &amp; then checked out. Is created if doesn’t exist; otherwise, is reset, which is transactional equivalent of:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">// branch is not reset/created unless &quot;git checkout&quot; is successful.\</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">$ git branch -f &lt;branch&gt; [&lt;start point&gt;]</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">$ git checkout &lt;branch&gt;</a></code></pre></div></li>
+</ul>
+<h3 id="merge">merge <a name="merge"></a></h3>
+<hr />
+<ul>
+<li><code>git merge</code> - this tool is used to merge one or more branches into the branch you have checked out. It will then advance the current branch to the result of the merge. There are very few variations of the merge command — generally just git merge <code>&lt;branch&gt;</code> with the name of the single branch you want to merge in.</li>
+<li><code>squashed merge</code> - wwhere Git merges the work but pretends like it’s just a new commit without recording the history of the branch you’re merging in.</li>
+<li><code>-Xignore-space-change</code> command and the <code>--abort</code> flag to abort a problem merge.</li>
+<li><code>Subtree merging</code> - ???</li>
+</ul>
+<h3 id="mergetool">mergetool <a name="mergetool"></a></h3>
+<hr />
+<ul>
+<li><code>git mergetool</code> - this command simply launches an external merge helper in case you have issues with a merge in Git.</li>
+</ul>
+<h3 id="log">log <a name="log"></a></h3>
+<hr />
+<ul>
+<li><code>git log</code> - this command is used to show the reachable recorded history of a project from the most recent commit snapshot backwards. By default it will only show the history of the branch you’re currently on, but can be given different or even multiple heads or branches from which to traverse. It is also often used to show differences between two or more branches at the commit level.</li>
+<li><code>-p</code> and <code>--stat</code> - these flags help you to get an idea of what was introduced in each commit &amp; the <code>--pretty</code> and <code>--oneline</code> options to view the history more concisely, along with some simple date and author filtering options.</li>
+<li><code>--decorate</code> option to easily visualize where our branch pointers are located &amp; we also use the <code>--graph</code> option to see what divergent histories look like.</li>
+<li><code>-g</code> option to view the Git reflog through this tool instead of doing branch traversal.</li>
+<li><code>-S</code> and <code>-L</code> options to do fairly sophisticated searches for something that happened historically in the code such as seeing the history of a function.</li>
+<li><code>--show-signature</code> to add a validation string to each commit in the git log output based on if it was validly signed or not.</li>
+</ul>
+<h3 id="stash">stash <a name="stash"></a></h3>
+<hr />
+<ul>
+<li><code>git stash</code> - this command is used to temporarily store uncommitted work in order to clean out your working directory without having to commit unfinished work on a branch.</li>
+</ul>
+<h3 id="tag">tag <a name="tag"></a></h3>
+<hr />
+<ul>
+<li><code>git tag</code> - this command is used to give a permanent bookmark to a specific point in the code history. Generally this is used for things like releases.</li>
+<li><code>-s</code> flag to create a GPG signed tag &amp; verify one with the <code>-v</code> flag.</li>
+</ul>
+<h2 id="ex">EX <a name="example"></a></h2>
+<hr />
+<ul>
+<li><p><code>create branch from existing</code> <a name="create-branch-from-existing"></a></p>
+<ol type="1">
+<li><p>Create new branch based on existing one. (will be only local for now.)</p>
+<pre class="git"><code>git checkout -b {NEW_branch_name} {SOURCE_branch_name}</code></pre></li>
+<li><p>Push branch to origin (i.e. remote) for everyone else!</p>
+<pre class="git"><code>git push origin {NEW_branch_name}</code></pre>
+<figure>
+<img src="./_asset/img/01.png" alt="Debug" /><figcaption>Debug</figcaption>
+</figure></li>
+</ol></li>
+</ul>
+</body>
+</html>
