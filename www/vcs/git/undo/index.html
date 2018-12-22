@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>version-control.git.undo</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">version-control.git.undo</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#modified">modified</a></li>
+<li><a href="#staged">staged</a></li>
+<li><a href="#commit">commit</a></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<p><a href="https://git-scm.com/book/en/v2">more @ git-book</a></p>
+<h2 id="modified">Modified <a name="modified"></a></h2>
+<hr />
+<ol type="1">
+<li><p>you change a file &amp; see:</p>
+<figure>
+<img src="./_asset/img/01.png" alt="Undo Modified" /><figcaption>Undo Modified</figcaption>
+</figure></li>
+<li><p>revert it by:</p>
+<pre class="txt"><code>// git checkout -- &lt;the-local-file-path&gt;
+git checkout -- CONTRIBUTING.md</code></pre>
+<p>(NOTE: Note the space after the double-dash!)</p></li>
+</ol>
+<h2 id="staged">Staged <a name="staged"></a></h2>
+<hr />
+<ol type="1">
+<li><p>let’s say you’ve changed 2 files &amp; want to commit them as 2 separate changes, but you accidentally type <code>git add *</code> &amp; stage both. How can you unstage one?</p>
+<figure>
+<img src="./_asset/img/03.png" alt="Undo Staged" /><figcaption>Undo Staged</figcaption>
+</figure></li>
+<li><p>unstage a file by:</p>
+<pre class="txt"><code>// git reset HEAD &lt;the-local-file-path&gt;
+git reset HEAD CONTRIBUTING.md</code></pre>
+<p>(NOTE: The command is a bit strange, but it works.)</p>
+<figure>
+<img src="./_asset/img/04.png" alt="Undo Staged" /><figcaption>Undo Staged</figcaption>
+</figure></li>
+</ol>
+<h2 id="commit">Commit <a name="commit"></a></h2>
+<hr />
+<ol type="1">
+<li><p>you commit &amp; realize you forgot to stage the changes in a file you wanted to add to this commit. To resolve:</p>
+<pre class="txt"><code>$ git commit -m &#39;initial commit&#39;
+$ git add forgotten_file
+$ git commit --amend</code></pre>
+<p>(NOTE: You end up with a single commit — the 2nd commit replaces the results of the 1st!)</p>
+<figure>
+<img src="./_asset/img/02.png" alt="Redo Commit" /><figcaption>Redo Commit</figcaption>
+</figure></li>
+</ol>
+</body>
+</html>
