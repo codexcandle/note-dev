@@ -1,7 +1,12 @@
 * [overview](#overview)
+* [init / clone](./init-clone)
 * [config / help](./config-help)
+* [commit](./commit)
+    * [log](./commit/log)
+    * [tag](./commit/tag)
 * [undo](./undo)
 * [branch / merge](./branch-merge)
+* [remote](./remote)
 
 ## Overview <a name="overview"></a>
 

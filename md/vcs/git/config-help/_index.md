@@ -1,5 +1,8 @@
 * [overview](#overview)
 * [config](#config)
+    * [identity](#identity)
+    * [editor](#editor)
+    * [alias](#alias)
 * [help](#help)
 
 ## Overview <a name="overview"></a>
@@ -17,9 +20,11 @@
 
     ![config](./_asset/img/01.png)
 
-* `identity`
+### identity <a name="identity"></a>
 
-    ![config](./_asset/img/02.png)
+---
+
+* ![config](./_asset/img/02.png)
 
     ```txt
     // to set email
@@ -32,7 +37,11 @@
     git config -l
     ```
 
-* `editor`- you can configure the default text editor that will be used when Git needs you to type in a message. If not configured, Git uses your system’s default editor.
+### editor <a name="editor"></a>
+
+---
+
+* you can configure the default text editor that will be used when Git needs you to type in a message. If not configured, Git uses your system’s default editor.
 
     ```txt
     // emacs
@@ -42,11 +51,19 @@
     git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -nosession"
     ```
 
-    ![editor](./_asset/img/03.png)
+* ![editor](./_asset/img/03.png)
 
-    ![editor](./_asset/img/04.png)
+* ![editor](./_asset/img/04.png)
 
-    ![editor](./_asset/img/05.png)
+* ![editor](./_asset/img/05.png)
+
+### alias <a name="alias"></a>
+
+---
+
+* ![alias](./_asset/img/06.png)
+
+* ![alias](./_asset/img/07.png)
 
 ## Help <a name="help"></a>
 

@@ -22,7 +22,12 @@
 </header>
 <ul>
 <li><a href="#overview">overview</a></li>
-<li><a href="#config">config</a></li>
+<li><a href="#config">config</a>
+<ul>
+<li><a href="#identity">identity</a></li>
+<li><a href="#editor">editor</a></li>
+<li><a href="#alias">alias</a></li>
+</ul></li>
 <li><a href="#help">help</a></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
@@ -38,8 +43,11 @@
 <figure>
 <img src="./_asset/img/01.png" alt="config" /><figcaption>config</figcaption>
 </figure></li>
-<li><p><code>identity</code></p>
-<figure>
+</ul>
+<h3 id="identity">identity <a name="identity"></a></h3>
+<hr />
+<ul>
+<li><figure>
 <img src="./_asset/img/02.png" alt="config" /><figcaption>config</figcaption>
 </figure>
 <pre class="txt"><code>// to set email
@@ -47,20 +55,34 @@ git config --global user.email &quot;tyler@codebycandle.com&quot;</code></pre>
 <pre class="txt"><code>// to list current
 git config --list
 git config -l</code></pre></li>
-<li><p><code>editor</code>- you can configure the default text editor that will be used when Git needs you to type in a message. If not configured, Git uses your system’s default editor.</p>
+</ul>
+<h3 id="editor">editor <a name="editor"></a></h3>
+<hr />
+<ul>
+<li><p>you can configure the default text editor that will be used when Git needs you to type in a message. If not configured, Git uses your system’s default editor.</p>
 <pre class="txt"><code>// emacs
 git config --global core.editor emacs
 
 // notepad++
-git config --global core.editor &quot;&#39;C:/Program Files/Notepad++/notepad++.exe&#39; -multiInst -nosession&quot;</code></pre>
-<figure>
+git config --global core.editor &quot;&#39;C:/Program Files/Notepad++/notepad++.exe&#39; -multiInst -nosession&quot;</code></pre></li>
+<li><figure>
 <img src="./_asset/img/03.png" alt="editor" /><figcaption>editor</figcaption>
-</figure>
-<figure>
+</figure></li>
+<li><figure>
 <img src="./_asset/img/04.png" alt="editor" /><figcaption>editor</figcaption>
-</figure>
-<figure>
+</figure></li>
+<li><figure>
 <img src="./_asset/img/05.png" alt="editor" /><figcaption>editor</figcaption>
+</figure></li>
+</ul>
+<h3 id="alias">alias <a name="alias"></a></h3>
+<hr />
+<ul>
+<li><figure>
+<img src="./_asset/img/06.png" alt="alias" /><figcaption>alias</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/07.png" alt="alias" /><figcaption>alias</figcaption>
 </figure></li>
 </ul>
 <h2 id="help">Help <a name="help"></a></h2>

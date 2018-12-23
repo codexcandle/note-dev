@@ -1,0 +1,3 @@
+{
+"pandoc.htmlOptString": "-s -o ../../../../../www/vcs/git/commit/tag/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='version-control.git.commit.tag'"
+}
