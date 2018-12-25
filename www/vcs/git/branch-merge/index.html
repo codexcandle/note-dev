@@ -14,7 +14,7 @@
   <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -27,11 +27,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,37 +82,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <![endif]-->
 </head>
 <body>
-<header id="title-block-header">
+<header>
 <h1 class="title">version-control.git.branch-merge</h1>
 </header>
 <ul>
-<li><a href="#overview">overview</a>
+<li><a href="#overview">overview</a></li>
+<li><a href="#branch">branch</a>
 <ul>
-<li><a href="#branch">branch</a></li>
-<li><a href="#checkout">checkout</a></li>
-<li><a href="#merge">merge</a></li>
-<li><a href="#log">log</a></li>
+<li><a href="#head">head</a></li>
+<li><a href="#tracking-branch">tracking branch</a></li>
+<li><a href="#branch">git branch</a></li>
+<li><a href="#branch-v">-v</a></li>
+<li><a href="#branch-merged">–merged</a></li>
+<li><a href="#branch-d">-d</a></li>
+</ul></li>
+<li><a href="#checkout">checkout</a>
+<ul>
 <li><a href="#stash">stash</a></li>
-<li><a href="#tag">tag</a></li>
+</ul></li>
+<li><a href="#merge">merge</a>
+<ul>
+<li><a href="#merge-tool">merge tool</a></li>
 </ul></li>
 <li>example
 <ul>
-<li><a href="#create-branch-from-existing">create branch from exisitng</a></li>
+<li><a href="#create-from-existing">create (from existing)</a></li>
 </ul></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
-<p><a href="https://git-scm.com/book/en/v2">more @ git-book</a></p>
-<h3 id="branch">branch <a name="branch"></a></h3>
-<hr />
 <ul>
-<li><code>git branch</code> - this command is actually something of a branch management tool. It can list the branches you have, create a new branch, delete branches &amp; rename branches.</li>
-<li><code>tracking branch</code> - in Tracking Branches, we use the <code>git branch -u</code> option to set up a tracking branch.</li>
+<li><figure>
+<img src="./_asset/img/14.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/38.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/39.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/40.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/41.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/42.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/43.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/44.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/45.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
 </ul>
-<h3 id="checkout">checkout <a name="checkout"></a></h3>
+<h2 id="branch">Branch <a name="branch"></a></h2>
 <hr />
 <ul>
-<li><code>git checkout</code> - this command is used to switch branches &amp; check content out into your working directory.</li>
+<li><figure>
+<img src="./_asset/img/01b.png" alt="branch" /><figcaption>branch</figcaption>
+</figure></li>
+<li><p><code>head</code> <a name="head"></a></p>
+<figure>
+<img src="./_asset/img/03.png" alt="branch" /><figcaption>branch</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/07.png" alt="branch" /><figcaption>branch</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/06.png" alt="branch" /><figcaption>branch</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/08.png" alt="branch" /><figcaption>branch</figcaption>
+</figure></li>
+<li><p><code>tracking branch</code> - in Tracking Branches, we use the <code>git branch -u</code> option to set up a tracking branch.</p></li>
+<li><p><code>git branch</code> - this command is actually something of a branch management tool. It can list the branches you have, create a new branch, delete branches &amp; rename branches.</p>
+<figure>
+<img src="./_asset/img/02.png" alt="branch" /><figcaption>branch</figcaption>
+</figure></li>
+<li><p><code>git branch -v</code><a name="branch-v"></a></p>
+<ul>
+<li><img src="./_asset/img/32.png" title="fig:" alt="branch" /></li>
+</ul></li>
+<li><p><code>git branch --merged</code><a name="branch-merged"></a></p>
+<ul>
+<li><figure>
+<img src="./_asset/img/33.png" alt="branch" /><figcaption>branch</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/34.png" alt="branch" /><figcaption>branch</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/35.png" alt="branch" /><figcaption>branch</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/37.png" alt="branch" /><figcaption>branch</figcaption>
+</figure></li>
+</ul></li>
+<li><p><code>git branch -d</code><a name="branch-d"></a></p>
+<ul>
+<li><img src="./_asset/img/36.png" title="fig:" alt="branch" /></li>
+</ul></li>
+</ul>
+<h2 id="checkout">Checkout <a name="checkout"></a></h2>
+<hr />
+<ul>
+<li><p><code>git checkout</code> - this command is used to switch branches &amp; check content out into your working directory.</p>
+<figure>
+<img src="./_asset/img/05.png" alt="checkout" /><figcaption>checkout</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/09.png" alt="checkout" /><figcaption>checkout</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/10.png" alt="checkout" /><figcaption>checkout</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/11.png" alt="checkout" /><figcaption>checkout</figcaption>
+</figure>
+<figure>
+<img src="./_asset/img/12.png" alt="checkout" /><figcaption>checkout</figcaption>
+</figure></li>
 <li><code>--track</code> flag - used to start tracking branches in Tracking Branches.</li>
 <li><code>--conflict=diff3</code> flag - used to reintroduce file conflicts.</li>
 <li><p><code>-b</code> - causes new branch to be created as if git-branch were called &amp; then checked out. Is created if doesn’t exist; otherwise, is reset, which is transactional equivalent of:</p>
@@ -118,44 +214,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1-2" data-line-number="2">$ git branch -f &lt;branch&gt; [&lt;start point&gt;]</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">$ git checkout &lt;branch&gt;</a></code></pre></div></li>
 </ul>
-<h3 id="merge">merge <a name="merge"></a></h3>
-<hr />
-<ul>
-<li><code>git merge</code> - this tool is used to merge one or more branches into the branch you have checked out. It will then advance the current branch to the result of the merge. There are very few variations of the merge command — generally just git merge <code>&lt;branch&gt;</code> with the name of the single branch you want to merge in.</li>
-<li><code>squashed merge</code> - wwhere Git merges the work but pretends like it’s just a new commit without recording the history of the branch you’re merging in.</li>
-<li><code>-Xignore-space-change</code> command and the <code>--abort</code> flag to abort a problem merge.</li>
-<li><code>Subtree merging</code> - ???</li>
-</ul>
-<h3 id="mergetool">mergetool <a name="mergetool"></a></h3>
-<hr />
-<ul>
-<li><code>git mergetool</code> - this command simply launches an external merge helper in case you have issues with a merge in Git.</li>
-</ul>
-<h3 id="log">log <a name="log"></a></h3>
-<hr />
-<ul>
-<li><code>git log</code> - this command is used to show the reachable recorded history of a project from the most recent commit snapshot backwards. By default it will only show the history of the branch you’re currently on, but can be given different or even multiple heads or branches from which to traverse. It is also often used to show differences between two or more branches at the commit level.</li>
-<li><code>-p</code> and <code>--stat</code> - these flags help you to get an idea of what was introduced in each commit &amp; the <code>--pretty</code> and <code>--oneline</code> options to view the history more concisely, along with some simple date and author filtering options.</li>
-<li><code>--decorate</code> option to easily visualize where our branch pointers are located &amp; we also use the <code>--graph</code> option to see what divergent histories look like.</li>
-<li><code>-g</code> option to view the Git reflog through this tool instead of doing branch traversal.</li>
-<li><code>-S</code> and <code>-L</code> options to do fairly sophisticated searches for something that happened historically in the code such as seeing the history of a function.</li>
-<li><code>--show-signature</code> to add a validation string to each commit in the git log output based on if it was validly signed or not.</li>
-</ul>
 <h3 id="stash">stash <a name="stash"></a></h3>
 <hr />
 <ul>
 <li><code>git stash</code> - this command is used to temporarily store uncommitted work in order to clean out your working directory without having to commit unfinished work on a branch.</li>
 </ul>
-<h3 id="tag">tag <a name="tag"></a></h3>
+<h2 id="merge">Merge <a name="merge"></a></h2>
 <hr />
 <ul>
-<li><code>git tag</code> - this command is used to give a permanent bookmark to a specific point in the code history. Generally this is used for things like releases.</li>
-<li><code>-s</code> flag to create a GPG signed tag &amp; verify one with the <code>-v</code> flag.</li>
+<li><code>git merge</code> - this tool is used to merge one or more branches into the branch you have checked out. It will then advance the current branch to the result of the merge. There are very few variations of the merge command — generally just git merge <code>&lt;branch&gt;</code> with the name of the single branch you want to merge in.</li>
+<li><code>squashed merge</code> - wwhere Git merges the work but pretends like it’s just a new commit without recording the history of the branch you’re merging in.</li>
+<li><code>-Xignore-space-change</code> command and the <code>--abort</code> flag to abort a problem merge.</li>
+<li><p><code>Subtree merging</code> - ???</p></li>
+<li><figure>
+<img src="./_asset/img/15.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/16.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/17.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/18.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/19.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/20.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/21.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/22.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/23.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/24.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/25.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/26.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/27.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/28.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/29.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+</ul>
+<h3 id="mergetool">mergetool <a name="mergetool"></a></h3>
+<hr />
+<ul>
+<li><p><code>git mergetool</code> - this command simply launches an external merge helper in case you have issues with a merge in Git.</p></li>
+<li><figure>
+<img src="./_asset/img/30.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/31.png" alt="merge" /><figcaption>merge</figcaption>
+</figure></li>
 </ul>
 <h2 id="ex">EX <a name="example"></a></h2>
 <hr />
 <ul>
-<li><p><code>create branch from existing</code> <a name="create-branch-from-existing"></a></p>
+<li><p><code>create from existing</code> <a name="create-from-existing"></a></p>
 <ol type="1">
 <li><p>Create new branch based on existing one. (will be only local for now.)</p>
 <pre class="git"><code>git checkout -b {NEW_branch_name} {SOURCE_branch_name}</code></pre></li>

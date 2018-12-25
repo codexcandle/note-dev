@@ -1,31 +1,96 @@
 * [overview](#overview)
-    * [branch](#branch)
-    * [checkout](#checkout)
-    * [merge](#merge)
-    * [log](#log)
+* [branch](#branch)
+    * [head](#head)
+    * [tracking branch](#tracking-branch)
+    * [git branch](#branch)
+    * [-v](#branch-v)
+    * [--merged](#branch-merged)
+    * [-d](#branch-d)
+* [checkout](#checkout)
     * [stash](#stash)
-    * [tag](#tag)
+* [merge](#merge)
+    * [merge tool](#merge-tool)
 * example
-    * [create branch from exisitng](#create-branch-from-existing)
+    * [create (from existing)](#create-from-existing)
 
 ## Overview <a name="overview"></a>
 
 ---
 
-[more @ git-book](https://git-scm.com/book/en/v2)
+* ![overview](./_asset/img/14.png)
 
-### branch <a name="branch"></a>
+* ![overview](./_asset/img/38.png)
+
+* ![overview](./_asset/img/39.png)
+
+* ![overview](./_asset/img/40.png)
+
+* ![overview](./_asset/img/41.png)
+
+* ![overview](./_asset/img/42.png)
+
+* ![overview](./_asset/img/43.png)
+
+* ![overview](./_asset/img/44.png)
+
+* ![overview](./_asset/img/45.png)
+
+## Branch <a name="branch"></a>
 
 ---
 
-* `git branch` - this command is actually something of a branch management tool. It can list the branches you have, create a new branch, delete branches & rename branches.
+* ![branch](./_asset/img/01b.png)
+
+* `head` <a name="head"></a>
+
+    ![branch](./_asset/img/03.png)
+
+    ![branch](./_asset/img/07.png)
+
+    ![branch](./_asset/img/06.png)
+
+    ![branch](./_asset/img/08.png)
+
 * `tracking branch` - in Tracking Branches, we use the `git branch -u` option to set up a tracking branch.
 
-### checkout <a name="checkout"></a>
+* `git branch` - this command is actually something of a branch management tool. It can list the branches you have, create a new branch, delete branches & rename branches.
+
+    ![branch](./_asset/img/02.png)
+
+* `git branch -v`<a name="branch-v"></a>
+
+    * ![branch](./_asset/img/32.png)
+
+* `git branch --merged`<a name="branch-merged"></a>
+
+    * ![branch](./_asset/img/33.png)
+
+    * ![branch](./_asset/img/34.png)
+
+    * ![branch](./_asset/img/35.png)
+
+    * ![branch](./_asset/img/37.png)
+
+* `git branch -d`<a name="branch-d"></a>
+
+    * ![branch](./_asset/img/36.png)
+
+## Checkout <a name="checkout"></a>
 
 ---
 
 * `git checkout` - this command is used to switch branches & check content out into your working directory.
+
+    ![checkout](./_asset/img/05.png)
+
+    ![checkout](./_asset/img/09.png)
+
+    ![checkout](./_asset/img/10.png)
+
+    ![checkout](./_asset/img/11.png)
+
+    ![checkout](./_asset/img/12.png)
+
 * `--track` flag - used to start tracking branches in Tracking Branches.
 * `--conflict=diff3` flag - used to reintroduce file conflicts.
 * `-b` - causes new branch to be created as if git-branch were called & then checked out. Is created if doesn’t exist; otherwise, is reset, which is transactional equivalent of:
@@ -36,7 +101,13 @@
     $ git checkout <branch>
     ```
 
-### merge <a name="merge"></a>
+### stash <a name="stash"></a>
+
+---
+
+* `git stash` - this command is used to temporarily store uncommitted work in order to clean out your working directory without having to commit unfinished work on a branch.
+
+## Merge <a name="merge"></a>
 
 ---
 
@@ -46,41 +117,51 @@ There are very few variations of the merge command — generally just git me
 * `-Xignore-space-change` command and the `--abort` flag to abort a problem merge.
 * `Subtree merging` - ???
 
+* ![merge](./_asset/img/15.png)
+
+* ![merge](./_asset/img/16.png)
+
+* ![merge](./_asset/img/17.png)
+
+* ![merge](./_asset/img/18.png)
+
+* ![merge](./_asset/img/19.png)
+
+* ![merge](./_asset/img/20.png)
+
+* ![merge](./_asset/img/21.png)
+
+* ![merge](./_asset/img/22.png)
+
+* ![merge](./_asset/img/23.png)
+
+* ![merge](./_asset/img/24.png)
+
+* ![merge](./_asset/img/25.png)
+
+* ![merge](./_asset/img/26.png)
+
+* ![merge](./_asset/img/27.png)
+
+* ![merge](./_asset/img/28.png)
+
+* ![merge](./_asset/img/29.png)
+
 ### mergetool <a name="mergetool"></a>
 
 ---
 
 * `git mergetool` - this command simply launches an external merge helper in case you have issues with a merge in Git.
 
-### log <a name="log"></a>
+* ![merge](./_asset/img/30.png)
 
----
-
-* `git log` - this command is used to show the reachable recorded history of a project from the most recent commit snapshot backwards. By default it will only show the history of the branch you’re currently on, but can be given different or even multiple heads or branches from which to traverse. It is also often used to show differences between two or more branches at the commit level.
-* `-p` and `--stat` - these flags help you to get an idea of what was introduced in each commit & the `--pretty` and `--oneline` options to view the history more concisely, along with some simple date and author filtering options.
-* `--decorate` option to easily visualize where our branch pointers are located & we also use the `--graph` option to see what divergent histories look like.
-* `-g` option to view the Git reflog through this tool instead of doing branch traversal.
-* `-S` and `-L` options to do fairly sophisticated searches for something that happened historically in the code such as seeing the history of a function.
-* `--show-signature` to add a validation string to each commit in the git log output based on if it was validly signed or not.
-
-### stash <a name="stash"></a>
-
----
-
-* `git stash` - this command is used to temporarily store uncommitted work in order to clean out your working directory without having to commit unfinished work on a branch.
-
-### tag <a name="tag"></a>
-
----
-
-* `git tag` - this command is used to give a permanent bookmark to a specific point in the code history. Generally this is used for things like releases.
-* `-s` flag to create a GPG signed tag & verify one with the `-v` flag.
+* ![merge](./_asset/img/31.png)
 
 ## EX <a name="example"></a>
 
 ---
 
-* `create branch from existing` <a name="create-branch-from-existing"></a>
+* `create from existing` <a name="create-from-existing"></a>
 
     1. Create new branch based on existing one. (will be only local for now.)
 

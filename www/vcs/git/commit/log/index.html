@@ -17,7 +17,7 @@
   <![endif]-->
 </head>
 <body>
-<header id="title-block-header">
+<header>
 <h1 class="title">version-control.git.commit.log</h1>
 </header>
 <ul>
@@ -26,6 +26,20 @@
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
 <ul>
+<li><code>git log</code> - this command is used to show the reachable recorded history of a project from the most recent commit snapshot backwards. By default it will only show the history of the branch you’re currently on, but can be given different or even multiple heads or branches from which to traverse. It is also often used to show differences between two or more branches at the commit level.</li>
+<li><code>-p</code> and <code>--stat</code> - these flags help you to get an idea of what was introduced in each commit &amp; the <code>--pretty</code> and <code>--oneline</code> options to view the history more concisely, along with some simple date and author filtering options.</li>
+<li><p><code>--decorate</code> option to easily visualize where our branch pointers are located &amp; we also use the <code>--graph</code> option to see what divergent histories look like.</p>
+<ul>
+<li><figure>
+<img src="./_asset/img/14.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/15.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure></li>
+</ul></li>
+<li><code>-g</code> option to view the Git reflog through this tool instead of doing branch traversal.</li>
+<li><code>-S</code> and <code>-L</code> options to do fairly sophisticated searches for something that happened historically in the code such as seeing the history of a function.</li>
+<li><p><code>--show-signature</code> to add a validation string to each commit in the git log output based on if it was validly signed or not.</p></li>
 <li><figure>
 <img src="./_asset/img/01.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure></li>

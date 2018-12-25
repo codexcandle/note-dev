@@ -12,7 +12,11 @@
 
 ---
 
-![Overview](./_asset/img/00.png)
+* `stream of snapshots`
+
+    ![Overview](./_asset/img/00.png)
+
+    ![Overview](./_asset/img/04.png)
 
 * `pros`
 
@@ -26,5 +30,11 @@
     ![Overview](./_asset/img/02.png)
 
     ![Overview](./_asset/img/03.png)
+
+* `blobs`
+
+    ![Overview](./_asset/img/05.png)
+
+    ![Overview](./_asset/img/06.png)
 
 * [more @ git-book](https://git-scm.com/book/en/v2)

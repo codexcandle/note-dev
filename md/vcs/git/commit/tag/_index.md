@@ -1,10 +1,18 @@
+* [overview](#overview)
 * [list](#list)
 * [create](#create)
 * [git show](#git-show)
 * [tag later](#tag-later)
-* [push](#push)
+* [push (tag)](#push)
 * [delete](#delete)
 * [checkout (specific)](#checkout-specific)
+
+## Overview <a name="overview"></a>
+
+---
+
+* `git tag` - this command is used to give a permanent bookmark to a specific point in the code history. Generally this is used for things like releases.
+* `-s` flag to create a GPG signed tag & verify one with the `-v` flag.
 
 ## List <a name="list"></a>
 
@@ -38,7 +46,7 @@
 
 * ![tag later](./_asset/img/07.png)
 
-## Push (share) <a name="push"></a>
+## Push (tag) <a name="push"></a>
 
 ---
 
