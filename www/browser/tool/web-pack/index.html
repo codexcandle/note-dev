@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>browser.tool.web-pack</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">browser.tool.web-pack</h1>
+</header>
+<ul>
+<li><a href="../lang/js">overview</a></li>
+<li><a href="#setup">setup</a></li>
+<li><a href="#babel">babel</a></li>
+<li><a href="#dev-server">dev-server</a></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li><p><code>module bundler</code></p>
+<figure>
+<img src="_asset/img/01.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h2 id="setup">Setup <a name="setup"></a></h2>
+<hr />
+<ol type="1">
+<li><p><code>init repo</code></p>
+<pre class="txt"><code>// confirm node-js is installed
+npm -v
+
+// init repo
+npm init</code></pre>
+<p>This creates <code>package.json</code>:</p>
+<figure>
+<img src="_asset/img/02.png" alt="setup" /><figcaption>setup</figcaption>
+</figure></li>
+<li><p><code>install web-pack</code></p>
+<pre class="txt"><code>// assuming v3.10.0 is latest
+npm install webpack@3.10.0 --save</code></pre>
+<figure>
+<img src="_asset/img/03.png" alt="setup" /><figcaption>setup</figcaption>
+</figure></li>
+<li><p>create <code>public/index.html</code> &amp; <code>src/app.js</code></p>
+<figure>
+<img src="_asset/img/04.png" alt="setup" /><figcaption>setup</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/05.png" alt="setup" /><figcaption>setup</figcaption>
+</figure></li>
+<li><p>create <code>webpack.config.js</code></p>
+<figure>
+<img src="_asset/img/16.png" alt="setup" /><figcaption>setup</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/35.png" alt="setup" /><figcaption>setup</figcaption>
+</figure></li>
+<li><p>add <code>webpack script</code></p>
+<figure>
+<img src="_asset/img/18.png" alt="setup" /><figcaption>setup</figcaption>
+</figure></li>
+<li><p>update <code>index.html</code></p>
+<figure>
+<img src="_asset/img/28.png" alt="setup" /><figcaption>setup</figcaption>
+</figure></li>
+<li><p>create <code>modules</code> (&amp; import)</p>
+<figure>
+<img src="_asset/img/31.png" alt="setup" /><figcaption>setup</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/32.png" alt="setup" /><figcaption>setup</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/33.png" alt="setup" /><figcaption>setup</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/56.png" alt="setup" /><figcaption>setup</figcaption>
+</figure></li>
+<li><p>run <code>webpack</code></p>
+<pre class="txt"><code>// assuming v3.10.0 is latest
+npm run webpack
+
+// ..or just?
+webpack
+
+// ..or just?
+webpack --watch</code></pre>
+<p>Notice how it created <code>bundle.js</code></p>
+<figure>
+<img src="_asset/img/22.png" alt="setup" /><figcaption>setup</figcaption>
+</figure></li>
+<li><p><code>confirm</code></p>
+<figure>
+<img src="_asset/img/66.png" alt="setup" /><figcaption>setup</figcaption>
+</figure></li>
+</ol>
+<h2 id="babel">Babel <a name="babel"></a></h2>
+<hr />
+<figure>
+<img src="_asset/img/57.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<ul>
+<li><p><code>loaders</code></p>
+<figure>
+<img src="_asset/img/54.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/55.png" alt="babel" /><figcaption>babel</figcaption>
+</figure></li>
+</ul>
+<ol type="1">
+<li><p>install <code>babel</code></p>
+<figure>
+<img src="_asset/img/39.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/58.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/59.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/41.png" alt="babel" /><figcaption>babel</figcaption>
+</figure></li>
+<li><p>update <code>config</code></p>
+<figure>
+<img src="_asset/img/60.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/44.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/61.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/62.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/63.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/64.png" alt="babel" /><figcaption>babel</figcaption>
+</figure></li>
+</ol>
+<h2 id="dev-server">Dev-server <a name="dev-server"></a></h2>
+<hr />
+<ul>
+<li><figure>
+<img src="_asset/img/49.png" alt="dev-server" /><figcaption>dev-server</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/50.png" alt="dev-server" /><figcaption>dev-server</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/51.png" alt="dev-server" /><figcaption>dev-server</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/52.png" alt="dev-server" /><figcaption>dev-server</figcaption>
+</figure></li>
+</ul>
+</body>
+</html>

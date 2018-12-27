@@ -1,3 +1,0 @@
-{
-"pandoc.htmlOptString": "-s -o ../../../../www/vcs/git/branch-merge/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='version-control.git.branch-merge'"
-}
