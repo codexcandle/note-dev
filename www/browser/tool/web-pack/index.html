@@ -22,8 +22,7 @@
 </header>
 <ul>
 <li><a href="../lang/js">overview</a></li>
-<li><a href="#setup">setup</a></li>
-<li><a href="#babel">babel</a></li>
+<li><a href="#setup">setup (with babel)</a></li>
 <li><a href="#dev-server">dev-server</a></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
@@ -33,6 +32,7 @@
 <figure>
 <img src="_asset/img/01.png" alt="overview" /><figcaption>overview</figcaption>
 </figure></li>
+<li><p><a href="https://webpack.js.org/">more @ webpack</a></p></li>
 </ul>
 <h2 id="setup">Setup <a name="setup"></a></h2>
 <hr />
@@ -47,25 +47,55 @@ npm init</code></pre>
 <figure>
 <img src="_asset/img/02.png" alt="setup" /><figcaption>setup</figcaption>
 </figure></li>
-<li><p><code>install web-pack</code></p>
-<pre class="txt"><code>// assuming v3.10.0 is latest
+<li><p><code>install web-pack</code> + <code>babel</code></p>
+<pre class="txt"><code>npm install -D babel-loader @babel/core @babel/preset-env webpack
+
+// ... old way below?
 npm install webpack@3.10.0 --save</code></pre>
 <figure>
 <img src="_asset/img/03.png" alt="setup" /><figcaption>setup</figcaption>
+</figure>
+<p><code>loaders</code></p>
+<figure>
+<img src="_asset/img/57.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/54.png" alt="babel" /><figcaption>babel</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/55.png" alt="babel" /><figcaption>babel</figcaption>
 </figure></li>
+<li><p>create <code>webpack.config.js</code></p>
+<figure>
+<img src="_asset/img/35.png" alt="setup" /><figcaption>setup</figcaption>
+</figure>
+<pre class="txt"><code>module.exports = {
+    entry: &#39;./src/app.js&#39;,
+    output: {
+        path: __dirname + &#39;/public&#39;,
+        filename: &#39;bundle.js&#39;
+    },
+    module: {
+        rules: [
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: &#39;babel-loader&#39;,
+                    options: {
+                        presets: [&#39;@babel/preset-env&#39;]
+                    }
+                }
+            }
+        ]
+    }
+};</code></pre></li>
 <li><p>create <code>public/index.html</code> &amp; <code>src/app.js</code></p>
 <figure>
 <img src="_asset/img/04.png" alt="setup" /><figcaption>setup</figcaption>
 </figure>
 <figure>
 <img src="_asset/img/05.png" alt="setup" /><figcaption>setup</figcaption>
-</figure></li>
-<li><p>create <code>webpack.config.js</code></p>
-<figure>
-<img src="_asset/img/16.png" alt="setup" /><figcaption>setup</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/35.png" alt="setup" /><figcaption>setup</figcaption>
 </figure></li>
 <li><p>add <code>webpack script</code></p>
 <figure>
@@ -78,9 +108,6 @@ npm install webpack@3.10.0 --save</code></pre>
 <li><p>create <code>modules</code> (&amp; import)</p>
 <figure>
 <img src="_asset/img/31.png" alt="setup" /><figcaption>setup</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/32.png" alt="setup" /><figcaption>setup</figcaption>
 </figure>
 <figure>
 <img src="_asset/img/33.png" alt="setup" /><figcaption>setup</figcaption>
@@ -104,54 +131,6 @@ webpack --watch</code></pre>
 <li><p><code>confirm</code></p>
 <figure>
 <img src="_asset/img/66.png" alt="setup" /><figcaption>setup</figcaption>
-</figure></li>
-</ol>
-<h2 id="babel">Babel <a name="babel"></a></h2>
-<hr />
-<figure>
-<img src="_asset/img/57.png" alt="babel" /><figcaption>babel</figcaption>
-</figure>
-<ul>
-<li><p><code>loaders</code></p>
-<figure>
-<img src="_asset/img/54.png" alt="babel" /><figcaption>babel</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/55.png" alt="babel" /><figcaption>babel</figcaption>
-</figure></li>
-</ul>
-<ol type="1">
-<li><p>install <code>babel</code></p>
-<figure>
-<img src="_asset/img/39.png" alt="babel" /><figcaption>babel</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/58.png" alt="babel" /><figcaption>babel</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/59.png" alt="babel" /><figcaption>babel</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/41.png" alt="babel" /><figcaption>babel</figcaption>
-</figure></li>
-<li><p>update <code>config</code></p>
-<figure>
-<img src="_asset/img/60.png" alt="babel" /><figcaption>babel</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/44.png" alt="babel" /><figcaption>babel</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/61.png" alt="babel" /><figcaption>babel</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/62.png" alt="babel" /><figcaption>babel</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/63.png" alt="babel" /><figcaption>babel</figcaption>
-</figure>
-<figure>
-<img src="_asset/img/64.png" alt="babel" /><figcaption>babel</figcaption>
 </figure></li>
 </ol>
 <h2 id="dev-server">Dev-server <a name="dev-server"></a></h2>
