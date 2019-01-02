@@ -17,7 +17,7 @@
   <![endif]-->
 </head>
 <body>
-<header id="title-block-header">
+<header>
 <h1 class="title">version-control.git.undo</h1>
 </header>
 <ul>
@@ -55,6 +55,11 @@ git reset HEAD CONTRIBUTING.md</code></pre>
 <figure>
 <img src="./_asset/img/04.png" alt="Undo Staged" /><figcaption>Undo Staged</figcaption>
 </figure></li>
+<li><p>unstage ALL:</p>
+<pre class="txt"><code>git reset</code></pre>
+<p>-&amp; to RESET ALL MODIFIED (dangerous!):</p>
+<pre class="txt"><code>git reset --hard</code></pre>
+<p>(NOTE: This will not only unstage your added files, but will revert any changes you made in your working directory. If you created any new files in working directory, it’ll not delete them, however.)</p></li>
 </ol>
 <h2 id="commit">Commit <a name="commit"></a></h2>
 <hr />

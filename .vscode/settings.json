@@ -1,3 +1,3 @@
 {
-"pandoc.htmlOptString": "-s -o ../../../../www/browser/tool/web-pack/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='browser.tool.web-pack'"
+"pandoc.htmlOptString": "-s -o ../../../../www/vcs/git/undo/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='version-control.git.undo'"
 }
