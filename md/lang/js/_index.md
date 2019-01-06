@@ -1,18 +1,13 @@
 * [overview](#overview)
-
----
-
 * dom
 	* html
-		* [innerHTML](#inner-html)
+		* [inner-html](#inner-html)
 	* [select](./dom/select)
 	* [alter](./dom/alter)
 	* [event](#event)
 * [set-timeout](#set-timeout)
 * [alert](#alert)
-
----
-
+* [console](./console)
 * serialize
 	* [fetch](./serialize/fetch)
 
@@ -76,7 +71,7 @@
 
 ![setTimeout](_asset/img/00.png)
 
-## alert <a name="alert"></a>
+## Alert <a name="alert"></a>
 
 ---
 

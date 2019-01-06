@@ -1,0 +1,3 @@
+{
+"pandoc.htmlOptString": "-s -o ../../www/ide/index.html -t html5 --css=../../_asset/css/style.css --metadata title='ide'"
+}
