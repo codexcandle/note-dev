@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>g-engine.unity.shader.data-types</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">g-engine.unity.shader.data-types</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#basic">basic</a></li>
+<li><a href="#texture">texture</a></li>
+<li><a href="#array">array</a>
+<ul>
+<li><a href="#rgba-xyza">rgba | xyza</a></li>
+<li><a href="#swizzle">swizzle</a></li>
+<li><a href="#smear">smear</a></li>
+<li><a href="#mask">mask</a></li>
+</ul></li>
+<li><a href="#example">example</a></li>
+</ul>
+<h2 id="basic">Basic <a name="basic"></a></h2>
+<hr />
+<ul>
+<li><p><code>float</code> | <code>half</code> | <code>fixed</code> | <code>int</code></p>
+<figure>
+<img src="_asset/img/01.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+</ul>
+<h2 id="texture">Texture <a name="texture"></a></h2>
+<hr />
+<ul>
+<li><p><code>sampler2D</code> | <code>samplerCUBE</code></p>
+<figure>
+<img src="_asset/img/02.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/03.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+</ul>
+<h2 id="array">Array <a name="array"></a></h2>
+<hr />
+<ul>
+<li><p>basic</p>
+<figure>
+<img src="_asset/img/07.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/05.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/06.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+</ul>
+<h3 id="rgba-v-xyza">RGBA v XYZA <a name="rgba-xyza"></a></h3>
+<hr />
+<ul>
+<li><figure>
+<img src="_asset/img/10.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/11.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/13.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/14.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+</ul>
+<h3 id="swizzle">swizzle <a name="swizzle"></a></h3>
+<hr />
+<ul>
+<li><img src="_asset/img/16.png" title="fig:" alt="Overivew" /></li>
+</ul>
+<h3 id="smear">smear <a name="smear"></a></h3>
+<hr />
+<ul>
+<li><img src="_asset/img/18.png" title="fig:" alt="smear" /></li>
+</ul>
+<h3 id="mask">mask <a name="mask"></a></h3>
+<hr />
+<ul>
+<li><img src="_asset/img/19.png" title="fig:" alt="mask" /></li>
+</ul>
+<h2 id="matrix">Matrix <a name="matrix"></a></h2>
+<hr />
+<ul>
+<li><p><code>_mrc</code> access notation</p>
+<figure>
+<img src="_asset/img/22.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/23.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+<li><p><code>chaining</code></p>
+<figure>
+<img src="_asset/img/26.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/27.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+</ul>
+<h2 id="ex">EX <a name="example"></a></h2>
+<hr />
+<ul>
+<li><figure>
+<img src="_asset/img/30.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/29.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/32.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/33.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/34.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/35.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/36.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+</figure></li>
+</ul>
+</body>
+</html>
