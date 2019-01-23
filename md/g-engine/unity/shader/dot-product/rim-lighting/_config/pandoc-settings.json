@@ -1,0 +1,3 @@
+{
+"pandoc.htmlOptString": "-s -o ../../../../../../www/g-engine/unity/shader/dot-product/rim-lighting/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='g-engine.unity.shader.dot-product.rim-lighting'"
+}
