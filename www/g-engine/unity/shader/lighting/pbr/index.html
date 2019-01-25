@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>g-engine.unity.shader.lighting.pbr</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">g-engine.unity.shader.lighting.pbr</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#example">example</a></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li><figure>
+<img src="_asset/img/01.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/02.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/03.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/04.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/05.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/06.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/07.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/08.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/09.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/10.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/11.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/12.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/13.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/14.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/15.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/16.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/17.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/18.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/19.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/20.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/21.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/22.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/23.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/24.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/25.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/26.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/27.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h2 id="ex">EX <a name="example"></a></h2>
+<hr />
+<ul>
+<li><p>#1 - <code>standard pbr</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1">Shader <span class="st">&quot;Holistic/StandardPBR&quot;</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">    Properties</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">    {</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">        <span class="fu">_Color</span>(<span class="st">&quot;Color&quot;</span>, Color) = (<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">        <span class="fu">_MetallicTex</span> (<span class="st">&quot;Metallic (R)&quot;</span>, 2D) = <span class="st">&quot;white&quot;</span> {}</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">        <span class="fu">_Metallic</span>(<span class="st">&quot;Metallic&quot;</span>, <span class="fu">Range</span>(<span class="fl">0.0</span>, <span class="fl">1.0</span>)) = <span class="fl">0.0</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">    }</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">    SubShader</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">    {</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">        Tags</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">        {</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">            <span class="st">&quot;Queue&quot;</span> = <span class="st">&quot;Geometry&quot;</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">        }</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">        CGPROGRAM</a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">        #pragma surface surf Standard</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">        sampler2D _MetallicTex;</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20">        half _Metallic;</a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">        fixed4 _Color;</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">        <span class="kw">struct</span> Input</a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">        {</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">            float2 uv_MetallicTex;</a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">        };</a>
+<a class="sourceLine" id="cb1-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb1-28" data-line-number="28">        <span class="dt">void</span> <span class="fu">surf</span>(Input IN, inout SurfaceOutputStandard o)</a>
+<a class="sourceLine" id="cb1-29" data-line-number="29">        {</a>
+<a class="sourceLine" id="cb1-30" data-line-number="30">            o.<span class="fu">Albedo</span> = _Color.<span class="fu">rgb</span>;</a>
+<a class="sourceLine" id="cb1-31" data-line-number="31">            o.<span class="fu">Smoothness</span> = <span class="fu">tex2D</span> (_MetallicTex, IN.<span class="fu">uv_MetallicTex</span>).<span class="fu">r</span>;</a>
+<a class="sourceLine" id="cb1-32" data-line-number="32">            o.<span class="fu">Metallic</span> = _Metallic;</a>
+<a class="sourceLine" id="cb1-33" data-line-number="33">        }</a>
+<a class="sourceLine" id="cb1-34" data-line-number="34">        ENDCG</a>
+<a class="sourceLine" id="cb1-35" data-line-number="35">    }</a>
+<a class="sourceLine" id="cb1-36" data-line-number="36">    FallBack <span class="st">&quot;Diffuse&quot;</span></a>
+<a class="sourceLine" id="cb1-37" data-line-number="37">}</a></code></pre></div></li>
+<li><p>#2 - <code>standard-spec pbr</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1">Shader <span class="st">&quot;Holistic/StandardSpecPBR&quot;</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    Properties</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">    {</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">        <span class="fu">_Color</span>(<span class="st">&quot;Color&quot;</span>, Color) = (<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">        <span class="fu">_MetallicTex</span> (<span class="st">&quot;Metallic (R)&quot;</span>, 2D) = <span class="st">&quot;white&quot;</span> {}</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">        <span class="fu">_SpecColor</span>(<span class="st">&quot;Specular&quot;</span>, Color) = (<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    }</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">    SubShader</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">    {</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">        Tags</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">        {</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">            <span class="st">&quot;Queue&quot;</span> = <span class="st">&quot;Geometry&quot;</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">        }</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16">        CGPROGRAM</a>
+<a class="sourceLine" id="cb2-17" data-line-number="17">        #pragma surface surf StandardSpecular</a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19">        sampler2D _MetallicTex;</a>
+<a class="sourceLine" id="cb2-20" data-line-number="20">        fixed4 _Color;</a>
+<a class="sourceLine" id="cb2-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb2-22" data-line-number="22">        <span class="kw">struct</span> Input</a>
+<a class="sourceLine" id="cb2-23" data-line-number="23">        {</a>
+<a class="sourceLine" id="cb2-24" data-line-number="24">            float2 uv_MetallicTex;</a>
+<a class="sourceLine" id="cb2-25" data-line-number="25">        };</a>
+<a class="sourceLine" id="cb2-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb2-27" data-line-number="27">        <span class="dt">void</span> <span class="fu">surf</span>(Input IN, inout SurfaceOutputStandardSpecular o)</a>
+<a class="sourceLine" id="cb2-28" data-line-number="28">        {</a>
+<a class="sourceLine" id="cb2-29" data-line-number="29">            o.<span class="fu">Albedo</span> = _Color.<span class="fu">rgb</span>;</a>
+<a class="sourceLine" id="cb2-30" data-line-number="30">            o.<span class="fu">Smoothness</span> = <span class="fu">tex2D</span> (_MetallicTex, IN.<span class="fu">uv_MetallicTex</span>).<span class="fu">r</span>;</a>
+<a class="sourceLine" id="cb2-31" data-line-number="31">            o.<span class="fu">Specular</span> = _SpecColor.<span class="fu">rgb</span>;</a>
+<a class="sourceLine" id="cb2-32" data-line-number="32">        }</a>
+<a class="sourceLine" id="cb2-33" data-line-number="33">        ENDCG</a>
+<a class="sourceLine" id="cb2-34" data-line-number="34">    }</a>
+<a class="sourceLine" id="cb2-35" data-line-number="35">    FallBack <span class="st">&quot;Diffuse&quot;</span></a>
+<a class="sourceLine" id="cb2-36" data-line-number="36">}</a></code></pre></div></li>
+<li><p>#3 - <code>standard pbr with emissive slider</code></p>
+<figure>
+<img src="_asset/img/28.png" alt="example" /><figcaption>example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/29.png" alt="example" /><figcaption>example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/30.png" alt="example" /><figcaption>example</figcaption>
+</figure>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1">Shader <span class="st">&quot;Holistic/ChallengePBR1&quot;</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">    Properties</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">    {</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">        <span class="fu">_Color</span>(<span class="st">&quot;Color&quot;</span>, Color) = (<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">        <span class="fu">_MetallicTex</span> (<span class="st">&quot;Metallic (R)&quot;</span>, 2D) = <span class="st">&quot;white&quot;</span> {}</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">        <span class="fu">_Metallic</span>(<span class="st">&quot;Metallic&quot;</span>, <span class="fu">Range</span>(<span class="fl">0.0</span>, <span class="fl">1.0</span>)) = <span class="fl">0.0</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">        <span class="fu">_Emiss</span>(<span class="st">&quot;Emission&quot;</span>, <span class="fu">Range</span>(<span class="fl">0.0</span>, <span class="fl">10.0</span>)) = <span class="fl">1.0</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">    }</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">    SubShader</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">    {</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">        Tags</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">        {</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">            <span class="st">&quot;Queue&quot;</span> = <span class="st">&quot;Geometry&quot;</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">        }</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">        CGPROGRAM</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">        #pragma surface surf Standard</a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">        sampler2D _MetallicTex;</a>
+<a class="sourceLine" id="cb3-21" data-line-number="21">        half _Metallic;</a>
+<a class="sourceLine" id="cb3-22" data-line-number="22">        half _Emiss;</a>
+<a class="sourceLine" id="cb3-23" data-line-number="23">        fixed4 _Color;</a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25">        <span class="kw">struct</span> Input</a>
+<a class="sourceLine" id="cb3-26" data-line-number="26">        {</a>
+<a class="sourceLine" id="cb3-27" data-line-number="27">            float2 uv_MetallicTex;</a>
+<a class="sourceLine" id="cb3-28" data-line-number="28">        };</a>
+<a class="sourceLine" id="cb3-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb3-30" data-line-number="30">        <span class="dt">void</span> <span class="fu">surf</span>(Input IN, inout SurfaceOutputStandard o)</a>
+<a class="sourceLine" id="cb3-31" data-line-number="31">        {</a>
+<a class="sourceLine" id="cb3-32" data-line-number="32">            o.<span class="fu">Albedo</span> = _Color.<span class="fu">rgb</span>;</a>
+<a class="sourceLine" id="cb3-33" data-line-number="33">            o.<span class="fu">Smoothness</span> = <span class="fu">tex2D</span> (_MetallicTex, IN.<span class="fu">uv_MetallicTex</span>).<span class="fu">r</span>;</a>
+<a class="sourceLine" id="cb3-34" data-line-number="34">            o.<span class="fu">Metallic</span> = _Metallic;</a>
+<a class="sourceLine" id="cb3-35" data-line-number="35">            o.<span class="fu">Emission</span> = <span class="fu">tex2D</span> (_MetallicTex, IN.<span class="fu">uv_MetallicTex</span>).<span class="fu">r</span> * _Emiss;</a>
+<a class="sourceLine" id="cb3-36" data-line-number="36">        }</a>
+<a class="sourceLine" id="cb3-37" data-line-number="37">        ENDCG</a>
+<a class="sourceLine" id="cb3-38" data-line-number="38">    }</a>
+<a class="sourceLine" id="cb3-39" data-line-number="39">    FallBack <span class="st">&quot;Diffuse&quot;</span></a>
+<a class="sourceLine" id="cb3-40" data-line-number="40">}</a></code></pre></div></li>
+<li><p>#4 - <code>standard specular pbr with reverse glossiness</code></p>
+<figure>
+<img src="_asset/img/31.png" alt="example" /><figcaption>example</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/32.png" alt="example" /><figcaption>example</figcaption>
+</figure>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1">Shader <span class="st">&quot;Holistic/ChallengePBR2&quot;</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">    Properties</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">    {</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">        <span class="fu">_Color</span>(<span class="st">&quot;Color&quot;</span>, Color) = (<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">        <span class="fu">_MetallicTex</span> (<span class="st">&quot;Metallic (R)&quot;</span>, 2D) = <span class="st">&quot;white&quot;</span> {}</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">        <span class="fu">_SpecColor</span>(<span class="st">&quot;Specular&quot;</span>, Color) = (<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">    }</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">    SubShader</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">    {</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">        Tags</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">        {</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">            <span class="st">&quot;Queue&quot;</span> = <span class="st">&quot;Geometry&quot;</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">        }</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">        CGPROGRAM</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">        #pragma surface surf StandardSpecular</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">        sampler2D _MetallicTex;</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">        fixed4 _Color;</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22">        <span class="kw">struct</span> Input</a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">        {</a>
+<a class="sourceLine" id="cb4-24" data-line-number="24">            float2 uv_MetallicTex;</a>
+<a class="sourceLine" id="cb4-25" data-line-number="25">        };</a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27">        <span class="dt">void</span> <span class="fu">surf</span>(Input IN, inout SurfaceOutputStandardSpecular o)</a>
+<a class="sourceLine" id="cb4-28" data-line-number="28">        {</a>
+<a class="sourceLine" id="cb4-29" data-line-number="29">            o.<span class="fu">Albedo</span> = _Color.<span class="fu">rgb</span>;</a>
+<a class="sourceLine" id="cb4-30" data-line-number="30">            o.<span class="fu">Smoothness</span> = <span class="fl">0.9</span>-<span class="fu">tex2D</span> (_MetallicTex, IN.<span class="fu">uv_MetallicTex</span>).<span class="fu">r</span>;</a>
+<a class="sourceLine" id="cb4-31" data-line-number="31">            o.<span class="fu">Specular</span> = _SpecColor.<span class="fu">rgb</span>;</a>
+<a class="sourceLine" id="cb4-32" data-line-number="32">        }</a>
+<a class="sourceLine" id="cb4-33" data-line-number="33">        ENDCG</a>
+<a class="sourceLine" id="cb4-34" data-line-number="34">    }</a>
+<a class="sourceLine" id="cb4-35" data-line-number="35">    FallBack <span class="st">&quot;Diffuse&quot;</span></a>
+<a class="sourceLine" id="cb4-36" data-line-number="36">}</a></code></pre></div></li>
+</ul>
+</body>
+</html>
