@@ -2,6 +2,7 @@
 	* [procedural](./theory/procedural)
 	* [psycho-accoustic](./theory/psycho)
 	* [spatial](./theory/spatial)
+	* [chord](./theory/chord)
 
 ---
 
