@@ -22,6 +22,7 @@
         * [custom](./lighting/custom)
     * passes + blends
         * [alpha-channel](./pass+blend/alpha-channel)
+        * [hologram](./pass+blend/hologram)
 
 ## Overview <a name="overview"></a>
 
