@@ -20,6 +20,8 @@
         * [blinn-phong](./lighting/blinn-phong)
         * [pbr](./lighting/pbr)
         * [custom](./lighting/custom)
+    * passes + blends
+        * [alpha-channel](./pass+blend/alpha-channel)
 
 ## Overview <a name="overview"></a>
 
