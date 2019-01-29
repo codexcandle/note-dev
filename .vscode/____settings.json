@@ -1,0 +1,3 @@
+{
+"pandoc.htmlOptString": "-s -o ../../../../../www/audio/theory/chord/major/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='audio.theory.chord.major'"
+}

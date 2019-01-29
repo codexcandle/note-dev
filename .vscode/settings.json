@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
 "pandoc.htmlOptString": "-s -o ../../../../../../www/g-engine/unity/shader/pass+blend/alpha-channel/index.html -t html5 --css=../../../../../_asset/css/style.css --metadata title='g-engine.unity.shader.pass+blend.alpha-channel'"
+=======
+"pandoc.htmlOptString": "-s -o ../../../../www/audio/engine/unity/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='audio.engine.unity'"
+>>>>>>> 032bd6602f045b958b2af29008575b4fa9906196
 }
