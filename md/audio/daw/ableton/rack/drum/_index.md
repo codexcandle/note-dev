@@ -13,6 +13,7 @@
 	* [random pan](#random-pan)
 	* [random sample](#random-sample)
 * [dubspot-rack](./dubspot)
+* [full-volume pads](#full-volume-pads)
 
 ## Overview <a name="overview"></a>
 
@@ -195,6 +196,17 @@
 	![FX](_asset/img/29.png)
 
 	![FX](_asset/img/30.png)
+
+## Full-Volume Pads <a name="full-volume-pads"></a>
+
+---
+
+* `tired of having to hit hard on the midi pads to enter a note?`
+
+	To fix:
+
+	1. drop a `midi velocity` plugin on your drum rack.
+	2. turn it's `minimum velocity` to `127` (max).
 
 ###### REF
 
