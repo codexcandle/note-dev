@@ -70,7 +70,7 @@
         }
         SubShader
         {
-            Tags
+            Tagsgit a
             {
                 "Queue" = "Transparent"
             }

@@ -23,6 +23,10 @@
     * passes + blends
         * [alpha-channel](./pass+blend/alpha-channel)
         * [hologram](./pass+blend/hologram)
+        * [blending](./pass+blend/blend)
+        * [culling](./pass+blend/cull)
+        * [multi-blend](./pass+blend/blend-multi)
+        * [stencil buffer](./pass+blend/stencil-buffer)
 
 ## Overview <a name="overview"></a>
 
