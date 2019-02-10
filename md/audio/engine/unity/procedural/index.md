@@ -10,6 +10,7 @@
 	* [noisy lo-fi](#noisy-lofi)
 	* [sine @ 440hz](#sine@440)
 	* [fire](#fire)
+	* [fm-synth](#fm-synth)
 * 3rd-party
 	* [usfxr](https://github.com/zeh/usfxr)
 
@@ -317,9 +318,54 @@
 
 	![Example](./_asset/img/27.png)
 
+* `fm-synth` <a name="fm-synth"></a>
+
+	```c#
+	using UnityEngine;
+
+	public class FMsynth:MonoBehaviour
+	{
+		[Range(50, 1000)]
+		public float frequency1;
+		[Range(0, 1)]
+		public float amplitude1;
+
+		[Range(0, 30)]
+		public float frequency2;
+		[Range(0, .1f)]
+		public float amplitude2;
+
+		int timeIndex = 0;
+
+		void OnAudioFilterRead(float[] data, int channels)
+		{
+			for (int i = 0; i < data.Length; i += channels)
+			{
+				float FMfreq = frequency1 * CreateSine(timeIndex, frequency2, 44100, amplitude2);
+				data[i] = CreateSine(timeIndex, FMfreq, 44100, amplitude1);
+
+				if (channels == 2)
+					data[i + 1] = data[i];
+
+				timeIndex++;
+			}
+		}
+
+		//Creates a sinewave
+		public float CreateSine(int timeIndex, float frequency, float sampleRate, float amplitude)
+		{
+			return Mathf.Sin(2 * Mathf.PI * timeIndex * frequency / sampleRate) * amplitude;
+		}
+	}
+	```
+
 ###### REF
 
 ---
+
+* `async-audio`
+
+	[How to Build an FM synth in Unity](https://www.asyncaudio.com/unityaudiotutorials/2019/2/5/how-to-build-an-fm-synth-in-unity)
 
 * `gamasutra`
 

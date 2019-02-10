@@ -97,6 +97,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="#noisy-lofi">noisy lo-fi</a></li>
 <li><a href="#sine@440">sine @ 440hz</a></li>
 <li><a href="#fire">fire</a></li>
+<li><a href="#fm-synth">fm-synth</a></li>
 </ul></li>
 <li>3rd-party
 <ul>
@@ -395,10 +396,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <figure>
 <img src="./_asset/img/27.png" alt="Example" /><figcaption>Example</figcaption>
 </figure></li>
+<li><p><code>fm-synth</code> <a name="fm-synth"></a></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">using</span> UnityEngine;</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">public</span> <span class="kw">class</span> FMsynth:MonoBehaviour</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">{</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">    [<span class="fu">Range</span>(<span class="dv">50</span>, <span class="dv">1000</span>)]</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="kw">public</span> <span class="dt">float</span> frequency1;</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">    [<span class="fu">Range</span>(<span class="dv">0</span>, <span class="dv">1</span>)]</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">    <span class="kw">public</span> <span class="dt">float</span> amplitude1;</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">    [<span class="fu">Range</span>(<span class="dv">0</span>, <span class="dv">30</span>)]</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">    <span class="kw">public</span> <span class="dt">float</span> frequency2;</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">    [<span class="fu">Range</span>(<span class="dv">0</span>, <span class="fl">.1f</span>)]</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">    <span class="kw">public</span> <span class="dt">float</span> amplitude2;</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">    <span class="dt">int</span> timeIndex = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17">    <span class="dt">void</span> <span class="fu">OnAudioFilterRead</span>(<span class="dt">float</span>[] data, <span class="dt">int</span> channels)</a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">    {</a>
+<a class="sourceLine" id="cb5-19" data-line-number="19">        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; data.<span class="fu">Length</span>; i += channels)</a>
+<a class="sourceLine" id="cb5-20" data-line-number="20">        {</a>
+<a class="sourceLine" id="cb5-21" data-line-number="21">            <span class="dt">float</span> FMfreq = frequency1 * <span class="fu">CreateSine</span>(timeIndex, frequency2, <span class="dv">44100</span>, amplitude2);</a>
+<a class="sourceLine" id="cb5-22" data-line-number="22">            data[i] = <span class="fu">CreateSine</span>(timeIndex, FMfreq, <span class="dv">44100</span>, amplitude1);</a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24">            <span class="kw">if</span> (channels == <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb5-25" data-line-number="25">                data[i + <span class="dv">1</span>] = data[i];</a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb5-27" data-line-number="27">            timeIndex++;</a>
+<a class="sourceLine" id="cb5-28" data-line-number="28">        }</a>
+<a class="sourceLine" id="cb5-29" data-line-number="29">    }</a>
+<a class="sourceLine" id="cb5-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb5-31" data-line-number="31">    <span class="co">//Creates a sinewave</span></a>
+<a class="sourceLine" id="cb5-32" data-line-number="32">    <span class="kw">public</span> <span class="dt">float</span> <span class="fu">CreateSine</span>(<span class="dt">int</span> timeIndex, <span class="dt">float</span> frequency, <span class="dt">float</span> sampleRate, <span class="dt">float</span> amplitude)</a>
+<a class="sourceLine" id="cb5-33" data-line-number="33">    {</a>
+<a class="sourceLine" id="cb5-34" data-line-number="34">        <span class="kw">return</span> Mathf.<span class="fu">Sin</span>(<span class="dv">2</span> * Mathf.<span class="fu">PI</span> * timeIndex * frequency / sampleRate) * amplitude;</a>
+<a class="sourceLine" id="cb5-35" data-line-number="35">    }</a>
+<a class="sourceLine" id="cb5-36" data-line-number="36">}</a></code></pre></div></li>
 </ul>
 <h6 id="ref">REF</h6>
 <hr />
 <ul>
+<li><p><code>async-audio</code></p>
+<p><a href="https://www.asyncaudio.com/unityaudiotutorials/2019/2/5/how-to-build-an-fm-synth-in-unity">How to Build an FM synth in Unity</a></p></li>
 <li><p><code>gamasutra</code></p>
 <p><a href="https://www.gamasutra.com/blogs/JoeStrout/20170223/292317/Procedural_Audio_in_Unity.php">Procedural Audio In Unity</a></p></li>
 <li><p><code>mclimatiano</code></p>
