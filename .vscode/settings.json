@@ -1,7 +1,3 @@
 {
-// --------------------------------------- SHADER
-// ... render pipeline
-// "pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/shader/render-pipe/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.shader.render-pipeline'"
-
-"pandoc.htmlOptString": "-s -o ../../../../www/g-engine/unity/shader/vert-frag/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='g-engine.unity.shader.vertex-fragment'"
+"pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/shader/vert-frag/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.shader.vert-frag'"
 }
