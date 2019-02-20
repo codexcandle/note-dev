@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>g-engine.unity.event-order</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">g-engine.unity.event-order</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#init">init</a>
+<ul>
+<li><a href="#awake">awake</a></li>
+<li><a href="#on-enable">on-enable</a></li>
+<li><a href="#start">start</a></li>
+<li><a href="#awake-start">awake vs start</a></li>
+</ul></li>
+<li><a href="#physics">physics</a></li>
+<li><a href="#input">input</a></li>
+<li><a href="#game-logic">game logic</a>
+<ul>
+<li><a href="#update">update</a></li>
+<li><a href="#late-update">late update</a></li>
+<li><a href="#update-fixed">update vs fixed</a></li>
+</ul></li>
+<li><a href="#gizmo-render">gizmo render</a></li>
+<li><a href="#decommission">decommission</a></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li><figure>
+<img src="./_asset/img/00.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><p><a href="https://docs.unity3d.com/Manual/ExecutionOrder.html">more @ unity</a></p></li>
+</ul>
+<h2 id="init">Init <a name="init"></a></h2>
+<hr />
+<ul>
+<li><figure>
+<img src="./_asset/img/07.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/12.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h3 id="awake">awake <a name="awake"></a></h3>
+<ul>
+<li><figure>
+<img src="./_asset/img/13.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/14.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/09.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h3 id="on-enable">on enable <a name="on-enable"></a></h3>
+<ul>
+<li><img src="./_asset/img/15.png" title="fig:" alt="overview" /></li>
+</ul>
+<h3 id="start">start <a name="start"></a></h3>
+<ul>
+<li><figure>
+<img src="./_asset/img/01.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/18.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/08.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/20.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h3 id="awake-vs-start">awake vs start <a name="awake-start"></a></h3>
+<ul>
+<li><figure>
+<img src="./_asset/img/02.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/03.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/04.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/05.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/06.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/10.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/16.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/17.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/19.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+</ul>
+<h2 id="physics">Physics <a name="physics"></a></h2>
+<hr />
+<ul>
+<li><img src="./_asset/img/21.png" title="fig:" alt="overview" /></li>
+</ul>
+<h2 id="input">Input <a name="input"></a></h2>
+<hr />
+<ul>
+<li><img src="./_asset/img/22.png" title="fig:" alt="input" /></li>
+</ul>
+<h2 id="game-logic">Game Logic <a name="game-logic"></a></h2>
+<hr />
+<ul>
+<li><figure>
+<img src="./_asset/img/30.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/41.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/42.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure>
+<ul>
+<li><img src="./_asset/img/43.png" title="fig:" alt="game logic" /></li>
+</ul></li>
+</ul>
+<h3 id="update">update <a name="update"></a></h3>
+<ul>
+<li><figure>
+<img src="./_asset/img/24.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/37.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+</ul>
+<h3 id="late-update">late update <a name="late-update"></a></h3>
+<ul>
+<li><figure>
+<img src="./_asset/img/27.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/36.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/33.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+</ul>
+<h3 id="update-vs-fixed-update">update vs fixed update <a name="update-fixed"></a></h3>
+<ul>
+<li><figure>
+<img src="./_asset/img/25.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/26.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/28.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/29.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/35.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/31.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/32.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/34.png" alt="game logic" /><figcaption>game logic</figcaption>
+</figure></li>
+</ul>
+<h2 id="gizmo-render">Gizmo Render <a name="gizmo-render"></a></h2>
+<hr />
+<ul>
+<li><figure>
+<img src="./_asset/img/38.png" alt="gizmo render" /><figcaption>gizmo render</figcaption>
+</figure></li>
+<li><figure>
+<img src="./_asset/img/39.png" alt="gizmo render" /><figcaption>gizmo render</figcaption>
+</figure></li>
+</ul>
+<h2 id="decommission">Decommission <a name="decommission"></a></h2>
+<hr />
+<ul>
+<li><img src="./_asset/img/40.png" title="fig:" alt="decommission" /></li>
+</ul>
+</body>
+</html>

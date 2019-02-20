@@ -5,6 +5,7 @@
 
 * [c#](../../lang/csharp)
 * [optimize](./optimize)
+* [event order](./event-order)
 
 ---
 
