@@ -27,7 +27,12 @@
         * [culling](./pass+blend/cull)
         * [multi-blend](./pass+blend/blend-multi)
         * [stencil buffer](./pass+blend/stencil-buffer)
-* [vertex + fragment](./vert-frag)
+* vertex + fragment
+    * [structure](./vert-frag/structure)
+    * [color](./vert-frag/color)
+    * [material](./vert-frag/material)
+    * [lighting](./vert-frag/lighting)
+    * [shadow](./vert-frag/shadow)
 
 ## Overview <a name="overview"></a>
 
