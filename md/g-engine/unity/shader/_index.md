@@ -33,6 +33,13 @@
     * [material](./vert-frag/material)
     * [lighting](./vert-frag/lighting)
     * [shadow](./vert-frag/shadow)
+    * fx
+        * [extrude](./vert-frag/fx/extrude)
+        * [outline](./vert-frag/fx/outline)
+        * [glass](./vert-frag/fx/glass)
+        * [waves](./vert-frag/fx/waves)
+        * [scrolling](./vert-frag/fx/scrolling)
+        * [plasma](./vert-frag/fx/plasma)
 
 ## Overview <a name="overview"></a>
 
