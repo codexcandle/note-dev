@@ -1,30 +1,40 @@
 * [overview](#overview)
-* [fx](./fx)
 * [render pipeline](./render-pipe)
 * [hello shader](./hello-shader)
+
+---
+
+* [fx](./fx)
+* [cg function](./cg-func)
+
+---
+
+* output
+    * [output struct (surface)](#output-surface)
 * input
     * [data-type](./data-type)
     * [property](./property)
     * [input struct (surface)](./input-surface)
-* illuminating surfaces
+* illuminate surface
     * [normal mapping](./illuminate-surface/normal-map)
-    * [illumination models](./illuminate-surface/illum-model)
-    * [bumped environments](./illuminate-surface/bumped-enviro)
-    * [buffers + queues](./illuminate-surface/buffer+queue)
+    * [illumination model](./illuminate-surface/illum-model)
+    * [bumped environment](./illuminate-surface/bumped-enviro)
+    * [buffer + queue](./illuminate-surface/buffer+queue)
 * dot product
     * [dot product](./dot-product)
     * [rim-lighting](./dot-product/rim-lighting)
-    * [logical cutoffs](./dot-product/logical-cutoff)
+    * [logical cutoff](./dot-product/logical-cutoff)
 * lighting
-    * [lighting models](./lighting/model)
-    * [blinn-phong](./lighting/blinn-phong)
+    * [lighting model](./lighting/model)
+    * [blinn-phong](./lighting/blinn-phong)p
     * [pbr](./lighting/pbr)
     * [custom](./lighting/custom)
-* passes + blends
+* pass + blend
     * [alpha-channel](./pass+blend/alpha-channel)
     * [hologram](./pass+blend/hologram)
     * [blending](./pass+blend/blend)
     * [culling](./pass+blend/cull)
+    * [multi-pass](./pass+blend/pass-multi)
     * [multi-blend](./pass+blend/blend-multi)
     * [stencil buffer](./pass+blend/stencil-buffer)
 * vertex + fragment
@@ -39,3 +49,9 @@
 ---
 
 * [more @ wikipedia](https://en.wikipedia.org/wiki/Shader)
+
+## Output Struct (surface) <a name="output-surface"></a>
+
+---
+
+* ![Output Struct (surface)](_asset/img/2.png)

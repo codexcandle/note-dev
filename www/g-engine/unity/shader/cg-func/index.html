@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>g-engine.unity.shader.cg-func</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../../../_asset/css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">g-engine.unity.shader.cg-func</h1>
+</header>
+<ul>
+<li><a href="#overview">overview</a></li>
+<li><a href="#abs">abs</a></li>
+<li><a href="#acos">acos</a></li>
+<li><a href="#all">all</a></li>
+<li><a href="#any">any</a></li>
+<li><a href="#asin">asin</a></li>
+<li><a href="#atan">atan</a></li>
+<li><a href="#atan2">atan2</a></li>
+<li><a href="#ceil">ceil</a></li>
+<li><a href="#clamp">clamp</a></li>
+<li><a href="#cos">cos</a></li>
+<li><a href="#cosh">cosh</a></li>
+<li><a href="#cross">cross</a></li>
+<li><a href="#ddx">ddx</a></li>
+<li><a href="#ddy">ddy</a></li>
+<li><a href="#debug">debug</a></li>
+<li><a href="#degrees">degrees</a></li>
+<li><a href="#determinant">determinant</a></li>
+<li><a href="#distance">distance</a></li>
+<li><a href="#dot">dot</a></li>
+<li><a href="#exp">exp</a></li>
+<li><a href="#exp2">exp2</a></li>
+<li><a href="#faceforward">faceforward</a></li>
+<li><a href="#floor">floor</a></li>
+<li><a href="#fmod">fmod</a></li>
+<li><a href="#fract">fract</a></li>
+<li><a href="#frexp">frexp</a></li>
+<li><a href="#isfinite">isfinite</a></li>
+<li><a href="#isinf">isinf</a></li>
+<li><a href="#isnan">isnan</a></li>
+<li><a href="#ldexp">ldexp</a></li>
+<li><a href="#length">length</a></li>
+<li><a href="#lerp">lerp</a></li>
+<li><a href="#lit">lit</a></li>
+<li><a href="#log">log</a></li>
+<li><a href="#log2">log2</a></li>
+<li><a href="#log10">log10</a></li>
+<li><a href="#max">max</a></li>
+<li><a href="#min">min</a></li>
+<li><a href="#modf">modf</a></li>
+<li><a href="#mul">mul</a></li>
+<li><a href="#noise">noise</a></li>
+<li><a href="#normalize">normalize</a></li>
+<li><a href="#pow">pow</a></li>
+<li><a href="#radians">radians</a></li>
+<li><a href="#reflect">reflect</a></li>
+<li><a href="#refract">refract</a></li>
+<li><a href="#round">round</a></li>
+<li><a href="#rsqrt">rsqrt</a></li>
+<li><a href="#saturate">saturate</a></li>
+<li><a href="#sign">sign</a></li>
+<li><a href="#sin">sin</a></li>
+<li><a href="#sincos">sincos</a></li>
+<li><a href="#sinh">sinh</a></li>
+<li><a href="#smoothstep">smoothstep</a></li>
+<li><a href="#step">step</a></li>
+<li><a href="#sqrt">sqrt</a></li>
+<li><a href="#tan">tan</a></li>
+<li><a href="#tanh">tanh</a></li>
+<li><a href="#tex1D">tex1D</a></li>
+<li><a href="#tex1DProj">tex1DProj</a></li>
+<li><a href="#tex2D">tex2D</a></li>
+<li><a href="#tex2DProj">tex2DProj</a></li>
+<li><a href="#texRECT">texRECT</a></li>
+<li><a href="#tex3D">tex3D</a></li>
+<li><a href="#tex3DProj">tex3DProj</a></li>
+<li><a href="#texCUBE">texCUBE</a></li>
+<li><a href="#texCUBEProj">texCUBEProj</a></li>
+<li><a href="#transpose">transpose</a></li>
+</ul>
+<h2 id="overview">Overview <a name="overview"></a></h2>
+<hr />
+<ul>
+<li><figure>
+<img src="_asset/img/09.png" alt="overview" /><figcaption>overview</figcaption>
+</figure></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Cg_(programming_language)">more @ wikipedia</a></p></li>
+</ul>
+<h2 id="abs">abs <a name="abs"></a></h2>
+<hr />
+<ul>
+<li><code>abs(x)</code>- absolute value of x.</li>
+</ul>
+<h2 id="acos">acos <a name="acos"></a></h2>
+<hr />
+<ul>
+<li><code>acos(x)</code>- arccos of x in range [0, pi], x in [-1, 1].</li>
+</ul>
+<h2 id="all">all <a name="all"></a></h2>
+<hr />
+<ul>
+<li><code>all(x)</code>- true if ALL components of x != 0 (- false otherwise).</li>
+</ul>
+<h2 id="any">any <a name="any"></a></h2>
+<hr />
+<ul>
+<li><code>any(x)</code>- true if ANY component of x != 0 (- false otherwise).</li>
+</ul>
+<h2 id="asin">asin <a name="asin"></a></h2>
+<hr />
+<ul>
+<li><code>asin(x)</code>- arcsin of x in range [-pi / 2, pi / 2]; x in [-1, 1].</li>
+</ul>
+<h2 id="atan">atan <a name="atan"></a></h2>
+<hr />
+<ul>
+<li><code>atan(x)</code>- arctan of x in range [-pi / 2, pi / 2].</li>
+</ul>
+<h2 id="atan2">atan2 <a name="atan2"></a></h2>
+<hr />
+<ul>
+<li><code>atan2(y, x)</code>- arctan y / x in range [-pi, pi].</li>
+</ul>
+<h2 id="ceil">ceil <a name="ceil"></a></h2>
+<hr />
+<ul>
+<li><code>ceil(x)</code>- smallest integer not less than x.</li>
+</ul>
+<h2 id="clamp">clamp <a name="clamp"></a></h2>
+<hr />
+<ul>
+<li><code>clamp(x, a, b)</code>- x clamped to the range [a, b]; A if x &lt; a, B if x &gt; b else returns x.</li>
+</ul>
+<h2 id="cos">cos <a name="cos"></a></h2>
+<hr />
+<ul>
+<li><code>cos(x)</code>- cos of x.</li>
+</ul>
+<h2 id="cosh">cosh <a name="cosh"></a></h2>
+<hr />
+<ul>
+<li><code>cosh(x)</code>- hyperbolic cos of x.</li>
+</ul>
+<h2 id="cross">cross <a name="cross"></a></h2>
+<hr />
+<ul>
+<li><code>cross(A, B)</code>- cross product of vectors A and B (A and B must be three-component).</li>
+</ul>
+<h2 id="ddx">ddx <a name="ddx"></a></h2>
+<hr />
+<ul>
+<li><code>ddx(a)</code>- partial derivative of A with respect to screen-space x coord.</li>
+</ul>
+<h2 id="ddy">ddy <a name="ddy"></a></h2>
+<hr />
+<ul>
+<li><code>ddy(a)</code>- partial derivative of A with respect to screen-space Y coord.</li>
+</ul>
+<h2 id="debug">debug <a name="debug"></a></h2>
+<hr />
+<ul>
+<li><code>debug(float4 x)</code>- if compiler DEBUG option is enabled, causes shader to halt with X copied to the COLOR output - otherwise it does nothing.</li>
+</ul>
+<h2 id="degrees">degrees <a name="deegrees"></a></h2>
+<hr />
+<ul>
+<li><code>degrees(x)</code>- convert radians to degrees.</li>
+</ul>
+<h2 id="determinant">determinant <a name="determinant"></a></h2>
+<hr />
+<ul>
+<li><code>determinant(x)</code>- determinant of matrix x.</li>
+</ul>
+<h2 id="distance">distance <a name="distance"></a></h2>
+<hr />
+<ul>
+<li><code>distance(p1, p2)</code>- pythagorean distance between p1 and p2.</li>
+</ul>
+<h2 id="dot">dot <a name="dot"></a></h2>
+<hr />
+<ul>
+<li><code>dot(A, B)</code>- dot product of A and B.</li>
+</ul>
+<h2 id="exp">exp <a name="exp"></a></h2>
+<hr />
+<ul>
+<li><code>exp(x)</code>- exponential func e^x.</li>
+</ul>
+<h2 id="exp2">exp2 <a name="exp2"></a></h2>
+<hr />
+<ul>
+<li><code>exp2(x)</code>- exponential func 2^x.</li>
+</ul>
+<h2 id="faceforward">faceforward <a name="faceforward"></a></h2>
+<hr />
+<ul>
+<li><code>faceforward(N, l, Ng)</code>- N if dot (Ng, 1) &lt; 0 otherwise (-N).</li>
+</ul>
+<h2 id="floor">floor <a name="floor"></a></h2>
+<hr />
+<ul>
+<li><code>floor(x)</code>- largest integer not greater than x.</li>
+</ul>
+<h2 id="fmod">fmod <a name="fmod"></a></h2>
+<hr />
+<ul>
+<li><code>fmod(x, y)</code>- remainder of x / y (with the same sign as x). (If y == 0, result is unidentified.)</li>
+</ul>
+<h2 id="fract">fract <a name="fract"></a></h2>
+<hr />
+<ul>
+<li><code>fract(x)</code>- fractional part of x.</li>
+</ul>
+<h2 id="frexp">frexp <a name="fract"></a></h2>
+<hr />
+<ul>
+<li><code>frexp(x, out exp)</code>- splits x into normlaized fraction in the interval [?, 1], which is returned, &amp; a power of 2, which is stored in exp. (If x == 0, both parts of the results are 0.)</li>
+</ul>
+<h2 id="isfinite">isfinite <a name="isfinite"></a></h2>
+<hr />
+<ul>
+<li><code>isfinite(x)</code>- returns true if x is finite.</li>
+</ul>
+<h2 id="isinf">isinf <a name="isinf"></a></h2>
+<hr />
+<ul>
+<li><code>isinf(x)</code>- returns true if x is infinite.</li>
+</ul>
+<h2 id="isnan">isnan <a name="isfinite"></a></h2>
+<hr />
+<ul>
+<li><code>isnan(x)</code>- returns true if x is NaN.</li>
+</ul>
+<h2 id="ldexp">ldexp <a name="ldexp"></a></h2>
+<hr />
+<ul>
+<li><code>ldepx(x, n)</code>- x * 2^n.</li>
+</ul>
+<h2 id="length">length <a name="length"></a></h2>
+<hr />
+<ul>
+<li><code>length(v)</code>- pythagorean length of vector.</li>
+</ul>
+<h2 id="lerp">lerp <a name="lerp"></a></h2>
+<hr />
+<ul>
+<li><code>lerp(a, b, f)</code>- linear interpolation: (1 - f) * a + b * f, f can be a vector of same legnth as A &amp; B.</li>
+</ul>
+<h2 id="lit">lit <a name="lit"></a></h2>
+<hr />
+<ul>
+<li><code>lit(NDotL, NDotH, m)</code>- computes lighting coefficients (m is the shininess). Returns: float4: .x = ambient (always 1), .y = diffuse (0 if N.L &lt; 0), .z = specular (0 N.L &lt; 0 or N.H &lt; 0); .w==1.0.</li>
+</ul>
+<h2 id="log">log <a name="log"></a></h2>
+<hr />
+<ul>
+<li><code>log(x)</code>- natural logarithm (x &gt; 0).</li>
+</ul>
+<h2 id="log2">log2 <a name="log2"></a></h2>
+<hr />
+<ul>
+<li><code>log2(x)</code>- Log Base 2 (x &gt; 0).</li>
+</ul>
+<h2 id="log10">log10 <a name="log10"></a></h2>
+<hr />
+<ul>
+<li><code>log2(x)</code>- Log Base 10 (x &gt; 0).</li>
+</ul>
+<h2 id="max">max <a name="max"></a></h2>
+<hr />
+<ul>
+<li><code>max(a, b)</code>- maximum of A and B.</li>
+</ul>
+<h2 id="min">min <a name="min"></a></h2>
+<hr />
+<ul>
+<li><code>min(a, b)</code>- minimum of A and B.</li>
+</ul>
+<h2 id="modf">modf <a name="modf"></a></h2>
+<hr />
+<ul>
+<li><code>modf(x, out ip)</code>- splits X into int and frac parts (each with the same sign as X). Stores the int part in IP and returns the fractional part.</li>
+</ul>
+<h2 id="mul">mul <a name="mul"></a></h2>
+<hr />
+<ul>
+<li><p><code>mul(M, N)</code>- matrix product of matrix M and matrix N; if M has size AxB, and N has size BxC, returns an AxC.</p></li>
+<li><p><code>mul(M, v)</code>- product of matrix M, and column vector v: If M has size AxB, and v is Bx1, returns Ax1.</p></li>
+<li><p><code>mul(v, M)</code>- product of row vector V and matrix M; if v is a 1xA, and M is AxB, returns a 1xB.</p></li>
+</ul>
+<h2 id="noise">noise <a name="noise"></a></h2>
+<hr />
+<ul>
+<li><code>noise(x)</code>- noise function; the returned value is between 0 and 1, and is always the same for a given input value.</li>
+</ul>
+<h2 id="normalize">normalize <a name="normalize"></a></h2>
+<hr />
+<ul>
+<li><code>normalize(v)</code>- normalize v.</li>
+</ul>
+<h2 id="pow">pow <a name="pow"></a></h2>
+<hr />
+<ul>
+<li><code>pow(x, y)</code>- x^y.</li>
+</ul>
+<h2 id="radians">radians <a name="radians"></a></h2>
+<hr />
+<ul>
+<li><code>radians(x)</code>- convert degrees to radians.</li>
+</ul>
+<h2 id="reflect">reflect <a name="reflect"></a></h2>
+<hr />
+<ul>
+<li><code>reflect(l, N)</code>- computes reflection of l in a plane iwth surface normal N (three-component vectors only).</li>
+</ul>
+<h2 id="refract">refract <a name="refract"></a></h2>
+<hr />
+<ul>
+<li><code>refract(l, N, eta)</code>- computes refraction of l in a plane with surface normal N and refractive index eta. Returns (0, 0, 0) for total internal reflection (three-component vectors only).</li>
+</ul>
+<h2 id="round">round <a name="round"></a></h2>
+<hr />
+<ul>
+<li><code>round(x)</code>- closest integer to x.</li>
+</ul>
+<h2 id="rsqrt">rsqrt <a name="rsqrt"></a></h2>
+<hr />
+<ul>
+<li><code>rsqrt(x)</code>- reciprocal square root of x (x &gt; 0).</li>
+</ul>
+<h2 id="saturate">saturate <a name="saturate"></a></h2>
+<hr />
+<ul>
+<li><code>saturate(x)</code>- clamps x to [0, 1].</li>
+</ul>
+<h2 id="sign">sign <a name="sign"></a></h2>
+<hr />
+<ul>
+<li><code>sign(x)</code>- sign of x (returns -1, 0, or 1</li>
+</ul>
+<h2 id="sin">sin <a name="sin"></a></h2>
+<hr />
+<ul>
+<li><code>sin(x)</code>- sin of x.</li>
+</ul>
+<h2 id="sincos">sincos <a name="sincos"></a></h2>
+<hr />
+<ul>
+<li><code>sincos(float x, out s, out c)</code>- s is set to sin(x), and c to cos(x).</li>
+</ul>
+<h2 id="sinh">sinh <a name="sinh"></a></h2>
+<hr />
+<ul>
+<li><code>sinh(x)</code>- hyperbolic sine of x.</li>
+</ul>
+<h2 id="smoothstep">smoothstep <a name="smoothstep"></a></h2>
+<hr />
+<ul>
+<li><code>smoothstep(min, max, x)</code>- for values of x b/n min &amp; max. Returns a smoothly varying vlaue that ranges form 0 at x == min to 1 at x == max. X is clamped to the range pmin, max[ and then returs a 2 * (x - min) / (max - min) ^ 3 + 3 * (x - min) / (max - min) ^2.</li>
+</ul>
+<h2 id="step">step <a name="step"></a></h2>
+<hr />
+<ul>
+<li><code>step(a, x)</code>- 0 if x &lt; a, 1 if x &gt;=a.</li>
+</ul>
+<h2 id="sqrt">sqrt <a name="sqrt"></a></h2>
+<hr />
+<ul>
+<li><code>sqrt(x)</code>- square root of x (x &gt; 0)</li>
+</ul>
+<h2 id="tan">tan <a name="tan"></a></h2>
+<hr />
+<ul>
+<li><code>tan(x)</code>- tan of x.</li>
+</ul>
+<h2 id="tanh">tanh <a name="tanh"></a></h2>
+<hr />
+<ul>
+<li><code>tan(x)</code>- hyperbolic tan of x.</li>
+</ul>
+<h2 id="tex1d">tex1D <a name="tex1D"></a></h2>
+<hr />
+<ul>
+<li><p><code>tex1D(sampler1D tex, float s)</code>- 1D nonprojective texture lookup.</p></li>
+<li><p><code>tex1D(sampler1D tex, float s, float dsdx, float dsdy)</code>- 1D nonprojective texture lookup with derivatives.</p></li>
+<li><p><code>tex1D(sampler1D tex, float2 sz)</code>- 1D nonprojective depth compare texture lookup.</p></li>
+<li><p><code>tex1D(sampler1D tex, float2 sz, float dsdx, float dsdy)</code>- 1D nonprojective depth compare texture lookup (with derivatives).</p></li>
+</ul>
+<h2 id="tex1dproj">tex1DProj <a name="tex1DProj"></a></h2>
+<hr />
+<ul>
+<li><p><code>tex1DProj(sampler1D tex, float2 sq)</code>- 1D nonprojective texture lookup.</p></li>
+<li><p><code>tex1DProj(sampler1D tex, float3 szq)</code>- 1D projective depth compare texture lookup.</p></li>
+</ul>
+<h2 id="tex2d">tex2D <a name="tex2D"></a></h2>
+<hr />
+<ul>
+<li><p><code>tex2D(sampler2D tex, float2 s)</code>- 2D nonprojective texture lookup.</p></li>
+<li><p><code>tex2D(sampler2D tex, float2 s, float2 dsdx, float2 dsdy)</code>- 2D nonprojective texture lookup (with derivatives).</p></li>
+<li><p><code>tex2D(sampler2D tex, float3 sz)</code>- 2D nonprojective depth compare texture lookup.</p></li>
+<li><p><code>tex2D(sampler2D tex, float3 sz, float2 dsdx, float2 dsdy)</code>- 2D nonprojective depth compare texture lookup (with derivatives).</p></li>
+</ul>
+<h2 id="tex2dproj">tex2DProj <a name="tex2DProj"></a></h2>
+<hr />
+<ul>
+<li><img src="_asset/img/01.png" title="fig:" alt="tex2DProj" /></li>
+</ul>
+<h2 id="texrect">texRECT <a name="texRECT"></a></h2>
+<hr />
+<ul>
+<li><img src="_asset/img/02.png" title="fig:" alt="texRECT" /></li>
+</ul>
+<h2 id="texrectproj">texRECTProj <a name="texRECTProj"></a></h2>
+<hr />
+<ul>
+<li><img src="_asset/img/03.png" title="fig:" alt="texRECTProj" /></li>
+</ul>
+<h2 id="tex3d">tex3D <a name="tex3D"></a></h2>
+<hr />
+<ul>
+<li><figure>
+<img src="_asset/img/04.png" alt="tex3D" /><figcaption>tex3D</figcaption>
+</figure></li>
+<li><figure>
+<img src="_asset/img/05.png" alt="tex3D" /><figcaption>tex3D</figcaption>
+</figure></li>
+</ul>
+<h2 id="tex3dproj">tex3DProj <a name="tex3DProj"></a></h2>
+<hr />
+<ul>
+<li><img src="_asset/img/06.png" title="fig:" alt="tex3DProj" /></li>
+</ul>
+<h2 id="texcube">texCUBE <a name="texCUBE"></a></h2>
+<hr />
+<ul>
+<li><img src="_asset/img/07.png" title="fig:" alt="texCUBE" /></li>
+</ul>
+<h2 id="transpose">transpose <a name="transpose"></a></h2>
+<hr />
+<ul>
+<li><img src="_asset/img/08.png" title="fig:" alt="transpose" /></li>
+</ul>
+</body>
+</html>
