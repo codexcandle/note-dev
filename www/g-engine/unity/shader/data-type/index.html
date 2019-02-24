@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>g-engine.unity.shader.data-types</title>
+  <title>g-engine.unity.shader.data-type</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -17,14 +17,13 @@
   <![endif]-->
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">g-engine.unity.shader.data-types</h1>
+<header>
+<h1 class="title">g-engine.unity.shader.data-type</h1>
 </header>
 <ul>
-<li><a href="#overview">overview</a></li>
 <li><a href="#basic">basic</a></li>
 <li><a href="#texture">texture</a></li>
-<li><a href="#array">array</a>
+<li><a href="#array">packed array</a>
 <ul>
 <li><a href="#rgba-xyza">rgba | xyza</a></li>
 <li><a href="#swizzle">swizzle</a></li>
@@ -37,55 +36,58 @@
 <hr />
 <ul>
 <li><p><code>float</code> | <code>half</code> | <code>fixed</code> | <code>int</code></p>
-<figure>
-<img src="_asset/img/01.png" alt="Overivew" /><figcaption>Overivew</figcaption>
-</figure></li>
+<p>![basic(_asset/img/01.png)</p></li>
 </ul>
 <h2 id="texture">Texture <a name="texture"></a></h2>
 <hr />
 <ul>
 <li><p><code>sampler2D</code> | <code>samplerCUBE</code></p>
 <figure>
-<img src="_asset/img/02.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/02.png" alt="texture" /><figcaption>texture</figcaption>
 </figure>
 <figure>
-<img src="_asset/img/03.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/03.png" alt="texture" /><figcaption>texture</figcaption>
 </figure></li>
 </ul>
-<h2 id="array">Array <a name="array"></a></h2>
+<h2 id="packed-array">Packed Array <a name="array"></a></h2>
 <hr />
 <ul>
 <li><p>basic</p>
 <figure>
-<img src="_asset/img/07.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/07.png" alt="array" /><figcaption>array</figcaption>
+</figure></li>
+<li><p>packed</p>
+<figure>
+<img src="_asset/img/02.png" alt="array" /><figcaption>array</figcaption>
 </figure>
 <figure>
-<img src="_asset/img/05.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/03.png" alt="array" /><figcaption>array</figcaption>
 </figure>
 <figure>
-<img src="_asset/img/06.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/05.png" alt="array" /><figcaption>array</figcaption>
+</figure>
+<figure>
+<img src="_asset/img/06.png" alt="array" /><figcaption>array</figcaption>
 </figure></li>
 </ul>
 <h3 id="rgba-v-xyza">RGBA v XYZA <a name="rgba-xyza"></a></h3>
 <hr />
 <ul>
 <li><figure>
-<img src="_asset/img/10.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/10.png" alt="rgba-xyza" /><figcaption>rgba-xyza</figcaption>
 </figure></li>
 <li><figure>
-<img src="_asset/img/11.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/11.png" alt="rgba-xyza" /><figcaption>rgba-xyza</figcaption>
 </figure></li>
 <li><figure>
-<img src="_asset/img/13.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/13.png" alt="rgba-xyza" /><figcaption>rgba-xyza</figcaption>
 </figure></li>
-<li><figure>
-<img src="_asset/img/14.png" alt="Overivew" /><figcaption>Overivew</figcaption>
-</figure></li>
+<li><p>![rgba-xyza(_asset/img/14.png)</p></li>
 </ul>
 <h3 id="swizzle">swizzle <a name="swizzle"></a></h3>
 <hr />
 <ul>
-<li><img src="_asset/img/16.png" title="fig:" alt="Overivew" /></li>
+<li><img src="_asset/img/16.png" title="fig:" alt="swizzle" /></li>
 </ul>
 <h3 id="smear">smear <a name="smear"></a></h3>
 <hr />
@@ -102,42 +104,42 @@
 <ul>
 <li><p><code>_mrc</code> access notation</p>
 <figure>
-<img src="_asset/img/22.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/22.png" alt="matrix" /><figcaption>matrix</figcaption>
 </figure>
 <figure>
-<img src="_asset/img/23.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/23.png" alt="matrix" /><figcaption>matrix</figcaption>
 </figure></li>
 <li><p><code>chaining</code></p>
 <figure>
-<img src="_asset/img/26.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/26.png" alt="matrix" /><figcaption>matrix</figcaption>
 </figure>
 <figure>
-<img src="_asset/img/27.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/27.png" alt="matrix" /><figcaption>matrix</figcaption>
 </figure></li>
 </ul>
 <h2 id="ex">EX <a name="example"></a></h2>
 <hr />
 <ul>
 <li><figure>
-<img src="_asset/img/30.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/30.png" alt="example" /><figcaption>example</figcaption>
 </figure></li>
 <li><figure>
-<img src="_asset/img/29.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/29.png" alt="example" /><figcaption>example</figcaption>
 </figure></li>
 <li><figure>
-<img src="_asset/img/32.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/32.png" alt="example" /><figcaption>example</figcaption>
 </figure></li>
 <li><figure>
-<img src="_asset/img/33.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/33.png" alt="example" /><figcaption>example</figcaption>
 </figure></li>
 <li><figure>
-<img src="_asset/img/34.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/34.png" alt="example" /><figcaption>example</figcaption>
 </figure></li>
 <li><figure>
-<img src="_asset/img/35.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/35.png" alt="example" /><figcaption>example</figcaption>
 </figure></li>
 <li><figure>
-<img src="_asset/img/36.png" alt="Overivew" /><figcaption>Overivew</figcaption>
+<img src="_asset/img/36.png" alt="example" /><figcaption>example</figcaption>
 </figure></li>
 </ul>
 </body>
