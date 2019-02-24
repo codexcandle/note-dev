@@ -9,12 +9,15 @@
 
 ---
 
-* output
-    * [output struct (surface)](#output-surface)
 * input
     * [data-type](./data-type)
     * [property](./property)
     * [input struct (surface)](./input-surface)
+* output
+    * [output struct (surface)](#output-surface)
+
+---
+
 * illuminate surface
     * [normal mapping](./illuminate-surface/normal-map)
     * [illumination model](./illuminate-surface/illum-model)
@@ -49,9 +52,3 @@
 ---
 
 * [more @ wikipedia](https://en.wikipedia.org/wiki/Shader)
-
-## Output Struct (surface) <a name="output-surface"></a>
-
----
-
-* ![Output Struct (surface)](_asset/img/2.png)
