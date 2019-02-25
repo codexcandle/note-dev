@@ -13,7 +13,7 @@
 
 * `float` | `half` | `fixed` | `int`
 
-    ![basic(_asset/img/01.png)
+    ![basic](_asset/img/01.png)
 
 ## Texture <a name="texture"></a>
 
