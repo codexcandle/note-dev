@@ -1,3 +1,3 @@
 {
-"pandoc.htmlOptString": "-s -o ../../../../../www/g-engine/unity/shader/data-type/index.html -t html5 --css=../../../../_asset/css/style.css --metadata title='g-engine.unity.shader.data-type'"
+"pandoc.htmlOptString": "-s -o ../../www/browser/index.html -t html5 --css=../_asset/css/style.css --metadata title='browser'"
 }

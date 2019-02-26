@@ -3,6 +3,7 @@
 ---
 
 * [aframe](./framework/aframe)
+* [angular](./framework/angular)
 * [bootstrap](./framework/bootstrap)
 * [node](./runtime/node)
 
