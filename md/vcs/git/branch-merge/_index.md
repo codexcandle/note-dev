@@ -12,6 +12,7 @@
     * [merge tool](#merge-tool)
 * example
     * [create (from existing)](#create-from-existing)
+    * [resolve git bash merge](#resolve-git-bash)
 
 ## Overview <a name="overview"></a>
 
@@ -147,7 +148,7 @@ There are very few variations of the merge command — generally just git me
 
 * ![merge](./_asset/img/29.png)
 
-### mergetool <a name="mergetool"></a>
+### mergetool <a name="merge-tool"></a>
 
 ---
 
@@ -176,3 +177,7 @@ There are very few variations of the merge command — generally just git me
         ```
 
         ![Debug](./_asset/img/01.png)
+
+* `resolve git bash` <a name="resolve-git-bash"></a>
+
+    ![example](./_asset/img/46.png)
