@@ -12,6 +12,7 @@
 * [editor](./editor)
 * [physics](./physx)
 * [ui](./ui)
+* [serialize](./serialize)
 
 ---
 
