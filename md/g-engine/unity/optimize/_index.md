@@ -13,7 +13,7 @@
     * [tag-comparison](#tag-comparison)
     * [string-concatenation](#string-concatenation)
     * [get-component](#get-component)
-    * [wait-for-seconds](#wait-for-seconds)
+    * [coroutine](#coroutine)
 
 ## Graphics
 
@@ -66,8 +66,8 @@
 * these calls can take quite a bit of CPU time!
 * address this with [object pooling](./pool).
 
-### wait-for-seconds <a name="wait-for-seconds"></a>
+### coroutine <a name="coroutine"></a>
 
-* when using coroutines, cache these as class-level vars!
+* when using coroutines, cache `waitForSeconds` as class-level vars!
 
-  ![wait-for-seconds](_asset/img/4.png)
+  ![corotuine](_asset/img/4.png)
