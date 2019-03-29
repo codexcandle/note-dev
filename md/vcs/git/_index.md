@@ -1,4 +1,11 @@
 * [overview](#overview)
+
+    ---
+
+    * [cheatsheet](./cheatsheet)
+
+    ---
+
 * [init / clone](./init-clone)
 * [config / help](./config-help)
 * [commit](./commit)
