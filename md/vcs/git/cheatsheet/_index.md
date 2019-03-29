@@ -30,7 +30,7 @@
 	git config --global user.email "MY_NAME@example.com"
 	```
 
-## 3.  Store password <a name="password"></a>
+## 3.  Store Password <a name="password"></a>
 
 ---
 
@@ -54,7 +54,7 @@
 	git clone
 	```
 
-## 5.  Start repo <a name="start-repo"></a>
+## 5.  Start Repo <a name="start-repo"></a>
 
 ---
 
@@ -64,7 +64,7 @@
 	git init
 	```
 
-## 6.  Specify remote repo <a name="remote-repo"></a>
+## 6.  Specify Remote Repo <a name="remote-repo"></a>
 
 ---
 
@@ -99,7 +99,7 @@
 	git push origin master
 	```
 
-## 9.  Resolve merge conflicts <a name="merge conflicts"></a>
+## 9.  Resolve Merge Conflicts <a name="merge conflicts"></a>
 
 ---
 
