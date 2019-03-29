@@ -1,26 +1,40 @@
-* [overview](#overview)
+1. [download tools](#tools)
+2. [save creds](#creds)
+3. [store password](#password)
+4. [download remote](#download-remote)
+5. [start repo](#start-repo)
+6. [set remote repo](#remote-repo)
+7. [check status](#status)
+8. [add files](#add-files)
+9. [resolve merge conflicts](#merge-conflicts)
 
-## Overview <a name="overview"></a>
+## 1.  Download Tools <a name="tools"></a>
 
 ---
 
-1.  download.
+* [git](https://git-scm.com/downloads)
 
-	* [git](https://git-scm.com/downloads)
+* [git-lfs](https://git-lfs.github.com/)
 
-	* [git-lfs](https://git-lfs.github.com/)
+## 2.  Save Creds <a name="creds"></a>
 
-2.  set creds.
+---
+
+* set credentials
 
 	```c#
 	// name
 	git config --global user.name "FIRST_NAME LAST_NAME"
-	
+
 	// email
 	git config --global user.email "MY_NAME@example.com"
 	```
 
-3.  store password.
+## 3.  Store password <a name="password"></a>
+
+---
+
+* set keychain credential to auto-login
 
 	```c#
 	// mac
@@ -30,25 +44,51 @@
 	git config --global credential.helper wincred
 	```
 
-4.  to start a new repo:
+## 4.  Download Remote Repo <a name="download-remote"></a>
+
+---
+
+* clone via:
+
+	```c#
+	git clone
+	```
+
+## 5.  Start repo <a name="start-repo"></a>
+
+---
+
+* start with
 
 	```c#
 	git init
 	```
 
-5.  specify where you want our repo hosted (& name).
+## 6.  Specify remote repo <a name="remote-repo"></a>
+
+---
+
+* specify where you want our repo hosted (& name)
 
 	```c#
 	git remote add origin "URL"
 	```
 
-6.  check status.
+## 7.  Check Status <a name="status"></a>
+
+---
+
+* check status
 
 	```c#
 	git status
 	```
 
-7.  add things.
+## 8.  Add Files <a name="add-files"></a>
+
+---
+
+* add things
 
 	```c#
 	git add "file"
@@ -59,13 +99,11 @@
 	git push origin master
 	```
 
-8.  to download a remote repo:
+## 9.  Resolve merge conflicts <a name="merge conflicts"></a>
 
-	```c#
-	git clone
-	```
+---
 
-9.  merge conflicts?
+* merge conflicts?
 
 	1. checkout your files one by one
 

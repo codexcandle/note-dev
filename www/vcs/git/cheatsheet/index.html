@@ -85,44 +85,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header>
 <h1 class="title">version-control.git.cheatsheet</h1>
 </header>
-<ul>
-<li><a href="#overview">overview</a></li>
-</ul>
-<h2 id="overview">Overview <a name="overview"></a></h2>
-<hr />
 <ol type="1">
-<li><p>download.</p>
+<li><a href="#tools">download tools</a></li>
+<li><a href="#creds">save creds</a></li>
+<li><a href="#password">store password</a></li>
+<li><a href="#download-remote">download remote</a></li>
+<li><a href="#start-repo">start repo</a></li>
+<li><a href="#remote-repo">set remote repo</a></li>
+<li><a href="#status">check status</a></li>
+<li><a href="#add-files">add files</a></li>
+<li><a href="#merge-conflicts">resolve merge conflicts</a></li>
+</ol>
+<h2 id="download-tools">1. Download Tools <a name="tools"></a></h2>
+<hr />
 <ul>
 <li><p><a href="https://git-scm.com/downloads">git</a></p></li>
 <li><p><a href="https://git-lfs.github.com/">git-lfs</a></p></li>
-</ul></li>
-<li><p>set creds.</p>
+</ul>
+<h2 id="save-creds">2. Save Creds <a name="creds"></a></h2>
+<hr />
+<ul>
+<li><p>set credentials</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">// name</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">git config --global user.<span class="fu">name</span> <span class="st">&quot;FIRST_NAME LAST_NAME&quot;</span></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">// email</span></a>
 <a class="sourceLine" id="cb1-5" data-line-number="5">git config --global user.<span class="fu">email</span> <span class="st">&quot;MY_NAME@example.com&quot;</span></a></code></pre></div></li>
-<li><p>store password.</p>
+</ul>
+<h2 id="store-password">3. Store password <a name="password"></a></h2>
+<hr />
+<ul>
+<li><p>set keychain credential to auto-login</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">// mac</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">git config --global credential.<span class="fu">helper</span> osxkeychain</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">// windows</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5">git config --global credential.<span class="fu">helper</span> wincred</a></code></pre></div></li>
-<li><p>to start a new repo:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1">git init</a></code></pre></div></li>
-<li><p>specify where you want our repo hosted (&amp; name).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1">git remote add origin <span class="st">&quot;URL&quot;</span></a></code></pre></div></li>
-<li><p>check status.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1">git status</a></code></pre></div></li>
-<li><p>add things.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb6-1" data-line-number="1">git add <span class="st">&quot;file&quot;</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">// -to add everything, use:</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">git add .</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">git commit -m <span class="st">&quot;initial commit&quot;</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">git push origin master</a></code></pre></div></li>
-<li><p>to download a remote repo:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb7-1" data-line-number="1">git clone</a></code></pre></div></li>
+</ul>
+<h2 id="download-remote-repo">4. Download Remote Repo <a name="download-remote"></a></h2>
+<hr />
+<ul>
+<li><p>clone via:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb3-1" data-line-number="1">git clone</a></code></pre></div></li>
+</ul>
+<h2 id="start-repo">5. Start repo <a name="start-repo"></a></h2>
+<hr />
+<ul>
+<li><p>start with</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb4-1" data-line-number="1">git init</a></code></pre></div></li>
+</ul>
+<h2 id="specify-remote-repo">6. Specify remote repo <a name="remote-repo"></a></h2>
+<hr />
+<ul>
+<li><p>specify where you want our repo hosted (&amp; name)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb5-1" data-line-number="1">git remote add origin <span class="st">&quot;URL&quot;</span></a></code></pre></div></li>
+</ul>
+<h2 id="check-status">7. Check Status <a name="status"></a></h2>
+<hr />
+<ul>
+<li><p>check status</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb6-1" data-line-number="1">git status</a></code></pre></div></li>
+</ul>
+<h2 id="add-files">8. Add Files <a name="add-files"></a></h2>
+<hr />
+<ul>
+<li><p>add things</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb7-1" data-line-number="1">git add <span class="st">&quot;file&quot;</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">// -to add everything, use:</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">git add .</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">git commit -m <span class="st">&quot;initial commit&quot;</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">git push origin master</a></code></pre></div></li>
+</ul>
+<h2 id="resolve-merge-conflicts">9. Resolve merge conflicts <a name="merge conflicts"></a></h2>
+<hr />
+<ul>
 <li><p>merge conflicts?</p>
 <ol type="1">
 <li><p>checkout your files one by one</p>
@@ -134,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb9-2" data-line-number="2">git reset --hard SHA</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3">git checkout SHA <span class="st">&quot;file&quot;</span></a></code></pre></div></li>
 </ol></li>
-</ol>
+</ul>
 <hr />
 <h6 id="ref">REF</h6>
 <hr />
