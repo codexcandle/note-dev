@@ -7,7 +7,7 @@
 
 * [more @ vs-code](https://code.visualstudio.com/docs/other/unity)
 
-## Change Default C# Class file <a name="change-class-file"></a>
+## Change Default C# Class fgit pulile <a name="change-class-file"></a>
 
 ---
 
