@@ -2,28 +2,24 @@
 
 	---
 
-* [exception](./exception)
-
-	---
-
-* [lambda-expression](./lambda-expression)
-* [linq](./linq)
-* [parameter-modifier](./parameter-modifier)
-* [attribute](./attribute)
-* [reflection](./reflection)
-* [property](./property)
-* [indexer](./indexer)
-* [delegate](./delegate)
-* [event](./event)
-* [collection](./collection)
-* [generic](./generic)
-* [anonymous method](./a-method)
-* [unsafe codes](https://www.tutorialspoint.com/csharp/csharp_unsafe_codes.htm)
-* [multi-threading](https://www.tutorialspoint.com/csharp/csharp_multithreading.htm)
-
-	---
-
 * [.net](#dotnet)
+
+	---
+
+* [anonymous method](./a-method)
+	* [lambda-expr](./lambda-expression)
+* [attribute](./attribute)
+* [exception](./exception)
+* [generic](./generic)
+* [linq](./linq)
+* [multi-thread](https://www.tutorialspoint.com/csharp/csharp_multithreading.htm)
+* [property](./property)
+	* [collection](./collection)
+	* [param-modifier](./parameter-modifier)
+	* [indexer](./indexer)
+* [reflection](./reflection)
+* [rx](./rx)
+* [unsafe codes](https://www.tutorialspoint.com/csharp/csharp_unsafe_codes.htm)
 
 ## Overview <a name="overview"></a>
 
