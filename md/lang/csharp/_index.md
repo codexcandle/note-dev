@@ -15,7 +15,7 @@
 * [multi-thread](https://www.tutorialspoint.com/csharp/csharp_multithreading.htm)
 * [property](./property)
 	* [collection](./collection)
-	* [param-modifier](./parameter-modifier)
+	* [param-modifier](./param-modifier)
 	* [indexer](./indexer)
 * [reflection](./reflection)
 * [rx](./rx)

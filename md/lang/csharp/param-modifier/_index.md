@@ -8,8 +8,6 @@
 
 ---
 
-![Overview](_asset/img/0.png)
-
 ![Overview](_asset/img/1.png)
 
 ![Overview](_asset/img/2.png)

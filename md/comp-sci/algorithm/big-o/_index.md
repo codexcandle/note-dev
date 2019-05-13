@@ -38,15 +38,13 @@
 
 * as below:
 
-  !["Greek Letter" Notations](_asset/img/4.png)
+  ![Greek Letter Notation](_asset/img/11.png)
+
+  ![Greek Letter Notation](_asset/img/12.png)
 
 * you usually don't use `n` by itself; typically, you tie it together with a Greek letter to give it some context. Rarely does your program operate at the same timing for every single step.  So instead of having exact values, you look at them in `boundaries`., or cases in which the are greater, less than, or rqual:
 
   ![Greek Letter Notation](_asset/img/10.png)  
-
-  ![Greek Letter Notation](_asset/img/11.png)
-
-  ![Greek Letter Notation](_asset/img/12.png)  
 
   ![Greek Letter Notation](_asset/img/23.png)
 
