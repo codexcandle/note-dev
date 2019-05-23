@@ -24,13 +24,16 @@
 <li><a href="#overview">overview</a></li>
 <li>type
 <ul>
-<li><code>in</code> - defacto; send data as input.</li>
-<li><code>out</code> - pass by ref; must return value as output.</li>
-<li><code>ref</code> - pass by ref; can update data ref.</li>
+<li><code>in / value</code> - defacto; send COPY OF data as input.</li>
+<li><code>ref</code> - same as above, but PASS BY REF; can update.</li>
+<li><code>out</code> - as methods only allow a single return value, this allows to return another; also, pass by ref; must return value as output.</li>
 </ul></li>
 </ul>
 <h2 id="overview">Overview <a name="overview"></a></h2>
 <hr />
+<figure>
+<img src="_asset/img/0.png" alt="Overview" /><figcaption>Overview</figcaption>
+</figure>
 <figure>
 <img src="_asset/img/1.png" alt="Overview" /><figcaption>Overview</figcaption>
 </figure>

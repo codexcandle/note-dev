@@ -1,12 +1,14 @@
 * [overview](#overview)
 * type
-	* `in` - defacto; send data as input.
-	* `out` - pass by ref; must return value as output.
-	* `ref` - pass by ref; can update data ref.
+	* `in / value` - defacto; send COPY OF data as input.
+	* `ref` - same as above, but PASS BY REF; can update.
+	* `out` - as methods only allow a single return value, this allows to return another; also, pass by ref; must return value as output.
 
 ## Overview <a name="overview"></a>
 
 ---
+
+![Overview](_asset/img/0.png)
 
 ![Overview](_asset/img/1.png)
 
