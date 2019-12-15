@@ -1,4 +1,0 @@
-1.  locate any folder inside "md" dir. (stands for 'markdown'.)
-2.  inside this folder, locate the corresponding "_index.md" file.
-3. with this file selected, run the "build" command (using the "pandoc" plugin):
-
