@@ -21,7 +21,7 @@ An ever-growing markdown-formatted library of developer notes.  (Sharing is cari
 		* have to MANUALLY copy "settings.json" from target file's parent "_config" directory to setup build
 		* automate this process w/ a script
 
-## Deploy`
+## Deploy
 
 ---
 
@@ -40,3 +40,14 @@ An ever-growing markdown-formatted library of developer notes.  (Sharing is cari
 2. copy all to "live" server.
 
 		https://www.codebycandle.com/notes
+
+## Debug
+
+If you get html page w/ missing styles, trying deleting a "../" prefix on the "--css=" property path of the ".md" file's corresponding "settings.json" file.
+
+	```js
+	// e.g.
+	{
+	"pandoc.htmlOptString": "-s -o ../../../../www/xr/hmd/quest/index.html -t html5 --css=../../../_asset/css/style.css --metadata title='xr.hmd.quest'"
+	}
+	```
