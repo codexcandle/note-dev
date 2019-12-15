@@ -7,7 +7,7 @@
 	* [gear-vr](./hmd/gear)
 	* oculus
 		* [go](./hmd/go)
-		* [questtttt](./hmd/quest)
+		* [quest](./hmd/quest)
 
 ---
 
