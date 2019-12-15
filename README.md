@@ -17,6 +17,10 @@ An ever-growing markdown-formatted library of developer notes.  (Sharing is cari
     * Press Ctrl+k and then p.  (You will be prompted with an option to choose html, docx, or pdf.)
     * Select html to render an html document.  (The resulting HTML document will launch in your default browser.)
 
+			NOTE:  Needed Optimization -
+		* have to MANUALLY copy "settings.json" from target file's parent "_config" directory to setup build
+		* automate this process w/ a script
+
 ## Deploy
 
 ---
